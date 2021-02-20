@@ -5,10 +5,11 @@
 
 ---
 
+## Directory structure
+```
 src
 │  App.js
 │  index.js
-│  result.txt
 │  
 ├─components
 ├─views
@@ -20,3 +21,4 @@ src
 └─_reducer
         index.js
         
+```
