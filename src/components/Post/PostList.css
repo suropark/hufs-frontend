@@ -1,0 +1,32 @@
+li {
+  list-style: none;
+  display: inline-block;
+}
+li a {
+  display: block;
+  padding: 20px;
+  border: solid 1px blue;
+}
+a:hover {
+  cursor: pointer;
+}
+.pagination-ul {
+  display: flex;
+  justify-content: center;
+}
+
+tr {
+  height: 40px;
+}
+td {
+  overflow: hidden;
+}
+.pageLabel-btn {
+  color: blue;
+}
+table th:first-child {
+  width: 5%;
+}
+table th {
+  width: 20%;
+}
