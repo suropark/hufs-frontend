@@ -4,6 +4,7 @@ import {
   POST_SAVE,
   POST_LIKE,
   POST_UPDATE,
+  POST_REPORT,
 } from '../_actions/types';
 
 export default function post(state = initialState, action) {
@@ -12,8 +13,14 @@ export default function post(state = initialState, action) {
   switch (action.type) {
     case POST_SAVE:
       return {
-        posts: posts.concat({ ...action.payload, id: posts.length + 1 }),
+        posts: posts.concat({
+          ...action.payload,
+          id: state.maxNo + 1,
+          userId: '이게 나야',
+          like: 0,
+        }),
         selected: {},
+        maxNo: state.maxNo + 1,
       };
     case POST_UPDATE:
       return {
@@ -48,6 +55,9 @@ export default function post(state = initialState, action) {
           }
         }),
       };
+    case POST_REPORT:
+      return { ...state };
+
     case POST_LIST:
       return {
         ...state,
@@ -58,7 +68,7 @@ export default function post(state = initialState, action) {
 }
 
 const initialState = {
-  maxNo: 0,
+  maxNo: 4,
   posts: [
     {
       id: 1,

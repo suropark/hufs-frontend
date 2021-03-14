@@ -3,6 +3,7 @@ export const POST_SAVE = 'post_save';
 export const POST_REMOVE = 'post_remove';
 export const POST_LIKE = 'post_like';
 export const POST_UPDATE = 'post_update';
+export const POST_REPORT = 'post_report';
 
 export const COMMENT_LIST = 'comment_list';
 export const COMMENT_SAVE = 'comment_save';

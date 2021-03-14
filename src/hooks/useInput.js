@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 export default function useInput(initialValue) {
   const [value, setValue] = useState(initialValue);
 
