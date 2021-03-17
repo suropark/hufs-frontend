@@ -55,6 +55,12 @@ function PostUpdate({ match, history }) {
       .then(history.goBack())
       .catch(console.log('수정 실패'));
   };
+  const onExit = () => {
+    const answer = window.confirm('진짜?');
+    if (answer) {
+      axios.delete('post/delete', uploadedImg).then(history.goBack());
+    }
+  };
   useEffect(() => {
     console.log(updated);
   }, [updated]);
@@ -83,6 +89,7 @@ function PostUpdate({ match, history }) {
           ></ReactQuill>
 
           <button onClick={onUpdate}>수정하기</button>
+          <button onClick={onExit}>취소하기</button>
         </div>
       ) : (
         'isLoading'

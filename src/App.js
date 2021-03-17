@@ -13,6 +13,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/list" component={Post} />
+        {/* <Route path="/info" component={InfoPage} /> */}
+        {/* <Route path="/scholar" component={ScholarShipPage} /> */}
         <Route path="/edit" component={PostEdit} />
         <Route path="/test" component={ImageTest} />
         <Route path="/testView" component={TestView} />

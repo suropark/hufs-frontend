@@ -67,9 +67,7 @@ function PostEdit(props) {
         theme="snow"
         onChange={(content, delta, source, editor) => {
           console.log(value);
-          setTimeout(() => {
-            setvalue({ ...value, content: editor.getHTML() });
-          });
+          setvalue({ ...value, content: editor.getHTML() });
         }}
         modules={modules}
         formats={formats}
@@ -119,8 +117,12 @@ function imageHandler() {
       'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
     );
     fileInput.classList.add('ql-image');
-    fileInput.addEventListener('change', () => {
+    fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
+      const formData = new FormData();
+
+      formData.append('file', files[0]);
+
       const range = this.quill.getSelection(true);
 
       if (!files || !files.length) {
@@ -136,15 +138,12 @@ function imageHandler() {
       // };
       //
 
-      const formData = new FormData();
-      formData.append('file', files[0]);
-      console.log(formData);
       // this.quill.enable(false);
 
-      axios
+
+      await axios
         .post('/api/image', formData)
         .then((response) => {
-          this.quill.enable(true);
           this.quill.editor.insertEmbed(
             range.index,
             'image',
