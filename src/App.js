@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Post from './views/PostPage/Post';
 import LandingPage from './views/LandingPage/LandingPage';
 import PostEdit from './components/post/PostEdit';
-import ImageTest from './ImageTest';
-import TestView from './TestView';
-import ImageTestCKJS from './ImageTestCK.JS';
+import ImageTest from './testJS/ImageTest';
+import TestView from './testJS/TestView';
+
 function App() {
   return (
     <Router>

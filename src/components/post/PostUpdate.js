@@ -6,8 +6,10 @@ import { useBeforeunload } from 'react-beforeunload';
 
 import { withRouter } from 'react-router-dom';
 import { postUpdate } from '../../_actions/post_action';
+import axios from 'axios';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
+let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
 let uploadedImg = [];
 function PostUpdate({ match, history }) {
   const dispatch = useDispatch();
@@ -15,21 +17,47 @@ function PostUpdate({ match, history }) {
     e.preventDefault();
     window.onunload = function () {
       // 취소 시 발생되는 function = 올려둔 이미지 보내기
+      axios.delete('post/delete', uploadedImg);
     };
   });
   const { posts } = useSelector((state) => state.post);
-  const post = posts.find((posts) => posts.id === +match.params.id);
+  const post = posts.find((post) => post.id === +match.params.id);
   const [updated, setUpdated] = useState(post);
-
   useEffect(() => {
-    // 여기서 처음 이미지 url 다 받아둬야 할 듯.
+    // 처음 이미지 url 받아둠
     console.log(post);
+    const firstImg = Array.from(
+      new DOMParser()
+        .parseFromString(post.content, 'text/html')
+        .querySelectorAll('img'),
+    ).map((img) => img.getAttribute('src'));
+    wholeImg = wholeImg.concat(firstImg);
   }, []);
+  // useEffect(() => {
+  //   console.log(beforeEdit);
+  // }, [beforeEdit]);
 
 
   const onUpdate = () => {
-    dispatch(postUpdate(updated)).then(history.goBack());
+    // 처음 이미지 url과 최종 제출 url 비교해서 삭제해야 할 이미지 url 찾기
+    let afterEdit = Array.from(
+      new DOMParser()
+        .parseFromString(updated.content, 'text/html')
+        .querySelectorAll('img'),
+    ).map((img) => img.getAttribute('src'));
+
+    const needDelete = getUnused(wholeImg, afterEdit); // return : 삭제해야 할 이미지 url
+    // console.log(`beforeEdit :  ${beforeEdit}`);
+    // console.log(`afterEdit : ${afterEdit}`);
+
+    axios.delete('post/delete', needDelete);
+    dispatch(postUpdate(updated))
+      .then(history.goBack())
+      .catch(console.log('수정 실패'));
   };
+  useEffect(() => {
+    console.log(updated);
+  }, [updated]);
 
   return (
     <div>
@@ -43,14 +71,12 @@ function PostUpdate({ match, history }) {
             onChange={(e) => setUpdated({ ...updated, title: e.target.value })}
           />
           <ReactQuill
+            className="1"
             placeholder="하이"
             theme="snow"
             value={updated.content}
             onChange={(content, delta, source, editor) => {
-              console.log(updated);
-              setTimeout(() => {
-                setUpdated({ ...updated, content: editor.getHTML() });
-              });
+              setUpdated({ ...updated, content: editor.getHTML() });
             }}
             modules={modules}
             formats={formats}
@@ -126,39 +152,40 @@ function imageHandler() {
       console.log(formData);
       // this.quill.enable(false);
 
-      // axios.post('/api/image', formData).then((response) => {
-      this.quill.enable(true);
-      this.quill.editor.insertEmbed(
-        range.index,
-        'image',
-        'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-        // response.data.url_path,
-        // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
-      );
-      uploadedImg = uploadedImg.concat(
-        'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-      );
-      // response.data.url_path
+      axios
+        .post('/api/image', formData)
+        .then((response) => {
+          this.quill.enable(true);
+          this.quill.editor.insertEmbed(
+            range.index,
+            'image',
+            response.data.url_path,
+            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
+            // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
+          );
+          wholeImg = wholeImg.concat(response.data.url_path);
+          uploadedImg = uploadedImg.concat(response.data.url_path);
+          // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
 
-      this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
-      fileInput.value = '';
-      // });
-      // .catch((error) => {
-      //   console.log('quill image upload failed');
-      //   console.log(error);
-      //   this.quill.enable(true);
-      // });
+          this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+          fileInput.value = '';
+        })
+        .catch((error) => {
+          console.log('quill image upload failed');
+          console.log(error);
+          this.quill.enable(true);
+        });
     });
     this.container.appendChild(fileInput);
   }
   fileInput.click();
 }
 
-function getUnused(uploadedImg, submittedImg) {
-  const unused = uploadedImg;
+function getUnused(wholeImg, submittedImg) {
+  const unused = wholeImg;
   for (let i = 0; i < submittedImg.length; i++) {
     unused.splice(unused.indexOf(submittedImg[i]), 1);
   }
-  console.log(unused);
+  console.log(`need to delete: ${unused}`);
+  return unused;
 }
-

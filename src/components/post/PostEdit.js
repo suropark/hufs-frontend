@@ -5,32 +5,34 @@ import 'react-quill/dist/quill.snow.css';
 import { postSave } from '../../_actions/post_action';
 import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
+
 let uploadedImg = [];
 function PostEdit(props) {
   const dispatch = useDispatch();
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      // 취소 시 발생되는 function = 올려둔 이미지 보내기
+      // 취소 시 발생되는 function = 올려둔 이미지 url 전체 보내기
+      axios.delete('post/delete', uploadedImg);
+
     };
   });
   const [value, setvalue] = useState({ title: '', content: '' });
 
-  const testhandler = () => {
-    const submittedImg = Array.from(
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    let submittedImg = Array.from(
       new DOMParser()
         .parseFromString(value.content, 'text/html')
         .querySelectorAll('img'),
     ).map((img) => img.getAttribute('src'));
-    console.log(submittedImg);
-    console.log(uploadedImg);
-    // 두 배열 비교해서 백엔드로 보내야 함 +  전체 내용까지
-    getUnused(uploadedImg, submittedImg);
 
-  };
-  // useInput 커스텀 훅으로 줄이기
-  const submitHandler = (e) => {
-    e.preventDefault();
+    const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
+
+    axios.delete('post/delete', needDelete); // body에 넣어 action에서 실행해야할듯
 
     let body = {
       title: value.title,
@@ -45,7 +47,6 @@ function PostEdit(props) {
 
     dispatch(postSave(body)).then((res) => {
       if (res) {
-
         props.history.push('/list');
       } else {
         alert('error');
@@ -140,28 +141,31 @@ function imageHandler() {
       console.log(formData);
       // this.quill.enable(false);
 
-      // axios.post('/api/image', formData).then((response) => {
-      this.quill.enable(true);
-      this.quill.editor.insertEmbed(
-        range.index,
-        'image',
-        'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-        // response.data.url_path,
-        // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
-      );
-      uploadedImg = uploadedImg.concat(
-        'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-      );
-      // response.data.url_path
+      axios
+        .post('/api/image', formData)
+        .then((response) => {
+          this.quill.enable(true);
+          this.quill.editor.insertEmbed(
+            range.index,
+            'image',
+            response.data.url_path,
+            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
+            // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
+          );
+          uploadedImg = uploadedImg.concat(
+            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
+            response.data.url_path,
+          );
 
-      this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
-      fileInput.value = '';
-      // });
-      // .catch((error) => {
-      //   console.log('quill image upload failed');
-      //   console.log(error);
-      //   this.quill.enable(true);
-      // });
+          this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+          fileInput.value = '';
+        })
+        .catch((error) => {
+          console.log('quill image upload failed');
+          console.log(error);
+          this.quill.enable(true);
+        });
+
     });
     this.container.appendChild(fileInput);
   }
@@ -173,6 +177,7 @@ function getUnused(uploadedImg, submittedImg) {
   for (let i = 0; i < submittedImg.length; i++) {
     unused.splice(unused.indexOf(submittedImg[i]), 1);
   }
-  console.log(unused);
+  console.log(`unused : ${unused}`);
+  return unused;
 }
 
