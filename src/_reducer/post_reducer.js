@@ -5,6 +5,10 @@ import {
   POST_LIKE,
   POST_UPDATE,
   POST_REPORT,
+  POST_UPDATE_FAIL,
+  POST_REPORT_FAIL,
+  POST_LIKE_FAIL,
+  POST_REMOVE_FAIL,
 } from '../_actions/types';
 
 export default function post(state = initialState, action) {
@@ -16,7 +20,7 @@ export default function post(state = initialState, action) {
         posts: posts.concat({
           ...action.payload,
           id: state.maxNo + 1,
-          userId: '이게 나야',
+          // userId: action.userId,
           like: 0,
         }),
         selected: {},
@@ -55,9 +59,12 @@ export default function post(state = initialState, action) {
           }
         }),
       };
+    case POST_REMOVE_FAIL:
+    case POST_UPDATE_FAIL:
+    case POST_REPORT_FAIL:
+    case POST_LIKE_FAIL:
+    case POST_UPDATE_FAIL:
     case POST_REPORT:
-      return { ...state };
-
     case POST_LIST:
       return {
         ...state,
@@ -72,34 +79,34 @@ const initialState = {
   posts: [
     {
       id: 1,
+      boardId: 1,
       title: '1번입니다',
       content: '1번 내용',
       like: 0,
-      postId: 1,
       userId: '아이디가 int?',
     },
     {
       id: 2,
+      boardId: 1,
       title: '2번입니다',
       content: '2번 내용',
       like: 0,
-      postId: 1,
       userId: '아이디가 int?',
     },
     {
       id: 3,
+      boardId: 1,
       title: '3번입니다',
       content: '3번 내용',
       like: 0,
-      postId: 1,
       userId: '아이디가 int?',
     },
     {
       id: 4,
+      boardId: 1,
       title: '4번입니다',
       content: '4번 내용',
       like: 0,
-      postId: 1,
       userId: '아이디가 int?',
     },
   ],

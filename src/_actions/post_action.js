@@ -6,42 +6,110 @@ import {
   POST_SAVE,
   POST_LIKE,
   POST_UPDATE,
+  POST_REPORT_FAIL,
+  POST_SAVE_FAIL,
+  POST_REMOVE_FAIL,
+  POST_LIKE_FAIL,
+  POST_UPDATE_FAIL,
 } from './types';
 
 // redux-promise returns promise and can use async/await here
 // reudx-chunk returns function
 export const postReport = async (dataToSubmit) => {
-  // const request = await axios.post("api", dataToSubmit).then(res => res.data)
-  // dataToSubmit: 게시글Id, 신고 내용.
-  return {
-    type: POST_REPORT,
-    // payload:  신고 되었는지 여부만 알려주면 될듯 이건
-  };
+  const request = await axios
+    .post('post/report', dataToSubmit)
+    .then((response) => response.data);
+  if (!request.reportSuccess) {
+    return {
+      type: POST_REPORT_FAIL,
+      reportSuccess: false,
+    };
+  } else {
+    return {
+      type: POST_REPORT,
+      reportSuccess: true,
+    };
+  }
 };
-export const postSave = async (dataToSubmit) => {
-  // const request = await axios.post("api", dataToSubmit).then(res => res.data)
-  return {
-    type: POST_SAVE,
-    payload: dataToSubmit, // 지금은 title , content
-  };
+export const postSave = async (body, needDelete) => {
+  const request1 = await axios
+    .post('post/save', body)
+    .then((response) => response.data); // userId 받아야해
+  const request2 =
+    needDelete.length === 0
+      ? null
+      : await axios
+          .delete('img/delete', needDelete)
+          .then((response) => response.data);
+  if (!request1.saveSuccess) {
+    return {
+      type: POST_SAVE_FAIL,
+      saveSuccess: false,
+    };
+  } else {
+    return {
+      type: POST_SAVE,
+      payload: body, // 지금은 title , content
+      saveSuccess: true,
+      // userId: request1.userId,
+    };
+  }
 };
-export const postUpdate = async (dataToSubmit) => {
-  return {
-    type: POST_UPDATE,
-    payload: dataToSubmit, // title, content
-  };
+export const postUpdate = async (body, needDelete) => {
+  const request1 = await axios
+    .put('post/update', body)
+    .then((response) => response.data);
+  const request2 =
+    needDelete.length === 0
+      ? null
+      : await axios
+          .delete('img/delete', needDelete)
+          .then((response) => response.data);
+  if (!request1.updateSuccess) {
+    return {
+      type: POST_UPDATE_FAIL,
+      updateSuccess: false,
+    };
+  } else {
+    return {
+      type: POST_UPDATE,
+      payload: body, // title, content
+      updateSuccess: true,
+    };
+  }
 };
-export const postRemove = async (dataToSubmit) => {
-  // const request = axios.delete("url", dataToSubmit) {boardId, postId, (auth?)}
-  return {
-    type: POST_REMOVE,
-    id: dataToSubmit,
-  };
+export const postRemove = async (postId) => {
+  const request = await axios
+    .delete('post/delete', postId)
+    .then((response) => response.data); //
+  if (!request.removeSuccess) {
+    return {
+      type: POST_REMOVE_FAIL,
+      removeSuccess: false,
+    };
+  } else {
+    return {
+      type: POST_REMOVE,
+      id: postId,
+      removeSuccess: true,
+    };
+  }
 };
 
-export const postLike = async (dataToSubmit) => {
-  return {
-    type: POST_LIKE,
-    payload: dataToSubmit, // payload: postNum?
-  };
+export const postLike = async (postId) => {
+  const request = await axios
+    .put('post/like', postId)
+    .then((response) => response.data); //
+  if (!request.likeSuccess) {
+    return {
+      type: POST_LIKE_FAIL,
+      likeSuccess: false,
+    };
+  } else {
+    return {
+      type: POST_LIKE,
+      payload: postId, // payload: postId??
+      likeSuccess: true,
+    };
+  }
 };

@@ -16,16 +16,13 @@ function PostUpdate({ match, history }) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      // 취소 시 발생되는 function = 올려둔 이미지 보내기
-      axios.delete('post/delete', uploadedImg);
+      axios.delete('img/delete', uploadedImg);
     };
   });
   const { posts } = useSelector((state) => state.post);
   const post = posts.find((post) => post.id === +match.params.id);
   const [updated, setUpdated] = useState(post);
   useEffect(() => {
-    // 처음 이미지 url 받아둠
-    console.log(post);
     const firstImg = Array.from(
       new DOMParser()
         .parseFromString(post.content, 'text/html')
@@ -33,10 +30,6 @@ function PostUpdate({ match, history }) {
     ).map((img) => img.getAttribute('src'));
     wholeImg = wholeImg.concat(firstImg);
   }, []);
-  // useEffect(() => {
-  //   console.log(beforeEdit);
-  // }, [beforeEdit]);
-
 
   const onUpdate = () => {
     // 처음 이미지 url과 최종 제출 url 비교해서 삭제해야 할 이미지 url 찾기
@@ -47,13 +40,22 @@ function PostUpdate({ match, history }) {
     ).map((img) => img.getAttribute('src'));
 
     const needDelete = getUnused(wholeImg, afterEdit); // return : 삭제해야 할 이미지 url
-    // console.log(`beforeEdit :  ${beforeEdit}`);
-    // console.log(`afterEdit : ${afterEdit}`);
 
-    axios.delete('post/delete', needDelete);
-    dispatch(postUpdate(updated))
-      .then(history.goBack())
-      .catch(console.log('수정 실패'));
+    dispatch(postUpdate(updated, needDelete))
+      .then((response) => {
+        if (response.updateSuccess) {
+          history.goBack();
+        } else {
+          alert('수정에 실패했습니다. / ');
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+  const onExit = () => {
+    const answer = window.confirm('진짜?');
+    if (answer) {
+      axios.delete('post/delete', uploadedImg).then(history.goBack());
+    }
   };
   const onExit = () => {
     const answer = window.confirm('진짜?');
@@ -167,12 +169,10 @@ function imageHandler() {
             range.index,
             'image',
             response.data.url_path,
-            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
             // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
           );
           wholeImg = wholeImg.concat(response.data.url_path);
           uploadedImg = uploadedImg.concat(response.data.url_path);
-          // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';

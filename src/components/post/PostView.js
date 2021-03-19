@@ -13,44 +13,61 @@ import CommentList from '../comment/CommentList';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
-  const [view, setView] = useState();
+  const [post, setPost] = useState();
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.post);
 
   useEffect(() => {
-    const post = posts.find((posts) => posts.id === +match.params.id);
-    setView(post);
+    const matchPost = posts.find((posts) => posts.id === +match.params.id);
+    setPost(matchPost);
   }, [posts]);
 
-
   const onDelete = () => {
-    dispatch(postRemove(view.id)).then(history.push('/list'));
+    const answer = window.confirm('게시글을 삭제하시겠습니까?');
+    if (answer) {
+      dispatch(postRemove(post.id))
+        .then((response) => {
+          if (response.removeSuccess) {
+            alert('게시글이 삭제되었습니다.');
+          } else {
+            alert('게시글을 삭제하지 못했습니다.');
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   };
   const onLike = () => {
-    dispatch(postLike(view.id));
+    dispatch(postLike(post.id)).catch((error) => console.log(error));
   };
   const onReport = () => {
     // 모달 창 띄워서 신고 내용 적을 필요 있음.
     let body = {
-      id: view.id,
-      // body: 내용
+      id: post.id,
+      // content: content
     };
-    dispatch(postReport(body)).then(alert('신고가 완료되었습니다.'));
+    dispatch(postReport(body))
+      .then((response) => {
+        if (response.reportSuccess) {
+          alert('신고가 완료되었습니다.');
+        } else {
+          alert('신고에 실패하였습니다');
+        }
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div>
-      {view ? (
+      {post ? (
         <div>
-          <p>{view.id}</p>
-          <h2>{view.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: view.content }} />
-          <p>추천수: {view.like}</p>
+          <p>{post.id}</p>
+          <h2>{post.title}</h2>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <p>추천수: {post.like}</p>
           <button onClick={onDelete}> 삭제하기</button>
           <button onClick={onLike}> 추천하기</button>
           <button onClick={onReport}>신고하기</button>
 
-
-          <Link to={`${view.id}/update`}>
+          <Link to={`${post.id}/update`}>
             <button>수정하기</button>
           </Link>
         </div>

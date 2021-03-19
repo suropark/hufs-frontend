@@ -4,31 +4,82 @@ import {
   COMMENT_REMOVE,
   COMMENT_SAVE,
   COMMENT_LIKE,
+  COMMENT_REPORT,
+  COMMENT_SAVE_FAIL,
+  COMMENT_LIKE_FAIL,
+  COMMENT_REMOVE_FAIL,
+  COMMENT_REPORT_FAIL,
 } from './types';
 
-export const commentSave = (dataToSubmit) => {
-  //const req = axios.post("api", dataToSubmit).then(res => res.data)
-  // dataToSubmit = {postId:'', userId:'', content:''}
-  return {
-    type: COMMENT_SAVE,
-    payload: dataToSubmit, // req로 바꾸기
-  };
+export const commentSave = async (dataToSubmit) => {
+  const request = await axios
+    .post('comment/save', dataToSubmit)
+    .then((response) => response.data);
+
+  if (!request.saveSuccess) {
+    return {
+      type: COMMENT_SAVE_FAIL,
+      saveSuccess: false,
+    };
+  } else {
+    return {
+      type: COMMENT_SAVE,
+      payload: dataToSubmit, // req로 바꾸기
+      saveSuccess: true, // request.saveSuccess
+    };
+  }
 };
 
-export const commentLike = (dataToSubmit) => {
-  //const req = axios.post("api", dataToSubmit).then(res => res.data)
-  // dataToSubmit = commentId
-  return {
-    type: COMMENT_LIKE,
-    payload: dataToSubmit,
-  };
-  // 이미 like한 유저인지를 받아와서 -> if로 type:COMMENT_UNABLE 을 return하면 reducer에서 return {...comments, likesuccess:false하면될듯}
+export const commentLike = async (commentId) => {
+  const request = await axios
+    .put('comment/like', commentId)
+    .then((response) => response.data);
+  if (!request.likeSuccess) {
+    return {
+      type: COMMENT_LIKE_FAIL,
+      likeSuccess: false,
+      // alreadyLiked: boolean
+    };
+  } else {
+    return {
+      type: COMMENT_LIKE,
+      payload: commentId,
+      likeSuccess: true,
+    };
+  }
 };
-// remove에 필요한 것. commentId, 유저의 권한 여부(작성자인가?),
-export const commentRemove = (dataToSubmit) => {
-  // dataToSubmit = commentId
-  return {
-    type: COMMENT_REMOVE,
-    payoad: dataToSubmit.commentId,
-  };
+export const commentRemove = async (commentId) => {
+  const request = await axios
+    .delete('comment/delete', commentId)
+    .then((response) => response.data);
+  if (!request.removeSuccess) {
+    return {
+      type: COMMENT_REMOVE_FAIL,
+      removeSuccess: false,
+    };
+  } else {
+    return {
+      type: COMMENT_REMOVE,
+      payload: commentId,
+      removeSuccess: true,
+    };
+  }
+};
+export const commentReport = async (dataToSubmit) => {
+  //commentId, 내용
+  const request = await axios
+    .post('comment/report', dataToSubmit)
+    .then((response) => response.data);
+
+  if (!request.reportSuccess) {
+    return {
+      type: COMMENT_REPORT_FAIL,
+      reportSuccess: false,
+    };
+  } else {
+    return {
+      type: COMMENT_REPORT,
+      reportSuccess: true,
+    };
+  }
 };

@@ -13,15 +13,12 @@ function PostEdit(props) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      // 취소 시 발생되는 function = 올려둔 이미지 url 전체 보내기
-      axios.delete('post/delete', uploadedImg);
-
+      axios.delete('img/delete', uploadedImg);
     };
   });
   const [value, setvalue] = useState({ title: '', content: '' });
 
-
-  const submitHandler = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     let submittedImg = Array.from(
@@ -32,26 +29,28 @@ function PostEdit(props) {
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
 
-    axios.delete('post/delete', needDelete); // body에 넣어 action에서 실행해야할듯
-
     let body = {
       title: value.title,
       content: value.content,
     };
-    // 제출할 때도 두가지 보내야함 1.내용 2.중간에 삭제한 사진 url
-    //   // axios멀티 요청
-    //   console.log(value.text);
-    //   // axios.delete('url', [changedImg])
-    //   // axios.post('url', value);
-    //   // props.histroy.push('/list')
 
-    dispatch(postSave(body)).then((res) => {
-      if (res) {
-        props.history.push('/list');
-      } else {
-        alert('error');
-      }
-    });
+    dispatch(postSave(body, needDelete))
+      .then((response) => {
+        if (response.saveSuccess) {
+          props.history.push('/list');
+        } else {
+          alert('저장 실패');
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+  const onExit = () => {
+    const answer = window.confirm(
+      '작성하던 글은 저장되지 않습니다. 그래도 나가시겠습니까?',
+    );
+    if (answer) {
+      axios.delete('post/delete', uploadedImg).then(props.history.goBack());
+    }
   };
 
   return (
@@ -72,8 +71,8 @@ function PostEdit(props) {
         modules={modules}
         formats={formats}
       ></ReactQuill>
-
-      <button onClick={submitHandler}>제출</button>
+      <button onClick={onSubmit}>제출</button>
+      <button onClick={onExit}>취소</button>
     </div>
   );
 }
@@ -140,7 +139,6 @@ function imageHandler() {
 
       // this.quill.enable(false);
 
-
       await axios
         .post('/api/image', formData)
         .then((response) => {
@@ -149,7 +147,6 @@ function imageHandler() {
             'image',
             response.data.url_path,
             // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-            // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
           );
           uploadedImg = uploadedImg.concat(
             // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
@@ -164,7 +161,6 @@ function imageHandler() {
           console.log(error);
           this.quill.enable(true);
         });
-
     });
     this.container.appendChild(fileInput);
   }
@@ -179,4 +175,3 @@ function getUnused(uploadedImg, submittedImg) {
   console.log(`unused : ${unused}`);
   return unused;
 }
-

@@ -3,6 +3,11 @@ import {
   COMMENT_REMOVE,
   COMMENT_SAVE,
   COMMENT_LIKE,
+  COMMENT_SAVE_FAIL,
+  COMMENT_LIKE_FAIL,
+  COMMENT_REPORT,
+  COMMENT_REPORT_FAIL,
+  COMMENT_REMOVE_FAIL,
 } from '../_actions/types';
 
 export default function comment(state = initialState, action) {
@@ -31,6 +36,14 @@ export default function comment(state = initialState, action) {
           }
         }),
       };
+    case COMMENT_REPORT:
+    case COMMENT_SAVE_FAIL:
+    case COMMENT_LIKE_FAIL:
+    case COMMENT_REPORT_FAIL:
+    case COMMENT_REMOVE_FAIL:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
@@ -44,7 +57,6 @@ const initialState = {
       commentId: 1,
       userId: 1,
       content: '1',
-      date: '1',
       like: 1,
     },
     {
@@ -52,7 +64,6 @@ const initialState = {
       commentId: 2,
       userId: 2,
       content: '2',
-      date: '3',
       like: 2,
     },
     {
@@ -60,7 +71,6 @@ const initialState = {
       commentId: 3,
       userId: 2,
       content: '2',
-      date: '3',
       like: 3,
     },
     {
@@ -68,7 +78,6 @@ const initialState = {
       commentId: 4,
       userId: 2,
       content: '2',
-      date: '3',
       like: 4,
     },
   ],
