@@ -57,12 +57,7 @@ function PostUpdate({ match, history }) {
       axios.delete('post/delete', uploadedImg).then(history.goBack());
     }
   };
-  const onExit = () => {
-    const answer = window.confirm('진짜?');
-    if (answer) {
-      axios.delete('post/delete', uploadedImg).then(history.goBack());
-    }
-  };
+
   useEffect(() => {
     console.log(updated);
   }, [updated]);

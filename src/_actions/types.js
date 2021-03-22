@@ -21,3 +21,6 @@ export const COMMENT_SAVE_FAIL = 'comment_save_fail';
 export const COMMENT_LIKE_FAIL = 'comment_like_fail';
 export const COMMENT_REMOVE_FAIL = 'comment_remove_fail';
 export const COMMENT_REPORT_FAIL = 'comment_report_fail';
+
+export const AUTH_USER = 'auth_user';
+export const INFO_USER = 'info_user';

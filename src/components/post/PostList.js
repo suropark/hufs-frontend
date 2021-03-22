@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
+import { postList } from '../../_actions/post_action';
 function PostList({ match }) {
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
+  const [posts, setPosts] = useState([]);
 
-  const { posts } = useSelector((state) => state.post);
+  // const { posts } = useSelector((state) => state.post); // need to delete
+  // getPost() -> axios.get('post').then(res => res.data)로 받아와야함
+  useEffect(() => {
+    dispatch(postList()).then((response) => setPosts(response.data));
+  }, []);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
@@ -34,7 +40,7 @@ function PostList({ match }) {
         breakLabel={''}
         previousLabel={'이전'}
         nextLabel={'다음'}
-        onPageChange={(e) => setCurrentPage(e.selected + 1)}
+        onPageChange={(event) => setCurrentPage(event.selected + 1)}
         containerClassName={'pagination-ul'}
         activeClassName={'currentPage'}
         previousClassName={'pageLabel-btn'}
@@ -64,17 +70,17 @@ function TableHeader() {
   );
 }
 
-function TableBody({ currentList, match }) {
+export function TableBody({ currentList, match }) {
   return (
     <tbody>
       {currentList ? (
-        currentList.map((list, index) => {
+        currentList.map((post, index) => {
           return (
             <tr key={index}>
-              <td>{list.id}</td>
-              <td>{list.title.slice(0, 4)}</td>
+              <td>{post.id}</td>
+              <td>{post.title.slice(0, 4)}</td>
               <td>
-                <Link to={`${match.path}/${list.id}`}>{list.userId}</Link>
+                <Link to={`${match.path}/${post.id}`}>{post.userId}</Link>
               </td>
               <td>조회수</td>
             </tr>

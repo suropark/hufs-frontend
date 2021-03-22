@@ -15,6 +15,16 @@ import {
 
 // redux-promise returns promise and can use async/await here
 // reudx-chunk returns function
+export const postList = async () => {
+  const request = await axios
+    .get('post/list')
+    .then((response) => response.data);
+
+  return {
+    type: POST_LIST,
+    payload: request,
+  };
+};
 export const postReport = async (dataToSubmit) => {
   const request = await axios
     .post('post/report', dataToSubmit)
@@ -59,12 +69,10 @@ export const postUpdate = async (body, needDelete) => {
   const request1 = await axios
     .put('post/update', body)
     .then((response) => response.data);
-  const request2 =
-    needDelete.length === 0
-      ? null
-      : await axios
-          .delete('img/delete', needDelete)
-          .then((response) => response.data);
+  if (needDelete.length !== 0) {
+    await axios.delete('img/delete', needDelete);
+  }
+
   if (!request1.updateSuccess) {
     return {
       type: POST_UPDATE_FAIL,

@@ -15,6 +15,11 @@ export default function post(state = initialState, action) {
   let posts = state.posts;
 
   switch (action.type) {
+    case POST_LIST:
+      return {
+        posts: action.payload,
+        maxNo: action.payload.length,
+      };
     case POST_SAVE:
       return {
         posts: posts.concat({

@@ -6,7 +6,6 @@ import ReduxThunk from 'redux-thunk';
 import Reducer from './_reducer/index';
 import PromiseMiddleware from 'redux-promise';
 import App from './App';
-
 const createStoreWithMiddleware = applyMiddleware(
   PromiseMiddleware,
   ReduxThunk,
