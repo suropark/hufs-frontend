@@ -21,13 +21,19 @@ function UserComment() {
           <tr>
             <th>글 번호</th>
             <th>제목</th>
-            <th>userId</th>
-            <th>조회</th>
+            <th>댓글 내용</th>
+            <th>날짜</th>
           </tr>
         </thead>
         {comments
-          ? comments.map((e) => {
-              return <div>{e.commentId}</div>;
+          ? comments.map((comment) => {
+              return (
+                <tr>
+                  <td>{comment.postId}</td>
+                  <td>{comment.postTitle}</td>
+                  <td>{comment.content}</td>
+                </tr>
+              );
             })
           : null}
       </table>

@@ -19,6 +19,7 @@ export default function post(state = initialState, action) {
       return {
         posts: action.payload,
         maxNo: action.payload.length,
+        ...state,
       };
     case POST_SAVE:
       return {
@@ -30,6 +31,7 @@ export default function post(state = initialState, action) {
         }),
         selected: {},
         maxNo: state.maxNo + 1,
+        ...state,
       };
     case POST_UPDATE:
       return {

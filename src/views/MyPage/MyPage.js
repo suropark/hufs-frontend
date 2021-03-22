@@ -16,15 +16,7 @@ function MyPage(props) {
   }, []);
   // dispatch(getUserInfo()) 마이페이지 접근시 유저관련 정보를 리듀서에 넣자.
   const [click, setClick] = useState('1');
-  const onWithdraw = () => {
-    axios.get('/api/users/withdraw').then((response) => {
-      if (response.data.success) {
-        props.history.push('/');
-      } else {
-        alert('회원 탈퇴');
-      }
-    });
-  };
+
   const onClick = (event) => {
     setClick(event.key);
   };
