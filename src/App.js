@@ -7,6 +7,7 @@ import PostEdit from './components/post/PostEdit';
 // import TestView from './testJS/TestView';
 import MyPage from './views/MyPage/MyPage';
 import './App.css';
+import LoginPage from './views/LoginPage/LoginPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/list" component={Post} />
+        <Route path="/login" component={LoginPage} />
         {/* <Route path="/info" component={InfoPage} /> */}
         {/* <Route path="/scholar" component={ScholarShipPage} /> */}
         <Route path="/mypage" component={MyPage} />
