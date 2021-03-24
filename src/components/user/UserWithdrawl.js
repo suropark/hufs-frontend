@@ -18,7 +18,6 @@ function UserWithdrawl(props) {
         }
       });
     }
-
   };
   return (
     <>

@@ -14,7 +14,6 @@ function MyPage(props) {
   useEffect(() => {
     dispatch(getUserInfo()).then(console.log('cool'));
   }, []);
-  // dispatch(getUserInfo()) 마이페이지 접근시 유저관련 정보를 리듀서에 넣자.
   const [click, setClick] = useState('1');
 
   const onClick = (event) => {
@@ -41,32 +40,35 @@ function MyPage(props) {
   };
 
   return (
-    <Layout className="layout">
-      <Header>
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[click]}>
-          <Menu.Item key="1" onClick={onClick}>
-            회원정보관리
-          </Menu.Item>
-          <Menu.Item key="2" onClick={onClick}>
-            나의 스크랩
-          </Menu.Item>
-          <Menu.Item key="3" onClick={onClick}>
-            내가 쓴 글{' '}
-          </Menu.Item>
-          <Menu.Item key="4" onClick={onClick}>
-            내가 쓴 댓글
-          </Menu.Item>
-          <Menu.Item key="5" onClick={onClick}>
-            회원 탈퇴
-          </Menu.Item>
-        </Menu>
-      </Header>
-      <Content style={{ padding: '0 50px', margin: '16px 0' }}>
-        {selectedMenu()}
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>Footer</Footer>
-    </Layout>
+    <>
+      <div>메뉴박스 들어갈 곳</div>
+      <Layout className="layout">
+        <Header>
+          <div className="logo" />
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[click]}>
+            <Menu.Item key="1" onClick={onClick}>
+              회원정보관리
+            </Menu.Item>
+            <Menu.Item key="2" onClick={onClick}>
+              나의 스크랩
+            </Menu.Item>
+            <Menu.Item key="3" onClick={onClick}>
+              내가 쓴 글{' '}
+            </Menu.Item>
+            <Menu.Item key="4" onClick={onClick}>
+              내가 쓴 댓글
+            </Menu.Item>
+            <Menu.Item key="5" onClick={onClick}>
+              회원 탈퇴
+            </Menu.Item>
+          </Menu>
+        </Header>
+        <Content style={{ padding: '0 50px', margin: '16px 0' }}>
+          {selectedMenu()}
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Footer</Footer>
+      </Layout>
+    </>
   );
 }
 
