@@ -10,11 +10,14 @@ function PostList({ match }) {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const [posts, setPosts] = useState([]);
+  const list = useSelector((state) => state.post.posts);
+
 
   // const { posts } = useSelector((state) => state.post); // need to delete
   // getPost() -> axios.get('post').then(res => res.data)로 받아와야함
   useEffect(() => {
-    dispatch(postList()).then((response) => setPosts(response.data));
+    dispatch(postList());
+    setPosts(list.reverse());
   }, []);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
