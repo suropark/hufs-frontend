@@ -1,42 +1,34 @@
 import React from 'react';
 import { Calendar, Badge } from 'antd';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function CalendarComponent() {
+  const { scholar } = useSelector((state) => state.calendar);
+  useEffect(() => {}, []);
   function getListData(value) {
-    let listData;
-    var day = value._d.getUTCDate();
-    var month = value._d.getUTCMonth() + 1; //months from 1-12
-    var year = value._d.getUTCFullYear();
-    console.log(day, month, year);
-    switch (
-      value.date() // function(day month year) -> 맞는 걸 찾아서 return해주는 함수 작성하면 될 것 같은데? selector쓰면 될듯
-    ) {
-      case 8:
-        listData = [
-          { type: 'warning', content: 'This is warning event.' },
-          { type: 'success', content: 'This is usual event.' },
-        ];
-        break;
-      case 10:
-        listData = [
-          { type: 'warning', content: 'This is warning event.' },
-          { type: 'success', content: 'This is usual event.' },
-          { type: 'error', content: 'This is error event.' },
-        ];
-        break;
-      case 15:
-        listData = [
-          { type: 'warning', content: 'This is warning event' },
-          { type: 'success', content: 'This is very long usual event。。....' },
-          { type: 'error', content: 'This is error event 1.' },
-          { type: 'error', content: 'This is error event 2.' },
-          { type: 'error', content: 'This is error event 3.' },
-          { type: 'error', content: 'This is error event 4.' },
-        ];
-        break;
-      default:
-    }
-    return listData || [];
+    let day = value._d.getUTCDate();
+    let month = value._d.getUTCMonth() + 1; //months from 1-12
+    let year = value._d.getUTCFullYear();
+
+    const matchedData = scholar.filter((e) => {
+      if (e.ScholarshipDate === null) {
+        return null;
+      } else {
+        let x = new Date(e.ScholarshipDate.date);
+        return (
+          x.getDate() === day &&
+          x.getMonth() + 1 === month &&
+          x.getFullYear() === year
+        );
+      }
+    });
+
+    return (
+      matchedData.map((e) => {
+        return { type: 'success', content: e.title };
+      }) || []
+    );
   }
 
   function dateCellRender(value) {
@@ -72,12 +64,14 @@ function CalendarComponent() {
   // }
   return (
     <div>
-      <Calendar
-        dateCellRender={dateCellRender}
-        // monthCellRender={monthCellRender}
-        fullscreen={false}
-        onSelect={onSelect}
-      />
+      {scholar ? (
+        <Calendar
+          dateCellRender={dateCellRender}
+          // monthCellRender={monthCellRender}
+          fullscreen={false}
+          onSelect={onSelect}
+        />
+      ) : null}
     </div>
   );
 }
