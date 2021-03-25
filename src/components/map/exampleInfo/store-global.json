@@ -1,0 +1,2203 @@
+{
+  "data": [
+    {
+      "id": 959,
+      "long": 127.2546727,
+      "lat": 37.3355024,
+      "name": "49포차",
+      "tel": "031 333 6322",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-11 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 48",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 960,
+      "long": 127.2511467,
+      "lat": 37.336596,
+      "name": "7080포차",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 793-13번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 16 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 961,
+      "long": 127.2486169,
+      "lat": 37.3324836,
+      "name": "9092연탄집",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 467-1번지 외2필지1층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-13 (외2필지1층)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 962,
+      "long": 127.2501516,
+      "lat": 37.33718756,
+      "name": "BHC",
+      "tel": "031 3323324",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 790-3 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 6, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 4,
+      "StoreSubCategory": {
+        "name": "통닭(치킨)"
+      }
+    },
+    {
+      "id": 963,
+      "long": 127.2512483,
+      "lat": 37.3366941,
+      "name": "갈비명가",
+      "tel": "031 3397357",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 793-13번지 1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 16 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 964,
+      "long": 127.2506248,
+      "lat": 37.34089326,
+      "name": "강촌",
+      "tel": "3328966",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 774-11 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2432번길 1",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 965,
+      "long": 127.2487575,
+      "lat": 37.33209175,
+      "name": "고미카페",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 463번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 15, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 966,
+      "long": 127.2465804,
+      "lat": 37.3316274,
+      "name": "고향촌",
+      "tel": "3348601",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 413-2 외 1필지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2324",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 967,
+      "long": 127.2515305,
+      "lat": 37.34697053,
+      "name": "그대로장작불곰탕",
+      "tel": "031 3392662",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 619-4 외1필지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 모산로 6",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 968,
+      "long": 127.2528676,
+      "lat": 37.3349255,
+      "name": "금요일오후",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 480-5번지 1층상가 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 15-11, 1층 (1층상가)",
+      "campus": 2,
+      "storeSubCategoryId": 5,
+      "StoreSubCategory": {
+        "name": "정종/대포집/소주방"
+      }
+    },
+    {
+      "id": 969,
+      "long": 127.2527019,
+      "lat": 37.3360071,
+      "name": "김가네",
+      "tel": "031 323 2177",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 507-5번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 32",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 970,
+      "long": 127.2491141,
+      "lat": 37.3327079,
+      "name": "까로체리아",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 468-6번지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-31, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 971,
+      "long": 127.2490158,
+      "lat": 37.3324799,
+      "name": "꼬꼬클럽",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 465-1 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-9",
+      "campus": 2,
+      "storeSubCategoryId": 4,
+      "StoreSubCategory": {
+        "name": "통닭(치킨)"
+      }
+    },
+    {
+      "id": 972,
+      "long": 127.2541221,
+      "lat": 37.3355085,
+      "name": "꼬지사께",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-3번지 외2필지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 42-1 (외2필지 1층)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 973,
+      "long": 127.2534225,
+      "lat": 37.33551003,
+      "name": "꼬치의품격 용인외대점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 497-4번지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 4 (1층)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 974,
+      "long": 127.2555784,
+      "lat": 37.33470204,
+      "name": "낙지도가",
+      "tel": "031 333 7988",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 486-2 1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로54번길 9 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 975,
+      "long": 127.2465267,
+      "lat": 37.35432424,
+      "name": "네네치킨모현점",
+      "tel": "031 3323344",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 678-3 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2594, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 4,
+      "StoreSubCategory": {
+        "name": "통닭(치킨)"
+      }
+    },
+    {
+      "id": 976,
+      "long": 127.2555093,
+      "lat": 37.3352893,
+      "name": "다방목화",
+      "tel": "031 3396001",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 490번지 1층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 56, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 977,
+      "long": 127.2533961,
+      "lat": 37.33580622,
+      "name": "달달한밤",
+      "tel": "3397203",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 499-5 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 36",
+      "campus": 2,
+      "storeSubCategoryId": 5,
+      "StoreSubCategory": {
+        "name": "정종/대포집/소주방"
+      }
+    },
+    {
+      "id": 978,
+      "long": 127.2514531,
+      "lat": 37.33620778,
+      "name": "대한민국을만족시킨족발(용인외대점)",
+      "tel": "031 3286848",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-8 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 15 (1층)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 979,
+      "long": 127.2535923,
+      "lat": 37.3356808,
+      "name": "더더피자",
+      "tel": "031 3340788",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 496-1번지 1층일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 2 (1층일부)",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 980,
+      "long": 127.252504,
+      "lat": 37.33588549,
+      "name": "동해동태찌개전문점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 503-5 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 3, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 981,
+      "long": 127.2502841,
+      "lat": 37.338508,
+      "name": "또봉이통닭",
+      "tel": "031 338 8827",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 782-1번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2410",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 982,
+      "long": 127.2512483,
+      "lat": 37.3366941,
+      "name": "또와유명태간장조림",
+      "tel": "031 332 0538",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 793-13번지 1층 일부, 외1필지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 16 (1층 일부, 외1필지)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 983,
+      "long": 127.2543929,
+      "lat": 37.33548094,
+      "name": "뚱바이 춘천집",
+      "tel": "3399289",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-1번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 46",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 984,
+      "long": 127.2519603,
+      "lat": 37.33645222,
+      "name": "로뎀식당",
+      "tel": "031321 2066",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-18 원당프라자 102호 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 22, 102호 (원당프라자)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 985,
+      "long": 127.2515985,
+      "lat": 37.33661371,
+      "name": "리오(Rio Burrito)",
+      "tel": "3335198",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-43 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 20",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 986,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "만권화밥",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4번지 한국외국어대학교글로벌캠퍼스 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 한국외국어대학교글로벌캠퍼스 어문학관1층 학생식당 일부",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 987,
+      "long": 127.2499737,
+      "lat": 37.3367606,
+      "name": "맛나바지락칼국수",
+      "tel": "031 339 5584",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 798-2번지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 21-42, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 988,
+      "long": 127.2502486,
+      "lat": 37.34539941,
+      "name": "맛나옹심이메밀칼국수",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 763-3 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2483",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 989,
+      "long": 127.2511721,
+      "lat": 37.33745196,
+      "name": "모이자",
+      "tel": "031 2524155",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-35번지 2층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2402번길 13, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 990,
+      "long": 127.2511721,
+      "lat": 37.3374519,
+      "name": "모현양꼬치",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-35번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2402번길 13, 1층 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 991,
+      "long": 127.2548534,
+      "lat": 37.33545771,
+      "name": "몽마르주",
+      "tel": "031 322 5123",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 493-9 2층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 50 (2층)",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 992,
+      "long": 127.2518906,
+      "lat": 37.3363421,
+      "name": "무한포차",
+      "tel": "3349747",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-18번지 2층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 22, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 993,
+      "long": 127.2500894,
+      "lat": 37.3342105,
+      "name": "미가초밥",
+      "tel": "031 3222787",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 808-4번지 2층일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 10 (2층일부)",
+      "campus": 2,
+      "storeSubCategoryId": 10,
+      "StoreSubCategory": {
+        "name": "일식"
+      }
+    },
+    {
+      "id": 994,
+      "long": 127.2458072,
+      "lat": 37.35345611,
+      "name": "미소라멘하하돈까스",
+      "tel": "031332 3391",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 676번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2581, 2층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 995,
+      "long": 127.2481905,
+      "lat": 37.33286574,
+      "name": "미스코(miss ko)",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 432 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-21, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 996,
+      "long": 127.247541,
+      "lat": 37.3515231,
+      "name": "미운오리",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 711-8 진성SK주유소 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2561, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 997,
+      "long": 127.2520061,
+      "lat": 37.33625401,
+      "name": "미쳐버린파닭",
+      "tel": "3336341",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 506-6 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 21-2",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 998,
+      "long": 127.2501516,
+      "lat": 37.33718756,
+      "name": "밀박스(Meal Box)",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 790-3 SK텔레콤 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 6",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 999,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "바비든든",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4번지 한국외국어대학교글로벌캠퍼스 식당동(후생관) 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 한국외국어대학교글로벌캠퍼스 식당동 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1000,
+      "long": 127.2481905,
+      "lat": 37.33286574,
+      "name": "밤밤피자용인모현점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 432 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-21, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 1001,
+      "long": 127.2507056,
+      "lat": 37.3362906,
+      "name": "백암이네",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-23번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 9, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1002,
+      "long": 127.2497813,
+      "lat": 37.33651073,
+      "name": "보스라이브카페",
+      "tel": "031 336 1014",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 801-1번지 지1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2386 (지1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 16,
+      "StoreSubCategory": {
+        "name": "라이브카페"
+      }
+    },
+    {
+      "id": 1003,
+      "long": 127.252504,
+      "lat": 37.33588549,
+      "name": "봉급날",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 503-5 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 3, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 5,
+      "StoreSubCategory": {
+        "name": "정종/대포집/소주방"
+      }
+    },
+    {
+      "id": 1004,
+      "long": 127.2516184,
+      "lat": 37.33590127,
+      "name": "불닭발동대문엽기떡볶이모현점",
+      "tel": "031 3398592",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-37번지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 20, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 7,
+      "StoreSubCategory": {
+        "name": "분식"
+      }
+    },
+    {
+      "id": 1005,
+      "long": 127.2527019,
+      "lat": 37.3360071,
+      "name": "빨간떡볶이",
+      "tel": "031 333 4088",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 507-5번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 32",
+      "campus": 2,
+      "storeSubCategoryId": 7,
+      "StoreSubCategory": {
+        "name": "분식"
+      }
+    },
+    {
+      "id": 1006,
+      "long": 127.25294,
+      "lat": 37.33719341,
+      "name": "산채가",
+      "tel": "031 333 5232",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 513-2 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로25번길 8",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1007,
+      "long": 127.2465943,
+      "lat": 37.33159586,
+      "name": "삼부자생고기",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 413-2번지 고향촌 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2324, 2동, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1008,
+      "long": 127.2486262,
+      "lat": 37.35116486,
+      "name": "새 터",
+      "tel": "3340304",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 717-3 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2554",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1009,
+      "long": 127.2541221,
+      "lat": 37.3355085,
+      "name": "샤브향",
+      "tel": "031 3394985",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-3번지 2층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 42-1, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1010,
+      "long": 127.2480876,
+      "lat": 37.3327911,
+      "name": "서가원숯불고기",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 432번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-21, 수월빌딩 1층 108호",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1011,
+      "long": 127.255371,
+      "lat": 37.3344246,
+      "name": "성수식당",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 486-3번지 1층 101호",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로54번길 11 (1층 101호)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1012,
+      "long": 127.2497244,
+      "lat": 37.3364548,
+      "name": "소미네김밥",
+      "tel": "3338565",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 801-1번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2386",
+      "campus": 2,
+      "storeSubCategoryId": 7,
+      "StoreSubCategory": {
+        "name": "분식"
+      }
+    },
+    {
+      "id": 1013,
+      "long": 127.2515985,
+      "lat": 37.33661371,
+      "name": "송엘림치킨",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-43 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 20",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1014,
+      "long": 127.252702,
+      "lat": 37.33600711,
+      "name": "신통치킨",
+      "tel": "031 3349292",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 507-5번지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 32, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 4,
+      "StoreSubCategory": {
+        "name": "통닭(치킨)"
+      }
+    },
+    {
+      "id": 1015,
+      "long": 127.250676,
+      "lat": 37.3341462,
+      "name": "아띠카롱",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 477-3번지 대명빌딩 다동 1층 101호",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 10-3, 대명빌딩 다동 1층 101호",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 1016,
+      "long": 127.2538818,
+      "lat": 37.33569907,
+      "name": "아씨보쌈",
+      "tel": "3390766",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 496-8 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 1 (1층)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1017,
+      "long": 127.2515985,
+      "lat": 37.33661371,
+      "name": "안녕.모현",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-43 외1필지, 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 20, 1층 (외1필지)",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1018,
+      "long": 127.2520931,
+      "lat": 37.33615256,
+      "name": "야미마라탕용인점",
+      "tel": "031337 0068",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 506-7번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 2, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 8,
+      "StoreSubCategory": {
+        "name": "중국식"
+      }
+    },
+    {
+      "id": 1019,
+      "long": 127.2500309,
+      "lat": 37.3361507,
+      "name": "어:썸",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-3 외인빌리지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 6, 1층 (외인빌리지)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1020,
+      "long": 127.2514487,
+      "lat": 37.3357935,
+      "name": "엄마손칼국수",
+      "tel": "031 333 8917",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-10번지 1층 외1필지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 18 (1층 외1필지)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1021,
+      "long": 127.2486169,
+      "lat": 37.3324836,
+      "name": "열라구어",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 467-1번지 외2필지 1층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-13 (외2필지 1층)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1022,
+      "long": 127.2518906,
+      "lat": 37.3363421,
+      "name": "옛터",
+      "tel": "3323944",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-18번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 22",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1023,
+      "long": 127.2520931,
+      "lat": 37.33615256,
+      "name": "오늘의막걸리",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 506-7번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 2, 2층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 5,
+      "StoreSubCategory": {
+        "name": "정종/대포집/소주방"
+      }
+    },
+    {
+      "id": 1024,
+      "long": 127.2515985,
+      "lat": 37.33661371,
+      "name": "오뚜기네",
+      "tel": "3347682",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-3 (1층) ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 20 ((1층))",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1025,
+      "long": 127.2498324,
+      "lat": 37.33471707,
+      "name": "오부자네설렁탕",
+      "tel": "031 3233693",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 812-4 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 7-1, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1026,
+      "long": 127.2499844,
+      "lat": 37.3365984,
+      "name": "오성식당",
+      "tel": "3332060",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794번지 7통",
+      "roadAddress": "",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1027,
+      "long": 127.2534225,
+      "lat": 37.33551003,
+      "name": "외대갈매기(본점)",
+      "tel": "031332 8519",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 497-4번지 2층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 4, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1028,
+      "long": 127.2544355,
+      "lat": 37.33554698,
+      "name": "외대입구",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-1 2층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 46, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 1029,
+      "long": 127.259171,
+      "lat": 37.34795982,
+      "name": "울루라떼",
+      "tel": "031 3345950",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 31 1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 모산로 79, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 1030,
+      "long": 127.2490899,
+      "lat": 37.33396735,
+      "name": "원조장충동왕족발",
+      "tel": "031 3329640",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 428-2 ,4 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2358 (,4)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1031,
+      "long": 127.2520677,
+      "lat": 37.3353146,
+      "name": "은희네회포차",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 500-1번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 11, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1032,
+      "long": 127.2519226,
+      "lat": 37.3357925,
+      "name": "이가명동찌개마을",
+      "tel": "031 322 3793",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 504-1번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 6 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1033,
+      "long": 127.2505868,
+      "lat": 37.33447983,
+      "name": "이태리식당",
+      "tel": "031323 2633",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 479-67번지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 9-4, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 6,
+      "StoreSubCategory": {
+        "name": "경양식"
+      }
+    },
+    {
+      "id": 1034,
+      "long": 127.2507412,
+      "lat": 37.33640459,
+      "name": "자양포차",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-23 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 9, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 5,
+      "StoreSubCategory": {
+        "name": "정종/대포집/소주방"
+      }
+    },
+    {
+      "id": 1035,
+      "long": 127.2499845,
+      "lat": 37.33659848,
+      "name": "장강",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 795번지 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 21-41, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 8,
+      "StoreSubCategory": {
+        "name": "중국식"
+      }
+    },
+    {
+      "id": 1036,
+      "long": 127.2506248,
+      "lat": 37.34089326,
+      "name": "장작닭",
+      "tel": "031335 1003",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 774-11 늘봄가든 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2432번길 1, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1037,
+      "long": 127.2460875,
+      "lat": 37.3528969,
+      "name": "장지리사골순대국(왕산)",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 675-4번지 외 4필지, 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2579, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1038,
+      "long": 127.2514531,
+      "lat": 37.33620778,
+      "name": "장터순대국",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-8 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 15, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1039,
+      "long": 127.2507412,
+      "lat": 37.33640459,
+      "name": "전설의치킨 모현외대점",
+      "tel": "031322 8292",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-23 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 9, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1040,
+      "long": 127.2465094,
+      "lat": 37.3542295,
+      "name": "정가네해물탕",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 678-3번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2594, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1041,
+      "long": 127.2511721,
+      "lat": 37.3374519,
+      "name": "제일남원추어탕",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-35번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2402번길 13",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1042,
+      "long": 127.2534225,
+      "lat": 37.33551,
+      "name": "주류창고",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 497-4번지 2층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 4, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1043,
+      "long": 127.252702,
+      "lat": 37.33600711,
+      "name": "주주클럽",
+      "tel": "031 332 4885",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 507-5번지 2층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 32, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1044,
+      "long": 127.2505847,
+      "lat": 37.3407058,
+      "name": "준상이네치킨호프",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 774-14번지 1층 일부, 외2필지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2432번길 1 (1층 일부, 외2필지)",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1045,
+      "long": 127.252454,
+      "lat": 37.3360977,
+      "name": "중앙정육점식당",
+      "tel": "031 3330444",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 507-4번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 28",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1046,
+      "long": 127.2511467,
+      "lat": 37.336596,
+      "name": "진미바지락칼국수",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 793-13번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 16 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1047,
+      "long": 127.2516501,
+      "lat": 37.33526148,
+      "name": "진성곱창",
+      "tel": "031 3398707",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 500-2번지 1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 20-13 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1048,
+      "long": 127.2499478,
+      "lat": 37.33396015,
+      "name": "찌찌닭발",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 431-1 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 10-6, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1049,
+      "long": 127.2466297,
+      "lat": 37.35390983,
+      "name": "천서리봉천막국수",
+      "tel": "031 3346962",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 678-23 A동 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2590, A동",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1050,
+      "long": 127.2533961,
+      "lat": 37.33580622,
+      "name": "철판과친구들",
+      "tel": "3340794",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 499-5 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 36",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 1051,
+      "long": 127.2541221,
+      "lat": 37.33550855,
+      "name": "청춘연가",
+      "tel": "3331622",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-3번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 42-1",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1052,
+      "long": 127.2493356,
+      "lat": 37.3314279,
+      "name": "초막",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 461번지 1층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 왕담로 160, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1053,
+      "long": 127.2507964,
+      "lat": 37.3367923,
+      "name": "치요치요",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 793-3 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 12, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1054,
+      "long": 127.2534225,
+      "lat": 37.33551,
+      "name": "치킨마루",
+      "tel": "3345518",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 497-4번지 1층 101, 102호 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 4 (1층 101, 102호)",
+      "campus": 2,
+      "storeSubCategoryId": 4,
+      "StoreSubCategory": {
+        "name": "통닭(치킨)"
+      }
+    },
+    {
+      "id": 1055,
+      "long": 127.2526447,
+      "lat": 37.3357639,
+      "name": "카파커피",
+      "tel": "031 3331251",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 499-1번지 1층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 3-1, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1056,
+      "long": 127.2489562,
+      "lat": 37.3327352,
+      "name": "커리브라운(Curry Brown)",
+      "tel": "031 3355854",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 468-7번지 1층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-29, 1층 (플러스빌)",
+      "campus": 2,
+      "storeSubCategoryId": 15,
+      "StoreSubCategory": {
+        "name": "외국음식전문점"
+      }
+    },
+    {
+      "id": 1057,
+      "long": 127.2548101,
+      "lat": 37.3353989,
+      "name": "큰맘할매순대국용인외대점",
+      "tel": "031 3395920",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 493-9번지 ,494-7",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 50 (,494-7)",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1058,
+      "long": 127.2495611,
+      "lat": 37.33481535,
+      "name": "태영생막창모현점",
+      "tel": "031339 3096",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 812-1번지 헤어링 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 7-9, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1059,
+      "long": 127.2512229,
+      "lat": 37.33753234,
+      "name": "토끼랑닭이랑",
+      "tel": "3397 580",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-35 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2402번길 13",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1060,
+      "long": 127.2534225,
+      "lat": 37.33551,
+      "name": "토마토도시락 용인외대점",
+      "tel": "031 334 8482",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 497-4번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 4, 104호",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1061,
+      "long": 127.2505085,
+      "lat": 37.34875312,
+      "name": "통큰장어",
+      "tel": "031 3385577",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 739-1번지 1층 가동 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2522, 가동 1층",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 1062,
+      "long": 127.252164,
+      "lat": 37.33628138,
+      "name": "펀비어킹용인외대점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 506-7 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 2, 101,102호",
+      "campus": 2,
+      "storeSubCategoryId": 3,
+      "StoreSubCategory": {
+        "name": "호프/통닭"
+      }
+    },
+    {
+      "id": 1063,
+      "long": 127.2533104,
+      "lat": 37.3357355,
+      "name": "페리카나(모현)",
+      "tel": "031 3396860",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 499-5번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 36",
+      "campus": 2,
+      "storeSubCategoryId": 4,
+      "StoreSubCategory": {
+        "name": "통닭(치킨)"
+      }
+    },
+    {
+      "id": 1064,
+      "long": 127.2516684,
+      "lat": 37.33596486,
+      "name": "푸드딜라이트모현점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-37 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 20, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 5,
+      "StoreSubCategory": {
+        "name": "정종/대포집/소주방"
+      }
+    },
+    {
+      "id": 1065,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "프라이데이나인용인외대점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4번지 한국외국어대학교글로벌캠퍼스 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 어문학관 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1066,
+      "long": 127.2499838,
+      "lat": 37.3364002,
+      "name": "피그돼지",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-7번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 1",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1067,
+      "long": 127.2495495,
+      "lat": 37.3349238,
+      "name": "피자나라치킨공주(모현외대점)",
+      "tel": "031 3229244",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 812-1번지 헤어링 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 7-9, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 4,
+      "StoreSubCategory": {
+        "name": "통닭(치킨)"
+      }
+    },
+    {
+      "id": 1068,
+      "long": 127.2511467,
+      "lat": 37.336596,
+      "name": "하오츠양꼬치",
+      "tel": "031 3325792",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 793-13번지 1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 16 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 9,
+      "StoreSubCategory": {
+        "name": "식육(숯불구이)"
+      }
+    },
+    {
+      "id": 1069,
+      "long": 127.2508892,
+      "lat": 37.34287687,
+      "name": "행복한밥상",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 771-9 1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2438번길 1-16, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1070,
+      "long": 127.2517322,
+      "lat": 37.3362073,
+      "name": "호가그릴",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 506-2번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 21-8",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1071,
+      "long": 127.2499196,
+      "lat": 37.3340127,
+      "name": "홍'S",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 431번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 10-4, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 13,
+      "StoreSubCategory": {
+        "name": "기타"
+      }
+    },
+    {
+      "id": 1072,
+      "long": 127.2515985,
+      "lat": 37.33661371,
+      "name": "황소숯불생막창",
+      "tel": "031  3371288",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-43 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 20",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1073,
+      "long": 127.2480876,
+      "lat": 37.3327911,
+      "name": "회랑초밥이랑",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 432번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-21 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 10,
+      "StoreSubCategory": {
+        "name": "일식"
+      }
+    },
+    {
+      "id": 1074,
+      "long": 127.2487874,
+      "lat": 37.3328707,
+      "name": "흑돼지촌",
+      "tel": "031 333 8084",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 431-2번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2332번길 21-16",
+      "campus": 2,
+      "storeSubCategoryId": 1,
+      "StoreSubCategory": {
+        "name": "한식"
+      }
+    },
+    {
+      "id": 1075,
+      "long": 127.2500894,
+      "lat": 37.3342105,
+      "name": "1976카페",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 808-4번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 10, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1076,
+      "long": 127.2500743,
+      "lat": 37.33665557,
+      "name": "날으는김밥",
+      "tel": "031 321 6639",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 795 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 21-41",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    },
+    {
+      "id": 1077,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "던킨도너츠한국외대글로벌캠퍼스점",
+      "tel": "031 3330201",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4번지 다목적관(백년관) 1층 일부, 107호 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81 (다목적관(백년관) 1층 일부, 107호)",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1078,
+      "long": 127.2493417,
+      "lat": 37.3367349,
+      "name": "롯데리아용인모현점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 801-14번지 외1필지 1층일부, 2층전체",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2387 (외1필지 1층일부, 2층전체)",
+      "campus": 2,
+      "storeSubCategoryId": 11,
+      "StoreSubCategory": {
+        "name": "패스트푸드"
+      }
+    },
+    {
+      "id": 1079,
+      "long": 127.252504,
+      "lat": 37.33588549,
+      "name": "마빈스",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 503-5 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 3, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1080,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "맘스터치한국외대글로벌점",
+      "tel": "031 330 4944",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 89번지 외1필지 후생관3층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 3층 (후생관)",
+      "campus": 2,
+      "storeSubCategoryId": 11,
+      "StoreSubCategory": {
+        "name": "패스트푸드"
+      }
+    },
+    {
+      "id": 1081,
+      "long": 127.2545614,
+      "lat": 37.33526434,
+      "name": "망원동티라미수(외대모현점)",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-13 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 5-1, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1082,
+      "long": 127.2528677,
+      "lat": 37.33492554,
+      "name": "명수당분식",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 480-5번지 삼일슈퍼 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 15-11, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 21,
+      "StoreSubCategory": {
+        "name": "일반조리판매"
+      }
+    },
+    {
+      "id": 1083,
+      "long": 0,
+      "lat": 0,
+      "name": "모현다방",
+      "tel": "3338534",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 805 ",
+      "roadAddress": "",
+      "campus": 2,
+      "storeSubCategoryId": 18,
+      "StoreSubCategory": {
+        "name": "다방"
+      }
+    },
+    {
+      "id": 1084,
+      "long": 127.2530056,
+      "lat": 37.3357091,
+      "name": "바이브PC",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 499-2번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 34, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    },
+    {
+      "id": 1085,
+      "long": 127.2546184,
+      "lat": 37.3354264,
+      "name": "바이브PC",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-11번지 지하1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 48, 지하1층",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    },
+    {
+      "id": 1086,
+      "long": 127.2532972,
+      "lat": 37.33497674,
+      "name": "반달커피모현점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 484-9 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 12, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1087,
+      "long": 127.2519226,
+      "lat": 37.3357925,
+      "name": "베리나이스용인외대점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 504-1번지 1층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 6 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1088,
+      "long": 127.2497244,
+      "lat": 37.3364548,
+      "name": "베스킨라빈스용인모현점",
+      "tel": "031 3320085",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 801-1번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2386, 1층 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 25,
+      "StoreSubCategory": {
+        "name": "아이스크림"
+      }
+    },
+    {
+      "id": 1089,
+      "long": 127.2511109,
+      "lat": 37.34069598,
+      "name": "블랙피자홀뽀끼",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 775-10 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2432번길 7-1, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 11,
+      "StoreSubCategory": {
+        "name": "패스트푸드"
+      }
+    },
+    {
+      "id": 1090,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "비틀주스",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4번지 한국외국어대학교글로벌캠퍼스 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 한국외국어대학교글로벌캠퍼스 후생관 2층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1091,
+      "long": 127.2704425,
+      "lat": 37.33938299,
+      "name": "삼성웰스토리(주)한국외대용인기숙사카페",
+      "tel": "031 3398589",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4 제2기숙사 E동 지면과맞닿은 2층 일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 제2기숙사 E동 지면과맞닿은 2층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1092,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "생협스넥",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 89번지 후생관 2층 (외 1필지) ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 2층 (후생관 2층 (외 1필지))",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    },
+    {
+      "id": 1093,
+      "long": 127.2502039,
+      "lat": 37.33814777,
+      "name": "세븐일레븐용인외대사거리점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-48번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2406",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    },
+    {
+      "id": 1094,
+      "long": 127.2538178,
+      "lat": 37.33559929,
+      "name": "스토리피씨랩용인외대점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 496-8번지 민영빌딩 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로40번길 1, 2층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 21,
+      "StoreSubCategory": {
+        "name": "일반조리판매"
+      }
+    },
+    {
+      "id": 1095,
+      "long": 127.2541221,
+      "lat": 37.3355085,
+      "name": "썸(SSOME)",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 494-3번지 3층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 42-1, 3층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1096,
+      "long": 127.2704425,
+      "lat": 37.33938299,
+      "name": "어문관진국",
+      "tel": "031330 4481",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4번지 한국외국어대학교글로벌캠퍼스 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 어문학관 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 21,
+      "StoreSubCategory": {
+        "name": "일반조리판매"
+      }
+    },
+    {
+      "id": 1097,
+      "long": 127.2515985,
+      "lat": 37.33661371,
+      "name": "에그박스모현점",
+      "tel": "031322 8293",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 945-43 신보빌딩 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 20, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 11,
+      "StoreSubCategory": {
+        "name": "패스트푸드"
+      }
+    },
+    {
+      "id": 1098,
+      "long": 127.2488023,
+      "lat": 37.33558023,
+      "name": "엠제이푸드",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 815-2 모현농협하나로마트내1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2373, 1층 (모현농협하나로마트내)",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    },
+    {
+      "id": 1099,
+      "long": 127.247826,
+      "lat": 37.33382945,
+      "name": "왕산돈까스",
+      "tel": "031 333 3350",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 820 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2349, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    },
+    {
+      "id": 1100,
+      "long": 127.2508552,
+      "lat": 37.3360623,
+      "name": "윤아네꽈배기",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 794-15 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2384번길 12, 101호 일부",
+      "campus": 2,
+      "storeSubCategoryId": 21,
+      "StoreSubCategory": {
+        "name": "일반조리판매"
+      }
+    },
+    {
+      "id": 1102,
+      "long": 127.2556341,
+      "lat": 37.3349275,
+      "name": "카페도리(CAFEDORI)",
+      "tel": "031322 8668",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 486 1층 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로54번길 7 (1층)",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1103,
+      "long": 127.2512864,
+      "lat": 37.3344873,
+      "name": "카페듀씨엘",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 479-22번지 1층,외1필지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 22, 1층 (외1필지)",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1104,
+      "long": 127.2500894,
+      "lat": 37.3342105,
+      "name": "카페류1976",
+      "tel": "070 78171976",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 808-4번지 1층 일부",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 10 (1층 일부)",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1105,
+      "long": 127.2530056,
+      "lat": 37.3357091,
+      "name": "카페문씨",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 499-2번지 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 34, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1106,
+      "long": 127.2498163,
+      "lat": 37.33693221,
+      "name": "카페인중독 용인외대점",
+      "tel": "031 335 8999",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 799-2번지 모현약국 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2390, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1107,
+      "long": 127.2503147,
+      "lat": 37.3340929,
+      "name": "카페코지",
+      "tel": "031 3389325",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 478-1번지 1층",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로2366번길 10-25, 1층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1108,
+      "long": 127.247541,
+      "lat": 37.3515231,
+      "name": "커피coffee90°",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 711-1 진성SK주유소 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2561, 2층",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1109,
+      "long": 127.2548656,
+      "lat": 37.3351465,
+      "name": "커피에반하다",
+      "tel": "031 3212268",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 484-26번지 1층 101호",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로54번길 6, 1층 101호",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1110,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "토스트럭",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 55-4번지 한국외국어대학교글로벌캠퍼스 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 한국외국어대학교글로벌캠퍼스 어문학관1층 학생식당 일부",
+      "campus": 2,
+      "storeSubCategoryId": 11,
+      "StoreSubCategory": {
+        "name": "패스트푸드"
+      }
+    },
+    {
+      "id": 1111,
+      "long": 127.2545637,
+      "lat": 37.3325973,
+      "name": "파니스안젤리쿠스",
+      "tel": "031 333 5227",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 240-46번지 1층, 외2필지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로54번길 30-10 (1층, 외2필지)",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1112,
+      "long": 127.252164,
+      "lat": 37.33628138,
+      "name": "피자보이",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 506-7 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로26번길 2, 2층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 11,
+      "StoreSubCategory": {
+        "name": "패스트푸드"
+      }
+    },
+    {
+      "id": 1113,
+      "long": 127.2492525,
+      "lat": 37.3370685,
+      "name": "피자스쿨모현점",
+      "tel": "031 3218834",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 799-7번지",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2391",
+      "campus": 2,
+      "storeSubCategoryId": 11,
+      "StoreSubCategory": {
+        "name": "패스트푸드"
+      }
+    },
+    {
+      "id": 1114,
+      "long": 127.2496372,
+      "lat": 37.3357172,
+      "name": "향기가득CafeChon모현도서관점",
+      "tel": "",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 804-3 지하1층일부 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2378 (지하1층일부)",
+      "campus": 2,
+      "storeSubCategoryId": 12,
+      "StoreSubCategory": {
+        "name": "카페"
+      }
+    },
+    {
+      "id": 1115,
+      "long": 127.2463983,
+      "lat": 37.35476136,
+      "name": "호벨로,웰덤치킨용인외대점",
+      "tel": "031 321 2986",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 681-8번지 우진석재 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 백옥대로 2604, 1층 일부",
+      "campus": 2,
+      "storeSubCategoryId": 21,
+      "StoreSubCategory": {
+        "name": "일반조리판매"
+      }
+    },
+    {
+      "id": 1116,
+      "long": 127.265306,
+      "lat": 37.3391514,
+      "name": "후생관북카페",
+      "tel": "031 3304944",
+      "numAddress": "경기도 용인시 처인구 모현읍 왕산리 산 89번지 3층일부 식당동 ",
+      "roadAddress": "경기도 용인시 처인구 모현읍 외대로 81, 식당동 (3층일부)",
+      "campus": 2,
+      "storeSubCategoryId": 19,
+      "StoreSubCategory": {
+        "name": "기타 휴게음식점"
+      }
+    }
+  ],
+  "message": ""
+}
