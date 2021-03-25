@@ -8,6 +8,7 @@ import PostEdit from './components/post/PostEdit';
 import MyPage from './views/MyPage/MyPage';
 import './App.css';
 import LoginPage from './views/LoginPage/LoginPage';
+import CalendarPage from './views/CalendarPage/CalendarPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path="/list" component={Post} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/calendar" component={CalendarPage} />
         {/* <Route path="/info" component={InfoPage} /> */}
         {/* <Route path="/scholar" component={ScholarShipPage} /> */}
         <Route path="/mypage" component={MyPage} />
