@@ -1,9 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteScrap } from '../../_actions/post_action';
 
 function UserScrap() {
+  const dispatch = useDispatch();
   const { scraps } = useSelector((state) => state.user);
-
+  const onRemove = (e) => {
+    console.log(e.target.value);
+    dispatch(deleteScrap(e.target.value)).then((response) => {
+      if (response.success) {
+        alert('스크랩 삭제');
+      } else {
+        alert(response.message);
+      }
+    });
+  };
   return (
     <div>
       <table>
@@ -22,6 +33,11 @@ function UserScrap() {
                   <td key={index}>{post.postId}</td>
                   <td>제목</td>
                   <td>{post.content}</td>
+                  <td>
+                    <button value={post.postId} onClick={onRemove}>
+                      스크랩 제거
+                    </button>
+                  </td>
                 </tr>
               );
             })
@@ -29,7 +45,6 @@ function UserScrap() {
       </table>
     </div>
   );
-
 }
 
 export default UserScrap;

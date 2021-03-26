@@ -2,7 +2,7 @@ import { Select } from 'antd';
 
 import React from 'react';
 
-function MajorSelect({ onChange, defaultMajor }) {
+function MajorSelect({ list, onChange, defaultMajor }) {
   const { Option } = Select;
 
   return (
@@ -13,9 +13,9 @@ function MajorSelect({ onChange, defaultMajor }) {
           style={{ width: 170 }}
           onChange={onChange}
         >
-          <Option value="주전공1">1</Option>
-          <Option value="주전공2">2</Option>
-          <Option value="주전공3">3</Option>
+          {list.map((major) => {
+            return <Option value={major}>{major}</Option>;
+          })}
           {/* <Option value="disabled" disabled>
           Disabled
         </Option> */}

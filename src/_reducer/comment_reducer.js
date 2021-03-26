@@ -10,7 +10,7 @@ import {
   COMMENT_REMOVE_FAIL,
 } from '../_actions/types';
 
-export default function comment(state = initialState, action) {
+export default function comment(state = {}, action) {
   const comments = state.comments;
   switch (action.type) {
     case COMMENT_SAVE:
@@ -48,37 +48,3 @@ export default function comment(state = initialState, action) {
       return state;
   }
 }
-// commentId를 시간으로..?
-const initialState = {
-  maxNo: 4,
-  comments: [
-    {
-      postId: 1,
-      commentId: 1,
-      userId: 1,
-      content: '1',
-      like: 1,
-    },
-    {
-      postId: 1,
-      commentId: 2,
-      userId: 2,
-      content: '2',
-      like: 2,
-    },
-    {
-      postId: 1,
-      commentId: 3,
-      userId: 2,
-      content: '2',
-      like: 3,
-    },
-    {
-      postId: 1,
-      commentId: 4,
-      userId: 2,
-      content: '2',
-      like: 4,
-    },
-  ],
-};

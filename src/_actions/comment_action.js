@@ -13,9 +13,9 @@ import {
 
 export const commentSave = async (dataToSubmit) => {
   const request = await axios
-    .post('comment/save', dataToSubmit)
+    .post('reply/add', dataToSubmit)
     .then((response) => response.data);
-
+  // response로 뭐라도 받아야해
   if (!request.saveSuccess) {
     return {
       type: COMMENT_SAVE_FAIL,
@@ -32,7 +32,7 @@ export const commentSave = async (dataToSubmit) => {
 
 export const commentLike = async (commentId) => {
   const request = await axios
-    .put('comment/like', commentId)
+    .get(`reply/${commentId}/addlike`, commentId)
     .then((response) => response.data);
   if (!request.likeSuccess) {
     return {
@@ -50,7 +50,7 @@ export const commentLike = async (commentId) => {
 };
 export const commentRemove = async (commentId) => {
   const request = await axios
-    .delete('comment/delete', commentId)
+    .delete(`/reply/${commentId}`, commentId)
     .then((response) => response.data);
   if (!request.removeSuccess) {
     return {
@@ -68,7 +68,7 @@ export const commentRemove = async (commentId) => {
 export const commentReport = async (dataToSubmit) => {
   //commentId, 내용
   const request = await axios
-    .post('comment/report', dataToSubmit)
+    .post(`/reply/${dataToSubmit.commentId}/report`, dataToSubmit)
     .then((response) => response.data);
 
   if (!request.reportSuccess) {

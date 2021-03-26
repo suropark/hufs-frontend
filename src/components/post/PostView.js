@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import {
   postLike,
   postRemove,
   postReport,
+  postScrap,
   postUpdate,
 } from '../../_actions/post_action';
 import CommentEdit from '../comment/CommentEdit';
@@ -15,13 +16,19 @@ import CommentList from '../comment/CommentList';
 function PostView({ match, history }) {
   const [post, setPost] = useState();
   const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.post);
+  useEffect(async () => {
+    const request = await axios
+      .get(`/post/${+match.params.id}`)
+      .then((response) => response.data);
+    setPost(request.data);
+  }, []);
 
-  useEffect(() => {
-    const matchPost = posts.find((posts) => posts.id === +match.params.id);
-    setPost(matchPost);
-  }, [posts]);
-
+  // const { posts } = useSelector((state) => state.post);
+  // useEffect(() => {
+  //   const matchPost = posts.find((posts) => posts.id === +match.params.id);
+  //   setPost(matchPost);
+  // }, [posts]);
+  // console.log(typeof match.params.id);
   const onDelete = () => {
     const answer = window.confirm('게시글을 삭제하시겠습니까?');
     if (answer) {
@@ -39,6 +46,16 @@ function PostView({ match, history }) {
   const onLike = () => {
     dispatch(postLike(post.id)).catch((error) => console.log(error));
   };
+  const onScrap = () => {
+    dispatch(postScrap(post.id)).then((response) => {
+      if (response.success) {
+        alert('스크랩 성공');
+      } else {
+        alert(response.message);
+      }
+    });
+  };
+  console.log('postview');
   const onReport = () => {
     // 모달 창 띄워서 신고 내용 적을 필요 있음.
     let body = {
@@ -62,20 +79,21 @@ function PostView({ match, history }) {
           <p>{post.id}</p>
           <h2>{post.title}</h2>
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          <p>추천수: {post.like}</p>
-          <button onClick={onDelete}> 삭제하기</button>
+          <span>추천 수: {post.like}</span>
           <button onClick={onLike}> 추천하기</button>
+          <span>신고 수: {post.report}</span>
           <button onClick={onReport}>신고하기</button>
-
+          <button onClick={onDelete}> 삭제하기</button>
+          <button onClick={onScrap}>스크랩하기</button>
           <Link to={`${post.id}/update`}>
             <button>수정하기</button>
           </Link>
+          <CommentList comments={post.Replies ? post.Replies : []} />
+          <CommentEdit match={match} />
         </div>
       ) : (
         'isLoading'
       )}
-      <CommentList match={match} />
-      <CommentEdit match={match} />
     </div>
   );
 }

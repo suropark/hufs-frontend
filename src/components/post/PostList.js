@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
@@ -10,14 +10,12 @@ function PostList({ match }) {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const [posts, setPosts] = useState([]);
-  const list = useSelector((state) => state.post.posts);
-
-
-  // const { posts } = useSelector((state) => state.post); // need to delete
-  // getPost() -> axios.get('post').then(res => res.data)로 받아와야함
+  // const list = useSelector((state) => state.post.posts);
+  console.log(match.path.substring(1)); // 게시판 이름
   useEffect(() => {
-    dispatch(postList());
-    setPosts(list.reverse());
+    dispatch(postList(match)).then((response) => {
+      setPosts(response.payload.reverse());
+    });
   }, []);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
@@ -50,7 +48,7 @@ function PostList({ match }) {
         nextClassName={'pageLabel-btn'}
       />
       <span>
-        <Link to="/edit">
+        <Link to={`${match.path}/edit`}>
           <button>글 작성</button>
         </Link>
       </span>
@@ -85,7 +83,7 @@ export function TableBody({ currentList, match }) {
               <td>
                 <Link to={`${match.path}/${post.id}`}>{post.userId}</Link>
               </td>
-              <td>조회수</td>
+              <td>{post.User.nickname}</td>
             </tr>
           );
         })

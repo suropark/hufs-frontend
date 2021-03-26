@@ -16,9 +16,10 @@ function PostUpdate({ match, history }) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('img/delete', uploadedImg);
+      axios.delete('/post/edit/back', uploadedImg);
     };
   });
+
   const { posts } = useSelector((state) => state.post);
   const post = posts.find((post) => post.id === +match.params.id);
   const [updated, setUpdated] = useState(post);
@@ -54,7 +55,7 @@ function PostUpdate({ match, history }) {
   const onExit = () => {
     const answer = window.confirm('진짜?');
     if (answer) {
-      axios.delete('post/delete', uploadedImg).then(history.goBack());
+      axios.delete('/post/edit/back', uploadedImg).then(history.goBack());
     }
   };
 
@@ -157,7 +158,7 @@ function imageHandler() {
       // this.quill.enable(false);
 
       axios
-        .post('/api/image', formData)
+        .post('/post/img', { img: formData })
         .then((response) => {
           this.quill.enable(true);
           this.quill.editor.insertEmbed(
@@ -166,14 +167,14 @@ function imageHandler() {
             response.data.url_path,
             // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
           );
-          wholeImg = wholeImg.concat(response.data.url_path);
-          uploadedImg = uploadedImg.concat(response.data.url_path);
+          wholeImg = wholeImg.concat(response.data);
+          uploadedImg = uploadedImg.concat(response.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log('quill image upload failed');
+          console.log('업로드 실패');
           console.log(error);
           this.quill.enable(true);
         });

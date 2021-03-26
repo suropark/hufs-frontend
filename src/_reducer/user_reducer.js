@@ -1,22 +1,28 @@
 // login, logout, register, auth
-import { INFO_USER, AUTH_USER, UPDATE_USER } from '../_actions/types';
+import {
+  INFO_USER,
+  AUTH_USER,
+  UPDATE_USER,
+  WITHDRAW_USER,
+  INFO_USER_FAIL,
+  UPDATE_USER_FAIL,
+  WITHDRAW_USER_FAIL,
+} from '../_actions/types';
 export default function user(state = initialState, action) {
   switch (action.type) {
     case INFO_USER:
-      return {
-        major: action.payload.major,
-        secondMajor: action.payload.secondMajor,
-        nickName: action.payload.nickName,
-        posts: action.payload.posts,
-        comments: action.payload.comments,
-        scraps: action.payload.scraps,
-      };
+      return action.payload;
     case UPDATE_USER:
       return {
         ...state,
-        nickName: action.payload,
+        nickname: action.payload.nickname,
+        mainMajor: action.payload.mainMajor,
+        doubleMajor: action.payload.doubleMajor,
       };
-
+    case WITHDRAW_USER_FAIL:
+    case WITHDRAW_USER:
+    case INFO_USER_FAIL:
+    case UPDATE_USER_FAIL:
     default:
       return {
         ...state,
@@ -25,9 +31,9 @@ export default function user(state = initialState, action) {
 }
 
 const initialState = {
-  nickName: 'nickName',
-  major: '주전공',
-  secondMajor: '이중전공',
+  nickname: 'nickname',
+  mainMajor: '주전공',
+  doubleMajor: '이중전공',
   posts: [
     { postId: 4, title: 'title', content: 'content1' },
     { postId: 126, title: 'title', content: 'content2' },

@@ -9,12 +9,13 @@ import {
 //  PostId 에 해당하는 comment DB에서 가져오기
 //  {postId, UserId, Date or Key for Order, content, like}
 // Post
-function CommentList({ match }) {
+function CommentList({ comments }) {
   const dispatch = useDispatch();
-  const { comments } = useSelector((state) => state.comment);
-  const matchComments = comments.filter(
-    (comment) => comment.postId === +match.params.id,
-  );
+
+  // const { comments } = useSelector((state) => state.comment);
+  // const matchComments = comments.filter(
+  //   (comment) => comment.postId === +match.params.id,
+  // );
 
   const onLike = (event) => {
     dispatch(commentLike(+event.target.value))
@@ -42,7 +43,8 @@ function CommentList({ match }) {
 
     let body = {
       commentId: +event.target.value,
-      // content: content
+      // content: 객관식
+      // detail : 주관식 (선택)
     };
     dispatch(commentReport(body))
       .then((response) => {
@@ -56,19 +58,23 @@ function CommentList({ match }) {
   };
   return (
     <div>
-      {matchComments.map((comment, index) => {
+      {comments.map((comment, index) => {
         return (
           <div key={index}>
-            <span>유저 아이디: {comment.userId}</span>
+            <span>유저 아이디: {comment.User.nickname}</span>
             <span> 내용: {comment.content}</span>
-            <span> 추천수: {comment.like} </span>
-            <button value={comment.commentId} onClick={onLike}>
+            <span> 추천 수: {comment.like} </span>
+            <span> 신고 수: {comment.report} </span>
+
+            <button value={comment.id} onClick={onLike}>
               추천하기
             </button>
-            <button value={comment.commentId} onClick={onDelete}>
+            <button value={comment.id} onClick={onDelete}>
               삭제하기
             </button>
-            <button onClick={onReport}>신고하기</button>
+            <button value={comment.id} onClick={onReport}>
+              신고하기
+            </button>
           </div>
         );
       })}

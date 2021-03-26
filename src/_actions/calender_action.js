@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_SCHOLAR } from './types';
 export const getScholar = async () => {
-  // const request = await axios.get('scholar').then((response) => response.data);
+  // const request = await axios.get('/scholarship').then((response) => response.data);
   // 실제 사용.
   return {
     type: GET_SCHOLAR,

@@ -11,13 +11,15 @@ import {
   POST_REMOVE_FAIL,
   POST_LIKE_FAIL,
   POST_UPDATE_FAIL,
+  POST_SCRAP,
+  POST_SCRAP_FAIL,
+  POST_SCRAP_REMOVE,
+  POST_SCRAP_REMOVE_FAIL,
 } from './types';
 
-// redux-promise returns promise and can use async/await here
-// reudx-chunk returns function
-export const postList = async () => {
+export const postList = async (match) => {
   const request = await axios
-    .get('post/list')
+    .get(`/board${match.path}`)
     .then((response) => response.data);
 
   return {
@@ -118,6 +120,42 @@ export const postLike = async (postId) => {
       type: POST_LIKE,
       payload: postId, // payload: postId??
       likeSuccess: true,
+    };
+  }
+};
+
+export const postScrap = async (postId) => {
+  const request = await axios
+    .post('/post/scrap', postId)
+    .then((response) => response.message);
+  if (request == '') {
+    return {
+      type: POST_SCRAP,
+      success: true,
+    };
+  } else {
+    return {
+      type: POST_SCRAP_FAIL,
+      success: false,
+      message: request,
+    };
+  }
+};
+
+export const deleteScrap = async (postId) => {
+  const request = await axios
+    .delete('/post/scrap', postId)
+    .then((response) => response.message);
+  if (request == '') {
+    return {
+      type: POST_SCRAP_REMOVE,
+      success: true,
+    };
+  } else {
+    return {
+      type: POST_SCRAP_REMOVE_FAIL,
+      success: false,
+      message: request,
     };
   }
 };

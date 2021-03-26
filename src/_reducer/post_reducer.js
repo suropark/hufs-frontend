@@ -9,6 +9,10 @@ import {
   POST_REPORT_FAIL,
   POST_LIKE_FAIL,
   POST_REMOVE_FAIL,
+  POST_SCRAP_FAIL,
+  POST_SCRAP,
+  POST_SCRAP_REMOVE,
+  POST_SCRAP_REMOVE_FAIL,
 } from '../_actions/types';
 
 export default function post(state = initialState, action) {
@@ -19,7 +23,6 @@ export default function post(state = initialState, action) {
       return {
         posts: action.payload,
         maxNo: action.payload.length,
-        ...state,
       };
     case POST_SAVE:
       return {
@@ -73,6 +76,10 @@ export default function post(state = initialState, action) {
     case POST_UPDATE_FAIL:
     case POST_REPORT:
     case POST_LIST:
+    case POST_SCRAP_FAIL:
+    case POST_SCRAP:
+    case POST_SCRAP_REMOVE:
+    case POST_SCRAP_REMOVE_FAIL:
       return {
         ...state,
       };
@@ -86,35 +93,59 @@ const initialState = {
   posts: [
     {
       id: 1,
-      boardId: 1,
-      title: '1번입니다',
-      content: '1번 내용',
+      title: '제목',
+      content: '<p>안녕</p>',
       like: 0,
-      userId: '아이디가 int?',
+      report: 2,
+      createdAt: '2021-03-14T06:21:29.000Z',
+      updatedAt: '2021-03-14T06:21:29.000Z',
+      boardId: 1,
+      userId: 1,
+      User: {
+        nickname: '하연',
+      },
     },
     {
-      id: 2,
-      boardId: 1,
-      title: '2번입니다',
-      content: '2번 내용',
+      id: 1,
+      title: '제목',
+      content: '<p>안녕</p>',
       like: 0,
-      userId: '아이디가 int?',
+      report: 2,
+      createdAt: '2021-03-14T06:21:29.000Z',
+      updatedAt: '2021-03-14T06:21:29.000Z',
+      boardId: 1,
+      userId: 1,
+      User: {
+        nickname: '하연',
+      },
     },
     {
-      id: 3,
-      boardId: 1,
-      title: '3번입니다',
-      content: '3번 내용',
+      id: 1,
+      title: '제목',
+      content: '<p>안녕</p>',
       like: 0,
-      userId: '아이디가 int?',
+      report: 2,
+      createdAt: '2021-03-14T06:21:29.000Z',
+      updatedAt: '2021-03-14T06:21:29.000Z',
+      boardId: 1,
+      userId: 1,
+      User: {
+        nickname: '하연',
+      },
     },
     {
       id: 4,
-      boardId: 1,
-      title: '4번입니다',
-      content: '4번 내용',
+      title: '제목',
+      content: '<p>안녕</p>',
       like: 0,
-      userId: '아이디가 int?',
+      report: 2,
+      createdAt: '2021-03-14T06:21:29.000Z',
+      updatedAt: '2021-03-14T06:21:29.000Z',
+      boardId: 1,
+      userId: 1,
+      User: {
+        nickname: '하연',
+      },
     },
   ],
   selected: {},
