@@ -63,9 +63,9 @@ export const updateUser = async (updatedData) => {
 export const getUserInfo = async () => {
   const request = await axios.all([
     axios.get('/user'),
-    axios.get('/user/directory'),
     axios.get('/user/post'),
     axios.get('/user/comment'),
+    axios.get('/user/scrap'),
   ]);
   if (request[0].message == 'UNAUTHORIZED') {
     return {

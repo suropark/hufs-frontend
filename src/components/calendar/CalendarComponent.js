@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 function CalendarComponent() {
   const { scholar } = useSelector((state) => state.calendar);
-  useEffect(() => {}, []);
   function getListData(value) {
     let day = value._d.getUTCDate();
     let month = value._d.getUTCMonth() + 1; //months from 1-12

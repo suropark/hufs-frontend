@@ -6,6 +6,7 @@ export const POST_UPDATE = 'post_update';
 export const POST_REPORT = 'post_report';
 export const POST_SCRAP = 'post_scrap';
 export const POST_SCRAP_REMOVE = 'post_scrap_remove';
+export const POST_DELLIKE = 'post_dellike';
 
 export const POST_SCRAP_REMOVE_FAIL = 'post_scrap_remove_fail';
 export const POST_SAVE_FAIL = 'post_save_fail';
@@ -14,7 +15,7 @@ export const POST_LIKE_FAIL = 'post_like_fail';
 export const POST_UPDATE_FAIL = 'post_update_fail';
 export const POST_REPORT_FAIL = 'post_report_fail';
 export const POST_SCRAP_FAIL = 'post_scrap_fail';
-
+export const POST_DELLIKE_FAIL = 'post_dellike_fail';
 export const COMMENT_LIST = 'comment_list';
 export const COMMENT_SAVE = 'comment_save';
 export const COMMENT_LIKE = 'comment_like';
