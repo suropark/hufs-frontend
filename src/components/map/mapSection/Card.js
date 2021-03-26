@@ -1,18 +1,18 @@
 import React, { useEffect,useState } from 'react';
-import PropTypes from "prop-types";
-import { useSelector,useDispatch } from 'react-redux';
-import { useHistory,withRouter } from 'react-router-dom';
-import { setMap } from '../../../_actions/map_action';
+import { useDispatch } from 'react-redux';
+import {useHistory,withRouter,useLocation } from 'react-router-dom';
 
 const { kakao } = window;
 
-const Card = ( {name,numAddress,roadAddress,StoreSubCategory,lat,long,match}) => {
-  const history = useHistory();
+const Card = ( {name,numAddress,roadAddress,lat,long,match}) => {
+  //const history = useHistory();
 
   //const [markerPositions, setMarkerPositions] = useState();
   //const { map } = useSelector((state) => ({ map: state.map }), []);
   const dispatch = useDispatch();
   const [state, setstate] = useState();
+  const history = useHistory();
+  const location = useLocation();
 
 
   //const {map} = useSelector(state => state.map,[]);
@@ -84,16 +84,16 @@ function displayMarker() {
     temp_link.appendChild(document.createTextNode("이동"));
     selectBtn.appendChild(temp_link);
     selectBtn.onclick = function () {
-      history.push( {pathname: `${match.path}/info/${name}`,
-      state: { name : name,
+      history.push( {
+        pathname: `${match.path}/info/${name}`,
+        state: {   name : name,
         numAddress : numAddress,
         roadAddress : roadAddress,
-        StoreSubCategory : StoreSubCategory,
+        }
         
-
-       }}
+    }
       );
-    //history.pushState(state, '', `/info/${title}`);
+    //history.pushState(query, '', `${match.path}/info/${name}`);
       
     };
     buttonContainer.appendChild(closeBtn);
@@ -170,6 +170,7 @@ const style = {
 
 
 return (
+  /* jshint ignore:start */
 <>
 <div id="map" style={style}></div>
 
@@ -185,6 +186,7 @@ return (
     </div>
   </div>
   </>
+  /* jshint ignore:end */
   );
 };
 export default withRouter(Card);

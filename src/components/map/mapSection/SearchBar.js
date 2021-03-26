@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 
 const SearchBar = ({onChange, placeholder}) => {
     return (
+      /* jshint ignore:start */
       <div className="Search">  
         <span className="SearchSpan">
           <FaSearch />
@@ -14,6 +15,7 @@ const SearchBar = ({onChange, placeholder}) => {
           placeholder={placeholder}
         />
       </div>
+       /* jshint ignore:end */
     );
   };
   
