@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
 import { postList } from '../../_actions/post_action';
-function PostList({ match }) {
+function PostList({ match, history }) {
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,9 +48,16 @@ function PostList({ match }) {
         nextClassName={'pageLabel-btn'}
       />
       <span>
-        <Link to={`${match.path}/edit`}>
-          <button>글 작성</button>
-        </Link>
+        <button
+          onClick={(e) =>
+            history.push({
+              pathname: `${match.path}/edit`,
+              state: { detail: match.path },
+            })
+          }
+        >
+          글 작성
+        </button>
       </span>
     </div>
   );

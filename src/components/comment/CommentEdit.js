@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { commentSave } from '../../_actions/comment_action';
 import useInput from '../../hooks/useInput';
-function CommentEdit(props) {
+function CommentEdit({ match }) {
   const dispatch = useDispatch();
   const [content, onChange, setContent] = useInput('');
   const onSubmit = (e) => {
     e.preventDefault();
     let body = {
-      postId: +props.match.params.id,
+      postId: +match.params.id,
       content: content,
     };
     dispatch(commentSave(body))

@@ -16,8 +16,8 @@ function PostEdit(props) {
       axios.delete('/post/back', uploadedImg);
     };
   });
+  console.log(props.location.state.detail.substring(1));
   const [value, setvalue] = useState({ title: '', content: '' });
-  console.log(props);
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -28,13 +28,12 @@ function PostEdit(props) {
     ).map((img) => img.getAttribute('src'));
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
-
+    let boardId = props.location.state.detail;
     let body = {
       title: value.title,
       content: value.content,
     };
-
-    dispatch(postSave(body, needDelete))
+    dispatch(postSave(body, needDelete, boardId))
       .then((response) => {
         if (response.saveSuccess) {
           props.history.push('/list');

@@ -8,7 +8,7 @@ import {
   UPDATE_USER_FAIL,
   WITHDRAW_USER_FAIL,
 } from '../_actions/types';
-export default function user(state = initialState, action) {
+export default function user(state = {}, action) {
   switch (action.type) {
     case INFO_USER:
       return action.payload;
@@ -19,8 +19,9 @@ export default function user(state = initialState, action) {
         mainMajor: action.payload.mainMajor,
         doubleMajor: action.payload.doubleMajor,
       };
-    case WITHDRAW_USER_FAIL:
     case WITHDRAW_USER:
+      return {};
+    case WITHDRAW_USER_FAIL:
     case INFO_USER_FAIL:
     case UPDATE_USER_FAIL:
     default:
@@ -29,24 +30,3 @@ export default function user(state = initialState, action) {
       };
   }
 }
-
-const initialState = {
-  nickname: 'nickname',
-  mainMajor: '주전공',
-  doubleMajor: '이중전공',
-  posts: [
-    { postId: 4, title: 'title', content: 'content1' },
-    { postId: 126, title: 'title', content: 'content2' },
-    { postId: 22222, title: 'title', content: 'content3' },
-  ],
-  comments: [
-    { commentId: 234, content: 'comment', postId: '1', postTitle: 'title1' },
-    { commentId: 252, content: 'comment', postId: '2', postTitle: 'title2' },
-    { commentId: 222, content: 'comment', postId: '1', postTitle: 'title3' },
-  ],
-  scraps: [
-    { postId: 4, content: 'asfsdf' },
-    { postId: 11, content: '123491' },
-  ],
-};
-// userscrap 필요

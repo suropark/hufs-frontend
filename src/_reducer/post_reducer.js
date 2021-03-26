@@ -13,62 +13,19 @@ import {
   POST_SCRAP,
   POST_SCRAP_REMOVE,
   POST_SCRAP_REMOVE_FAIL,
+  POST_DELLIKE,
+  POST_DELLIKE_FAIL,
 } from '../_actions/types';
 
-export default function post(state = initialState, action) {
-  let posts = state.posts;
-
+export default function post(state = {}, action) {
   switch (action.type) {
+    case POST_DELLIKE:
+    case POST_DELLIKE_FAIL:
     case POST_LIST:
-      return {
-        posts: action.payload,
-        maxNo: action.payload.length,
-      };
     case POST_SAVE:
-      return {
-        posts: posts.concat({
-          ...action.payload,
-          id: state.maxNo + 1,
-          // userId: action.userId,
-          like: 0,
-        }),
-        selected: {},
-        maxNo: state.maxNo + 1,
-        ...state,
-      };
     case POST_UPDATE:
-      return {
-        ...state,
-        posts: posts.map((post) => {
-          if (post.id === action.payload.id) {
-            return {
-              ...post,
-              title: action.payload.title,
-              content: action.payload.content,
-            };
-          } else {
-            return post;
-          }
-        }),
-      };
     case POST_REMOVE:
-      return {
-        ...state,
-        posts: posts.filter((post) => post.id !== action.id),
-        selectedBoard: {},
-        deleteSuccess: true,
-      };
     case POST_LIKE:
-      return {
-        ...state,
-        posts: posts.map((post) => {
-          if (post.id === action.payload) {
-            return { ...post, like: post.like + 1 };
-          } else {
-            return post;
-          }
-        }),
-      };
     case POST_REMOVE_FAIL:
     case POST_UPDATE_FAIL:
     case POST_REPORT_FAIL:
@@ -87,66 +44,3 @@ export default function post(state = initialState, action) {
       return state;
   }
 }
-
-const initialState = {
-  maxNo: 4,
-  posts: [
-    {
-      id: 1,
-      title: '제목',
-      content: '<p>안녕</p>',
-      like: 0,
-      report: 2,
-      createdAt: '2021-03-14T06:21:29.000Z',
-      updatedAt: '2021-03-14T06:21:29.000Z',
-      boardId: 1,
-      userId: 1,
-      User: {
-        nickname: '하연',
-      },
-    },
-    {
-      id: 1,
-      title: '제목',
-      content: '<p>안녕</p>',
-      like: 0,
-      report: 2,
-      createdAt: '2021-03-14T06:21:29.000Z',
-      updatedAt: '2021-03-14T06:21:29.000Z',
-      boardId: 1,
-      userId: 1,
-      User: {
-        nickname: '하연',
-      },
-    },
-    {
-      id: 1,
-      title: '제목',
-      content: '<p>안녕</p>',
-      like: 0,
-      report: 2,
-      createdAt: '2021-03-14T06:21:29.000Z',
-      updatedAt: '2021-03-14T06:21:29.000Z',
-      boardId: 1,
-      userId: 1,
-      User: {
-        nickname: '하연',
-      },
-    },
-    {
-      id: 4,
-      title: '제목',
-      content: '<p>안녕</p>',
-      like: 0,
-      report: 2,
-      createdAt: '2021-03-14T06:21:29.000Z',
-      updatedAt: '2021-03-14T06:21:29.000Z',
-      boardId: 1,
-      userId: 1,
-      User: {
-        nickname: '하연',
-      },
-    },
-  ],
-  selected: {},
-};

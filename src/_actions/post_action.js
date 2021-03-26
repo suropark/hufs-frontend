@@ -15,21 +15,22 @@ import {
   POST_SCRAP_FAIL,
   POST_SCRAP_REMOVE,
   POST_SCRAP_REMOVE_FAIL,
+  POST_DELLIKE,
+  POST_DELLIKE_FAIL,
 } from './types';
 
 export const postList = async (match) => {
   const request = await axios
     .get(`/board${match.path}`)
     .then((response) => response.data);
-
   return {
     type: POST_LIST,
     payload: request,
   };
 };
-export const postReport = async (dataToSubmit) => {
-  const request = await axios
-    .post('post/report', dataToSubmit)
+export const postReport = async (body) => {
+  const request = await axios //body : postId, content, detail
+    .post(`/post/${body.postId}/report`, body)
     .then((response) => response.data);
   if (!request.reportSuccess) {
     return {
@@ -43,16 +44,14 @@ export const postReport = async (dataToSubmit) => {
     };
   }
 };
-export const postSave = async (body, needDelete) => {
+export const postSave = async (body, needDelete, boardId) => {
   const request1 = await axios
-    .post('post/save', body)
+    .post(`/board${boardId}/post`, body)
     .then((response) => response.data); // userId 받아야해
-  const request2 =
-    needDelete.length === 0
-      ? null
-      : await axios
-          .delete('img/delete', needDelete)
-          .then((response) => response.data);
+
+  if (needDelete.length !== 0) {
+    await axios.delete('/post/back', needDelete);
+  }
   if (!request1.saveSuccess) {
     return {
       type: POST_SAVE_FAIL,
@@ -61,21 +60,20 @@ export const postSave = async (body, needDelete) => {
   } else {
     return {
       type: POST_SAVE,
-      payload: body, // 지금은 title , content
+      payload: body,
       saveSuccess: true,
-      // userId: request1.userId,
     };
   }
 };
-export const postUpdate = async (body, needDelete) => {
-  const request1 = await axios
-    .put('post/update', body)
+export const postUpdate = async (body, needDelete, postId) => {
+  const request = await axios
+    .put(`/post/${postId}`, body)
     .then((response) => response.data);
   if (needDelete.length !== 0) {
-    await axios.delete('img/delete', needDelete);
+    await axios.delete('/post/back', needDelete);
   }
 
-  if (!request1.updateSuccess) {
+  if (!request.updateSuccess) {
     return {
       type: POST_UPDATE_FAIL,
       updateSuccess: false,
@@ -90,7 +88,7 @@ export const postUpdate = async (body, needDelete) => {
 };
 export const postRemove = async (postId) => {
   const request = await axios
-    .delete('post/delete', postId)
+    .delete(`/post/${postId}`, postId)
     .then((response) => response.data); //
   if (!request.removeSuccess) {
     return {
@@ -108,7 +106,7 @@ export const postRemove = async (postId) => {
 
 export const postLike = async (postId) => {
   const request = await axios
-    .put('post/like', postId)
+    .put(`/post/${postId}/addlike`, postId)
     .then((response) => response.data); //
   if (!request.likeSuccess) {
     return {
@@ -123,10 +121,27 @@ export const postLike = async (postId) => {
     };
   }
 };
+export const postDellike = async (postId) => {
+  const request = await axios
+    .put(`/post/${postId}/dellike`, postId)
+    .then((response) => response.data); //
+  if (!request.dellikeSuccess) {
+    return {
+      type: POST_DELLIKE_FAIL,
+      dellikeSuccess: false,
+    };
+  } else {
+    return {
+      type: POST_DELLIKE,
+      payload: postId, // payload: postId??
+      dellikeSuccess: true,
+    };
+  }
+};
 
 export const postScrap = async (postId) => {
   const request = await axios
-    .post('/post/scrap', postId)
+    .post('/user/scrap', postId)
     .then((response) => response.message);
   if (request == '') {
     return {
@@ -144,7 +159,7 @@ export const postScrap = async (postId) => {
 
 export const deleteScrap = async (postId) => {
   const request = await axios
-    .delete('/post/scrap', postId)
+    .delete('/user/scrap', postId)
     .then((response) => response.message);
   if (request == '') {
     return {

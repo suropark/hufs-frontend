@@ -10,11 +10,8 @@ function UserInfo() {
   const { nickname, mainMajor, doubleMajor } = useSelector(
     (state) => state.user,
   ); //  유저 스토어에서 닉네임, 전공, 이중전공 가져오기
-  // const request = axios.get('/major').then((response) => response.data);
-  const request = {
-    mainMajor: ['스칸디나비아어', '독일어'],
-    doubleMajor: ['11스칸디나비아어', '독일어'],
-  };
+  const request = axios.get('/major').then((response) => response.data);
+
   const [nick, onChange] = useInput(nickname);
   const [change, setChange] = useState({});
   const onSubmit = () => {

@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import {
+  postDellike,
   postLike,
   postRemove,
   postReport,
   postScrap,
-  postUpdate,
 } from '../../_actions/post_action';
 import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
@@ -20,7 +20,7 @@ function PostView({ match, history }) {
     const request = await axios
       .get(`/post/${+match.params.id}`)
       .then((response) => response.data);
-    setPost(request.data);
+    setPost(request);
   }, []);
 
   // const { posts } = useSelector((state) => state.post);
@@ -46,6 +46,9 @@ function PostView({ match, history }) {
   const onLike = () => {
     dispatch(postLike(post.id)).catch((error) => console.log(error));
   };
+  const onDellike = () => {
+    dispatch(postDellike(post.id)).catch((error) => console.log(error));
+  };
   const onScrap = () => {
     dispatch(postScrap(post.id)).then((response) => {
       if (response.success) {
@@ -59,7 +62,7 @@ function PostView({ match, history }) {
   const onReport = () => {
     // 모달 창 띄워서 신고 내용 적을 필요 있음.
     let body = {
-      id: post.id,
+      postId: post.id,
       // content: content
     };
     dispatch(postReport(body))
@@ -81,6 +84,7 @@ function PostView({ match, history }) {
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
           <span>추천 수: {post.like}</span>
           <button onClick={onLike}> 추천하기</button>
+          <button onClick={onDellike}> -1ㅎ</button>
           <span>신고 수: {post.report}</span>
           <button onClick={onReport}>신고하기</button>
           <button onClick={onDelete}> 삭제하기</button>
