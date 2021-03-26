@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { actionCreators } from "./Store";
 
 const { kakao } = window;
 
@@ -42,12 +41,11 @@ function placesSearchCB (data, status, pagination) {
 }
 */
   
-    dispatcher(actionCreators.setMap(map), [map]);
   }, []);
   const style={
     height:"150%",
     width:"100%"
-  }
+  };
 
   return <div id="map" style={style}></div>;
 };
