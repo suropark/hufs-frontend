@@ -1,24 +1,70 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import useInput from '../../hooks/useInput';
+import { updateUser } from '../../_actions/user_action';
+import MajorSelect from './MajorSelect';
+import SecondMajorSelect from './SecondMajorSelect';
 function UserInfo() {
-  const { id, nickName } = useSelector((state) => state.user); //  유저 리듀서에 있는 유저 정보 가져오기?
+  const dispatch = useDispatch();
+  const { nickname, mainMajor, doubleMajor } = useSelector(
+    (state) => state.user,
+  ); //  유저 스토어에서 닉네임, 전공, 이중전공 가져오기
+  const request = axios.get('/major').then((response) => response.data);
 
+  const [nick, onChange] = useInput(nickname);
+  const [change, setChange] = useState({});
+  const onSubmit = () => {
+    let data = { nickname: nick, ...change }; // 변경 한 닉네임,
+    console.log(data);
+    const answer = window.confirm('변경은 한 번 ');
+
+    if (answer) {
+      dispatch(updateUser(data)).then((response) => {
+        if (response.success) {
+          alert('닉네임 변경 완료');
+        } else {
+          alert(response.payload);
+        }
+      });
+    }
+  };
+  function mainMajorChange(value) {
+    setChange({ ...change, major: value });
+  }
+  function doubleMajorChange(value) {
+    setChange({ ...change, secondMajor: value });
+  }
+
+  useEffect(() => {
+    console.log(change);
+  }, [change]);
   return (
     <div>
-      <div>
-        {' '}
-        <label>아이디</label>
-      </div>
-      <div>
-        <input type="id" value={id} />{' '}
-      </div>
-      <div>
-        {' '}
+      <div style={{ margin: '8px 0' }}>
         <label>닉네임</label>
       </div>
-      <div>
-        <input type="nickName" value={nickName} />
+      <div style={{ margin: '8px 0' }}>
+        <input
+          type="nickname"
+          value={nick}
+          onChange={onChange}
+          style={{ marginRight: '40px' }}
+        />
       </div>
+      <label>본전공</label>
+      <MajorSelect
+        list={request.mainMajor}
+        defaultMajor={mainMajor}
+        onChange={mainMajorChange}
+      />
+      <label>이중전공/부전공</label>
+      <SecondMajorSelect
+        list={request.doubleMajor}
+        defaultSecondMajor={doubleMajor}
+        onChange={doubleMajorChange}
+      />
+      <button onClick={onSubmit}> 유저 정보 변경 </button>
     </div>
   );
 }

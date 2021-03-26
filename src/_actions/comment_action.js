@@ -11,11 +11,11 @@ import {
   COMMENT_REPORT_FAIL,
 } from './types';
 
-export const commentSave = async (dataToSubmit) => {
+export const commentSave = async (body) => {
   const request = await axios
-    .post('comment/save', dataToSubmit)
+    .post('reply/add', body)
     .then((response) => response.data);
-
+  // response로 뭐라도 받아야해
   if (!request.saveSuccess) {
     return {
       type: COMMENT_SAVE_FAIL,
@@ -24,7 +24,7 @@ export const commentSave = async (dataToSubmit) => {
   } else {
     return {
       type: COMMENT_SAVE,
-      payload: dataToSubmit, // req로 바꾸기
+      payload: body, // req로 바꾸기
       saveSuccess: true, // request.saveSuccess
     };
   }
@@ -32,7 +32,7 @@ export const commentSave = async (dataToSubmit) => {
 
 export const commentLike = async (commentId) => {
   const request = await axios
-    .put('comment/like', commentId)
+    .get(`reply/${commentId}/addlike`, commentId)
     .then((response) => response.data);
   if (!request.likeSuccess) {
     return {
@@ -50,7 +50,7 @@ export const commentLike = async (commentId) => {
 };
 export const commentRemove = async (commentId) => {
   const request = await axios
-    .delete('comment/delete', commentId)
+    .delete(`/reply/${commentId}`)
     .then((response) => response.data);
   if (!request.removeSuccess) {
     return {
@@ -65,10 +65,10 @@ export const commentRemove = async (commentId) => {
     };
   }
 };
-export const commentReport = async (dataToSubmit) => {
+export const commentReport = async (commentId, body) => {
   //commentId, 내용
   const request = await axios
-    .post('comment/report', dataToSubmit)
+    .post(`/reply/${commentId}/report`, body)
     .then((response) => response.data);
 
   if (!request.reportSuccess) {

@@ -13,11 +13,11 @@ function PostEdit(props) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('img/delete', uploadedImg);
+      axios.delete('/post/back', uploadedImg);
     };
   });
+  console.log(props.location.state.detail.substring(1));
   const [value, setvalue] = useState({ title: '', content: '' });
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -28,13 +28,12 @@ function PostEdit(props) {
     ).map((img) => img.getAttribute('src'));
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
-
+    let boardId = props.location.state.detail;
     let body = {
       title: value.title,
       content: value.content,
     };
-
-    dispatch(postSave(body, needDelete))
+    dispatch(postSave(body, needDelete, boardId))
       .then((response) => {
         if (response.saveSuccess) {
           props.history.push('/list');
@@ -49,7 +48,7 @@ function PostEdit(props) {
       '작성하던 글은 저장되지 않습니다. 그래도 나가시겠습니까?',
     );
     if (answer) {
-      axios.delete('post/delete', uploadedImg).then(props.history.goBack());
+      axios.delete('/post/back', uploadedImg).then(props.history.goBack());
     }
   };
 
@@ -140,24 +139,16 @@ function imageHandler() {
       // this.quill.enable(false);
 
       await axios
-        .post('/api/image', formData)
+        .post('/post/img', { img: formData })
         .then((response) => {
-          this.quill.editor.insertEmbed(
-            range.index,
-            'image',
-            response.data.url_path,
-            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-          );
-          uploadedImg = uploadedImg.concat(
-            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-            response.data.url_path,
-          );
+          this.quill.editor.insertEmbed(range.index, 'image', response.data);
+          uploadedImg = uploadedImg.concat(response.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log('quill image upload failed');
+          console.log('업로드 실패');
           console.log(error);
           this.quill.enable(true);
         });

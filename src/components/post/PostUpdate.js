@@ -13,21 +13,24 @@ let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
 let uploadedImg = [];
 function PostUpdate({ match, history }) {
   const dispatch = useDispatch();
+  const [updated, setUpdated] = useState(false);
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('img/delete', uploadedImg);
+      axios.delete('/post/back', uploadedImg);
     };
   });
-  const { posts } = useSelector((state) => state.post);
-  const post = posts.find((post) => post.id === +match.params.id);
-  const [updated, setUpdated] = useState(post);
-  useEffect(() => {
+
+  useEffect(async () => {
+    const request = await axios
+      .get(`/post/${+match.parmas.id}`)
+      .then((response) => response.data);
     const firstImg = Array.from(
       new DOMParser()
-        .parseFromString(post.content, 'text/html')
+        .parseFromString(request.content, 'text/html')
         .querySelectorAll('img'),
     ).map((img) => img.getAttribute('src'));
+    setUpdated({ title: request.title, content: request.content });
     wholeImg = wholeImg.concat(firstImg);
   }, []);
 
@@ -41,7 +44,7 @@ function PostUpdate({ match, history }) {
 
     const needDelete = getUnused(wholeImg, afterEdit); // return : 삭제해야 할 이미지 url
 
-    dispatch(postUpdate(updated, needDelete))
+    dispatch(postUpdate(updated, needDelete, +match.params.id))
       .then((response) => {
         if (response.updateSuccess) {
           history.goBack();
@@ -54,7 +57,7 @@ function PostUpdate({ match, history }) {
   const onExit = () => {
     const answer = window.confirm('진짜?');
     if (answer) {
-      axios.delete('post/delete', uploadedImg).then(history.goBack());
+      axios.delete('/post/back', uploadedImg).then(history.goBack());
     }
   };
 
@@ -64,9 +67,9 @@ function PostUpdate({ match, history }) {
 
   return (
     <div>
-      {post ? (
+      {updated ? (
         <div>
-          <p>글 번호: {post.id}</p>
+          <p>글 번호: {updated.id}</p>
           <input
             type="text"
             placeholder="제목"
@@ -157,23 +160,18 @@ function imageHandler() {
       // this.quill.enable(false);
 
       axios
-        .post('/api/image', formData)
+        .post('/post/img', { img: formData })
         .then((response) => {
           this.quill.enable(true);
-          this.quill.editor.insertEmbed(
-            range.index,
-            'image',
-            response.data.url_path,
-            // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
-          );
-          wholeImg = wholeImg.concat(response.data.url_path);
-          uploadedImg = uploadedImg.concat(response.data.url_path);
+          this.quill.editor.insertEmbed(range.index, 'image', response.data);
+          wholeImg = wholeImg.concat(response.data);
+          uploadedImg = uploadedImg.concat(response.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log('quill image upload failed');
+          console.log('업로드 실패');
           console.log(error);
           this.quill.enable(true);
         });

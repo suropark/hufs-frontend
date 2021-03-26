@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
 import { postList } from '../../_actions/post_action';
-function PostList({ match }) {
+function PostList({ match, history }) {
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const [posts, setPosts] = useState([]);
-
-  // const { posts } = useSelector((state) => state.post); // need to delete
-  // getPost() -> axios.get('post').then(res => res.data)로 받아와야함
+  // const list = useSelector((state) => state.post.posts);
+  console.log(match.path.substring(1)); // 게시판 이름
   useEffect(() => {
-    dispatch(postList()).then((response) => setPosts(response.data));
+    dispatch(postList(match)).then((response) => {
+      setPosts(response.payload.reverse());
+    });
   }, []);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
@@ -47,9 +48,16 @@ function PostList({ match }) {
         nextClassName={'pageLabel-btn'}
       />
       <span>
-        <Link to="/edit">
-          <button>글 작성</button>
-        </Link>
+        <button
+          onClick={(e) =>
+            history.push({
+              pathname: `${match.path}/edit`,
+              state: { detail: match.path },
+            })
+          }
+        >
+          글 작성
+        </button>
       </span>
     </div>
   );
@@ -82,7 +90,7 @@ export function TableBody({ currentList, match }) {
               <td>
                 <Link to={`${match.path}/${post.id}`}>{post.userId}</Link>
               </td>
-              <td>조회수</td>
+              <td>{post.User.nickname}</td>
             </tr>
           );
         })

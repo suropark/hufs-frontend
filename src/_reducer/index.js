@@ -6,12 +6,14 @@ import user from './user_reducer';
 import { all } from "redux-saga/effects"
 import item, { itemSaga } from "../_actions/reviewPost_action"
 import loading from "../_actions/loading_action"
+import calendar from './calendar_reducer';
 const rootReducer = combineReducers({
   post,
-  comment, //user, post, etc..
+  comment,
   user,
   item,
   loading
+  calendar,
 });
 
 // 루트 사가
