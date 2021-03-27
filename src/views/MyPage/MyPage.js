@@ -9,6 +9,8 @@ import UserWithdraw from '../../components/user/UserWithdraw';
 import { useDispatch } from 'react-redux';
 import { getUserInfo } from '../../_actions/user_action';
 import { withRouter } from 'react-router';
+import Page404 from '../Page404/Page404';
+
 function MyPage(props) {
   const { Header, Content, Footer } = Layout;
   const dispatch = useDispatch();
@@ -47,8 +49,7 @@ function MyPage(props) {
       case '5':
         return <UserWithdraw />;
       default:
-        return <div>error 404</div>;
-      // return <NoResultsFound />;
+        return <Page404 />;
     }
   };
 

@@ -73,7 +73,7 @@ export const postReport = async (postId, body) => {
 };
 // 완료
 export const postSave = async (body, needDelete, boardId) => {
-  const request = await axios.post(`${PUBLIC_URL}/board${boardId}/post`, body);
+  const request = await axios.post(`${PUBLIC_URL}${boardId}/post`, body);
 
   if (needDelete.length !== 0) {
     await axios.post(`${PUBLIC_URL}/post/back`, { url: needDelete });
@@ -86,7 +86,7 @@ export const postSave = async (body, needDelete, boardId) => {
   } else {
     return {
       type: POST_SAVE_FAIL,
-      status: request.status,
+      status: request.error,
     };
   }
 };
