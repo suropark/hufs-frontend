@@ -1,10 +1,11 @@
 import React from 'react';
+import logo from "../../banner/logo.png";
 
 function Header() {
   return (
     <div className="Head">
 
-      <div className="Pagename">페이지 이름</div>
+      <div className="Pagename"><img src={logo} /></div>
       <img src="#" className="Image" alt="이미지 들어갈 곳" />
       <span className="loginbar">
         <a href="#">회원가입 </a>
@@ -15,12 +16,12 @@ function Header() {
       <input className="Searchbar" value="검색창" />
 
       <div className="Menubar" >
-        <span>커뮤니티</span>
-        <span>학사 관련</span>
-        <span>졸업생</span>
-        <span>생활</span>
-        <span>진로/취업</span>
-        <span>정보</span>
+        <span>떠들어 Boo</span>
+        <span>학교 해 Boo</span>
+        <span>학교 간 Boo</span>
+        <span>학교 떠난 Boo</span>
+        <span>정면승 Boo</span>
+        <span>이거 모르면 바 Boo</span>
       </div>
 
     </div>

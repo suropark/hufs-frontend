@@ -5,9 +5,13 @@ import LandingPage from './views/LandingPage/LandingPage';
 import MyPage from './views/MyPage/MyPage';
 import MapPage from './views/MapPage/MapPage';
 import './App.css';
+import './App2.css';
 import LoginPage from './views/LoginPage/LoginPage';
 import CalendarPage from './views/CalendarPage/CalendarPage';
+import Board from './views/Board/Board';
+import Community from './views/Community/Community';
 import Page404 from './views/Page404/Page404';
+
 
 function App() {
   return (
@@ -21,6 +25,8 @@ function App() {
         <Route path="/3" component={Post} />
         <Route path="/4" component={Post} />
         <Route path="/5" component={Post} />
+        <Route path='/board' component={Board} />
+        <Route path='/community' component={Community} />
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />
