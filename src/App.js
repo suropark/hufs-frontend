@@ -7,6 +7,7 @@ import PostEdit from './components/post/PostEdit';
 // import TestView from './testJS/TestView';
 import MyPage from './views/MyPage/MyPage';
 import './App.css';
+import './App2.css';
 import LoginPage from './views/LoginPage/LoginPage';
 import CalendarPage from './views/CalendarPage/CalendarPage';
 
@@ -16,6 +17,7 @@ function App() {
       {/* <header> 항상 보여요 header</header> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route path='/board' component={Board} />
         <Route path="/list" component={Post} />
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />

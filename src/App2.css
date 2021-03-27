@@ -1,0 +1,96 @@
+.Map {
+  top: 20px;
+  display: flex;
+}
+.Map-left {
+  /* Title */
+  position: relative;
+  width: 250px;
+  height: 907px;
+  left: 15%;
+  top: 20px;
+
+  background: #eda6a6;
+}
+.Map-left > .navi {
+  position: absolute;
+  width: 144px;
+  height: 46px;
+  left: 23%;
+  top: 20px;
+  background-color: red;
+}
+.Map-left > .content {
+  position: absolute;
+  width: 219px;
+  height: 447px;
+  left: 17px;
+  top: 10%;
+  background-color: navajowhite;
+}
+#seoul {
+  position: absolute;
+  width: 201px;
+  height: 196px;
+  left: 8px;
+  top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+}
+#global {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  width: 201px;
+  height: 196px;
+  left: 7px;
+  top: 230px;
+
+  background: #ffffff;
+}
+
+.up-down {
+  position: relative;
+  top: 20px;
+  left: 16%;
+  border-right: thin solid black;
+
+  height: 907px;
+}
+
+.Map-main {
+  position: relative;
+  width: 823px;
+  height: 907px;
+  left: 17%;
+  top: 20px;
+
+  background: #fde6e6;
+}
+.Map-main > .Mini-map {
+  position: absolute;
+  width: 750px;
+  height: 398px;
+  left: 25px;
+  top: 25px;
+
+  background: #4e3a3a;
+}
+.Map-main > .Map-board {
+  /* Map Content */
+
+  position: absolute;
+  width: 750px;
+  height: 420px;
+  left: 25px;
+  top: 451px;
+
+  background: #ce7d7d;
+}
