@@ -37,13 +37,23 @@ function PostEdit(props) {
     };
     dispatch(postSave(body, needDelete, boardId))
       .then((response) => {
-        if (response.saveSuccess) {
-          props.history.push('/list');
-        } else {
-          alert('저장 실패');
+        if (response.status === 200) {
+          props.history.goBack();
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        switch (error.response.status) {
+          case 401:
+            alert('로그인이 필요합니다.');
+            props.history.push('/');
+          case 403:
+            alert('접근 권한 오류');
+            props.history.push('/');
+            break;
+          default:
+            break;
+        }
+      });
   };
   const onExit = () => {
     const answer = window.confirm(

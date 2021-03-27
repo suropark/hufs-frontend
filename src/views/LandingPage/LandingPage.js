@@ -1,29 +1,22 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../Header/Header'
-import Quick from '../Quick/Quick'
-import Footer from '../Footer/Footer'
-import Slide from "../../components/slide/Slide";
+import Header from '../Header/Header';
+import Quick from '../Quick/Quick';
+import Footer from '../Footer/Footer';
+import Slide from '../../components/slide/Slide';
 function LandingPage(props) {
   return (
-    <div >
-
-
-
+    <div>
       <Header />
       <Quick />
       <div className="Main">
         <div className="Mainbanner">
           <Slide />
         </div>
-        <div className="MainCalendar">
-
-        </div>
+        <div className="MainCalendar"></div>
         <div className="board"></div>
-
       </div>
       <Footer />
-
     </div>
   );
 }

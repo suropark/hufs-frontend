@@ -31,7 +31,7 @@ function CommentList({ comments, history }) {
       });
   };
   const onDelete = (event) => {
-    const answer = window.confirm();
+    const answer = window.confirm('이 댓글을 삭제하시겠습니까?');
     if (answer) {
       dispatch(commentRemove(+event.target.value))
         .then((response) => {

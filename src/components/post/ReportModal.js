@@ -4,6 +4,7 @@ import { Input, Select, Modal, Button } from 'antd';
 import { useDispatch } from 'react-redux';
 import { postReport } from '../../_actions/post_action';
 import { withRouter } from 'react-router';
+import { commentReport } from '../../_actions/comment_action';
 function ReportModal({ type, id, history }) {
   const { Option } = Select;
   const { TextArea } = Input;
@@ -18,45 +19,49 @@ function ReportModal({ type, id, history }) {
   };
   const onReport = (e) => {
     if (type === 'post') {
-      dispatch(postReport(id, body)).then((response) => {
-        switch (response.status) {
-          case 200:
-            alert('신고가 완료되었습니다. 감사합니다.');
-            break;
-          case 401:
-            alert('로그인이 필요합니다.');
-            history.push('/');
-            break;
-          case 403:
-            alert('접근 권한이 없습니다');
-            break;
-          case 409:
-            alert('이미 신고한 게시글입니다.');
-            break;
-          default:
-            break;
-        }
-      });
+      dispatch(postReport(id, body))
+        .then((response) => {
+          alert('신고가 완료되었습니다. 감사합니다.');
+          window.location.reload();
+        })
+        .catch((error) => {
+          switch (error.response.status) {
+            case 401:
+              alert('로그인이 필요합니다.');
+              history.push('/');
+              break;
+            case 403:
+              alert('접근 권한이 없습니다');
+              break;
+            case 409:
+              alert('이미 신고한 게시글입니다.');
+              break;
+            default:
+              break;
+          }
+        });
     } else if (type === 'comment') {
-      dispatch(postReport(id, body)).then((response) => {
-        switch (response.status) {
-          case 200:
-            alert('신고가 완료되었습니다. 감사합니다.');
-            break;
-          case 401:
-            alert('로그인이 필요합니다.');
-            history.push('/');
-            break;
-          case 403:
-            alert('접근 권한이 없습니다');
-            break;
-          case 409:
-            alert('이미 신고한 게시글입니다.');
-            break;
-          default:
-            break;
-        }
-      });
+      dispatch(commentReport(id, body))
+        .then((response) => {
+          alert('신고가 완료되었습니다. 감사합니다.');
+          window.location.reload();
+        })
+        .catch((error) => {
+          switch (error.response.status) {
+            case 401:
+              alert('로그인이 필요합니다.');
+              history.push('/');
+              break;
+            case 403:
+              alert('접근 권한이 없습니다');
+              break;
+            case 409:
+              alert('이미 신고한 댓글입니다.');
+              break;
+            default:
+              break;
+          }
+        });
     }
     setBody({ content: 1, detail: '' });
     setIsModalVisible(false);
