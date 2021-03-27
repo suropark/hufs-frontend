@@ -5,8 +5,9 @@ import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
 
 import { withRouter } from 'react-router-dom';
-import { postUpdate } from '../../_actions/post_action';
+import { postUpdate, postView } from '../../_actions/post_action';
 import axios from 'axios';
+import { PUBLIC_URL } from '../../config';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
@@ -17,21 +18,38 @@ function PostUpdate({ match, history }) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('/post/back', uploadedImg);
+      axios.post(`${PUBLIC_URL}/post/back`, { url: uploadedImg });
     };
   });
-
   useEffect(async () => {
-    const request = await axios
-      .get(`/post/${+match.parmas.id}`)
-      .then((response) => response.data);
-    const firstImg = Array.from(
-      new DOMParser()
-        .parseFromString(request.content, 'text/html')
-        .querySelectorAll('img'),
-    ).map((img) => img.getAttribute('src'));
-    setUpdated({ title: request.title, content: request.content });
-    wholeImg = wholeImg.concat(firstImg);
+    dispatch(postView(+match.params.id)).then((response) => {
+      switch (response.status) {
+        case 200:
+          const firstImg = Array.from(
+            new DOMParser()
+              .parseFromString(response.payload.content, 'text/html')
+              .querySelectorAll('img'),
+          ).map((img) => img.getAttribute('src'));
+          setUpdated({
+            title: response.payload.title,
+            content: response.payload.content,
+          });
+          wholeImg = wholeImg.concat(firstImg);
+          break;
+        case 401:
+          alert('로그인하지 않은 사용자');
+          history.push('/');
+          break;
+        case 403:
+          alert('접근 권한 오류');
+          break;
+        case 404:
+          alert('존재하지 않는 게시글입니다');
+          break;
+        default:
+          break;
+      }
+    });
   }, []);
 
   const onUpdate = () => {
@@ -44,20 +62,31 @@ function PostUpdate({ match, history }) {
 
     const needDelete = getUnused(wholeImg, afterEdit); // return : 삭제해야 할 이미지 url
 
-    dispatch(postUpdate(updated, needDelete, +match.params.id))
-      .then((response) => {
-        if (response.updateSuccess) {
-          history.goBack();
-        } else {
-          alert('수정에 실패했습니다. / ');
+    dispatch(postUpdate(updated, needDelete, +match.params.id)).then(
+      (response) => {
+        switch (response.status) {
+          case 200:
+            history.goBack();
+            break;
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            break;
+          default:
+            break;
         }
-      })
-      .catch((error) => console.log(error));
+      },
+    );
   };
   const onExit = () => {
     const answer = window.confirm('진짜?');
     if (answer) {
-      axios.delete('/post/back', uploadedImg).then(history.goBack());
+      axios
+        .post(`${PUBLIC_URL}/post/back`, { url: uploadedImg })
+        .then(history.goBack());
     }
   };
 
@@ -160,7 +189,7 @@ function imageHandler() {
       // this.quill.enable(false);
 
       axios
-        .post('/post/img', { img: formData })
+        .post(`${PUBLIC_URL}/post/img`, { img: formData })
         .then((response) => {
           this.quill.enable(true);
           this.quill.editor.insertEmbed(range.index, 'image', response.data);
@@ -171,8 +200,8 @@ function imageHandler() {
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log('업로드 실패');
           console.log(error);
+          alert('업로드 실패');
           this.quill.enable(true);
         });
     });

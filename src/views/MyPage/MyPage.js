@@ -8,11 +8,26 @@ import UserPost from '../../components/user/UserPost';
 import UserWithdraw from '../../components/user/UserWithdraw';
 import { useDispatch } from 'react-redux';
 import { getUserInfo } from '../../_actions/user_action';
+import { withRouter } from 'react-router';
 function MyPage(props) {
   const { Header, Content, Footer } = Layout;
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getUserInfo()).then(console.log('cool'));
+  useEffect(async () => {
+    dispatch(getUserInfo()).then((response) => {
+      switch (response.status) {
+        case 401:
+          alert('로그인하지 않은 사용자');
+          props.history.push('/');
+          break;
+        case 403:
+          alert('접근 권한 오류');
+          props.history.push('/');
+          break;
+        case 200:
+        default:
+          break;
+      }
+    });
   }, []);
   const [click, setClick] = useState('1');
 
@@ -20,8 +35,6 @@ function MyPage(props) {
     setClick(event.key);
   };
   const selectedMenu = () => {
-    console.log('project');
-    console.log(typeof click);
     switch (click) {
       case '1':
         return <UserInfo />;
@@ -42,7 +55,7 @@ function MyPage(props) {
   return (
     <>
       <div>메뉴박스 들어갈 곳</div>
-      <Layout className="layout">
+      <Layout className="layout" style={{ width: '980px' }}>
         <Header>
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[click]}>
@@ -72,4 +85,4 @@ function MyPage(props) {
   );
 }
 
-export default MyPage;
+export default withRouter(MyPage);

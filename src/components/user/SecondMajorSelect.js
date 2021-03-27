@@ -13,9 +13,17 @@ function SecondMajorSelect({ list, onChange, defaultSecondMajor }) {
           style={{ width: 170 }}
           onChange={onChange}
         >
-          {list.map((major) => {
-            return <Option value={major}>{major}</Option>;
-          })}
+          {list ? (
+            list.map((major) => {
+              return (
+                <Option key={major.id} value={major.id}>
+                  {major.name}
+                </Option>
+              );
+            })
+          ) : (
+            <></>
+          )}
           {/* <Option value="disabled" disabled>
           Disabled
         </Option> */}

@@ -1,10 +1,12 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteScrap } from '../../_actions/post_action';
-
 function UserScrap() {
   const dispatch = useDispatch();
   const { scraps } = useSelector((state) => state.user);
+
   const onRemove = (e) => {
     console.log(e.target.value);
     dispatch(deleteScrap(e.target.value)).then((response) => {

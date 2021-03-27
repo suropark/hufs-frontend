@@ -2,9 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
 function UserPost() {
-  const { posts } = useSelector((state) => state.user);
+  const { myPost } = useSelector((state) => state.user);
   return (
     <div>
       <table>
@@ -13,20 +12,17 @@ function UserPost() {
             <th>글 번호</th>
             <th>제목</th>
             <th>내용</th>
-
           </tr>
         </thead>
-        {posts
-          ? posts.map((post, index) => {
+        {myPost
+          ? myPost.map((post, index) => {
               return (
-                <tr>
-                  <td key={index}>{post.postId}</td>
+                <tr key={index}>
+                  <td>{post.id}</td>
                   <td>
-                    <Link to={`list/${post.postId}`}>{post.title}</Link>
+                    <Link to={`1/${post.id}`}>{post.title}</Link>
                   </td>
-                  <td>{post.content}</td>
                 </tr>
-
               );
             })
           : null}
