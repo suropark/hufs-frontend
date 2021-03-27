@@ -8,73 +8,121 @@ import {
   postRemove,
   postReport,
   postScrap,
+  postView,
 } from '../../_actions/post_action';
 import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
+import ReportModal from './ReportModal';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
   const [post, setPost] = useState();
   const dispatch = useDispatch();
   useEffect(async () => {
-    const request = await axios
-      .get(`/post/${+match.params.id}`)
-      .then((response) => response.data);
-    setPost(request);
+    dispatch(postView(+match.params.id)).then((response) => {
+      switch (response.status) {
+        case 200:
+          setPost(response.payload);
+          break;
+        case 401:
+          alert('로그인하지 않은 사용자');
+          history.push('/');
+          break;
+        case 403:
+          alert('접근 권한 오류');
+          break;
+        case 404:
+          alert('존재하지 않는 게시글입니다');
+          break;
+        default:
+          break;
+      }
+    });
   }, []);
-
-  // const { posts } = useSelector((state) => state.post);
-  // useEffect(() => {
-  //   const matchPost = posts.find((posts) => posts.id === +match.params.id);
-  //   setPost(matchPost);
-  // }, [posts]);
-  // console.log(typeof match.params.id);
   const onDelete = () => {
     const answer = window.confirm('게시글을 삭제하시겠습니까?');
     if (answer) {
-      dispatch(postRemove(post.id))
-        .then((response) => {
-          if (response.removeSuccess) {
-            alert('게시글이 삭제되었습니다.');
-          } else {
-            alert('게시글을 삭제하지 못했습니다.');
-          }
-        })
-        .catch((error) => console.log(error));
+      dispatch(postRemove(post.id)).then((response) => {
+        switch (response.status) {
+          case 200:
+            alert('게시글 삭제가 완료되었습니다.');
+            history.goBack();
+            break;
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            break;
+          case 404:
+            alert('존재하지 않는 게시글입니다');
+            break;
+          default:
+            break;
+        }
+      });
     }
   };
   const onLike = () => {
-    dispatch(postLike(post.id)).catch((error) => console.log(error));
+    dispatch(postLike(post.id)).then((response) => {
+      switch (response.status) {
+        case 401:
+          alert('로그인이 필요합니다.');
+          history.push('/');
+          break;
+        case 403:
+          alert('접근 권한이 없습니다');
+          break;
+        case 409:
+          alert('이미 좋아요한 게시글입니다.');
+          break;
+        case 200:
+        default:
+          break;
+      }
+    });
+    // 새로고침 필요한지
   };
   const onDellike = () => {
-    dispatch(postDellike(post.id)).catch((error) => console.log(error));
-  };
-  const onScrap = () => {
-    dispatch(postScrap(post.id)).then((response) => {
-      if (response.success) {
-        alert('스크랩 성공');
-      } else {
-        alert(response.message);
+    dispatch(postDellike(post.id)).then((response) => {
+      switch (response.status) {
+        case 401:
+          alert('로그인이 필요합니다.');
+          history.push('/');
+          break;
+        case 403:
+          alert('접근 권한이 없습니다');
+          break;
+        case 409:
+          alert('좋아요한 기록이 없습니다.');
+          break;
+        case 200:
+        default:
+          break;
       }
     });
   };
-  console.log('postview');
-  const onReport = () => {
-    // 모달 창 띄워서 신고 내용 적을 필요 있음.
-    let body = {
-      postId: post.id,
-      // content: content
-    };
-    dispatch(postReport(body))
-      .then((response) => {
-        if (response.reportSuccess) {
-          alert('신고가 완료되었습니다.');
-        } else {
-          alert('신고에 실패하였습니다');
-        }
-      })
-      .catch((error) => console.log(error));
+  const onScrap = () => {
+    dispatch(postScrap(post.id)).then((response) => {
+      switch (response.status) {
+        case 401:
+          alert('로그인이 필요합니다.');
+          history.push('/');
+          break;
+        case 403:
+          alert('접근 권한이 없습니다');
+          break;
+        case 409:
+          alert('이미 스크랩한 게시글입니다..');
+          break;
+        case 200:
+        default:
+          break;
+      }
+    });
   };
+
   return (
     <div>
       {post ? (
@@ -83,17 +131,29 @@ function PostView({ match, history }) {
           <h2>{post.title}</h2>
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
           <span>추천 수: {post.like}</span>
-          <button onClick={onLike}> 추천하기</button>
-          <button onClick={onDellike}> -1ㅎ</button>
-          <span>신고 수: {post.report}</span>
-          <button onClick={onReport}>신고하기</button>
-          <button onClick={onDelete}> 삭제하기</button>
-          <button onClick={onScrap}>스크랩하기</button>
+          <strong onClick={onLike}> 추천하기</strong>
+          <strong onClick={onDellike}> 취소</strong>
+          <br /> <span>신고 수: {post.report}</span>
+          <ReportModal type="post" id={post.id} history={history} />
+          <br /> <strong onClick={onDelete}> 삭제하기</strong>
+          <br /> <strong onClick={onScrap}>스크랩하기</strong>
+          <br />
           <Link to={`${post.id}/update`}>
-            <button>수정하기</button>
+            <strong>수정하기</strong>
           </Link>
-          <CommentList comments={post.Replies ? post.Replies : []} />
-          <CommentEdit match={match} />
+          <div>
+            <hr />
+          </div>
+          <br />
+          <br />
+          댓글 부분
+          <br />
+          <br />
+          <CommentList
+            history={history}
+            comments={post.Replies ? post.Replies : []}
+          />
+          <CommentEdit history={history} match={match} />
         </div>
       ) : (
         'isLoading'

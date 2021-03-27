@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, Switch, withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
+import { Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
 function PostList({ match, history }) {
   const [currentList, setCurrentList] = useState([]);
@@ -10,16 +11,31 @@ function PostList({ match, history }) {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const [posts, setPosts] = useState([]);
-  // const list = useSelector((state) => state.post.posts);
-  console.log(match.path.substring(1)); // 게시판 이름
+  const [loading, setloading] = useState(false);
+  // console.log(match.path.substring(1)); // 게시판 이름
   useEffect(() => {
     dispatch(postList(match)).then((response) => {
-      setPosts(response.payload.reverse());
+      switch (response.status) {
+        case 200:
+          setPosts(response.payload.reverse());
+          break;
+        case 401:
+          alert('로그인하지 않은 사용자');
+          history.push('/');
+          break;
+        case 403:
+          alert('접근 권한 오류');
+          history.push('/');
+          break;
+        default:
+          break;
+      }
     });
   }, []);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
+    setloading(true);
   }, [currentPage]);
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
@@ -27,13 +43,18 @@ function PostList({ match, history }) {
 
   return (
     <div>
-      <table>
-        <TableHeader />
-        <TableBody
-          currentList={posts.slice(firstIndex, lastIndex)}
-          match={match}
-        />
-      </table>
+      {loading ? (
+        <table>
+          <TableHeader />
+          <TableBody
+            currentList={posts.slice(firstIndex, lastIndex)}
+            match={match}
+          />
+        </table>
+      ) : (
+        <Skeleton />
+      )}
+
       <ReactPaginate
         pageCount={Math.ceil(posts.length / 10)}
         pageRangeDisplayed={5}
@@ -63,15 +84,13 @@ function PostList({ match, history }) {
   );
 }
 
-export default PostList;
+export default withRouter(PostList);
 
 function TableHeader() {
   return (
     <thead>
       <tr>
-        <th>글 번호</th>
         <th>제목</th>
-        <th>userId</th>
         <th>조회</th>
       </tr>
     </thead>
@@ -85,12 +104,11 @@ export function TableBody({ currentList, match }) {
         currentList.map((post, index) => {
           return (
             <tr key={index}>
-              <td>{post.id}</td>
               <td>{post.title.slice(0, 4)}</td>
               <td>
-                <Link to={`${match.path}/${post.id}`}>{post.userId}</Link>
+                <Link to={`${match.path}/${post.id}`}>{post.content}</Link>
               </td>
-              <td>{post.User.nickname}</td>
+              <td>{post.User}</td>
             </tr>
           );
         })

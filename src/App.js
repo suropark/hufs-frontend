@@ -14,12 +14,12 @@ function App() {
       {/* <header> 항상 보여요 header</header> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/list" component={Post} />
-        <Route path="/map" component={MapPage}/>
-        <Route path="/community" component={Post} />
-        <Route path="/life" component={Post} />
+        <Route path="/map" component={MapPage} />
         <Route path="/1" component={Post} />
         <Route path="/2" component={Post} />
+        <Route path="/3" component={Post} />
+        <Route path="/4" component={Post} />
+        <Route path="/5" component={Post} />
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />

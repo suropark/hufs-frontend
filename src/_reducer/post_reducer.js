@@ -15,10 +15,15 @@ import {
   POST_SCRAP_REMOVE_FAIL,
   POST_DELLIKE,
   POST_DELLIKE_FAIL,
+  POST_LIST_FAIL,
+  POST_VIEW,
+  POST_VIEW_FAIL,
 } from '../_actions/types';
 
 export default function post(state = {}, action) {
   switch (action.type) {
+    case POST_VIEW:
+    case POST_VIEW_FAIL:
     case POST_DELLIKE:
     case POST_DELLIKE_FAIL:
     case POST_LIST:
@@ -37,6 +42,7 @@ export default function post(state = {}, action) {
     case POST_SCRAP:
     case POST_SCRAP_REMOVE:
     case POST_SCRAP_REMOVE_FAIL:
+    case POST_LIST_FAIL:
       return {
         ...state,
       };

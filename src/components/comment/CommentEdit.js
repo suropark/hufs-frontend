@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { commentSave } from '../../_actions/comment_action';
 import useInput from '../../hooks/useInput';
-function CommentEdit({ match }) {
+import { withRouter } from 'react-router';
+import { Input } from 'antd';
+function CommentEdit({ history, match }) {
+  const { TextArea } = Input;
+
   const dispatch = useDispatch();
   const [content, onChange, setContent] = useInput('');
   const onSubmit = (e) => {
@@ -11,29 +15,42 @@ function CommentEdit({ match }) {
       postId: +match.params.id,
       content: content,
     };
-    dispatch(commentSave(body))
+    dispatch(commentSave(body)) //error 옮겨야함
       .then((response) => {
-        if (!response.saveSuccess) {
-          alert('댓글 작성에 실패했습니다.');
-        }
+        window.location.reload();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 401:
+            alert('로그인이 필요합니다.');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한이 없습니다');
+            break;
+          default:
+            break;
+        }
+      });
 
     setContent('');
   };
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="댓글을 입력하세요"
-          value={content}
-          onChange={onChange}
-        />
-        <button onClick={onSubmit}> 입력 </button>
-      </form>
+    <div style={{ width: '900px' }}>
+      <TextArea
+        size={'large'}
+        rows={4}
+        autoSize={{ minRows: 4, maxRows: 4 }}
+        showCount
+        maxLength={100}
+        type="text"
+        placeholder="댓글을 입력하세요"
+        value={content}
+        onChange={onChange}
+      />
+      <button onClick={onSubmit}> 입력 </button>
     </div>
   );
 }
 
-export default CommentEdit;
+export default withRouter(CommentEdit);

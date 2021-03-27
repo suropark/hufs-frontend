@@ -12,12 +12,18 @@ function UserWithdraw(props) {
   };
   const onWithdraw = () => {
     if (check()) {
-      dispatch(withdrawUser()).then((resposne) => {
-        if (resposne.data.withdrawlSuccess) {
-          alert('회원 탈퇴 완료');
-          props.history.push('/');
-        } else {
-          alert('회원 탈퇴 실패.');
+      dispatch(withdrawUser()).then((response) => {
+        switch (response.status) {
+          case 200:
+            alert('회원 탈퇴가 완료되었습니다');
+            props.history.push('/');
+            break;
+          case 401:
+            alert('로그인이 필요합니다.');
+            props.history.push('/');
+            break;
+          default:
+            break;
         }
       });
     }

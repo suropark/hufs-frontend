@@ -6,6 +6,7 @@ import { postSave } from '../../_actions/post_action';
 import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { PUBLIC_URL } from '../../config';
 
 let uploadedImg = [];
 function PostEdit(props) {
@@ -13,7 +14,7 @@ function PostEdit(props) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('/post/back', uploadedImg);
+      axios.delete(`${PUBLIC_URL}/post/back`, uploadedImg);
     };
   });
   console.log(props.location.state.detail.substring(1));
@@ -29,6 +30,7 @@ function PostEdit(props) {
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
     let boardId = props.location.state.detail;
+    console.log(boardId);
     let body = {
       title: value.title,
       content: value.content,
@@ -48,7 +50,9 @@ function PostEdit(props) {
       '작성하던 글은 저장되지 않습니다. 그래도 나가시겠습니까?',
     );
     if (answer) {
-      axios.delete('/post/back', uploadedImg).then(props.history.goBack());
+      axios
+        .delete(`${PUBLIC_URL}/post/back`, uploadedImg)
+        .then(props.history.goBack());
     }
   };
 
@@ -139,7 +143,7 @@ function imageHandler() {
       // this.quill.enable(false);
 
       await axios
-        .post('/post/img', { img: formData })
+        .post(`${PUBLIC_URL}/post/img`, { img: formData })
         .then((response) => {
           this.quill.editor.insertEmbed(range.index, 'image', response.data);
           uploadedImg = uploadedImg.concat(response.data);
