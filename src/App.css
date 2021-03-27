@@ -1,41 +1,10 @@
-@import '~antd/dist/antd.css';
-.site-layout-content {
-  min-height: 280px;
-  padding: 24px;
-  background: #fff;
-}
-#components-layout-demo-top .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-.ant-row-rtl #components-layout-demo-top .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
-}
-body {
-  font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-}
-/* .layout {
-  width: 1000px;
-  margin: 200px;
-} */
-.All {
-  position: relative;
-  width: 1100px;
-  height: 1170px;
-
-  background: #ffffff;
-}
-
 .Head {
-  position: absolute;
+  position: relative;
+  left: 15%;
   width: 1100px;
   height: 140px;
-  left: 150px;
-  top: 39px;
+
+  /* top: 39px; */
 
   background-color: #8897cb;
 }
@@ -50,6 +19,8 @@ body {
   padding: 15px 0px 15px 0px;
   border: '1px solid violet';
   position: absolute;
+  justify-content: center;
+  align-items: center;
   width: 250px;
   height: 68px;
   left: 0px;
@@ -69,6 +40,7 @@ body {
 
   background: #abad43;
 }
+
 .Head > .Menubar {
   /* MenuBar */
 
@@ -76,9 +48,10 @@ body {
 
   display: flex;
   flex-direction: row;
-  align-content: center;
-  align-items: flex-start;
-  padding: 0px;
+  /* align-content: center; */
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
 
   position: absolute;
   width: 850px;
@@ -103,6 +76,7 @@ body {
   /* 로그인 */
 
   position: absolute;
+
   width: 278px;
   height: 20px;
   left: 822px;
@@ -112,11 +86,12 @@ body {
 }
 
 .Main {
-  position: absolute;
+  position: relative;
+  left: 15%;
   width: 1120px;
   height: 1200px;
-  left: 140px;
-  top: 212px;
+
+  top: 20px;
   border: '1px solid violet';
   background: #8897cb;
 }
@@ -156,17 +131,17 @@ body {
 .Footer {
   /* Footer */
 
-  position: absolute;
+  position: relative;
+  left: 15%;
   width: 1120px;
   height: 100px;
-  left: 140px;
-  top: 1477px;
-
+  top: 150px;
   background: #f0d0d0;
 }
 
 .Quick {
   position: absolute;
+  text-align: left;
   width: 130px;
   height: 206px;
   right: 0px;
