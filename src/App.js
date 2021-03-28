@@ -12,6 +12,7 @@ import Board from './views/Board/Board';
 import Community from './views/Community/Community';
 import Page404 from './views/Page404/Page404';
 import EmailAuthPage from './views/EmailAuthPage/EmailAuthPage';
+import SignUpModal from './components/login/modals/SignUpModal';
 
 function App() {
   return (
@@ -19,13 +20,14 @@ function App() {
       {/* <header> 항상 보여요 header</header> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/map" component={MapPage} />
+        <Route exact path="/register" component={SignUpModal} />
         <Route path="/1" component={Post} />
         <Route path="/2" component={Post} />
         <Route path="/3" component={Post} />
         <Route path="/4" component={Post} />
         <Route path="/5" component={Post} />
-        <Route path="/board" component={Board} />x
+        <Route path="/board" component={Board} />
+        <Route path="/map" component={MapPage} />
         <Route path="/community" component={Community} />
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />

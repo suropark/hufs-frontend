@@ -1,55 +1,54 @@
 import React from 'react';
 import logo from '../../banner/logo.png';
-import { Menu, Dropdown, Button, Space, Input } from 'antd';
+import { Menu, Dropdown, Button, Space, Input, message } from 'antd';
 import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import SignUp from '../../components/login/SignUp';
 
 const { Search } = Input;
 
 function Header(props) {
-  const menu = (
-    <Menu>
-      <Menu.Item>
-        <a rel="noopener noreferrer" href="https://www.antgroup.com">
-          1st menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a rel="noopener noreferrer" href="https://www.aliyun.com">
-          2nd menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a rel="noopener noreferrer" href="https://www.luohanacademy.com">
-          3rd menu item
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
+  // const menu = (
+  //   <Menu>
+  //     <Menu.Item>
+  //       <a rel="noopener noreferrer" href="https://www.antgroup.com">
+  //         1st menu item
+  //       </a>
+  //     </Menu.Item>
+  //     <Menu.Item>
+  //       <a rel="noopener noreferrer" href="https://www.aliyun.com">
+  //         2nd menu item
+  //       </a>
+  //     </Menu.Item>
+  //     <Menu.Item>
+  //       <a rel="noopener noreferrer" href="https://www.luohanacademy.com">
+  //         3rd menu item
+  //       </a>
+  //     </Menu.Item>
+  //   </Menu>
+  // );
   const onSearch = (value) => console.log(value);
   const { Search } = Input;
-
   return (
     <div className="Head">
       <div className="Pagename">
-        <a href="/">
+        <a href="./">
           <img src={logo} />
         </a>
       </div>
       <img src="#" className="Image" alt="이미지 들어갈 곳" />
       <span className="loginbar">
-        <a href="#">회원가입 </a>
-        <a href="#">로그인 </a>
-        <a href="#">언어선택</a>
+        <SignUp />
+        <Button type="text">언어 선택</Button>
       </span>
-      <Space id="Searchbar" direction=" vertical">
+      {/* <Space id="Searchbar" direction=" vertical">
         <Search
           placeholder="검색창"
           allowClear
           onSearch={onSearch}
           style={{ width: '278px' }}
         />
-      </Space>
+      </Space> */}
       {/* <input id="Searchbar"className="Searchbar" value="검색창" /> */}
       <Space direction="vertical">
         <Space id="Menubar">
@@ -60,7 +59,7 @@ function Header(props) {
           {/* </Dropdown> */}
           {/* <Dropdown overlay={menu}> */}
           <Button type="default">
-            <Link to="/2">학교해 boo</Link>1
+            <Link to="/2">학교해 boo</Link>
           </Button>
           {/* </Dropdown> */}
           {/* <Dropdown overlay={menu}> */}
