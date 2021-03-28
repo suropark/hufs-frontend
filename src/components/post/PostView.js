@@ -13,7 +13,9 @@ import {
 import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
+import Header from '../../views/Community/Community'
 import { Skeleton } from 'antd';
+import { Input, Space } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
