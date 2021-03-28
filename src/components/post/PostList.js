@@ -5,10 +5,13 @@ import ReactPaginate from 'react-paginate';
 import './PostList.css';
 import { Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
-import Header from '../../views/Community/Community'
-import { Input, Space } from 'antd';
+import Header from '../../views/Community/Community';
+import { Table, Tag, Input, Space } from 'antd';
+import loading from '../../_actions/loading_action';
+const { Search } = Input;
+const { Column, ColumnGroup } = Table;
 function PostList({ match, history }) {
-
+  console.log(match);
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +40,7 @@ function PostList({ match, history }) {
             break;
         }
       });
-  }, []);
+  }, [match.path]);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
@@ -48,12 +51,22 @@ function PostList({ match, history }) {
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
 
   return (
-    <div >
+    <div>
       <Header />
       {loading ? (
         <table className="community">
-          <TableHeader />
-          <div className="cut-row" />
+          {' '}
+          <Search
+            placeholder="검색창"
+            allowClear
+            onSearch={(e) => console.log(e)}
+            style={{
+              float: 'right',
+              marginBottom: '10px',
+              width: '300px',
+              height: '30px',
+            }}
+          />
           <TableBody
             currentList={posts.slice(firstIndex, lastIndex)}
             match={match}
@@ -76,7 +89,6 @@ function PostList({ match, history }) {
           previousClassName={'pageLabel-btn'}
           nextClassName={'pageLabel-btn'}
         />
-
         <button
           onClick={(e) =>
             history.push({
@@ -87,7 +99,6 @@ function PostList({ match, history }) {
         >
           글 작성
         </button>
-
       </div>
     </div>
   );
@@ -95,51 +106,68 @@ function PostList({ match, history }) {
 
 export default withRouter(PostList);
 
-function TableHeader() {
-  const onSearch = value => console.log(value);
-  const { Search } = Input;
-
-  return (
-    <thead>
-      <Space id="community-searchbar" direction=" vertical" >
-        <Search placeholder="검색창" allowClear onSearch={onSearch}
-          style={{
-
-            width: '915px',
-            height: '38px'
-          }}
-        />
-      </Space>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <th>조회수</th>
-        <th>추천수</th>
-      </tr>
-    </thead>
-  );
-}
-
 export function TableBody({ currentList, match }) {
   return (
-    <tbody>
-      {currentList ? (
-        currentList.map((post, index) => {
-          return (
-            <tr key={index}>
-              <td>{post.title.slice(0, 4)}</td>
-              <td>
-                <Link to={`${match.path}/${post.id}`}>{post.content}</Link>
-              </td>
-              <td>{post.User === null ? post.User : post.User.nickname}</td>
-            </tr>
-          );
-        })
+    <>
+      {loading ? (
+        <Table pagination={false} dataSource={currentList}>
+          <Column title="-" dataIndex="id" key="id" />
+          <Column
+            title="제목"
+            key="title"
+            render={(text, record) => (
+              <Link to={`${match.path}/${record.id}`}>
+                {record.title.length > 20
+                  ? record.title.slice(0, 20)
+                  : record.title}
+              </Link>
+            )}
+          />{' '}
+          <Column
+            title="작성자"
+            render={(text, record) =>
+              record.User === null ? (
+                <>탈퇴한 사용자</>
+              ) : (
+                <>{record.User.nickname}</>
+              )
+            }
+            // console.log(record);
+            key="User"
+          />
+          <Column
+            title="작성일"
+            render={(text, record) =>
+              record.createdAt ? record.createdAt.slice(0, 10) : 'none'
+            }
+            key="createdAt"
+          />
+          <Column title="추천수" dataIndex="like" key="like" />
+        </Table>
       ) : (
-        <h2>loading</h2>
-      )}
-    </tbody>
+        <>
+          {' '}
+          <Skeleton />
+          {console.log(currentList)}
+        </>
+      )}{' '}
+    </>
+    // <tbody>
+    //   {currentList ? (
+    //     currentList.map((post, index) => {
+    //       return (
+    //         <tr key={index}>
+    //           <td>{post.title.slice(0, 4)}</td>
+    //           <td>
+    //             <Link to={`${match.path}/${post.id}`}>{post.content}</Link>
+    //           </td>
+    //           <td>{post.User === null ? post.User : post.User.nickname}</td>
+    //         </tr>
+    //       );
+    //     })
+    //   ) : (
+    //     <h2>loading</h2>
+    //   )}
+    // </tbody>
   );
 }
