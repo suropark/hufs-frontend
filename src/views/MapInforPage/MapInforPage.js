@@ -5,8 +5,10 @@ import {
 //import StarPage from '../../components/map/reviewSection/starRating/StarPage';
 import 'antd/dist/antd.css';
 import { Rate } from 'antd';
+import ReviewPage from '../ReviewPage/ReviewPage'
 
-import ReviewPage from '../../components/map/reviewSection/ReviewPage';
+import ItemRegisterFrom from '../../components/map/reviewSection/ItemRegisterForm';
+import ItemList from '../../components/map/reviewSection/ItemList.js';
 
 import ItemListContainer from "../../components/map/reviewSection/reviewContainer/ItemListContainer"
 import ItemRegisterContainer from "../../components/map/reviewSection/reviewContainer/ItemRegisterContainer"
@@ -17,14 +19,20 @@ import ReviewPostView from '../../components/map/reviewSection/ReviewPostView';
 import ReviewPostList from '../../components/map/reviewSection/ReviewPostList';
 */
 
-const InforPage = ({ match, history }) => {
+const InforPage = ({match,history,props }) => {
   const {value, setVlue} = useState(0);
   const [state, setState] = useState('');
+  
+
+  const location = useLocation();
 
   const handleChange = value => {
     setState(value);
-    history.push( {
-      pathname:`${match.path}/create`,
+    console.log('mapinfo', props);
+    console.log(match)
+    // map/info -> map/info/:name 24시해장국
+    history.push( { // map/info/:name/24시해장국/reviewpage
+      pathname:`${match.url}/ReviewPage`,
       state: {value : value}}
       );
   };
@@ -33,11 +41,9 @@ const InforPage = ({ match, history }) => {
     console.log(history.location.state);
     fetch(`../../components/exampleInfo/store-seoul.json`)
       .then((res) => res.json)
-      .then((res) => setState({ state: res }));
+      .then((res) => setState({ state: res })); 
   }, []);
   */
-
-  const location = useLocation();
 
 
   return (
@@ -48,9 +54,9 @@ const InforPage = ({ match, history }) => {
         <h1>{location.state.name}</h1>
       </div>
       <div>
-        <h4>지번주소 : {location.state.name}</h4>
+        <h4>지번주소 : {location.state.numAddress}</h4>
         
-        <h5>도로명주소 :</h5>
+        <h5>도로명주소 : {location.state.roadAddress}</h5>
         </div>
 
         <div>
@@ -58,7 +64,11 @@ const InforPage = ({ match, history }) => {
       </div>
     
       <div>
-      <Rate allowHalf defaultValue={2.5} onChange={handleChange} value = {value} />
+      <Rate allowHalf defaultValue={2.5} onChange={handleChange} value = {value}>
+        </Rate>
+        <p>별점 클릭 : 리뷰 보러가기</p>
+      {/*<ItemListContainer/>*/}
+
       </div>
       <div>
         {/*
@@ -69,10 +79,6 @@ const InforPage = ({ match, history }) => {
             component={ReviewPostList}
           />
           */}
-          <ItemListContainer/>
-        <Route component={ItemRegisterContainer} path={`${match.path}/create`} exact />
-        <Route component={ItemModifyContainer} path={`${match.path}/:itemid`} exact />
-        <Route component={ItemReadContainer} path={`${match.path}/read/:itemid`} exact />
           {/*
           <Route
             path={`${match.path}/info/${match.params.name}/:item`}

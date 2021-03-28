@@ -9,7 +9,7 @@ const pictureUrl = itemId => {
     )
 }
 
-export default function ReviewEditPage({ item, isLoading, onModify }) {
+export default function ItemModifyFrom({ item, isLoading, onModify }) {
 
 
     const [itemName, setItemName] = useState("")
@@ -49,33 +49,33 @@ export default function ReviewEditPage({ item, isLoading, onModify }) {
 
     return (
         <div align="center">
-            <h2>상품 수정</h2>
+            <h2>수정</h2>
             {isLoading && "로딩중..."}
             {!isLoading && item && (
                 <form onSubmit={handleSubmit}>
                     <table>
                         <tbody>
                             <tr>
-                                <td className="form-label">상품번호</td>
+                                <td className="form-label">번호</td>
                                 <td>
                                     <input type="text" value={item.itemId} disabled />
                                 </td>
                             </tr>
                             <tr>
-                                <td className="form-label">상품명</td>
+                                <td className="form-label">음식이름</td>
                                 <td>
                                     <input type="text" value={itemName} onChange={handleChangeItemName} />
                                 </td>
                             </tr>
                             <tr>
-                                <td className="form-label">상품가격</td>
+                                <td className="form-label">음식가격</td>
                                 <td>
                                     <input type="text" value={price} onChange={handleChangePrice} />
                                     <span>&nbsp;원</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td className="form-label">상품파일</td>
+                                <td className="form-label">음식파일</td>
                                 <td>
                                     <input type="file" onChange={handleChangeFile} />
                                 </td>
@@ -87,7 +87,7 @@ export default function ReviewEditPage({ item, isLoading, onModify }) {
                                 </td>
                             </tr>
                             <tr>
-                                <td className="form-label">상품설명</td>
+                                <td className="form-label">음식설명</td>
                                 <td>
                                     <textarea rows="5" value={description} onChange={handleChangeDescription}></textarea>
                                 </td>

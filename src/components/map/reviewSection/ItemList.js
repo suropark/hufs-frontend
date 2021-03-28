@@ -1,19 +1,24 @@
-import { Link } from "react-router-dom"
+import { Link,useHistory } from "react-router-dom"
 
-export default function PostList({ items, isLoading }) {
+
+export default function ItemList({ items, isLoading,match }) {
+    console.log("ItemListMatch", match);
+    const history = useHistory();
     return (
-        <div align="center">
-            <h2 className="title">상품 목록</h2>
+        <div >
+            <h2 className="title">리뷰 목록</h2>
             {isLoading && "로딩중..."}
             {!isLoading && items && (
                 <>
-                    <Link to="/create" className="btn-link">새로 만들기</Link>
+                <button onClick={()=>history.push({
+        pathname: `${match.path}/register`})}>생성</button>
+                      {/*<Link to={`${match.url}/register`} className="btn-link">새로 만들기</Link>*/}
                     <table className="item-list">
                         <thead>
                             <tr>
-                                <th align="center" width="80">상품아이디</th>
-                                <th align="center" width="320">상품명</th>
-                                <th align="center" width="100">상품가격</th>
+                                <th align="center" width="80">index</th>
+                                <th align="center" width="80">음식명</th>
+                                <th align="center" width="80">가격</th>
                             </tr>
                         </thead>
                         <tbody>
