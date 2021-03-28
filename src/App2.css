@@ -142,15 +142,7 @@
 
   background: #ecb3b3;
 }
-.community-box > .search {
-  position: absolute;
-  width: 915px;
-  height: 38px;
-  left: 0;
-  top: 0;
 
-  background: #ffffff;
-}
 .community-box > .content {
   position: absolute;
   width: 915px;

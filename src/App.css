@@ -39,7 +39,7 @@
   background: #abad43;
 }
 
-.Head > .Menubar {
+#Menubar {
   /* MenuBar */
 
   /* Auto Layout */
@@ -55,31 +55,18 @@
   height: 80px;
   left: 250px;
   top: 61px;
+}
 
-  background: #f0d0d0;
-}
-.Menubar > .option-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  max-height: 0;
-}
-.Menubar.active > .option-list {
-  max-height: none;
-}
-.Head > .Searchbar {
+#Searchbar {
   /* 검색창 */
 
   position: absolute;
-  width: 278px;
-  height: 30px;
+  /* width: 278px; */
+
   left: 822px;
   top: 20px;
-
-  background: #aba85e;
 }
+
 .Head > .loginbar {
   /* 로그인 */
 
@@ -157,6 +144,21 @@
 
   background: #8897cb;
 }
+/* 오른쪽 부유 바 */
+.ant-anchor-wrapper {
+  position: fixed;
+  text-align: left;
+  width: 130px;
+  height: 206px;
+  right: 6%;
+  top: 224px;
+
+  background: #8897cb;
+}
+.ant-anchor-ink {
+  display: none;
+}
+
 /* 작은 캘린더 */
 .site-calendar-demo-card {
   float: left;

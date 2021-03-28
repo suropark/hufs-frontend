@@ -5,7 +5,10 @@ import ReactPaginate from 'react-paginate';
 import './PostList.css';
 import { Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
+import Header from '../../views/Community/Community'
+import { Input, Space } from 'antd';
 function PostList({ match, history }) {
+
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,10 +48,12 @@ function PostList({ match, history }) {
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
 
   return (
-    <div>
+    <div >
+      <Header />
       {loading ? (
-        <table>
+        <table className="community">
           <TableHeader />
+          <div className="cut-row" />
           <TableBody
             currentList={posts.slice(firstIndex, lastIndex)}
             match={match}
@@ -57,21 +62,21 @@ function PostList({ match, history }) {
       ) : (
         <Skeleton />
       )}
+      <div className="bottom">
+        <ReactPaginate
+          pageCount={Math.ceil(posts.length / 10)}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={0}
+          breakLabel={''}
+          previousLabel={'이전'}
+          nextLabel={'다음'}
+          onPageChange={(event) => setCurrentPage(event.selected + 1)}
+          containerClassName={'pagination-ul'}
+          activeClassName={'currentPage'}
+          previousClassName={'pageLabel-btn'}
+          nextClassName={'pageLabel-btn'}
+        />
 
-      <ReactPaginate
-        pageCount={Math.ceil(posts.length / 10)}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={0}
-        breakLabel={''}
-        previousLabel={'이전'}
-        nextLabel={'다음'}
-        onPageChange={(event) => setCurrentPage(event.selected + 1)}
-        containerClassName={'pagination-ul'}
-        activeClassName={'currentPage'}
-        previousClassName={'pageLabel-btn'}
-        nextClassName={'pageLabel-btn'}
-      />
-      <span>
         <button
           onClick={(e) =>
             history.push({
@@ -82,7 +87,8 @@ function PostList({ match, history }) {
         >
           글 작성
         </button>
-      </span>
+
+      </div>
     </div>
   );
 }
@@ -90,11 +96,27 @@ function PostList({ match, history }) {
 export default withRouter(PostList);
 
 function TableHeader() {
+  const onSearch = value => console.log(value);
+  const { Search } = Input;
+
   return (
     <thead>
+      <Space id="community-searchbar" direction=" vertical" >
+        <Search placeholder="검색창" allowClear onSearch={onSearch}
+          style={{
+
+            width: '915px',
+            height: '38px'
+          }}
+        />
+      </Space>
       <tr>
+        <th>번호</th>
         <th>제목</th>
-        <th>조회</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
+        <th>추천수</th>
       </tr>
     </thead>
   );
