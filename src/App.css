@@ -157,3 +157,10 @@
 
   background: #8897cb;
 }
+/* 작은 캘린더 */
+.site-calendar-demo-card {
+  float: left;
+  width: 500px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+}
