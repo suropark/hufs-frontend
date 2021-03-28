@@ -11,6 +11,7 @@ import CalendarPage from './views/CalendarPage/CalendarPage';
 import Board from './views/Board/Board';
 import Community from './views/Community/Community';
 import Page404 from './views/Page404/Page404';
+import EmailAuthPage from './views/EmailAuthPage/EmailAuthPage';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />
+        <Route path="/auth" component={EmailAuthPage} />
         <Route path="*" component={Page404} />
       </Switch>
       {/* <footer>항상 보여요 footer</footer> */}

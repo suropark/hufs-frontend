@@ -22,9 +22,9 @@ function PostUpdate({ match, history }) {
     };
   });
   useEffect(async () => {
-    dispatch(postView(+match.params.id)).then((response) => {
-      switch (response.status) {
-        case 200:
+    dispatch(postView(+match.params.id))
+      .then((response) => {
+        if (response.status === 200) {
           const firstImg = Array.from(
             new DOMParser()
               .parseFromString(response.payload.content, 'text/html')
@@ -35,21 +35,24 @@ function PostUpdate({ match, history }) {
             content: response.payload.content,
           });
           wholeImg = wholeImg.concat(firstImg);
-          break;
-        case 401:
-          alert('로그인하지 않은 사용자');
-          history.push('/');
-          break;
-        case 403:
-          alert('접근 권한 오류');
-          break;
-        case 404:
-          alert('존재하지 않는 게시글입니다');
-          break;
-        default:
-          break;
-      }
-    });
+        }
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            break;
+          case 404:
+            alert('존재하지 않는 게시글입니다');
+            break;
+          default:
+            break;
+        }
+      });
   }, []);
 
   const onUpdate = () => {
@@ -62,11 +65,15 @@ function PostUpdate({ match, history }) {
 
     const needDelete = getUnused(wholeImg, afterEdit); // return : 삭제해야 할 이미지 url
 
-    dispatch(postUpdate(updated, needDelete, +match.params.id)).then(
-      (response) => {
-        switch (response.status) {
+    dispatch(postUpdate(updated, needDelete, +match.params.id))
+      .then((response) => {
+        if (response.status === 200) {
+          history.goBack();
+        }
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
           case 200:
-            history.goBack();
             break;
           case 401:
             alert('로그인하지 않은 사용자');
@@ -78,15 +85,15 @@ function PostUpdate({ match, history }) {
           default:
             break;
         }
-      },
-    );
+      });
   };
   const onExit = () => {
     const answer = window.confirm('진짜?');
     if (answer) {
       axios
         .post(`${PUBLIC_URL}/post/back`, { url: uploadedImg })
-        .then(history.goBack());
+        .then(history.goBack())
+        .catch(history.goBack());
     }
   };
 

@@ -35,14 +35,14 @@ function PostEdit(props) {
       title: value.title,
       content: value.content,
     };
-    dispatch(postSave(body, needDelete, boardId))
+    dispatch(postSave(body, needDelete, boardId.substring(1)))
       .then((response) => {
         if (response.status === 200) {
           props.history.goBack();
         }
       })
       .catch((error) => {
-        switch (error.response.status) {
+        switch (error.response?.status) {
           case 401:
             alert('로그인이 필요합니다.');
             props.history.push('/');
@@ -62,7 +62,8 @@ function PostEdit(props) {
     if (answer) {
       axios
         .delete(`${PUBLIC_URL}/post/back`, uploadedImg)
-        .then(props.history.goBack());
+        .then(props.history.goBack())
+        .catch(props.history.goBack());
     }
   };
 

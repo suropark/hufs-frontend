@@ -69,7 +69,12 @@ function CommentList({ comments, history }) {
         ? comments.map((comment, index) => {
             return (
               <div key={index}>
-                <span>유저 아이디: {comment.User}</span>
+                <span>
+                  유저 아이디:{' '}
+                  {comment.User === null
+                    ? '탈퇴한 사용자'
+                    : comment.User.nickname}
+                </span>
                 <span> 내용: {comment.content}</span>
                 <span> 추천 수: {comment.like} </span>
                 <span> 신고 수: {comment.report} </span>

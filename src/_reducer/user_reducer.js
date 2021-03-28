@@ -7,6 +7,8 @@ import {
   INFO_USER_FAIL,
   UPDATE_USER_FAIL,
   WITHDRAW_USER_FAIL,
+  AUTH_EMAIL,
+  AUTH_EMAIL_FAIL,
 } from '../_actions/types';
 export default function user(state = {}, action) {
   switch (action.type) {
@@ -19,9 +21,11 @@ export default function user(state = {}, action) {
         mainMajor: action.payload.mainMajor,
         doubleMajor: action.payload.doubleMajor,
       };
+    case AUTH_EMAIL:
     case WITHDRAW_USER:
       return {};
     case WITHDRAW_USER_FAIL:
+    case AUTH_EMAIL_FAIL:
     case INFO_USER_FAIL:
     case UPDATE_USER_FAIL:
     default:
