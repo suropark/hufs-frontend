@@ -8,6 +8,7 @@ import './App.css';
 import LoginPage from './views/LoginPage/LoginPage';
 import CalendarPage from './views/CalendarPage/CalendarPage';
 import Page404 from './views/Page404/Page404';
+import EmailAuthPage from './views/EmailAuthPage/EmailAuthPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />
+        <Route path="/auth" component={EmailAuthPage} />
         <Route path="*" component={Page404} />
       </Switch>
       {/* <footer>항상 보여요 footer</footer> */}

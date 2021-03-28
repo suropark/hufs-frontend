@@ -1,5 +1,6 @@
 import React from 'react';
 import { Result, Button } from 'antd';
+import { withRouter } from 'react-router';
 
 function Page404(props) {
   return (
@@ -19,4 +20,4 @@ function Page404(props) {
   );
 }
 
-export default Page404;
+export default withRouter(Page404);

@@ -14,23 +14,26 @@ function PostList({ match, history }) {
   const [loading, setloading] = useState(false);
   // console.log(match.path.substring(1)); // 게시판 이름
   useEffect(() => {
-    dispatch(postList(match)).then((response) => {
-      switch (response.status) {
-        case 200:
+    dispatch(postList(match))
+      .then((response) => {
+        if (response.status === 200) {
           setPosts(response.payload.reverse());
-          break;
-        case 401:
-          alert('로그인하지 않은 사용자');
-          history.push('/');
-          break;
-        case 403:
-          alert('접근 권한 오류');
-          history.push('/');
-          break;
-        default:
-          break;
-      }
-    });
+        }
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            history.push('/');
+            break;
+          default:
+            break;
+        }
+      });
   }, []);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
@@ -108,7 +111,7 @@ export function TableBody({ currentList, match }) {
               <td>
                 <Link to={`${match.path}/${post.id}`}>{post.content}</Link>
               </td>
-              <td>{post.User}</td>
+              <td>{post.User === null ? post.User : post.User.nickname}</td>
             </tr>
           );
         })

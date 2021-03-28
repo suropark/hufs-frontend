@@ -63,7 +63,6 @@ function PostView({ match, history }) {
               break;
             case 403:
               alert('접근 권한 오류');
-              history.push('/');
               break;
             case 404:
               alert('존재하지 않는 게시글입니다');
@@ -148,6 +147,11 @@ function PostView({ match, history }) {
         <div>
           <p>{post.id}</p>
           <h2>{post.title}</h2>
+          {post.User === null ? (
+            <h3> 탈퇴한 사용자 </h3>
+          ) : (
+            <h3> post.User.nickname </h3>
+          )}
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
           <span>추천 수: {post.like}</span>
           <strong onClick={onLike}> 추천하기</strong>

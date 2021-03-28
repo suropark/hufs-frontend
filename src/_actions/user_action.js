@@ -10,6 +10,8 @@ import {
   INFO_USER_FAIL,
   WITHDRAW_USER_FAIL,
   UPDATE_USER_FAIL,
+  AUTH_EMAIL_FAIL,
+  AUTH_EMAIL,
 } from './types';
 // 완료
 export const withdrawUser = async () => {
@@ -60,11 +62,29 @@ export const getUserInfo = async () => {
     };
   }
 };
-export function auth() {
-  const request = axios.get('user/auth').then((response) => response.data);
 
-  return {
-    type: AUTH_USER,
-    payload: request,
-  };
-}
+export const authEmail = async (token) => {
+  const request = await axios.get(`${PUBLIC_URL}/user/email`, null, {
+    params: { token: token },
+  });
+  if (request.status === 200) {
+    return {
+      type: AUTH_EMAIL,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: AUTH_EMAIL_FAIL,
+      status: request.status,
+    };
+  }
+};
+
+// export function auth() {
+//   const request = axios.get('user/auth').then((response) => response.data);
+
+//   return {
+//     type: AUTH_USER,
+//     payload: request,
+//   };
+// }

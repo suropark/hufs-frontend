@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Calendar, Badge } from 'antd';
 import { useSelector } from 'react-redux';
 import { List, Typography, Divider } from 'antd';
+import axios from 'axios';
+import { PUBLIC_URL } from '../../config';
 function CalendarComponent() {
-  const [dataList, setDataList] = useState([]);
   const { scholar } = useSelector((state) => state.calendar);
+  const [dataList, setDataList] = useState([]);
+  useEffect(() => {
+    setDataList(scholar);
+  }, [scholar]);
   function getListData(value) {
     let day = value._d.getUTCDate();
     let month = value._d.getUTCMonth() + 1; //months from 1-12
     let year = value._d.getUTCFullYear();
-
     const matchedData = scholar.filter((e) => {
       if (e.ScholarshipDate === null) {
         return null;
@@ -75,6 +79,7 @@ function CalendarComponent() {
           onSelect={onSelect}
         />
       ) : null}
+
       <div></div>
       <List
         header={<div>교내 교외</div>}
