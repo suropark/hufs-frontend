@@ -13,7 +13,6 @@ import Community from './views/Community/Community';
 import Page404 from './views/Page404/Page404';
 import EmailAuthPage from './views/EmailAuthPage/EmailAuthPage';
 
-
 function App() {
   return (
     <Router>
@@ -26,8 +25,8 @@ function App() {
         <Route path="/3" component={Post} />
         <Route path="/4" component={Post} />
         <Route path="/5" component={Post} />
-        <Route path='/board' component={Board} />
-        <Route path='/community' component={Community} />
+        <Route path="/board" component={Board} />
+        <Route path="/community" component={Community} />
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />

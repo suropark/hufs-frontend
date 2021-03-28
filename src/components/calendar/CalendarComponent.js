@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Calendar, Badge } from 'antd';
 import { useSelector } from 'react-redux';
 import { List, Typography, Divider } from 'antd';
-import axios from 'axios';
-import { PUBLIC_URL } from '../../config';
 function CalendarComponent() {
   const { scholar } = useSelector((state) => state.calendar);
   const [dataList, setDataList] = useState([]);
@@ -71,14 +69,12 @@ function CalendarComponent() {
 
   return (
     <div>
-      {scholar ? (
-        <Calendar
-          dateCellRender={dateCellRender}
-          // monthCellRender={monthCellRender}
-          fullscreen={false}
-          onSelect={onSelect}
-        />
-      ) : null}
+      <Calendar
+        dateCellRender={scholar ? dateCellRender : null}
+        // monthCellRender={monthCellRender}
+        fullscreen={false}
+        onSelect={scholar ? onSelect : null}
+      />
 
       <div></div>
       <List
