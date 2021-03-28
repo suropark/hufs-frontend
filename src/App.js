@@ -25,7 +25,7 @@ function App() {
         <Route path="/3" component={Post} />
         <Route path="/4" component={Post} />
         <Route path="/5" component={Post} />
-        <Route path="/board" component={Board} />
+        <Route path="/board" component={Board} />x
         <Route path="/community" component={Community} />
         <Route path="/login" component={LoginPage} />
         <Route path="/calendar" component={CalendarPage} />

@@ -1,14 +1,12 @@
 import React from 'react';
-import logo from "../../banner/logo.png";
+import logo from '../../banner/logo.png';
 import { Menu, Dropdown, Button, Space, Input } from 'antd';
-
-
+import { Redirect, withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
-
-
-function Header() {
+function Header(props) {
   const menu = (
     <Menu>
       <Menu.Item>
@@ -27,15 +25,12 @@ function Header() {
         </a>
       </Menu.Item>
     </Menu>
-
-
   );
-  const onSearch = value => console.log(value);
+  const onSearch = (value) => console.log(value);
   const { Search } = Input;
 
   return (
     <div className="Head">
-
       <div className="Pagename">
         <a href="/">
           <img src={logo} />
@@ -46,39 +41,52 @@ function Header() {
         <a href="#">회원가입 </a>
         <a href="#">로그인 </a>
         <a href="#">언어선택</a>
-
       </span>
       <Space id="Searchbar" direction=" vertical">
-        <Search placeholder="검색창" allowClear onSearch={onSearch} style={{ width: '278px' }} />
+        <Search
+          placeholder="검색창"
+          allowClear
+          onSearch={onSearch}
+          style={{ width: '278px' }}
+        />
       </Space>
       {/* <input id="Searchbar"className="Searchbar" value="검색창" /> */}
       <Space direction="vertical">
-
         <Space id="Menubar">
-          <Dropdown overlay={menu} >
-            <Button>떠들어 Boo</Button>
-          </Dropdown>
-          <Dropdown overlay={menu} >
-            <Button>학교 해 Boo</Button>
-          </Dropdown>
-          <Dropdown overlay={menu} >
-            <Button>학교 간 Boo</Button>
-          </Dropdown>
-          <Dropdown overlay={menu}>
-            <Button>학교 떠난 Boo</Button>
-          </Dropdown>
-          <Dropdown overlay={menu} >
-            <Button>정면승 Boo</Button>
-          </Dropdown>
-          <Dropdown overlay={menu} >
-            <Button>이거 모르면 바 Boo</Button>
-          </Dropdown>
-
+          {/* <Dropdown overlay={menu}> */}
+          <Button type="default">
+            <Link to="/1">떠들어 Boo </Link>
+          </Button>
+          {/* </Dropdown> */}
+          {/* <Dropdown overlay={menu}> */}
+          <Button type="default">
+            <Link to="/2">학교해 boo</Link>1
+          </Button>
+          {/* </Dropdown> */}
+          {/* <Dropdown overlay={menu}> */}
+          <Button type="default" onClick={(e) => props.history.push('/3')}>
+            <Link to="/3">학교 간 Boo </Link>
+          </Button>
+          {/* </Dropdown> */}
+          {/* <Dropdown overlay={menu}> */}
+          <Button type="default" onClick={(e) => props.history.push('/4')}>
+            <Link to="/4">학교 떠난 Boo </Link>
+          </Button>
+          {/* </Dropdown> */}
+          {/* <Dropdown overlay={menu}> */}
+          <Button type="default" onClick={(e) => props.history.push('/5')}>
+            <Link to="/5"> 정면승 Boo </Link>
+          </Button>
+          {/* </Dropdown> */}
+          {/* <Dropdown overlay={menu}> */}
+          <Button type="default" onClick={(e) => props.history.push('/6')}>
+            <Link to="/6">이거 모르면 바 Boo </Link>
+          </Button>
+          {/* </Dropdown> */}
         </Space>
       </Space>
-
-    </div >
+    </div>
   );
 }
 
-export default Header;
+export default withRouter(Header);
