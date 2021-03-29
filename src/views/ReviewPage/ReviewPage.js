@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch,useHistory } from 'react-router-dom';
 import ItemListContainer from "../../components/map/reviewSection/reviewContainer/ItemListContainer"
 import ItemRegisterContainer from "../../components/map/reviewSection/reviewContainer/ItemRegisterContainer"
 import ItemModifyContainer from "../../components/map/reviewSection/reviewContainer/ItemModifyContainer"
@@ -14,8 +14,8 @@ function ReviewPage(props) {
       <Switch>
         <Route component={ItemListContainer} path={`${props.match.url}`} exact />
         <Route component={ItemRegisterContainer} path={`${props.match.url}/register`} exact />
-        <Route component={ItemModifyContainer} path={`${props.match.url}/edit/:itemId`} exact />
-        <Route component={ItemReadContainer} path={`${props.match.url}/read/:itemId`} exact />
+        <Route component={ItemModifyContainer} path={`${props.match.url}/edit/:id`} exact />
+        <Route component={ItemReadContainer} path={`${props.match.url}/read/:id`} exact />
 </Switch>      </div>
     </div>
     </Router>

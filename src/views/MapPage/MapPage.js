@@ -11,8 +11,8 @@ function MapPage({match}) {
       <Switch>
         <Route exact path={`${match.path}`} component={MapContainer} />
         {/* <Route exact path={`${match.path}/info`} component = {inforPage}/> */}
-        <Route exact path={`${match.path}/info/:name/ReviewPage`} component = {ReviewPage}/>
-        <Route exact path={`${match.path}/info/:name`} component = {inforPage}/>
+        <Route exact path={`${match.path}/info/:name/:id/ReviewPage`} component = {ReviewPage}/>
+        <Route exact path={`${match.path}/info/:name/:id`} component = {inforPage}/>
        
 
       </Switch>

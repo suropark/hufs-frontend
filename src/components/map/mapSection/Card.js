@@ -1,12 +1,15 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {Card} from 'antd';
+import {Card,Button,Typography} from 'antd';
 import {useHistory,withRouter,useLocation } from 'react-router-dom';
-import { Button } from 'antd'
+
+import './Card.css'
+import icon_rstrn from './icon_rstrn.png';
 
 const { kakao } = window;
+const { Text,Title } = Typography;
 
-const Rstrn = ( {name,numAddress,roadAddress,lat,long,match}) => {
+const Rstrn = ( {id, name,numAddress,roadAddress,lat,long,match}) => {
   //const history = useHistory();
 
   //const [markerPositions, setMarkerPositions] = useState();
@@ -63,8 +66,134 @@ function displayMarker (){
       content: content,
       yAnchor: 1
     });
+    
+ 
 
-    customOverlay1.setMap(null);
+    //customOverlay1.setMap(null);
+    
+    
+    /*
+    var content = '<div class="wrap">' +// 
+            '    <div class="info">' + //
+            '        <div class="title">' + //
+            `            ${name}`+//
+            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+            '        </div>' + //
+            '        <div class="body">' + 
+            '            <div class="img">' +
+            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+            '           </div>' + //
+            '            <div class="desc">' + //
+            '                <div class="ellipsis">'+`${numAddress}`+
+            '</div>' + //
+            '                <div class="jibun ellipsis">'+`${roadAddress}`+
+            '</div>' + //
+            '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' + 
+            '           </div>' + 
+            '        </div>' + 
+            '    </div>' +    
+            '</div>';
+            
+           */
+
+    var content = document.createElement("div");
+    content.className = "wrap";//
+
+    var content1 = document.createElement("div");
+    content1.className = "info";
+
+    var content2 = document.createElement("div");
+    content2.className = "title";
+
+    content2.appendChild(document.createTextNode(name));
+
+    var content3 = document.createElement("div");
+    content3.className = "close";
+    content3.title = "닫기";
+    content3.onclick = function () {
+      customOverlay1.setMap(null);
+    }
+    content2.appendChild(content3);
+    content1.appendChild(content2);
+
+    var content4 = document.createElement("div");
+    content4.className = "body";
+
+    var content5 = document.createElement("div");
+    content5.className = "img";
+    
+    var content11 = document.createElement("img");
+    content11.src = icon_rstrn;
+    content11.width="73";
+    content11.height="70";
+
+    content5.appendChild(content11);
+    content4.appendChild(content5);
+
+    var content6 = document.createElement("div");
+    content6.className = "desc";
+
+    var content7 = document.createElement("div");
+    content7.className = "ellipsis";
+    content7.appendChild(document.createTextNode(numAddress));
+
+    content6.appendChild(content7);
+
+    var content8 = document.createElement("div");
+    content8.className = "jibun ellipsis";
+    content8.appendChild(document.createTextNode(roadAddress));
+
+    var content9 = document.createElement("div");
+    var content10 = document.createElement("button");
+    content10.className = "link";
+    content10.appendChild(document.createTextNode("상세 보기"));
+    content10.onclick = function () {
+      history.push( {
+        pathname: `${match.path}/info/${name}/${id}`,
+        state: {   
+          id: id,
+          name : name,
+        numAddress : numAddress,
+        roadAddress : roadAddress,
+        }
+        
+    }
+      );
+    // history.pushState(query, '', `${match.path}/info/${name}`);  
+      
+    };
+    content9.appendChild(content10);
+    
+    content6.appendChild(content8);
+    
+    content6.appendChild(content9);
+
+
+
+    content4.appendChild(content6);
+
+    content1.appendChild(content4);
+    content.appendChild(content1);
+
+
+
+    customOverlay1.setContent(content);
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+            
+    /*
 
     var content = document.createElement("div");
     content.className = "overlaybox";
@@ -91,8 +220,10 @@ function displayMarker (){
     selectBtn.appendChild(temp_link);
     selectBtn.onclick = function () {
       history.push( {
-        pathname: `${match.path}/info/${name}`,
-        state: {   name : name,
+        pathname: `${match.path}/info/${name}/${id}`,
+        state: {   
+          id: id,
+          name : name,
         numAddress : numAddress,
         roadAddress : roadAddress,
         }
@@ -106,8 +237,19 @@ function displayMarker (){
     buttonContainer.appendChild(selectBtn);
 
     content.appendChild(buttonContainer);
-
-    customOverlay1.setContent(content);
+    
+   /*
+    function closeOverlay() {
+      history.push( {
+        pathname: `${match.path}/info/${name}/${id}`,
+        state: {   
+          id: id,
+          name : name,
+        numAddress : numAddress,
+        roadAddress : roadAddress,
+        }
+      });
+    }*/
 
   
    // 커스텀 오버레이를 생성합니다
@@ -162,7 +304,7 @@ function hideMarkers(markers) {
 
 
 const style = {
-  height: '100px',
+  height: '80px',
   width: '100px',
 };
 
@@ -173,13 +315,12 @@ return (
 <>
 <div>
   {
-    <Card size="small" title="Small size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
-      <p>{name}</p>
-      <p>{numAddress}</p>
-      <p>{roadAddress}</p>
-      <button onClick={displayMarker}>
-          지도에서 확인하기
-        </button>
+    <Card size="small" style={{ width: 300, height:40 }}>
+      <Title level={5}>{name}</Title>
+      <h5>{roadAddress}</h5>
+      <Button type="primary"onClick={displayMarker}>
+          위치 확인
+        </Button>
   </Card>}
     </div>
     <div id="map" style={style}></div>
