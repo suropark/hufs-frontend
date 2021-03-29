@@ -16,7 +16,7 @@ function CalendarMainPage(props) {
         setscholar(response.payload.data);
       })
       .catch((error) => {
-        switch (error.response.status) {
+        switch (error.response?.status) {
           case 401:
             alert('로그인하지 않은 사용자');
             props.history.push('/');

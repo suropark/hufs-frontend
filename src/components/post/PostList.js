@@ -3,11 +3,10 @@ import { Link, Switch, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
-import { Skeleton } from 'antd';
+import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
 import { PageHeader, Button, Table, Tag, Input, Space } from 'antd';
 import loading from '../../_actions/loading_action';
-import Footer from '../../views/Footer/Footer';
 const { Search } = Input;
 const { Column, ColumnGroup } = Table;
 function PostList({ match, history }) {
@@ -23,16 +22,17 @@ function PostList({ match, history }) {
       .then((response) => {
         if (response.status === 200) {
           setPosts(response.payload.reverse());
+          setloading(true);
         }
       })
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
-            alert('로그인하지 않은 사용자');
+            message.error('로그인하지 않은 사용자');
             history.push('/');
             break;
           case 403:
-            alert('접근 권한 오류');
+            message.error('접근 권한 오류');
             history.push('/');
             break;
           default:
@@ -43,7 +43,6 @@ function PostList({ match, history }) {
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
-    setloading(true);
   }, [currentPage]);
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
@@ -55,7 +54,7 @@ function PostList({ match, history }) {
       case 2:
         return '학교해 boo';
       case 3:
-        return '3 게시판';
+        return '학교간 boo';
       case 4:
         return '4 게시판';
       case 5:
@@ -123,7 +122,6 @@ function PostList({ match, history }) {
           nextClassName={'pageLabel-btn'}
         />
       </div>
-      <Footer />
     </>
   );
 }
@@ -172,7 +170,7 @@ export function TableBody({ currentList, match }) {
         <>
           {' '}
           <Skeleton />
-          {console.log(currentList)}
+          {/* {console.log(currentList)} */}
         </>
       )}{' '}
     </>

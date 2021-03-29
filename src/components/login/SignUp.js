@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import SignInModal from './modals/SignInModal';
-import SignOnModal from './modals/SignUpModal';
+import SignUpModal from './modals/SignUpModal';
 
 const SignUp = () => {
   const [signUpModalOn, setSignUpModalOn] = useState(false);
@@ -12,7 +12,7 @@ const SignUp = () => {
   return (
     <>
       <SignInModal />
-      {signUpModalOn ? <SignOnModal /> : null}
+      {signUpModalOn ? <SignUpModal /> : null}
     </>
   );
 };
