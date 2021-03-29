@@ -7,6 +7,7 @@ import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { PUBLIC_URL } from '../../config';
+import { Button } from 'antd';
 
 let uploadedImg = [];
 function PostEdit(props) {
@@ -68,26 +69,38 @@ function PostEdit(props) {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="제목"
-        value={value.title}
-        onChange={(e) => setvalue({ ...value, title: e.target.value })}
-      />
-      <ReactQuill
-        placeholder="하이"
-        theme="snow"
-        onChange={(content, delta, source, editor) => {
-          console.log(value);
-          setvalue({ ...value, content: editor.getHTML() });
-        }}
-        modules={modules}
-        formats={formats}
-      ></ReactQuill>
-      <button onClick={onSubmit}>제출</button>
-      <button onClick={onExit}>취소</button>
-    </div>
+    <>
+      <div id="community-main">
+        <input
+          className="title-bar"
+          type="text"
+          placeholder="   제목을 입력해 주세요"
+          value={value.title}
+          onChange={(e) => {
+            console.log(value);
+            setvalue({ ...value, title: e.target.value });
+          }}
+        />
+        <ReactQuill
+          placeholder="내용 ㄱ"
+          theme="snow"
+          onChange={(content, delta, source, editor) => {
+            console.log(value);
+            setvalue({ ...value, content: editor.getHTML() });
+          }}
+          modules={modules}
+          formats={formats}
+        ></ReactQuill>
+        <div id="button-bar">
+          <Button type="primary" onClick={onSubmit} style={{
+            margin: '10px'
+          }} >제출</Button>
+          <Button type="primary" onClick={onSubmit} style={{
+            margin: '10px'
+          }}>취소</Button>
+        </div>
+      </div>
+    </>
   );
 }
 

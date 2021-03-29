@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { postUpdate, postView } from '../../_actions/post_action';
 import axios from 'axios';
 import { PUBLIC_URL } from '../../config';
+import { Skeleton, Button } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
@@ -102,15 +103,18 @@ function PostUpdate({ match, history }) {
   }, [updated]);
 
   return (
-    <div>
+    <div id="community-main">
       {updated ? (
         <div>
           <p>글 번호: {updated.id}</p>
           <input
+            className="title-bar"
             type="text"
             placeholder="제목"
             value={updated.title}
-            onChange={(e) => setUpdated({ ...updated, title: e.target.value })}
+            onChange={(e) =>
+              setUpdated({ ...updated, title: e.target.value })
+            }
           />
           <ReactQuill
             className="1"
@@ -124,11 +128,15 @@ function PostUpdate({ match, history }) {
             formats={formats}
           ></ReactQuill>
 
-          <button onClick={onUpdate}>수정하기</button>
-          <button onClick={onExit}>취소하기</button>
+          <div id="button-bar">
+            <Button type="primary" onClick={onUpdate} style={{
+              margin: '10px'
+            }} >수정하기</Button>
+            <Button type="primary" onClick={onExit} >취소하기</Button>
+          </div>
         </div>
       ) : (
-        'isLoading'
+        <Skeleton />
       )}
     </div>
   );
