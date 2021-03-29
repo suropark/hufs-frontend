@@ -10,6 +10,7 @@ import loading from '../../_actions/loading_action';
 const { Search } = Input;
 const { Column, ColumnGroup } = Table;
 function PostList({ match, history }) {
+
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -170,7 +171,6 @@ export function TableBody({ currentList, match }) {
         <>
           {' '}
           <Skeleton />
-          {/* {console.log(currentList)} */}
         </>
       )}{' '}
     </>

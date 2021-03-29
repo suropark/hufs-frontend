@@ -5,6 +5,7 @@ import axios from 'axios';
 import { message, Modal, Button } from 'antd';
 import kakao_pic from '../style/kakao_pic.png';
 import google_pic from '../style/google_pic.png';
+
 const SignInModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -50,12 +51,12 @@ const SignInModal = () => {
         <img
           style={{ cursor: 'pointer' }}
           onClick={signInGoogle}
-          src={kakao_pic}
+          src={google_pic}
         />
         <img
           style={{ cursor: 'pointer', marginLeft: '66px' }}
           onClick={signInKakao}
-          src={google_pic}
+          src={kakao_pic}
         />
       </Modal>
     </>
