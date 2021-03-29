@@ -10,7 +10,6 @@ import loading from '../../_actions/loading_action';
 const { Search } = Input;
 const { Column, ColumnGroup } = Table;
 function PostList({ match, history }) {
-
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,7 +29,7 @@ function PostList({ match, history }) {
         switch (error.response?.status) {
           case 401:
             message.error('로그인하지 않은 사용자');
-            history.push('/');
+            // history.push('/');
             break;
           case 403:
             message.error('접근 권한 오류');
@@ -69,45 +68,41 @@ function PostList({ match, history }) {
   return (
     <>
       {' '}
-      {loading ? (
-        <table className="community-main">
-          {/* <span className="navi"> */}
-          <PageHeader
-            title={findBoardName(+match.url.substring(1))}
-            subTitle="설명"
-          />{' '}
-          {/* </span>{' '} */}
-          <div className="community-box">
-            <Button
-              onClick={(e) =>
-                history.push({
-                  pathname: `${match.path}/edit`,
-                  state: { detail: match.path },
-                })
-              }
-            >
-              글 작성
-            </Button>
-            <Search
-              placeholder="검색창"
-              allowClear
-              onSearch={(e) => console.log(e)}
-              style={{
-                float: 'right',
-                marginBottom: '10px',
-                width: '300px',
-                height: '30px',
-              }}
-            />
-            <TableBody
-              currentList={posts.slice(firstIndex, lastIndex)}
-              match={match}
-            />
-          </div>
-        </table>
-      ) : (
-        <Skeleton />
-      )}
+      <table className="community-main">
+        <PageHeader
+          title={findBoardName(+match.url.substring(1))}
+          subTitle="설명"
+        />{' '}
+        {/* <span className="navi"> */}
+        {/* </span>{' '} */}
+        <div className="community-box">
+          <Button
+            onClick={(e) =>
+              history.push({
+                pathname: `${match.path}/edit`,
+                state: { detail: match.path },
+              })
+            }
+          >
+            글 작성
+          </Button>
+          <Search
+            placeholder="검색창"
+            allowClear
+            onSearch={(e) => console.log(e)}
+            style={{
+              float: 'right',
+              marginBottom: '10px',
+              width: '300px',
+              height: '30px',
+            }}
+          />
+          <TableBody
+            currentList={posts.slice(firstIndex, lastIndex)}
+            match={match}
+          />
+        </div>
+      </table>
       <div className="bottom">
         <ReactPaginate
           pageCount={Math.ceil(posts.length / 10)}
