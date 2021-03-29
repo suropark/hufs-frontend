@@ -1,13 +1,12 @@
 import React from 'react';
 import { Result, Button } from 'antd';
 
-function AuthSuccess() {
+function AuthUnauthorized() {
   return (
     <div>
       <Result
-        status="success"
-        title="웹메일 인증이 완료되었습니다."
-        subTitle="페이지 사용이 가능합니다."
+        title="접근 권한이 존재하지 않습니다"
+        subTitle="인증 상태를 확인해주세요"
         extra={[
           <Button key="pageDirect">
             <a href="/" target="blank">
@@ -20,4 +19,4 @@ function AuthSuccess() {
   );
 }
 
-export default AuthSuccess;
+export default AuthUnauthorized;

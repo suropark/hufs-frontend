@@ -33,9 +33,9 @@ function Header(props) {
   return (
     <div className="Head">
       <div className="Pagename">
-        <a href="./">
+        <Link to="/">
           <img src={logo} />
-        </a>
+        </Link>
       </div>
       <img src="#" className="Image" alt="이미지 들어갈 곳" />
       <span className="loginbar">

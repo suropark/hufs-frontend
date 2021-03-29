@@ -74,7 +74,6 @@ const SignUpModal = (props) => {
           onOk={() => showSignUpModal(false)}
           onCancel={() => showSignUpModal(false)}
         > */}
-      <Header />
       <div
         style={{
           display: 'inline-block',

@@ -135,7 +135,6 @@
 }
 
 .Quick {
-  position: fixed;
   text-align: left;
   width: 130px;
   height: 206px;
@@ -146,12 +145,12 @@
 }
 /* 오른쪽 부유 바 */
 .ant-anchor-wrapper {
-  position: fixed;
+  position: absolute;
   text-align: left;
   width: 130px;
   height: 206px;
-  right: 6%;
   top: 224px;
+  left: 1400px;
 
   background: #8897cb;
 }

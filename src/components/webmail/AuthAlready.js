@@ -9,7 +9,7 @@ function AuthExpired() {
         subTitle="HUFSpace_ 사용이 가능합니다."
         extra={[
           <Button key="pageDirect">
-            <a href="naver.com" target="blank">
+            <a href="/" target="blank">
               HUFSpace_로 이동하기
             </a>
           </Button>,
