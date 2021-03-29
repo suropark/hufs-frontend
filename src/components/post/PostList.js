@@ -5,13 +5,12 @@ import ReactPaginate from 'react-paginate';
 import './PostList.css';
 import { Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
-import Header from '../../views/Community/Community';
-import { Table, Tag, Input, Space } from 'antd';
+import { PageHeader, Button, Table, Tag, Input, Space } from 'antd';
 import loading from '../../_actions/loading_action';
+import Footer from '../../views/Footer/Footer';
 const { Search } = Input;
 const { Column, ColumnGroup } = Table;
 function PostList({ match, history }) {
-  console.log(match);
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,28 +48,62 @@ function PostList({ match, history }) {
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
-
+  function findBoardName(boardId) {
+    switch (boardId) {
+      case 1:
+        return '떠들어 boo';
+      case 2:
+        return '학교해 boo';
+      case 3:
+        return '3 게시판';
+      case 4:
+        return '4 게시판';
+      case 5:
+        return '5 게시판';
+      case 6:
+        return '6 게시판';
+      default:
+        break;
+    }
+  }
   return (
-    <div>
-      <Header />
+    <>
+      {' '}
       {loading ? (
-        <table className="community">
-          {' '}
-          <Search
-            placeholder="검색창"
-            allowClear
-            onSearch={(e) => console.log(e)}
-            style={{
-              float: 'right',
-              marginBottom: '10px',
-              width: '300px',
-              height: '30px',
-            }}
-          />
-          <TableBody
-            currentList={posts.slice(firstIndex, lastIndex)}
-            match={match}
-          />
+        <table className="community-main">
+          {/* <span className="navi"> */}
+          <PageHeader
+            title={findBoardName(+match.url.substring(1))}
+            subTitle="설명"
+          />{' '}
+          {/* </span>{' '} */}
+          <div className="community-box">
+            <Button
+              onClick={(e) =>
+                history.push({
+                  pathname: `${match.path}/edit`,
+                  state: { detail: match.path },
+                })
+              }
+            >
+              글 작성
+            </Button>
+            <Search
+              placeholder="검색창"
+              allowClear
+              onSearch={(e) => console.log(e)}
+              style={{
+                float: 'right',
+                marginBottom: '10px',
+                width: '300px',
+                height: '30px',
+              }}
+            />
+            <TableBody
+              currentList={posts.slice(firstIndex, lastIndex)}
+              match={match}
+            />
+          </div>
         </table>
       ) : (
         <Skeleton />
@@ -89,18 +122,9 @@ function PostList({ match, history }) {
           previousClassName={'pageLabel-btn'}
           nextClassName={'pageLabel-btn'}
         />
-        <button
-          onClick={(e) =>
-            history.push({
-              pathname: `${match.path}/edit`,
-              state: { detail: match.path },
-            })
-          }
-        >
-          글 작성
-        </button>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

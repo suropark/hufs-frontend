@@ -10,7 +10,7 @@ function AuthExpired() {
         subTitle="다시 인증 부탁드립니다."
         extra={[
           <Button key="pageDirect">
-            <a href="naver.com" target="blank">
+            <a href="/" target="blank">
               HUFSpace_로 이동하기
             </a>
           </Button>,

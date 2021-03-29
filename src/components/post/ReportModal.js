@@ -68,9 +68,14 @@ function ReportModal({ type, id, history }) {
   };
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        신고하기
-      </Button>
+      <div>
+        <span
+          onClick={showModal}
+          style={{ cursor: 'pointer', float: 'right', marginLeft: '12px' }}
+        >
+          신고하기
+        </span>
+      </div>
       <Modal
         title="신고 / report"
         visible={isModalVisible}
