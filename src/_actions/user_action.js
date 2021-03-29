@@ -12,6 +12,8 @@ import {
   UPDATE_USER_FAIL,
   AUTH_EMAIL_FAIL,
   AUTH_EMAIL,
+  LOGOUT_USER,
+  LOGOUT_USER_FAIL,
 } from './types';
 // 완료
 export const withdrawUser = async () => {
@@ -62,7 +64,21 @@ export const getUserInfo = async () => {
     };
   }
 };
+export const logoutUser = async () => {
+  const request = await axios.post(`${PUBLIC_URL}/user/sign-out`);
 
+  if (request.status === 200) {
+    return {
+      type: LOGOUT_USER,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: LOGOUT_USER_FAIL,
+      status: request.status,
+    };
+  }
+};
 export const authEmail = async (token) => {
   const request = await axios.get(`${PUBLIC_URL}/user/email`, null, {
     params: { token: token },

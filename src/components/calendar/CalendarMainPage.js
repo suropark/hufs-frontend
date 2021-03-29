@@ -105,7 +105,7 @@ function CalendarMainPage(props) {
           style={{ height: '400px' }}
           header={
             <div>
-              교내 교외
+              <span>장학금</span>
               <Button
                 style={{ float: 'right' }}
                 type="text"
@@ -123,8 +123,13 @@ function CalendarMainPage(props) {
               <Typography.Text>
                 [{item.ScholarshipSchoolOption.name}]
               </Typography.Text>{' '}
-              {item.title}{' '}
-              <h4
+              <span
+                style={{ cursor: 'pointer' }}
+                onClick={(e) => window.open(item.link)}
+              >
+                {item.title}
+              </span>{' '}
+              {/* <h4
                 onClick={(e) => window.open(item.link)}
                 style={{
                   display: 'inline-block',
@@ -133,7 +138,7 @@ function CalendarMainPage(props) {
                 }}
               >
                 링크
-              </h4>
+              </h4> */}
             </List.Item>
           )}
         />
