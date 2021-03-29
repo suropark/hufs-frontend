@@ -8,6 +8,10 @@ import { withRouter } from 'react-router-dom';
 import { postUpdate, postView } from '../../_actions/post_action';
 import axios from 'axios';
 import { PUBLIC_URL } from '../../config';
+import Footer from '../../views/Footer/Footer';
+import Header from '../../views/Header/Header';
+import Quick from '../../views/Quick/Quick';
+import { Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
@@ -102,35 +106,39 @@ function PostUpdate({ match, history }) {
   }, [updated]);
 
   return (
-    <div>
-      {updated ? (
-        <div>
-          <p>글 번호: {updated.id}</p>
-          <input
-            type="text"
-            placeholder="제목"
-            value={updated.title}
-            onChange={(e) => setUpdated({ ...updated, title: e.target.value })}
-          />
-          <ReactQuill
-            className="1"
-            placeholder="하이"
-            theme="snow"
-            value={updated.content}
-            onChange={(content, delta, source, editor) => {
-              setUpdated({ ...updated, content: editor.getHTML() });
-            }}
-            modules={modules}
-            formats={formats}
-          ></ReactQuill>
+    <>
+      <div className="community-main">
+        {updated ? (
+          <div>
+            <p>글 번호: {updated.id}</p>
+            <input
+              type="text"
+              placeholder="제목"
+              value={updated.title}
+              onChange={(e) =>
+                setUpdated({ ...updated, title: e.target.value })
+              }
+            />
+            <ReactQuill
+              className="1"
+              placeholder="하이"
+              theme="snow"
+              value={updated.content}
+              onChange={(content, delta, source, editor) => {
+                setUpdated({ ...updated, content: editor.getHTML() });
+              }}
+              modules={modules}
+              formats={formats}
+            ></ReactQuill>
 
-          <button onClick={onUpdate}>수정하기</button>
-          <button onClick={onExit}>취소하기</button>
-        </div>
-      ) : (
-        'isLoading'
-      )}
-    </div>
+            <button onClick={onUpdate}>수정하기</button>
+            <button onClick={onExit}>취소하기</button>
+          </div>
+        ) : (
+          <Skeleton />
+        )}
+      </div>
+    </>
   );
 }
 

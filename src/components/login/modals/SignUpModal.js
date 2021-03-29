@@ -9,6 +9,7 @@ const SignUpModal = (props) => {
   const { Option } = Select;
   const [major, setMajor] = useState(false);
   const [doubleMajor, setDoubleMajor] = useState(false);
+
   const [submit, setSubmit] = useState({nickname: "", webmail: "", mainMajorId: 0, doubleMajorId: "", isAgrred: false});
 
   useEffect(async () => {
@@ -27,6 +28,7 @@ const SignUpModal = (props) => {
       .catch((e) => {
         console.log(e);
       }) // 배열 [id, name ]
+
     setDoubleMajor(request2);
     console.log(request2);
   }, []);
@@ -149,3 +151,4 @@ const SignUpModal = (props) => {
 };
 
 export default withRouter(SignUpModal);
+

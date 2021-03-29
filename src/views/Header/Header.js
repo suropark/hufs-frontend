@@ -33,14 +33,19 @@ function Header(props) {
   return (
     <div className="Head">
       <div className="Pagename">
-        <a href="./">
+        <Link to="/">
           <img src={logo} />
-        </a>
+        </Link>
       </div>
       <img src="#" className="Image" alt="이미지 들어갈 곳" />
       <span className="loginbar">
         <SignUp /> <Logout />
-        <Button type="text">언어 선택</Button>
+        <Button type="text">
+          <Link style={{ color: 'rgba(0, 0, 0, 0.85)' }} to="/mypage">
+            My page
+          </Link>{' '}
+        </Button>
+        {/* <Button type="text">언어 선택</Button> */}
       </span>
       {/* <Space id="Searchbar" direction=" vertical">
         <Search

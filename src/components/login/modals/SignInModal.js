@@ -14,7 +14,7 @@ const SignInModal = () => {
       .get(`http://52.78.2.40:8080/user/sign-in/google`)
       .then((response) => {
         console.log(response.status);
-        message.success('Social Sign in Successfully');
+        message.success('소셜 로그인 성공!');
       })
       .catch((error) => {
         console.log(error);
@@ -27,7 +27,7 @@ const SignInModal = () => {
       .get(`http://52.78.2.40:8080/user/sign-in/kakao`)
       .then((response) => {
         console.log(response.status);
-        message.success('Sign in Successfully');
+        message.success('소셜 로그인 성공!');
       })
       .catch((error) => {
         console.log(error);

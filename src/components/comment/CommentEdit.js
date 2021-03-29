@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { commentSave } from '../../_actions/comment_action';
 import useInput from '../../hooks/useInput';
 import { withRouter } from 'react-router';
-import { Input } from 'antd';
+import { Button, Input } from 'antd';
 function CommentEdit({ history, match }) {
   const { TextArea } = Input;
 
@@ -38,6 +38,7 @@ function CommentEdit({ history, match }) {
   return (
     <div style={{ width: '900px' }}>
       <TextArea
+        style={{ display: 'inline-block', width: '750px' }}
         size={'large'}
         rows={4}
         autoSize={{ minRows: 4, maxRows: 4 }}
@@ -48,7 +49,13 @@ function CommentEdit({ history, match }) {
         value={content}
         onChange={onChange}
       />
-      <button onClick={onSubmit}> 입력 </button>
+      <Button
+        style={{ width: '120px', height: '113px', position: 'absolute' }}
+        onClick={onSubmit}
+      >
+        {' '}
+        댓글 입력{' '}
+      </Button>
     </div>
   );
 }

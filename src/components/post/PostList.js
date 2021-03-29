@@ -3,15 +3,14 @@ import { Link, Switch, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
-import { Skeleton } from 'antd';
+import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
-import Header from '../../views/Community/Community';
-import { Table, Tag, Input, Space } from 'antd';
+import { PageHeader, Button, Table, Tag, Input, Space } from 'antd';
 import loading from '../../_actions/loading_action';
 const { Search } = Input;
 const { Column, ColumnGroup } = Table;
 function PostList({ match, history }) {
-  console.log(match);
+
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,16 +23,17 @@ function PostList({ match, history }) {
       .then((response) => {
         if (response.status === 200) {
           setPosts(response.payload.reverse());
+          setloading(true);
         }
       })
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
-            alert('로그인하지 않은 사용자');
+            message.error('로그인하지 않은 사용자');
             history.push('/');
             break;
           case 403:
-            alert('접근 권한 오류');
+            message.error('접근 권한 오류');
             history.push('/');
             break;
           default:
@@ -44,33 +44,66 @@ function PostList({ match, history }) {
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
-    setloading(true);
   }, [currentPage]);
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
-
+  function findBoardName(boardId) {
+    switch (boardId) {
+      case 1:
+        return '떠들어 boo';
+      case 2:
+        return '학교해 boo';
+      case 3:
+        return '학교간 boo';
+      case 4:
+        return '4 게시판';
+      case 5:
+        return '5 게시판';
+      case 6:
+        return '6 게시판';
+      default:
+        break;
+    }
+  }
   return (
-    <div>
-      <Header />
+    <>
+      {' '}
       {loading ? (
-        <table className="community">
-          {' '}
-          <Search
-            placeholder="검색창"
-            allowClear
-            onSearch={(e) => console.log(e)}
-            style={{
-              float: 'right',
-              marginBottom: '10px',
-              width: '300px',
-              height: '30px',
-            }}
-          />
-          <TableBody
-            currentList={posts.slice(firstIndex, lastIndex)}
-            match={match}
-          />
+        <table className="community-main">
+          {/* <span className="navi"> */}
+          <PageHeader
+            title={findBoardName(+match.url.substring(1))}
+            subTitle="설명"
+          />{' '}
+          {/* </span>{' '} */}
+          <div className="community-box">
+            <Button
+              onClick={(e) =>
+                history.push({
+                  pathname: `${match.path}/edit`,
+                  state: { detail: match.path },
+                })
+              }
+            >
+              글 작성
+            </Button>
+            <Search
+              placeholder="검색창"
+              allowClear
+              onSearch={(e) => console.log(e)}
+              style={{
+                float: 'right',
+                marginBottom: '10px',
+                width: '300px',
+                height: '30px',
+              }}
+            />
+            <TableBody
+              currentList={posts.slice(firstIndex, lastIndex)}
+              match={match}
+            />
+          </div>
         </table>
       ) : (
         <Skeleton />
@@ -89,18 +122,8 @@ function PostList({ match, history }) {
           previousClassName={'pageLabel-btn'}
           nextClassName={'pageLabel-btn'}
         />
-        <button
-          onClick={(e) =>
-            history.push({
-              pathname: `${match.path}/edit`,
-              state: { detail: match.path },
-            })
-          }
-        >
-          글 작성
-        </button>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -148,7 +171,6 @@ export function TableBody({ currentList, match }) {
         <>
           {' '}
           <Skeleton />
-          {console.log(currentList)}
         </>
       )}{' '}
     </>

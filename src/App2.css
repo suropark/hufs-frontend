@@ -104,8 +104,9 @@
   height: 920px;
   left: 15%;
   top: 20px;
-
-  background: #afa1a1;
+  border: solid 1px black;
+  border-radius: ;
+  /* background: #afa1a1; */
 }
 .row {
   position: absolute;
@@ -138,9 +139,9 @@
   width: 915px;
   height: 720px;
   left: 93px;
-  top: 151px;
+  top: 90px;
 
-  background: #ecb3b3;
+  /* background: #ecb3b3; */
 }
 
 .community-box > .content {

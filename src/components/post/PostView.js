@@ -13,12 +13,11 @@ import {
 import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
-import Header from '../../views/Community/Community';
-import { Skeleton } from 'antd';
-import { Input, Space } from 'antd';
+import { Card, PageHeader, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
+  console.log(match);
   const [post, setPost] = useState();
   const dispatch = useDispatch();
   useEffect(async () => {
@@ -29,7 +28,7 @@ function PostView({ match, history }) {
         }
       })
       .catch((error) => {
-        switch (error.response.status) {
+        switch (error.response?.status) {
           case 401:
             alert('로그인하지 않은 사용자');
             history.push('/');
@@ -143,47 +142,114 @@ function PostView({ match, history }) {
         }
       });
   };
+  function findBoardName(boardId) {
+    switch (boardId) {
+      case 1:
+        return '1 게시판';
+      case 2:
+        return '2 게시판';
+      case 3:
+        return '3 게시판';
+      case 4:
+        return '4 게시판';
+      case 5:
+        return '5 게시판';
+      case 6:
+        return '6 게시판';
+      default:
+        break;
+    }
+  }
   return (
-    <div>
+    <>
       {post ? (
-        <div>
-          <p>{post.id}</p>
-          <h2>{post.title}</h2>
-          {post.User === null ? (
-            <h3> 탈퇴한 사용자 </h3>
-          ) : (
-            <h3> post.User.nickname </h3>
-          )}
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          <span>추천 수: {post.like}</span>
-          <strong onClick={onLike}> 추천하기</strong>
-          <strong onClick={onDellike}> 취소</strong>
-          <br /> <span>신고 수: {post.report}</span>
-          <ReportModal type="post" id={post.id} history={history} />
-          <br /> <strong onClick={onDelete}> 삭제하기</strong>
-          <br /> <strong onClick={onScrap}>스크랩하기</strong>
-          <br />
-          <Link to={`${post.id}/update`}>
-            <strong>수정하기</strong>
-          </Link>
-          <div>
-            <hr />
-          </div>
-          <br />
-          <br />
-          댓글 부분
-          <br />
-          <br />
-          <CommentList
-            history={history}
-            comments={post.Replies ? post.Replies : []}
+        <div className="community-main">
+          <PageHeader
+            title={findBoardName(post.boardId)}
+            subTitle="게시판 설명 적는 곳"
           />
-          <CommentEdit history={history} match={match} />
+          <div className="community-box">
+            <Card
+              title={
+                <>
+                  <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
+                    {post.title}
+                  </div>
+
+                  {post.User === null ? (
+                    <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
+                  ) : (
+                    <span style={{ fontSize: '8px' }}>
+                      {' '}
+                      {post.User.nickname}{' '}
+                    </span>
+                  )}
+                  <span style={{ marginLeft: '24px', fontSize: '4px' }}>
+                    {post.createdAt?.slice(0, 10)}
+                  </span>
+                </>
+              }
+              extra={post.id}
+            >
+              <div
+                dangerouslySetInnerHTML={{ __html: post.content }}
+                style={{ display: 'inline-block', minHeight: '500px' }}
+              />
+              <div>
+                {/* 추천 수: {post.like}
+                <div>신고 수: {post.report}</div>
+                <div>
+                  <span onClick={onLike} style={{ cursor: 'pointer' }}>
+                    추천하기
+                  </span>
+                </div>
+                <div>
+                  <span onClick={onDellike} style={{ cursor: 'pointer' }}>
+                    추천취소
+                  </span>
+                </div> */}
+                <div style={{ fontSize: '12px' }}>
+                  <ReportModal type="post" id={post.id} history={history} />{' '}
+                  <div>
+                    <span
+                      onClick={onDelete}
+                      style={{
+                        cursor: 'pointer',
+                        float: 'right',
+                        marginLeft: '12px',
+                      }}
+                    >
+                      삭제하기
+                    </span>
+                  </div>{' '}
+                  <div>
+                    <span
+                      onClick={onScrap}
+                      style={{ cursor: 'pointer', float: 'right' }}
+                    >
+                      스크랩하기
+                    </span>
+                  </div>
+                  <Link to={`${post.id}/update`}>
+                    <span>수정하기</span>
+                  </Link>
+                </div>{' '}
+              </div>
+              <div>
+                <hr />
+              </div>
+              <CommentList
+                history={history}
+                comments={post.Replies ? post.Replies : []}
+              />
+              <CommentEdit history={history} match={match} />
+            </Card>
+          </div>
         </div>
       ) : (
         <Skeleton />
       )}
-    </div>
+    </>
   );
 }
 

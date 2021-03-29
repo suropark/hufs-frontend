@@ -12,7 +12,7 @@ function Page404(props) {
         Sorry, the page you visited does not exist."
         extra={
           <Button onClick={(e) => props.history.push('/')} type="link">
-            Back Home
+            HUFSpace_로 이동
           </Button>
         }
       />

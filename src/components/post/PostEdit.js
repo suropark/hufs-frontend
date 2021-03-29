@@ -7,6 +7,9 @@ import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { PUBLIC_URL } from '../../config';
+import Header from '../../views/Header/Header';
+import Quick from '../../views/Quick/Quick';
+import Footer from '../../views/Footer/Footer';
 
 let uploadedImg = [];
 function PostEdit(props) {
@@ -68,26 +71,31 @@ function PostEdit(props) {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="제목"
-        value={value.title}
-        onChange={(e) => setvalue({ ...value, title: e.target.value })}
-      />
-      <ReactQuill
-        placeholder="하이"
-        theme="snow"
-        onChange={(content, delta, source, editor) => {
-          console.log(value);
-          setvalue({ ...value, content: editor.getHTML() });
-        }}
-        modules={modules}
-        formats={formats}
-      ></ReactQuill>
-      <button onClick={onSubmit}>제출</button>
-      <button onClick={onExit}>취소</button>
-    </div>
+    <>
+      <div className="community-main">
+        <input
+          type="text"
+          placeholder="제목"
+          value={value.title}
+          onChange={(e) => {
+            console.log(value);
+            setvalue({ ...value, title: e.target.value });
+          }}
+        />
+        <ReactQuill
+          placeholder="하이"
+          theme="snow"
+          onChange={(content, delta, source, editor) => {
+            console.log(value);
+            setvalue({ ...value, content: editor.getHTML() });
+          }}
+          modules={modules}
+          formats={formats}
+        ></ReactQuill>
+        <button onClick={onSubmit}>제출</button>
+        <button onClick={onExit}>취소</button>
+      </div>
+    </>
   );
 }
 
