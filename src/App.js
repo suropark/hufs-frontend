@@ -7,7 +7,11 @@ import MapPage from './views/MapPage/MapPage';
 import './App.css';
 import LoginPage from './views/LoginPage/LoginPage';
 import CalendarPage from './views/CalendarPage/CalendarPage';
-
+import Board from './views/Board/Board';
+import Page404 from './views/Page404/Page404';
+import EmailAuthPage from './views/EmailAuthPage/EmailAuthPage';
+import SignUpModal from './components/login/modals/SignUpModal';
+ 
 function App() {
   return (
     <Router>
