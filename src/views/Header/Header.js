@@ -4,6 +4,7 @@ import { Menu, Dropdown, Button, Space, Input, message } from 'antd';
 import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import SignUp from '../../components/login/SignUp';
+import Logout from '../../components/login/Logout';
 
 const { Search } = Input;
 
@@ -38,7 +39,7 @@ function Header(props) {
       </div>
       <img src="#" className="Image" alt="이미지 들어갈 곳" />
       <span className="loginbar">
-        <SignUp />
+        <SignUp /> <Logout />
         <Button type="text">언어 선택</Button>
       </span>
       {/* <Space id="Searchbar" direction=" vertical">
@@ -52,36 +53,28 @@ function Header(props) {
       {/* <input id="Searchbar"className="Searchbar" value="검색창" /> */}
       <Space direction="vertical">
         <Space id="Menubar">
-          {/* <Dropdown overlay={menu}> */}
-          <Button type="default">
-            <Link to="/1">떠들어 Boo </Link>
-          </Button>
-          {/* </Dropdown> */}
-          {/* <Dropdown overlay={menu}> */}
-          <Button type="default">
-            <Link to="/2">학교해 boo</Link>
-          </Button>
-          {/* </Dropdown> */}
-          {/* <Dropdown overlay={menu}> */}
-          <Button type="default" onClick={(e) => props.history.push('/3')}>
-            <Link to="/3">학교 간 Boo </Link>
-          </Button>
-          {/* </Dropdown> */}
-          {/* <Dropdown overlay={menu}> */}
-          <Button type="default" onClick={(e) => props.history.push('/4')}>
-            <Link to="/4">학교 떠난 Boo </Link>
-          </Button>
-          {/* </Dropdown> */}
-          {/* <Dropdown overlay={menu}> */}
-          <Button type="default" onClick={(e) => props.history.push('/5')}>
-            <Link to="/5"> 정면승 Boo </Link>
-          </Button>
-          {/* </Dropdown> */}
-          {/* <Dropdown overlay={menu}> */}
-          <Button type="default" onClick={(e) => props.history.push('/6')}>
-            <Link to="/6">이거 모르면 바 Boo </Link>
-          </Button>
-          {/* </Dropdown> */}
+          <Menu mode="horizontal">
+            <Menu.Item key="mail">
+              {' '}
+              <Link to="/1">떠들어 Boo </Link>
+            </Menu.Item>
+            <Menu.Item key="app">
+              <Link to="/2">학교해 boo</Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to="/3">학교 간 boo</Link>
+            </Menu.Item>
+            <Menu.Item key="setting:4">
+              {' '}
+              <Link to="/4">학교 떠난 Boo </Link>
+            </Menu.Item>
+            <Menu.Item key="alipay">
+              <Link to="/5"> 정면승 Boo </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to="/6">이거 모르면 바 Boo </Link>
+            </Menu.Item>
+          </Menu>
         </Space>
       </Space>
     </div>
@@ -89,3 +82,51 @@ function Header(props) {
 }
 
 export default withRouter(Header);
+// {
+//   /* <Dropdown overlay={menu}> */
+// }
+// <Button type="default"></Button>;
+// {
+//   /* </Dropdown> */
+// }
+// {
+//   /* <Dropdown overlay={menu}> */
+// }
+// <Button type="default"></Button>;
+// {
+//   /* </Dropdown> */
+// }
+// {
+//   /* <Dropdown overlay={menu}> */
+// }
+// <Button type="default" onClick={(e) => props.history.push('/3')}></Button>;
+// {
+//   /* </Dropdown> */
+// }
+// {
+//   /* <Dropdown overlay={menu}> */
+// }
+// <Button type="default" onClick={(e) => props.history.push('/4')}>
+//   <Link to="/4">학교 떠난 Boo </Link>
+// </Button>;
+// {
+//   /* </Dropdown> */
+// }
+// {
+//   /* <Dropdown overlay={menu}> */
+// }
+// <Button type="default" onClick={(e) => props.history.push('/5')}>
+//   <Link to="/5"> 정면승 Boo </Link>
+// </Button>;
+// {
+//   /* </Dropdown> */
+// }
+// {
+//   /* <Dropdown overlay={menu}> */
+// }
+// <Button type="default" onClick={(e) => props.history.push('/6')}>
+//   <Link to="/6">이거 모르면 바 Boo </Link>
+// </Button>;
+// {
+//   /* </Dropdown> */
+// }

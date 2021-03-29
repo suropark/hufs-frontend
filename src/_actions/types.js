@@ -35,7 +35,8 @@ export const AUTH_USER = 'auth_user';
 export const INFO_USER = 'info_user';
 export const UPDATE_USER = 'update_user';
 export const WITHDRAW_USER = 'withdraw_user';
-
+export const LOGOUT_USER = 'logout_user';
+export const LOGOUT_USER_FAIL = 'logout_user_fail';
 export const GET_SCHOLAR = 'get_scholar';
 export const GET_SCHOLAR_FAIL = 'get_scholar_fail';
 export const INFO_USER_FAIL = 'info_user_fail';
