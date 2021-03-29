@@ -90,9 +90,10 @@ function UserInfo(props) {
       }); // no parameter? 이메일 보내야할거같은데
   };
   return (
+    // google, kakao 연동 필요.
     <div>
       <div style={{ margin: '8px 0' }}>
-        <label>로그인 이메일</label>
+        <label>이메일</label>
         <div style={{ margin: '8px 0' }}>
           <Input
             value={email}
@@ -111,9 +112,8 @@ function UserInfo(props) {
             suffix={<>@hufs.ac.kr</>}
           ></Input>
           <Button onClick={onAuth} style={{ marginLeft: '8px' }}>
-            {' '}
-            인증하기{' '}
-          </Button>{' '}
+            인증하기
+          </Button>
         </div>
 
         {/* 인증 하기, 인증 여부에 따른 disabled 작성 필요 */}
