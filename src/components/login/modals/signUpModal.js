@@ -1,106 +1,151 @@
-import React from "react";
-import { Modal, Button, Form, Container } from 'react-bootstrap';
-import {GoogleLogin } from 'react-google-login';
+import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { message, Select, Modal, Button, Input, Form, Checkbox } from 'antd';
+import { withRouter } from 'react-router';
+import Header from '../../../views/Header/Header';
 
-const SignUpModal = ({show, onHide}) => {
-    const [ major, setMajor ] = useState([]);
-    const [ doubleMajor, setDoubleMajor] = useState([])
-    const [ submit, setSubmit] =useState({nickname: "", webMail: "",  isAggred: false});
-    useEffect(async () => {
-        const request1 = await axios.get(`http://52.78.2.40:8080/major/main-major`) //1전공
-        .then((response) => response.data.data) // 배열 [id, name ]
-        setMajor(request1)
-        console.log(request1);
+const SignUpModal = (props) => {
+  const { Option } = Select;
+  const [major, setMajor] = useState(false);
+  const [doubleMajor, setDoubleMajor] = useState(false);
+  const [submit, setSubmit] = useState({nickname: "", webmail: "", mainMajorId: 0, doubleMajorId: "", isAgrred: false});
 
-        const request2 = await axios.get(`http://52.78.2.40:8080/major/double-major`) //이중전공
-        .then((response) => response.data.data) // 배열 [id, name ]
-        setDoubleMajor(request2)
-        console.log(request2);  
-    }, [])
-  
-useEffect(() => {
-    console.log(submit)
-}, [submit])
+  useEffect(async () => {
+    const request1 = await axios
+      .get(`http://52.78.2.40:8080/major/main-major`) //1전공
+      .then((response) => response.data.data) // 배열 [id, name ]
+      .catch((e) => {
+        console.log(e);
+      })
+    setMajor(request1);
+    console.log(request1);
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const request = await axios.post('http://52.78.2.40:8080/user/sign-up', submit)
-        console.log(request.status)
+    const request2 = await axios
+      .get(`http://52.78.2.40:8080/major/double-major`) //이중전공
+      .then((response) => response.data.data)
+      .catch((e) => {
+        console.log(e);
+      }) // 배열 [id, name ]
+    setDoubleMajor(request2);
+    console.log(request2);
+  }, []);
 
-    }
-    
-    return (
-        <Modal
-            show={show}
+  useEffect(() => {
+    console.log(submit);
+  }, [submit]);
 
-            onHide={onHide}
-            
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const request = await axios
+      .post('http://52.78.2.40:8080/user/sign-up', submit)
+      .then((response) => {
+        console.log(response.status);
+        message.success('회원가입이 성공적으로 완료되었습니다 :)');
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 401:
+            alert('개인 정보 수집 동의를 하지 않으셨습니다');
+          case 409:
+            alert('이미 존재하는 닉네임입니다')
+        }
+      });
+  };
+
+  const layout = {
+    labelcol: { span: 8 },
+    wrapperCol: { span: 16 },
+  };
+
+  const tailLayout = {
+    wrapperCol: { offset: 8, span: 16 },
+  };
+
+
+  return (
+    <>
+      <Header />
+      <div
+        style={{
+          display: 'inline-block',
+          position: 'relative',
+          width: '1100px',
+          left: '15%',
+        }}
+      >
+        <Form
+          onValuesChange={(e) => setSubmit({ ...submit, [e[0]]: e })}
+          name="basic"
+          initialValues={{ remember: true }}
+        >
+          <Form.Item
+            label="닉네임"
+            name="nickname"
+            rules={[{ required: true, message: '닉네임을 입력하세요!' }]}
+            onChange={event => setSubmit({...submit, nickname: event.target.value})}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="웹메일"
+            extra="@hufs.ac.kr 앞 부분까지만 입력해주세요.
+            위 웹메일로 학생 확인 인증 메일이 발송됩니다. 메일 인증은 24시간이 지나면 만료됩니다."
+            name="webMail"
+            rules={[{ required: true, message: 'put your password!' }]}
+            onChange={event => setSubmit({...submit, webmail: event.target.value})}
+          >
+            <Input suffix="@hufs.ac.kr"></Input>
+          </Form.Item>
+
+          <Form.Item label="1전공" name="majorId">
+            <Select
+              style={{ width: 170 }}
+              onChange={event=> setSubmit({...submit, mainMajorId: +event})}
             >
-            <Container>
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">회원가입</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-            <Form>
-                <Form.Group controlId="formBasicNickname">
-                    <Form.Label>닉네임</Form.Label>
-                    <Form.Control value={submit.nickname} onChange={event => setSubmit({...submit, nickname: event.target.value})}   placeholder="닉네임을 입력하세요" />
-                    <Form.Text className="text-muted">
-                    
-                    </Form.Text>
-                </Form.Group>
-                
-                <Form.Group controlId="formBasicWebMail">
-                    <Form.Label>웹메일</Form.Label>
-                    <Form.Control value={submit.webMail} onChange={event => setSubmit({...submit, webMail: event.target.value})} placeholder="웹메일/지메일(G-suite) 입력하세요" />
-                    <Form.Text className="text-muted">
-                    @hufs.ac.kr 앞 부분까지만 입력해주세요.
-                    <br/>위 웹메일로 학생 확인 인증 메일이 발송됩니다. 인증까지는 최대 24시간이 소요됩니다.
-                    </Form.Text>
-                </Form.Group>
+              {major ? (
+                major.map((major) => {
+                  return (
+                    <Option key={major.id} value={major.id}>
+                      {major.name}
+                    </Option>
+                  );
+                })
+              ) : (
+                <></>
+              )}
+            </Select>
+          </Form.Item>
+          <Form.Item label="이중전공 / 부전공" name="doubleMajorId">
+            <Select
+              style={{ width: 170 }}
+              onChange={event => setSubmit({...submit, doubleMajorId: +event})}
+            >
+              {doubleMajor ? (
+                doubleMajor.map((major) => {
+                  return (
+                    <Option key={major.id} value={major.id}>
+                      {major.name}
+                    </Option>
+                  );
+                })
+              ) : (
+                <></>
+              )}
+            </Select>
+          </Form.Item>
+            <Checkbox  onClick={event => setSubmit({...submit, isAgrred: event.target.checked})}>동의합니다</Checkbox>
+          <Form.Item {...tailLayout}>
+            <Button type="primary" htmlType="submit" onClick={onSubmit}>
+              회원가입
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+      {/* </Modal> */}
+    </>
+  );
+};
 
-                <Form.Control onChange={event => setSubmit({...submit, mainMajorId: +event.target.value})} as="select">
-                    <Form.Label>1전공</Form.Label>
-                    {doubleMajor ? doubleMajor.map((item) => {
-                        return (
-                            <option value={item.id}>{item.name}</option>
-                        )
-                    }) : null }
-                 
-                </Form.Control>
-                <Form.Group controlId="formBasicMinor">
-                    <Form.Label>이중전공</Form.Label>
-                    <Form.Control onChange={event => setSubmit({...submit, doubleMajorId: +event.target.value})} as="select"  placeholder="이중전공/부전공을 입력하세요" >
-                    {major ? major.map((item) => {
-                        return (
-                            <option value={item.id}>{item.name}</option>
-                        )
-                    }) : null } 
-                    </Form.Control>
-
-                </Form.Group>
-                <Form.Text className="text-muted">
-                    전공 변경은 한 번만 가능합니다. 정확하게 입력해주세요.
-                </Form.Text>
-                <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="동의합니다" onClick={event => setSubmit({...submit, isAggred: true})} />
-                </Form.Group>
-                <Button onClick={onSubmit} variant="primary" type="submit">
-                    회원가입
-                </Button>
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={onHide}>Close</Button>
-            </Modal.Footer>
-            </Container>
-        </Modal>
-    )
-} 
-
-export default SignUpModal;
+export default withRouter(SignUpModal);

@@ -13,7 +13,7 @@ import {
 import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
-import Header from '../../views/Community/Community'
+import Header from '../../views/Community/Community';
 import { Skeleton } from 'antd';
 import { Input, Space } from 'antd';
 // 상세 게시글 보기
@@ -82,7 +82,7 @@ function PostView({ match, history }) {
         window.location.reload();
       })
       .catch((error) => {
-        switch (error.response.status) {
+        switch (error.response?.status) {
           case 401:
             alert('로그인이 필요합니다.');
             history.push('/');

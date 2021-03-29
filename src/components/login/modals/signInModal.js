@@ -1,88 +1,101 @@
-import { render } from "@testing-library/react";
-import React from "react";
-import { Modal, Button, Form, Container } from 'react-bootstrap';
-import {GoogleLogin } from 'react-google-login';
-import kakaoLogin from "../kakaoSignIn";
+import { render } from '@testing-library/react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import SignUpModal from './signUpModal';
+// import SignUpModal from './signUpModal';
+import { message, Modal, Button } from 'antd';
+import kakao_pic from '../style/kakao_pic.png';
+import google_pic from '../style/google_pic.png';
 
-const SignInModal = ({show, onHide}) => {
+const SignInModal = () => {
+  const [modalVisible, setModalVisible] = useState(false);
 
-    const signInGoogle = async (e) => {
-        const requset = await axios.get(`http://52.78.2.40:8080/user/sign-in/google`)
-        .then((response) => {
-                console.log("Sign in Successfully");
-                alert(response);
-        })
-        .catch((e) => {
-            console.log(e)
-            if(e.message) {
-                alert("Sign in fail")
-                // <SignUpModal /> moveToSignUpPage
-            }
-        })
-        // await fetch(`http://localhost:8080/user/sign-in/google`, {
-        //         method: "GET",
-                
-        //     })
-        //     .then((res) => res.json())
-        //     .then((res) => {
-        //         console.log(res);
-        //         //localStorage.setItem("Kakao_token", res.access_token);
-        //         // if (res.code === 200) {
-        //         //     alert("Sign in Successfully!");
-        //         //     //history.pushState("/");
-        //         // } else {
-        //         //     alert("Wrong information, or you're not member");   
-        //         // }
-        //     })
-        //     .catch((e) => {
-        //         console.log(e);
-        //     });
-    }
+  const signInGoogle = async (e) => {
+    const request = await axios
+      .get(`http://52.78.2.40:8080/user/sign-in/google`)
+      .then((response) => {
+        console.log(response.status);
+        message.success('Social Sign in Successfully');
+      })
+      .catch((error) => {
+        console.log(error);
+        message.error('로그인 실패');
+      });
+  };
 
-    const signInKakao = async(e) => {
-        const request = await axios.get(`http://52.78.2.40:8080/user/sign-in/kakao`)
-        .then((response) => {
-            console.log("Sign in Successfully");
-            alert(response);
-        })
-        .catch((e) => {
-            if(e.message) {
-                alert("Sign in fail")
-            }
-        })
-    }
+  const signInKakao = async (e) => {
+    const request = await axios
+      .get(`http://52.78.2.40:8080/user/sign-in/kakao`)
+      .then((response) => {
+        console.log(response.status);
+        message.success('Sign in Successfully');
+      })
+      .catch((error) => {
+        console.log(error);
+        message.error('로그인 실패');
+      });
+  };
 
-    return (
-        <Modal show={show}
-
-        onHide={onHide}
-        
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
+  return (
+    <>
+      <Button type="text" onClick={() => setModalVisible(true)}>
+        로그인
+      </Button>
+      <Modal
+        title="로그인 / LOGIN"
         centered
-        >
-            <Container>
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">Sign In</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <button id="customBtn" className="customG" style={{display:"inline"}} onClick={signInGoogle}>
-                        구글로그인
-                </button>
-                <button id="customBtn" className="customK" style={{display:"inline"}} onClick={signInKakao}>
-                        카카오로그인
-                </button>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={onHide}>Close</Button>
-            </Modal.Footer>
-            </Container>
-        </Modal>
-
-    )
-}
+        okButtonProps={{ style: { display: 'none' } }}
+        visible={modalVisible}
+        onOk={() => setModalVisible(false)}
+        onCancel={() => setModalVisible(false)}
+      >
+        <img
+          style={{ cursor: 'pointer' }}
+          onClick={signInGoogle}
+          src={google_pic}
+        />
+        <img
+          style={{ cursor: 'pointer', marginLeft: '66px' }}
+          onClick={signInKakao}
+          src={kakao_pic}
+        />
+      </Modal>
+    </>
+  );
+};
 
 export default SignInModal;
 
+// <Modal
+//   show={show}
+//   onHide={onHide}
+//   size="lg"
+//   aria-labelledby="contained-modal-title-vcenter"
+//   centered
+// >
+//   <Container>
+//     <Modal.Header closeButton>
+//       <Modal.Title id="contained-modal-title-vcenter">Sign In</Modal.Title>
+//     </Modal.Header>
+//     <Modal.Body>
+//       <button
+//         id="customBtn"
+//         className="customG"
+//         style={{ display: 'inline' }}
+//         onClick={signInGoogle}
+//       >
+//         구글로그인
+//       </button>
+//       <button
+//         id="customBtn"
+//         className="customK"
+//         style={{ display: 'inline' }}
+//         onClick={signInKakao}
+//       >
+//         카카오로그인
+//       </button>
+//     </Modal.Body>
+//     <Modal.Footer>
+//       <Button onClick={onHide}>Close</Button>
+//     </Modal.Footer>
+//   </Container>
+// </Modal>

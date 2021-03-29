@@ -1,4 +1,4 @@
-import ItemModifyForm from "../ReviewEditPage"
+import ItemModifyForm from "../ItemModifyForm"
 import { useDispatch, useSelector } from "react-redux"
 import React, { useEffect } from "react"
 import { withRouter } from "react-router-dom"
@@ -29,13 +29,13 @@ const ItemModifyContainer = ({ match, history }) => {
         formData.append("file", file)
         formData.append("item", JSON.stringify(itemObject))
 
-        axios.put("/items", formData, {
+        axios.put("http://52.78.2.40:8080/store/review/{id}", formData, {
             headers: {
                 "Content-type": "multipart/form-data"
             }
         }).then(res => {
             alert("수정되었습니다.")
-            history.push("/read/" + itemId)
+            history.push(`${match.url}/${itemId}`)
         }).catch(err => {
             alert(err.response.data.msg)
         })

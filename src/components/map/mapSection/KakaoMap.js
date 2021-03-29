@@ -43,8 +43,8 @@ function placesSearchCB (data, status, pagination) {
   
   }, []);
   const style={
-    height:"150%",
-    width:"100%"
+    height:"600px",
+    width:"800px"
   };
 
   return <div id="map" style={style}></div>;

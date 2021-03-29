@@ -161,3 +161,19 @@
 
   background: #ffffff;
 }
+#root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {
+  border: none;
+}
+#root > div > div.Main > div.MainCalendar > div > div.site-calendar-demo-card {
+  border: none;
+}
+#root
+  > div
+  > div.Main
+  > div.MainCalendar
+  > div
+  > div.site-calendar-demo-card
+  > div
+  > div.ant-picker-panel {
+  border-top: none;
+}

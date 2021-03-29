@@ -1,10 +1,12 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {Card} from 'antd';
 import {useHistory,withRouter,useLocation } from 'react-router-dom';
+import { Button } from 'antd'
 
 const { kakao } = window;
 
-const Card = ( {name,numAddress,roadAddress,lat,long,match}) => {
+const Rstrn = ( {name,numAddress,roadAddress,lat,long,match}) => {
   //const history = useHistory();
 
   //const [markerPositions, setMarkerPositions] = useState();
@@ -13,6 +15,7 @@ const Card = ( {name,numAddress,roadAddress,lat,long,match}) => {
   const [state, setstate] = useState();
   const history = useHistory();
   const location = useLocation();
+  const [, setMarkers] = useState([]);
 
 
   //const {map} = useSelector(state => state.map,[]);
@@ -30,7 +33,10 @@ const Card = ( {name,numAddress,roadAddress,lat,long,match}) => {
 var map = state;
 var markers=[];
 
-function displayMarker() {
+function displayMarker (){
+  
+  //hideMarkers(markers);
+  
   const container = document.getElementById('map');
   const options = {
     center: new kakao.maps.LatLng(37.59732049638715, 127.05882833955489), // 한국외대 설캠
@@ -75,7 +81,7 @@ function displayMarker() {
     closeBtn.onclick = function () {
       customOverlay1.setMap(null);
     };
-
+    React.createElement('div', null,  'hello world')
     var selectBtn = document.createElement("button");
 
     var temp_link = document.createElement("a");
@@ -93,7 +99,7 @@ function displayMarker() {
         
     }
       );
-    //history.pushState(query, '', `${match.path}/info/${name}`);
+    // history.pushState(query, '', `${match.path}/info/${name}`);  
       
     };
     buttonContainer.appendChild(closeBtn);
@@ -127,10 +133,6 @@ function displayMarker() {
       //image: markerImage // 마커 이미지 
     });
     
-    marker.setMap(map);
-    markers.push(marker); 
-    hideMarkers();
-    
      
 
 
@@ -148,23 +150,20 @@ function displayMarker() {
       }
       customOverlay1.setMap(map);
   });
+  
+    
+  markers.push(marker);   
+  marker.setMap(map);
+};
+
+function hideMarkers(markers) {
+  markers.forEach(marker => marker.setMap(null)); 
 }
 
-function setMarkers(map) {
-    if (markers.length > 1) {
 
-      alert(markers.length);
-      for (var i = 0; i < markers.length; i++) {
-          markers[i].setMap(map);
-      }         
-    }   
-}
-function hideMarkers() {
-  setMarkers(null);    
-}
 const style = {
-  height: '150%',
-  width: '100%',
+  height: '100px',
+  width: '100px',
 };
 
 
@@ -172,21 +171,22 @@ const style = {
 return (
   /* jshint ignore:start */
 <>
-<div id="map" style={style}></div>
-
-  <div className="CardWrapper">
-    <div className="ColDetail">
-      <div className="Header">
-        <div className="BookTitle">{name}</div>
-      </div>
-      <div className="Description">{numAddress}</div>
+<div>
+  {
+    <Card size="small" title="Small size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
+      <p>{name}</p>
+      <p>{numAddress}</p>
+      <p>{roadAddress}</p>
       <button onClick={displayMarker}>
           지도에서 확인하기
         </button>
+  </Card>}
     </div>
-  </div>
+    <div id="map" style={style}></div>
+
+
   </>
   /* jshint ignore:end */
   );
 };
-export default withRouter(Card);
+export default withRouter(Rstrn);

@@ -1,4 +1,4 @@
-import ReviewPage from "../ReviewPage"
+import ReviewPage from "../ItemRegisterForm"
 import axios from "axios"
 
 /*
@@ -8,8 +8,8 @@ withRouter 함수는 High-order component이다.
 */
 import { withRouter } from "react-router-dom"
 
-const ItemRegisterContainer = ({ history }) => {
-
+const ItemRegisterContainer = ({ history,match }) => {
+    console.log(match)
     const onRegister = ({itemName, price, description, file}) => {
         const itemObject = {
             itemName,
@@ -23,13 +23,13 @@ const ItemRegisterContainer = ({ history }) => {
         formData.append("item", JSON.stringify(itemObject))
     
         // 파일 업로드
-        axios.post("/items", formData, {
+        axios.post("http://52.78.2.40:8080/store/{id}/review", formData, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
         }).then(res => {
             alert("등록되었습니다.")
-            history.push("/read/" + res.data.itemId)
+            history.push(`${match.path}/read/` + res.data.itemId)
         }).catch(err => {
             alert(err)
         })
