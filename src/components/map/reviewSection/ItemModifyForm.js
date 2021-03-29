@@ -1,40 +1,43 @@
-import { Link } from "react-router-dom"
-import React, { useState, useEffect, useCallback } from "react"
+import { Link,useHistory } from "react-router-dom";
+import { Rate } from 'antd';
+import React, { useState, useEffect, useCallback } from "react";
 
 
 // 이미지 표시 URL 생성
-const pictureUrl = itemId => {
+const pictureUrl = id => {
     return (
-        `/items/display?itemId=${itemId}&timestamp=${new Date().getTime()}`
+        `/items/display?id=${id}&timestamp=${new Date().getTime()}`
     )
 }
 
-export default function ItemModifyFrom({ item, isLoading, onModify }) {
+export default function ItemModifyFrom({ item, isLoading, onModify, match }) {
+    const history = useHistory();
+    
 
 
-    const [itemName, setItemName] = useState("")
-    const [price, setPrice] = useState(0)
-    const [description, setDescription] = useState("")
+    const [title, setTitle] = useState("")
+    const [score, setScore] = useState(0)
+    const [content, setContent] = useState("")
     const [file, setFile] = useState(null)
 
     useEffect(() => {
         if(item) {
-            setItemName(item.itemName)
-            setPrice(item.price)
-            setDescription(item.description)
+            setTitle(item.title)
+            setScore(item.score)
+            setContent(item.content)
         }
     }, [item])
 
-    const handleChangeItemName = e => {
-        setItemName(e.target.value)
+    const handleChangeTitle = e => {
+        setTitle(e.target.value)
     }
 
-    const handleChangeDescription = useCallback(e => {
-        setDescription(e.target.value)
+    const handleChangeContent = useCallback(e => {
+        setContent(e.target.value)
     }, [])
 
-    const handleChangePrice = e => {
-        setPrice(e.target.value)
+    const handleChangeScore = e => {
+        setScore(e.target.value)
     }
 
     const handleChangeFile = useCallback(e => {
@@ -43,8 +46,8 @@ export default function ItemModifyFrom({ item, isLoading, onModify }) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(itemName, price, description, file)
-        onModify(itemName, price, description, file)
+        console.log(title, score, content, file)
+        onModify(title, score, content, file)
     }
 
     return (
@@ -58,20 +61,27 @@ export default function ItemModifyFrom({ item, isLoading, onModify }) {
                             <tr>
                                 <td className="form-label">번호</td>
                                 <td>
-                                    <input type="text" value={item.itemId} disabled />
+                                    <input type="text" value={item.id} disabled />
                                 </td>
                             </tr>
                             <tr>
                                 <td className="form-label">음식이름</td>
                                 <td>
-                                    <input type="text" value={itemName} onChange={handleChangeItemName} />
+                                    <input type="text" value={title} onChange={handleChangeTitle} />
                                 </td>
                             </tr>
                             <tr>
-                                <td className="form-label">음식가격</td>
+                                <td className="form-label">음식 평점</td>
                                 <td>
-                                    <input type="text" value={price} onChange={handleChangePrice} />
-                                    <span>&nbsp;원</span>
+                                <Rate allowHalf value = {score}onChange={handleChangeScore}/>
+                                    {/*
+                                <select value={score} onChange={handleChangeScore}>
+                  <option value="1pt">1점</option>
+                  <option value="2pt">2점</option>
+                  <option value="3pt">3점</option>
+                  <option value="4pt">4점</option>
+                  <option value="5pt">5점</option>
+                                    </select>*/}
                                 </td>
                             </tr>
                             <tr>
@@ -83,13 +93,13 @@ export default function ItemModifyFrom({ item, isLoading, onModify }) {
                             <tr>
                                 <td className="form-label">미리보기</td>
                                 <td>
-                                    <img src={pictureUrl(item.itemId)} alt="" width="200" className="img-preview" />
+                                    <img src={pictureUrl(item.id)} alt="" width="200" className="img-preview" />
                                 </td>
                             </tr>
                             <tr>
                                 <td className="form-label">음식설명</td>
                                 <td>
-                                    <textarea rows="5" value={description} onChange={handleChangeDescription}></textarea>
+                                    <textarea rows="5" value={content} onChange={handleChangeContent}></textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -97,7 +107,7 @@ export default function ItemModifyFrom({ item, isLoading, onModify }) {
 
                     <div>
                         <button type="submit" className="like-a-button">수정</button>&nbsp;
-                    <Link to={`/read/${item.itemId}`} className="like-a-button">취소</Link>
+                        <button onClick={()=>history.goBack()}>취소</button>&nbsp;
                     </div>
                 </form>
             )}
