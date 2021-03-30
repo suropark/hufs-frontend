@@ -43,16 +43,9 @@ function placesSearchCB (data, status, pagination) {
   
   }, []);
 
-  const style1={
-    height:'400px',
-    width:'800px',
-  };
+  
 
-  return( 
-  <div >
-   <div id="map" style={style1}></div>
-   </div>
-  );
-};
+  return <div id="map" />
+
 
 export default KakaoMap;

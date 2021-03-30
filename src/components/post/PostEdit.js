@@ -21,7 +21,7 @@ function PostEdit(props) {
       axios.delete(`${PUBLIC_URL}/post/back`, uploadedImg);
     };
   });
-  console.log(props.location.state.detail.substring(1));
+  // console.log(props.location.state.detail.substring(1));
   const [value, setvalue] = useState({ title: '', content: '' });
   const onSubmit = (e) => {
     e.preventDefault();
@@ -73,8 +73,9 @@ function PostEdit(props) {
 
   return (
     <>
-      <div className="community-main">
+      <div id="community-main">
         <input
+          className="title-bar"
           type="text"
           placeholder="제목"
           value={value.title}
@@ -93,8 +94,16 @@ function PostEdit(props) {
           modules={modules}
           formats={formats}
         ></ReactQuill>
-        <Button onClick={onSubmit}>제출</Button>
-        <Button onClick={onExit}>취소</Button>
+
+        <div id="button-bar">
+          <Button type="primary" onClick={onSubmit} style={{
+            margin: '10px'
+          }}>제출</Button>
+          <Button type="primary" onClick={onSubmit} style={{
+            margin: '10px'
+          }}>취소</Button>
+        </div>
+
       </div>
     </>
   );

@@ -18,11 +18,11 @@ const MapContainer = () => {
     const fuse = new Fuse(data, {
       keys: ["name"],
     });
-    
+
     //const fuse = new Fuse(, options);
-    
+
     const result = fuse.search(pattern);
-    
+
 
     //const result = fuse.search(pattern);
     const matches = [];
@@ -31,92 +31,54 @@ const MapContainer = () => {
     } else {
       result.forEach(({ item }) => {
         matches.push(item);
-      } );  
-      setData(matches);   
-    
-    }
-    }
-    /*
-
-    const style1 = {
-      height: "100px", 
-      weight:"100px", 
-      paddingLeft: "10px", 
-      paddingRight: "10px", 
-      float:'right', 
-      textAlign: 'center',
-      display:'flex',
-      justifyContent:'center',
-      alignItems:'center'
+      });
+      setData(matches);
 
     }
-    const style2 = {
-      height:"600px",
-    width:"800px",
-    margin:0,
-    display: 'inline-block',
-    }
-    */
+
+  }
   //const { map } = useSelector(state => ({ map: state.map}), []);
-  const style={
-    weight:"100px",
-    height:'50px',
-    margin:'0 auto 0 auto',
-    position:'relative', 
-    paddingTop:'90px',
-    paddingRight:'0px',
-    paddingBottom:'0px',
-    paddingLeft:'300px',
-  }
-  //{height:"80px" ,width:"80px"}
-  /* {
-weight:"200px",
-    height:'600px',
-    float:'right',
-    paddingRight:"10%",
-    paddingTop:"5%",
-    
-  }*/
-  //{width: "400px", margin: "0 auto", paddingTop:"150px"}
 
-  const style1 = {
-    paddingTop:'30px',
-  }
-  
   return (
-     /*jshint ignore:start */
-    <>
-      
-      <SearchBar
-        placeholder="Search"
-        onChange={(e) => searchData(e.target.value)}
-       />
-       <div style={{
-weight:"200px",
-    height:'600px',
-    float:'right',
-    paddingRight:"10%",
-    paddingTop:"5%",
-    
-  }}>
-      <KaKaoMap>
-      </KaKaoMap>
+    /*jshint ignore:start */
+    <div className="Map">
+      {/* style={{ height: "100px", weight:"100px", paddingLeft: "10px", paddingRight: "10px", float:'right' }} */}
+      <div className="Map-left">
       </div>
-      
-     
-<div style={{height:"80px" ,width:"80px"}}>
-{/*data.mydata.map((d) => (
+      <div className="up-down" />
+      <div className="Map-main">
+        <div id="KaKaoMap">
+          <KaKaoMap>
+          </KaKaoMap>
+        </div>
+        <div className="Map-board">
+          <SearchBar
+            placeholder="Search"
+            onChange={(e) => searchData(e.target.value)}
+          />
+          <div className="itemContainer">
+            {/*data.mydata.map((d) => (
+
+ 
           <Card {...d} key={d.name}/>))*/}
-        {data.mydata ?  data.mydata.map((d,index) => (
-          <Card {...d} key={index} />
-        )) : <h1>null</h1> }
+            {data.mydata ? data.mydata.map((d, index) => (
+              <Card {...d} key={index} />
+            )) : <h1>null</h1>}
+          </div>
+        </div>
       </div>
+
+
+    </div>
+    /* jshint ignore:end */
+
       
     </>
     
-     /* jshint ignore:end */
+    
+
   );
-  
+
 };
 
 export default MapContainer;

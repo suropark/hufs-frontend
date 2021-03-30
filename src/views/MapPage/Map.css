@@ -1,0 +1,21 @@
+/* .Map {
+    top: 20px;
+    width: 1100px;
+    
+    
+  }
+#Map {
+    width:800px;
+    height:600px;
+} */
+#Map-wrap {
+    top: 20px;
+    width: 1100px;
+    display: flex;
+    left: 15%;
+        
+}
+#map {
+    height:500px;
+    width:800px;
+}
