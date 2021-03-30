@@ -94,6 +94,7 @@ function PostEdit(props) {
           modules={modules}
           formats={formats}
         ></ReactQuill>
+
         <div id="button-bar">
           <Button type="primary" onClick={onSubmit} style={{
             margin: '10px'
@@ -102,6 +103,7 @@ function PostEdit(props) {
             margin: '10px'
           }}>취소</Button>
         </div>
+
       </div>
     </>
   );

@@ -60,7 +60,10 @@ function MyPage(props) {
       <Quick />
       <div className="community-main">
         {/* <Card title="마이 페이지" /> */}
-        <Layout className="layout" style={{ width: '1100px' }}>
+        <Layout
+          className="layout"
+          style={{ width: '1100px', minHeight: '100%' }}
+        >
           <Header>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[click]}>
               <Menu.Item key="1" onClick={onClick}>
@@ -83,7 +86,15 @@ function MyPage(props) {
           <Content style={{ padding: '0 50px', margin: '16px 0' }}>
             {selectedMenu()}
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Footer</Footer>
+          <Footer
+            style={{
+              textAlign: 'center',
+              fontWeight: 'bold',
+              border: '1px solid white',
+            }}
+          >
+            HUFSpace_
+          </Footer>
         </Layout>
       </div>
     </>

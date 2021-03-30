@@ -4,9 +4,11 @@ import storeSeoul from './store-seoul.json';
 import Fuse from 'fuse.js';
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
+import axios from "axios";
+
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
-  console.log(data)
+  console.log(data);
   const searchData = (pattern) => {
     if (!pattern) {
       setData(storeSeoul);
@@ -33,6 +35,7 @@ const MapContainer = () => {
       setData(matches);
 
     }
+
   }
   //const { map } = useSelector(state => ({ map: state.map}), []);
 
@@ -55,6 +58,8 @@ const MapContainer = () => {
           />
           <div className="itemContainer">
             {/*data.mydata.map((d) => (
+
+ 
           <Card {...d} key={d.name}/>))*/}
             {data.mydata ? data.mydata.map((d, index) => (
               <Card {...d} key={index} />
@@ -63,8 +68,15 @@ const MapContainer = () => {
         </div>
       </div>
 
+
     </div>
     /* jshint ignore:end */
+
+      
+    </>
+    
+    
+
   );
 
 };

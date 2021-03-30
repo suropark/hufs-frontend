@@ -2,9 +2,12 @@ import React, { useState, useEffect, } from 'react';
 import {
    useLocation,Route, Switch,BrowserRouter
 } from 'react-router-dom';
+import { List, Avatar,Card,Button,Typography } from 'antd';
+import numIcon from '../../components/map/exampleInfo/icon1.png';
+import roadIcon from '../../components/map/exampleInfo/icon2.png';
 //import StarPage from '../../components/map/reviewSection/starRating/StarPage';
 import 'antd/dist/antd.css';
-import { Rate } from 'antd';
+
 import ReviewPage from '../ReviewPage/ReviewPage'
 
 import ItemRegisterFrom from '../../components/map/reviewSection/ItemRegisterForm';
@@ -19,21 +22,36 @@ import ReviewPostView from '../../components/map/reviewSection/ReviewPostView';
 import ReviewPostList from '../../components/map/reviewSection/ReviewPostList';
 */
 
+const { Text,Title } = Typography;
+
 const InforPage = ({match,history,props }) => {
   const {value, setVlue} = useState(0);
   const [state, setState] = useState('');
   
-
   const location = useLocation();
 
-  const handleChange = value => {
-    setState(value);
+  const data = [
+    {
+      title: "지번주소",
+      description: location.state.numAddress,
+      img: numIcon
+    },
+    {
+      title: "도로명주소",
+      description : location.state.roadAddress,
+      img: roadIcon,
+    },
+   ];
+  
+
+  const handleChange = e => {
     console.log('mapinfo', props);
     console.log(match)
     // map/info -> map/info/:name 24시해장국
     history.push( { // map/info/:name/24시해장국/reviewpage
       pathname:`${match.url}/ReviewPage`,
-      state: {value : value}}
+      state: {
+      id:match.params.id}}
       );
   };
 /*
@@ -48,25 +66,36 @@ const InforPage = ({match,history,props }) => {
 
   return (
      /* jshint ignore:start */
-    <>
+    <div style={{width: "400px", margin: "0 auto", paddingTop:"150px"}}>
     
       <div>
-        <h1>{location.state.name}</h1>
+        <Title level={3}>{location.state.name}</Title>
       </div>
       <div>
-        <h4>지번주소 : {location.state.numAddress}</h4>
-        
-        <h5>도로명주소 : {location.state.roadAddress}</h5>
+      <List
+    itemLayout="horizontal"
+    dataSource={data}
+    renderItem={item => (
+      <List.Item>
+        <List.Item.Meta
+          avatar={<Avatar src={item.img} />}
+          title={item.title}
+          description={item.description}
+        />
+      </List.Item>
+    )}/>
         </div>
-
-        <div>
-        <h1></h1>
-      </div>
     
       <div>
-      <Rate allowHalf defaultValue={2.5} onChange={handleChange} value = {value}>
-        </Rate>
-        <p>별점 클릭 : 리뷰 보러가기</p>
+      <Button onClick={(e) => {console.log('mapinfo', props);
+    console.log(match)
+    // map/info -> map/info/:name 24시해장국
+    history.push( { // map/info/:name/24시해장국/reviewpage
+      pathname:`${match.url}/ReviewPage`,
+      state: {
+      id:match.params.id}}
+      );}}>
+      리뷰 보러가기</Button>
       {/*<ItemListContainer/>*/}
 
       </div>
@@ -88,7 +117,7 @@ const InforPage = ({match,history,props }) => {
           */}
           
       </div>
-    </>
+    </div>
      /* jshint ignore:end */
     
   );

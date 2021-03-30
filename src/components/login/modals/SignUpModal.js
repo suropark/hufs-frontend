@@ -4,13 +4,15 @@ import { useState, useEffect } from 'react';
 import { message, Select, Modal, Button, Input, Form, Checkbox } from 'antd';
 import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
+import Cookies from 'js-cookie';
+
 
 const SignUpModal = (props) => {
   const { Option } = Select;
   const [major, setMajor] = useState(false);
   const [doubleMajor, setDoubleMajor] = useState(false);
 
-  const [submit, setSubmit] = useState({nickname: "", webmail: "", mainMajorId: 0, doubleMajorId: "", isAgrred: false});
+  const [submit, setSubmit] = useState({email: Cookies.get('email'), nickname: "", webMail: "", mainMajorId: 0, doubleMajorId: "", isAgreed: false});
 
   useEffect(async () => {
     const request1 = await axios
@@ -40,8 +42,10 @@ const SignUpModal = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const request = await axios
-      .post('http://52.78.2.40:8080/user/sign-up', submit)
+      .post('http://localhost:5000/user/sign-up', submit)
       .then((response) => {
+        console.log(response)
+
         console.log(response.status);
         message.success('회원가입이 성공적으로 완료되었습니다 :)');
       })
@@ -96,7 +100,7 @@ const SignUpModal = (props) => {
             위 웹메일로 학생 확인 인증 메일이 발송됩니다. 메일 인증은 24시간이 지나면 만료됩니다."
             name="webMail"
             rules={[{ required: true, message: 'put your password!' }]}
-            onChange={event => setSubmit({...submit, webmail: event.target.value})}
+            onChange={event => setSubmit({...submit, webMail: event.target.value})}
           >
             <Input suffix="@hufs.ac.kr"></Input>
           </Form.Item>
@@ -137,7 +141,7 @@ const SignUpModal = (props) => {
               )}
             </Select>
           </Form.Item>
-            <Checkbox  onClick={event => setSubmit({...submit, isAgrred: event.target.checked})}>동의합니다</Checkbox>
+            <Checkbox  onClick={event => setSubmit({...submit, isAgreed: event.target.checked})}>동의합니다</Checkbox>
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit" onClick={onSubmit}>
               회원가입

@@ -1,91 +1,77 @@
-import { Link } from "react-router-dom"
-import React, { useState, useCallback } from "react"
+import { Link,useHistory } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import {Rate, Form, Input, InputNumber, Button} from 'antd';
+const { TextArea } = Input;
 
-export default function ItemRegisterForm({ onRegister }) {
+export default function ItemRegisterForm({ onRegister, match }) {
+  const [title, setTitle] = useState('');
+  const [score, setScore] = useState(0);
+  const [content, setContent] = useState('');
+  const [file, setFile] = useState(null);
+  const history = useHistory();
 
-    const [itemName, setItemName] = useState("")
-    const [price, setPrice] = useState(0)
-    const [description, setDescription] = useState("")
-    const [file, setFile] = useState(null)
+  // 음식명이 사용자의 입력에 의해 변경되면 itemName 상태값을 변경한다.
+  const handleChangeTitle = useCallback((e) => {
+    setTitle(e.target.value);
+  }, []);
 
-    // 음식명이 사용자의 입력에 의해 변경되면 itemName 상태값을 변경한다.
-    const handleChangeItemName = useCallback(e => {
-        setItemName(e.target.value)
-    }, [])
+  // 가격이 사용자의 입력에 변경되면 price 설정 함수를 호출한다.
+  /*
+  const handleChangeScore = useCallback((e) => {
+    setScore(e.currentTarget);
+  }, []);*/
+  const handleChangeScore = score => {
+      setScore(score);
 
-    // 가격이 사용자의 입력에 변경되면 price 설정 함수를 호출한다.
-    const handleChangePrice = useCallback(e => {
-        setPrice(e.target.value)
-    }, [])
+  }
 
-    // 음식 설명
-    const handleChangeDescription = useCallback(e => {
-        setDescription(e.target.value)
-    }, [])
+  // 음식 설명
+  const handleChangeContent = useCallback((e) => {
+    setContent(e.target.value);
+  }, []);
 
-    // 업로드 파일
-    const handleChangeFile = useCallback(e => {
-        console.log(e.target.files[0])
-        setFile(e.target.files[0])
-    }, [])
+  // 업로드 파일
+  const handleChangeFile = useCallback((e) => {
+    console.log(e.target.files[0]);
+    setFile(e.target.files[0]);
+  }, []);
 
-    const handleSubmit = useCallback(e => {
-        e.preventDefault()
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
 
-        onRegister({itemName, price, description, file})
-    }, [onRegister, itemName, price, description, file])
+      onRegister({ title, score, content, file });
+    },
+    [onRegister, title, score, content, file],
+  );
 
-    return (
-        <div align="center">
-            <h2 class="title">음식 등록</h2>
-            <form onSubmit={handleSubmit}>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th className="form-label">음식명</th>
-                            <td>
-                                <input 
-                                    type="text"
-                                    value={itemName}
-                                    onChange={handleChangeItemName} 
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="form-label">음식 가격</th>
-                            <td>
-                                <input 
-                                    type="text"
-                                    value={price}
-                                    onChange={handleChangePrice} 
-                                />
-                                <span class="in-won">₩</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="form-label">음식 사진</th>
-                            <td>
-                                <input type="file" onChange={handleChangeFile} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className="form-label">음식 후기</th>
-                            <td>
-                                <textarea 
-                                    rows="5"
-                                    value={description}
-                                    onChange={handleChangeDescription}
-                                />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div>
-                    <button type="submit" className="like-a-button success">등록</button>&nbsp;
-                    <Link to="/" className="like-a-button">취소</Link>                     
+  return (
+      <div style={{ maxWidth: "700px", margin: "2rem auto"}}>
+          <form onSubmit={handleSubmit}>
+              <br />
+              <div style={{ maxWidth: "700px", margin: "2rem"}}>
+                  <label>제목 </label>
+                  <Input type="text" value={title} onChange={handleChangeTitle} />
+                  <hr></hr>
+                  <label>평점  </label>
+                  <Rate allowHalf value = {score} onChange={handleChangeScore}/>
+                  <hr></hr>
+                  <label>사진</label>
+                  <Input type="file" onChange={handleChangeFile} />
+                  <hr></hr>
+                  <label>후기</label>
+                  <TextArea
+                  rows="5"
+                  value={content}
+                  onChange={handleChangeContent}
+                />
                 </div>
-            </form>
-        </div>
-    )
+                <div>
+                <button type="submit" >등록</button>
+          &nbsp;
+          <Button onClick={()=>history.goBack()}>취소</Button>&nbsp;
+          </div>
+          </form>
+          </div>
+  );
 }

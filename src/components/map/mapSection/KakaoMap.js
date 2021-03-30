@@ -42,9 +42,10 @@ function placesSearchCB (data, status, pagination) {
 */
   
   }, []);
+
   
 
   return <div id="map" />
-};
+
 
 export default KakaoMap;

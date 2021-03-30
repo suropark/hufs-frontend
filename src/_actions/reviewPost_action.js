@@ -23,7 +23,7 @@ export const fetchSuccess = createAction(FETCH_SUCCESS, data => data)
 export const fetchFailure = createAction(FETCH_FAILURE, e => e)
 
 // 상세 조회 액션 생성 함수
-export const fetchItem = createAction(FETCH_ITEM, itemId => itemId)
+export const fetchItem = createAction(FETCH_ITEM, id => id)
 
 // 액션 생성 함수 (목록)
 export const fetchListSuccess = createAction(FETCH_LIST_SUCCESS, data => data)

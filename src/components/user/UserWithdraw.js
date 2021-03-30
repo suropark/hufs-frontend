@@ -39,11 +39,11 @@ function UserWithdraw(props) {
       });
   };
   return (
-    <>
+    <div style={{ display: 'inline-block', marginLeft: '40%' }}>
       <div>회원 탈퇴 이후 복구 불가, </div>
       <div>😭😭😭😭😭😭😭😭😭😭😭😭😭</div>
       <Button onClick={confirm}>Confirm</Button>
-    </>
+    </div>
   );
 }
 

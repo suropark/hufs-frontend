@@ -12,8 +12,8 @@ import { removeItemApi } from "../api"
 const ItemReadContainer = ({ match, history }) => {
 
     // match 객체의 params 속성값 참조
-    const { itemId } = match.params
-    console.log(match.params, itemId)
+    const { id } = match.params
+    console.log(match.params, id)
 
     // useDispatch()는 컴포넌트 내부에서 스토어의 내장함수 dispatch를 사용할 수 있게 해주는 훅이다.
     const dispatch = useDispatch()
@@ -28,7 +28,7 @@ const ItemReadContainer = ({ match, history }) => {
     // 삭제 완료 메시지 확인 후 음식 목록 페이지로 이동
     const onRemove = async () => {
         try {
-            await removeItemApi(itemId)
+            await removeItemApi(id)
             alert("삭제되었습니다.")
             history.push(`${match.url}/ReviewPage`)
         } catch(e) {
@@ -38,16 +38,16 @@ const ItemReadContainer = ({ match, history }) => {
 
     // 브라우저 상에서 컴포넌트가 나타날 때 음식 상세정보를 가져오는 액션을 실행한다.
     useEffect(() => {
-        dispatch(fetchItem(itemId))
+        dispatch(fetchItem(id))
         console.log(dispatch, fetchItem, FETCH_ITEM)
-    }, [dispatch, itemId])
+    }, [dispatch, id])
 
 
     console.log(item, isLoading )
 
     return (
         <ItemRead
-            itemId={itemId}
+            id={id}
             item={item}
             isLoading={isLoading}
             onRemove={onRemove}
