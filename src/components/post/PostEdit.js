@@ -10,6 +10,7 @@ import { PUBLIC_URL } from '../../config';
 import Header from '../../views/Header/Header';
 import Quick from '../../views/Quick/Quick';
 import Footer from '../../views/Footer/Footer';
+import { Button } from 'antd';
 
 let uploadedImg = [];
 function PostEdit(props) {
@@ -92,8 +93,8 @@ function PostEdit(props) {
           modules={modules}
           formats={formats}
         ></ReactQuill>
-        <button onClick={onSubmit}>제출</button>
-        <button onClick={onExit}>취소</button>
+        <Button onClick={onSubmit}>제출</Button>
+        <Button onClick={onExit}>취소</Button>
       </div>
     </>
   );

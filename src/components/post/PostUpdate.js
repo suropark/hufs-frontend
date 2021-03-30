@@ -11,7 +11,7 @@ import { PUBLIC_URL } from '../../config';
 import Footer from '../../views/Footer/Footer';
 import Header from '../../views/Header/Header';
 import Quick from '../../views/Quick/Quick';
-import { Skeleton } from 'antd';
+import { Button, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
@@ -131,8 +131,8 @@ function PostUpdate({ match, history }) {
               formats={formats}
             ></ReactQuill>
 
-            <button onClick={onUpdate}>수정하기</button>
-            <button onClick={onExit}>취소하기</button>
+            <Button onClick={onUpdate}>수정</Button>
+            <Button onClick={onExit}>취소</Button>
           </div>
         ) : (
           <Skeleton />
