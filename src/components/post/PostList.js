@@ -50,17 +50,17 @@ function PostList({ match, history }) {
   function findBoardName(boardId) {
     switch (boardId) {
       case 1:
-        return '떠들어 boo';
+        return '떠들 어 boo';
       case 2:
-        return '학교해 boo';
+        return '학교 해 boo';
       case 3:
-        return '학교간 boo';
+        return '학교 간 boo';
       case 4:
-        return '4 게시판';
+        return '학교 떠난 boo';
       case 5:
-        return '5 게시판';
+        return '정면 승 boo';
       case 6:
-        return '6 게시판';
+        return '이거 모르면 바 boo';
       default:
         break;
     }

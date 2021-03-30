@@ -14,11 +14,10 @@
 }
 .Map-left > .navi {
   position: absolute;
-  width: 144px;
+  width: 200px;
   height: 46px;
   left: 23%;
   top: 20px;
-  background-color: red;
 }
 .Map-left > .content {
   position: absolute;
@@ -87,10 +86,10 @@
   /* Map Content */
 
   position: absolute;
-  width: 750px;
-  height: 420px;
-  left: 25px;
-  top: 451px;
+  width: 100%;
+  height: 45%;
+  left: 0%;
+  top: 500px;
 
   background: #ce7d7d;
 }
@@ -105,7 +104,7 @@
   left: 15%;
   top: 20px;
   border: solid 1px black;
-  
+
   /* background: #afa1a1; */
 }
 .row {
@@ -192,13 +191,12 @@
   margin-top: 10px;
   margin-bottom: 10px;
   border: 1px #969393;
-
 }
-.ql-toolbar.ql-snow{
+.ql-toolbar.ql-snow {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.ql-container.ql-snow{
+.ql-container.ql-snow {
   height: 300px;
   max-height: 500px;
 }
@@ -206,4 +204,12 @@
 #button-bar {
   float: right;
   justify-content: space-between;
+}
+
+#button-head {
+  font-size: 25px;
+  top: 0%;
+}
+.Map .content Button {
+  margin: 3%;
 }

@@ -5,6 +5,8 @@ import Fuse from 'fuse.js';
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
 import axios from "axios";
+import { Button, Breadcrumb } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
@@ -37,13 +39,38 @@ const MapContainer = () => {
     }
 
   }
-  //const { map } = useSelector(state => ({ map: state.map}), []);
+
 
   return (
-    /*jshint ignore:start */
+
     <div className="Map">
-      {/* style={{ height: "100px", weight:"100px", paddingLeft: "10px", paddingRight: "10px", float:'right' }} */}
+
       <div className="Map-left">
+        <div className="navi" >
+
+          <Breadcrumb>
+            <Breadcrumb.Item href="http://localhost:3000/">
+              <HomeOutlined />
+            </Breadcrumb.Item>
+            <Breadcrumb.Item href="http://localhost:3000/mypage">
+              next
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>Now</Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
+        <div className="content" >
+          <div id="seoul">
+            <Button type="text" id="button-head">Seoul</Button>
+            <Button type="text">맛집공간</Button>
+            <Button type="text">주거공간</Button>
+
+          </div>
+          <div id="global">
+            <Button type="text" id="button-head">Global</Button>
+            <Button type="text">맛집공간</Button>
+            <Button type="text">주거공간</Button>
+          </div>
+        </div>
       </div>
       <div className="up-down" />
       <div className="Map-main">
@@ -70,12 +97,12 @@ const MapContainer = () => {
 
 
     </div>
-    /* jshint ignore:end */
 
-      
-    </>
-    
-    
+
+
+
+
+
 
   );
 
