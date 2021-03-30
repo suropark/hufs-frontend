@@ -10,8 +10,17 @@ const SignInModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const signInGoogle = async (e) => {
-    const request = await axios
-      .get(`http://52.78.2.40:8080/user/sign-in/google`)
+
+    const request = await axios({
+      method: 'get',
+      url: 'http://127.0.0.1:5000/user/sign-in/google',
+      headers: {
+        accept: 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+      // .get(`http://localhost:5000/user/sign-in/google`)
+
       .then((response) => {
         console.log(response.status);
         message.success('소셜 로그인 성공!');
@@ -23,8 +32,16 @@ const SignInModal = () => {
   };
 
   const signInKakao = async (e) => {
-    const request = await axios
-      .get(`http://52.78.2.40:8080/user/sign-in/kakao`)
+    const request = await axios({
+      method: 'get',
+      url: 'http://localhost:5000/user/sign-in/kakao',
+      headers: {
+        accept: 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+      // .get(`http://127.0.0.1:5000/user/sign-in/kakao`)
+
       .then((response) => {
         console.log(response.status);
         message.success('소셜 로그인 성공!');
@@ -53,11 +70,13 @@ const SignInModal = () => {
           onClick={signInGoogle}
           src={google_pic}
         />
+        <a href="http://localhost:5000/user/sign-in/kakao">
         <img
           style={{ cursor: 'pointer', marginLeft: '66px' }}
-          onClick={signInKakao}
+          // onClick={signInKakao}
           src={kakao_pic}
         />
+        </a>
       </Modal>
     </>
   );
