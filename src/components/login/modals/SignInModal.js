@@ -10,6 +10,7 @@ const SignInModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const signInGoogle = async (e) => {
+
     const request = await axios({
       method: 'get',
       url: 'http://127.0.0.1:5000/user/sign-in/google',
@@ -19,6 +20,7 @@ const SignInModal = () => {
       }
     })
       // .get(`http://localhost:5000/user/sign-in/google`)
+
       .then((response) => {
         console.log(response.status);
         message.success('소셜 로그인 성공!');
@@ -39,6 +41,7 @@ const SignInModal = () => {
       }
     })
       // .get(`http://127.0.0.1:5000/user/sign-in/kakao`)
+
       .then((response) => {
         console.log(response.status);
         message.success('소셜 로그인 성공!');

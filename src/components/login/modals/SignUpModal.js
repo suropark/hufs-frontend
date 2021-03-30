@@ -45,6 +45,7 @@ const SignUpModal = (props) => {
       .post('http://localhost:5000/user/sign-up', submit)
       .then((response) => {
         console.log(response)
+
         console.log(response.status);
         message.success('회원가입이 성공적으로 완료되었습니다 :)');
       })

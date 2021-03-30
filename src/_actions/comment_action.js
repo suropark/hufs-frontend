@@ -1,6 +1,6 @@
 import axios from 'axios';
+import { PUBLIC_URL } from '../config';
 import {
-  COMMENT_LIST,
   COMMENT_REMOVE,
   COMMENT_SAVE,
   COMMENT_LIKE,
@@ -10,76 +10,66 @@ import {
   COMMENT_REMOVE_FAIL,
   COMMENT_REPORT_FAIL,
 } from './types';
-
+//  완료
 export const commentSave = async (body) => {
-  const request = await axios
-    .post('reply/add', body)
-    .then((response) => response.data);
-  // response로 뭐라도 받아야해
-  if (!request.saveSuccess) {
-    return {
-      type: COMMENT_SAVE_FAIL,
-      saveSuccess: false,
-    };
-  } else {
+  const request = await axios.post(`${PUBLIC_URL}/reply/add`, body);
+  if (request.status === 200) {
     return {
       type: COMMENT_SAVE,
-      payload: body, // req로 바꾸기
-      saveSuccess: true, // request.saveSuccess
+      status: request.status,
+    };
+  } else {
+    return {
+      type: COMMENT_SAVE_FAIL,
+      status: request.status,
     };
   }
 };
-
+// 완료
 export const commentLike = async (commentId) => {
-  const request = await axios
-    .get(`reply/${commentId}/addlike`, commentId)
-    .then((response) => response.data);
-  if (!request.likeSuccess) {
-    return {
-      type: COMMENT_LIKE_FAIL,
-      likeSuccess: false,
-      // alreadyLiked: boolean
-    };
-  } else {
+  const request = await axios.get(`${PUBLIC_URL}/reply/${commentId}/addlike`);
+  if (request.status === 200) {
     return {
       type: COMMENT_LIKE,
-      payload: commentId,
-      likeSuccess: true,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: COMMENT_LIKE_FAIL,
+      status: request.status,
     };
   }
 };
+// 완료
 export const commentRemove = async (commentId) => {
-  const request = await axios
-    .delete(`/reply/${commentId}`)
-    .then((response) => response.data);
-  if (!request.removeSuccess) {
-    return {
-      type: COMMENT_REMOVE_FAIL,
-      removeSuccess: false,
-    };
-  } else {
+  const request = await axios.delete(`${PUBLIC_URL}/reply/${commentId}`);
+  if (request.status === 200) {
     return {
       type: COMMENT_REMOVE,
-      payload: commentId,
-      removeSuccess: true,
-    };
-  }
-};
-export const commentReport = async (commentId, body) => {
-  //commentId, 내용
-  const request = await axios
-    .post(`/reply/${commentId}/report`, body)
-    .then((response) => response.data);
-
-  if (!request.reportSuccess) {
-    return {
-      type: COMMENT_REPORT_FAIL,
-      reportSuccess: false,
+      status: request.status,
     };
   } else {
     return {
+      type: COMMENT_REMOVE_FAIL,
+      status: request.status,
+    };
+  }
+};
+// 완료
+export const commentReport = async (commentId, body) => {
+  const request = await axios.post(
+    `${PUBLIC_URL}/reply/${commentId}/report`,
+    body,
+  );
+  if (request.status === 200) {
+    return {
       type: COMMENT_REPORT,
-      reportSuccess: true,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: COMMENT_REPORT_FAIL,
+      status: request.status,
     };
   }
 };

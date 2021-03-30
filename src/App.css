@@ -1,63 +1,32 @@
-@import '~antd/dist/antd.css';
-.site-layout-content {
-  min-height: 280px;
-  padding: 24px;
-  background: #fff;
-}
-#components-layout-demo-top .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-.ant-row-rtl #components-layout-demo-top .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
-}
-body {
-  font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-}
-/* .layout {
-  width: 1000px;
-  margin: 200px;
-} */
-.All {
-  position: relative;
-  width: 1100px;
-  height: 1170px;
-
-  background: #ffffff;
-}
-
 .Head {
-  position: absolute;
+  position: relative;
+  left: 15%;
   width: 1100px;
   height: 140px;
-  left: 150px;
-  top: 39px;
-
   background-color: #8897cb;
 }
 
 .Head > .Pagename {
   /* 페이지 이름 */
 
-  /* Auto Layout */
-
   display: flex;
   flex-direction: row;
   padding: 15px 0px 15px 0px;
   border: '1px solid violet';
   position: absolute;
+  justify-content: center;
+  align-items: center;
   width: 250px;
   height: 68px;
   left: 0px;
   top: 35px;
-
-  background: #358838;
 }
-
+.Head > .Pagename img {
+  width: 250px;
+  height: auto;
+  max-width: 250px;
+  max-height: 68px;
+}
 .Head > .Image {
   /* 이미지 */
 
@@ -67,56 +36,57 @@ body {
   left: 492px;
   top: 0px;
 
-  background: #abad43;
+  /* background: #abad43; */
 }
-.Head > .Menubar {
+
+#Menubar {
   /* MenuBar */
 
   /* Auto Layout */
-
+  position: relative;
   display: flex;
   flex-direction: row;
-  align-content: center;
-  align-items: flex-start;
-  padding: 0px;
+  /* align-content: center; */
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
 
-  position: absolute;
   width: 850px;
   height: 80px;
   left: 250px;
   top: 61px;
-
-  background: #f0d0d0;
 }
-.Head > .Searchbar {
+
+#Searchbar {
   /* 검색창 */
 
   position: absolute;
-  width: 278px;
-  height: 30px;
+  /* width: 278px; */
+
   left: 822px;
   top: 20px;
-
-  background: #aba85e;
 }
+
 .Head > .loginbar {
   /* 로그인 */
 
   position: absolute;
+
   width: 278px;
   height: 20px;
   left: 822px;
   top: 0px;
 
-  background: #abad43;
+  /* background: #abad43; */
 }
 
 .Main {
-  position: absolute;
+  position: relative;
+  left: 15%;
   width: 1120px;
   height: 1200px;
-  left: 140px;
-  top: 212px;
+
+  top: 20px;
   border: '1px solid violet';
   background: #8897cb;
 }
@@ -138,7 +108,7 @@ body {
   height: 330px;
   left: 70px;
   top: 433px;
-  background: #aba85e;
+  /* background: #aba85e; */
 }
 
 .Main > .board {
@@ -150,27 +120,48 @@ body {
   left: 10px;
   top: 813px;
 
-  background: #cd7d7d;
+  /* background: #cd7d7d; */
 }
 
 .Footer {
   /* Footer */
 
-  position: absolute;
-  width: 1120px;
+  position: relative;
+  left: 15%;
+  width: 1100px;
   height: 100px;
-  left: 140px;
-  top: 1477px;
-
+  top: 100px;
   background: #f0d0d0;
 }
 
 .Quick {
-  position: absolute;
+  text-align: left;
   width: 130px;
   height: 206px;
   right: 0px;
   top: 224px;
 
   background: #8897cb;
+}
+/* 오른쪽 부유 바 */
+.ant-anchor-wrapper {
+  position: absolute;
+  text-align: left;
+  width: 130px;
+  height: 206px;
+  top: 224px;
+  left: 1400px;
+
+  background: #8897cb;
+}
+.ant-anchor-ink {
+  display: none;
+}
+
+/* 작은 캘린더 */
+.site-calendar-demo-card {
+  float: left;
+  width: 500px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
 }

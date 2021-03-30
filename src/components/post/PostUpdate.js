@@ -5,8 +5,13 @@ import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
 
 import { withRouter } from 'react-router-dom';
-import { postUpdate } from '../../_actions/post_action';
+import { postUpdate, postView } from '../../_actions/post_action';
 import axios from 'axios';
+import { PUBLIC_URL } from '../../config';
+import Footer from '../../views/Footer/Footer';
+import Header from '../../views/Header/Header';
+import Quick from '../../views/Quick/Quick';
+import { Button, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
@@ -17,21 +22,41 @@ function PostUpdate({ match, history }) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('/post/back', uploadedImg);
+      axios.post(`${PUBLIC_URL}/post/back`, { url: uploadedImg });
     };
   });
-
   useEffect(async () => {
-    const request = await axios
-      .get(`/post/${+match.parmas.id}`)
-      .then((response) => response.data);
-    const firstImg = Array.from(
-      new DOMParser()
-        .parseFromString(request.content, 'text/html')
-        .querySelectorAll('img'),
-    ).map((img) => img.getAttribute('src'));
-    setUpdated({ title: request.title, content: request.content });
-    wholeImg = wholeImg.concat(firstImg);
+    dispatch(postView(+match.params.id))
+      .then((response) => {
+        if (response.status === 200) {
+          const firstImg = Array.from(
+            new DOMParser()
+              .parseFromString(response.payload.content, 'text/html')
+              .querySelectorAll('img'),
+          ).map((img) => img.getAttribute('src'));
+          setUpdated({
+            title: response.payload.title,
+            content: response.payload.content,
+          });
+          wholeImg = wholeImg.concat(firstImg);
+        }
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            break;
+          case 404:
+            alert('존재하지 않는 게시글입니다');
+            break;
+          default:
+            break;
+        }
+      });
   }, []);
 
   const onUpdate = () => {
@@ -46,18 +71,33 @@ function PostUpdate({ match, history }) {
 
     dispatch(postUpdate(updated, needDelete, +match.params.id))
       .then((response) => {
-        if (response.updateSuccess) {
+        if (response.status === 200) {
           history.goBack();
-        } else {
-          alert('수정에 실패했습니다. / ');
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 200:
+            break;
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            break;
+          default:
+            break;
+        }
+      });
   };
   const onExit = () => {
     const answer = window.confirm('진짜?');
     if (answer) {
-      axios.delete('/post/back', uploadedImg).then(history.goBack());
+      axios
+        .post(`${PUBLIC_URL}/post/back`, { url: uploadedImg })
+        .then(history.goBack())
+        .catch(history.goBack());
     }
   };
 
@@ -66,35 +106,39 @@ function PostUpdate({ match, history }) {
   }, [updated]);
 
   return (
-    <div>
-      {updated ? (
-        <div>
-          <p>글 번호: {updated.id}</p>
-          <input
-            type="text"
-            placeholder="제목"
-            value={updated.title}
-            onChange={(e) => setUpdated({ ...updated, title: e.target.value })}
-          />
-          <ReactQuill
-            className="1"
-            placeholder="하이"
-            theme="snow"
-            value={updated.content}
-            onChange={(content, delta, source, editor) => {
-              setUpdated({ ...updated, content: editor.getHTML() });
-            }}
-            modules={modules}
-            formats={formats}
-          ></ReactQuill>
+    <>
+      <div className="community-main">
+        {updated ? (
+          <div>
+            <p>글 번호: {updated.id}</p>
+            <input
+              type="text"
+              placeholder="제목"
+              value={updated.title}
+              onChange={(e) =>
+                setUpdated({ ...updated, title: e.target.value })
+              }
+            />
+            <ReactQuill
+              className="1"
+              placeholder="하이"
+              theme="snow"
+              value={updated.content}
+              onChange={(content, delta, source, editor) => {
+                setUpdated({ ...updated, content: editor.getHTML() });
+              }}
+              modules={modules}
+              formats={formats}
+            ></ReactQuill>
 
-          <button onClick={onUpdate}>수정하기</button>
-          <button onClick={onExit}>취소하기</button>
-        </div>
-      ) : (
-        'isLoading'
-      )}
-    </div>
+            <Button onClick={onUpdate}>수정</Button>
+            <Button onClick={onExit}>취소</Button>
+          </div>
+        ) : (
+          <Skeleton />
+        )}
+      </div>
+    </>
   );
 }
 
@@ -160,7 +204,7 @@ function imageHandler() {
       // this.quill.enable(false);
 
       axios
-        .post('/post/img', { img: formData })
+        .post(`${PUBLIC_URL}/post/img`, { img: formData })
         .then((response) => {
           this.quill.enable(true);
           this.quill.editor.insertEmbed(range.index, 'image', response.data);
@@ -171,8 +215,8 @@ function imageHandler() {
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log('업로드 실패');
           console.log(error);
+          alert('업로드 실패');
           this.quill.enable(true);
         });
     });

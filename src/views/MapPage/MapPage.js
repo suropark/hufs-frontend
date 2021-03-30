@@ -2,17 +2,17 @@ import React from "react";
 import { Route, Switch,BrowserRouter } from "react-router-dom";
 import MapContainer from "../../components/map/mapSection/MapContainer";
 import inforPage from "../MapInforPage/MapInforPage";
-import ReviewPage from "../../components/map/reviewSection/ReviewPage";
+import ReviewPage from "../ReviewPage/ReviewPage"
 
 function MapPage({match}) {
   return (
      /* jshint ignore:start */
     <BrowserRouter>
       <Switch>
-        <Route exact path={match.path} component={MapContainer} />
-        <Route path={`${match.path}/info`} component = {inforPage}/>
-        {<Route path={`${match.path}/info/:name`} component = {inforPage}/>}
-        <Route path={`${match.path}/info/:name/create`} component = {ReviewPage}/>
+        <Route exact path={`${match.path}`} component={MapContainer} />
+        {/* <Route exact path={`${match.path}/info`} component = {inforPage}/> */}
+        <Route exact path={`${match.path}/info/:name/:id/ReviewPage`} component = {ReviewPage}/>
+        <Route exact path={`${match.path}/info/:name/:id`} component = {inforPage}/>
        
 
       </Switch>

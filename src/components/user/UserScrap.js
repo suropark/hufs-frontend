@@ -1,10 +1,31 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { PUBLIC_URL } from '../../config';
 import { deleteScrap } from '../../_actions/post_action';
-
+import { message } from 'antd';
 function UserScrap() {
   const dispatch = useDispatch();
-  const { scraps } = useSelector((state) => state.user);
+  // const { scraps } = useSelector((state) => state.user);
+  const [scraps, setScraps] = useState([]);
+  useEffect(async () => {
+    const request = await axios
+      .get(`${PUBLIC_URL}/user/scrap`, null, {
+        params: { directoryId: 1 },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          setScraps(request.data.data); // [스크랩 id, 포스트 id, 포스트 title]
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(error.request);
+        console.log(error.response);
+      });
+    // }
+  }, []);
   const onRemove = (e) => {
     console.log(e.target.value);
     dispatch(deleteScrap(e.target.value)).then((response) => {

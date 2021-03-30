@@ -23,7 +23,7 @@ export const fetchSuccess = createAction(FETCH_SUCCESS, data => data)
 export const fetchFailure = createAction(FETCH_FAILURE, e => e)
 
 // 상세 조회 액션 생성 함수
-export const fetchItem = createAction(FETCH_ITEM, itemId => itemId)
+export const fetchItem = createAction(FETCH_ITEM, id => id)
 
 // 액션 생성 함수 (목록)
 export const fetchListSuccess = createAction(FETCH_LIST_SUCCESS, data => data)
@@ -32,7 +32,7 @@ export const fetchListFailure = createAction(FETCH_LIST_FAILURE, e => e)
 // 목록 조회 액션 생성 함수
 export const fetchItemList = createAction(FETCH_ITEM_LIST)
 
-// 상품 상세정보를 조회하는 태스크
+// 음식 상세정보를 조회하는 태스크
 function* fetchItemSaga(action) {
     yield put(startLoading(FETCH_ITEM))
     try {
@@ -65,7 +65,7 @@ call 은 블럭되는 fork 라고 보면 된다. 인자로 함수나 saga task �
 
 */
 
-// 상품 목록을 조회하는 태스크
+// 음식 목록을 조회하는 태스크
 function* fetchItemListSaga() {
     yield put(startLoading(FETCH_ITEM_LIST))
     try {
@@ -77,7 +77,7 @@ function* fetchItemListSaga() {
     yield put(endLoading(FETCH_ITEM_LIST))
 }
 
-// 상품 saga 함수 작성
+// 음식 saga 함수 작성
 export function* itemSaga() {
     // 상세조회 태스크
     yield takeLatest(FETCH_ITEM, fetchItemSaga)
@@ -88,8 +88,8 @@ export function* itemSaga() {
 
 // 모듈의 초기 상태
 const initialState = {
-    item: null, // 하나의 상품 정보
-    items: [],  // 상품 목록
+    item: null, // 하나의 음식 정보
+    items: [],  // 음식 목록
     error: null // 응답에러 정보
 }
 

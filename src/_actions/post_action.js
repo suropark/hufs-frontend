@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { PUBLIC_URL } from '../config';
 import {
   POST_REPORT,
   POST_LIST,
+  POST_LIST_FAIL,
   POST_REMOVE,
   POST_SAVE,
   POST_LIKE,
@@ -17,160 +19,174 @@ import {
   POST_SCRAP_REMOVE_FAIL,
   POST_DELLIKE,
   POST_DELLIKE_FAIL,
+  POST_VIEW_FAIL,
+  POST_VIEW,
 } from './types';
+// 완료
+export const postView = async (postId) => {
+  const request = await axios.get(`${PUBLIC_URL}/post/${postId}`);
 
-export const postList = async (match) => {
-  const request = await axios
-    .get(`/board${match.path}`)
-    .then((response) => response.data);
-  return {
-    type: POST_LIST,
-    payload: request,
-  };
-};
-export const postReport = async (body) => {
-  const request = await axios //body : postId, content, detail
-    .post(`/post/${body.postId}/report`, body)
-    .then((response) => response.data);
-  if (!request.reportSuccess) {
+  if (request.status === 200) {
     return {
-      type: POST_REPORT_FAIL,
-      reportSuccess: false,
+      type: POST_VIEW,
+      payload: request.data.data, // 객체
+      status: request.status,
     };
   } else {
+    return {
+      type: POST_VIEW_FAIL,
+      status: request.status,
+    };
+  }
+};
+// 완료
+export const postList = async (match) => {
+  const request = await axios.get(`${PUBLIC_URL}/board${match.path}`);
+  if (request.status === 200) {
+    return {
+      type: POST_LIST,
+      payload: request.data.data, // 배열
+      status: request.status,
+    };
+  } else {
+    return {
+      type: POST_LIST_FAIL,
+      status: request.status,
+    };
+  }
+};
+//완료
+export const postReport = async (postId, body) => {
+  const request = await axios //body : postId, content, detail
+    .post(`${PUBLIC_URL}/post/${postId}/report`, body);
+  if (request.status === 200) {
     return {
       type: POST_REPORT,
-      reportSuccess: true,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: POST_REPORT_FAIL,
+      status: request.status,
     };
   }
 };
+// 완료
 export const postSave = async (body, needDelete, boardId) => {
-  const request1 = await axios
-    .post(`/board${boardId}/post`, body)
-    .then((response) => response.data); // userId 받아야해
+  const request = await axios.post(`${PUBLIC_URL}/board/${boardId}/post`, body);
 
   if (needDelete.length !== 0) {
-    await axios.delete('/post/back', needDelete);
+    await axios.post(`${PUBLIC_URL}/post/back`, { url: needDelete });
   }
-  if (!request1.saveSuccess) {
-    return {
-      type: POST_SAVE_FAIL,
-      saveSuccess: false,
-    };
-  } else {
+  if (request.status === 200) {
     return {
       type: POST_SAVE,
-      payload: body,
-      saveSuccess: true,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: POST_SAVE_FAIL,
+      status: request.error,
     };
   }
 };
-export const postUpdate = async (body, needDelete, postId) => {
-  const request = await axios
-    .put(`/post/${postId}`, body)
-    .then((response) => response.data);
-  if (needDelete.length !== 0) {
-    await axios.delete('/post/back', needDelete);
-  }
+// 완료
+export const postUpdate = async (updated, needDelete, postId) => {
+  const request = await axios.put(`${PUBLIC_URL}/post/${postId}`, updated);
 
-  if (!request.updateSuccess) {
-    return {
-      type: POST_UPDATE_FAIL,
-      updateSuccess: false,
-    };
-  } else {
+  if (needDelete.length !== 0) {
+    await axios.post(`${PUBLIC_URL}/post/back`, { url: needDelete });
+  }
+  if (request.status === 200) {
     return {
       type: POST_UPDATE,
-      payload: body, // title, content
-      updateSuccess: true,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: POST_UPDATE_FAIL,
+      status: request.status,
     };
   }
 };
+// 완료
 export const postRemove = async (postId) => {
-  const request = await axios
-    .delete(`/post/${postId}`, postId)
-    .then((response) => response.data); //
-  if (!request.removeSuccess) {
-    return {
-      type: POST_REMOVE_FAIL,
-      removeSuccess: false,
-    };
-  } else {
+  const request = await axios.delete(`${PUBLIC_URL}/post/${postId}`);
+  if (request.status === 200) {
     return {
       type: POST_REMOVE,
-      id: postId,
-      removeSuccess: true,
-    };
-  }
-};
-
-export const postLike = async (postId) => {
-  const request = await axios
-    .put(`/post/${postId}/addlike`, postId)
-    .then((response) => response.data); //
-  if (!request.likeSuccess) {
-    return {
-      type: POST_LIKE_FAIL,
-      likeSuccess: false,
+      status: request.status,
     };
   } else {
     return {
+      type: POST_REMOVE_FAIL,
+      status: request.status,
+    };
+  }
+};
+// 완료
+export const postLike = async (postId) => {
+  const request = await axios.get(`${PUBLIC_URL}/post/${postId}/addlike`);
+  if (request.status === 200) {
+    return {
       type: POST_LIKE,
-      payload: postId, // payload: postId??
-      likeSuccess: true,
+      status: request.status,
+    };
+  } else {
+    return {
+      type: POST_LIKE_FAIL,
+      status: request.status,
     };
   }
 };
 export const postDellike = async (postId) => {
-  const request = await axios
-    .put(`/post/${postId}/dellike`, postId)
-    .then((response) => response.data); //
-  if (!request.dellikeSuccess) {
+  const request = await axios.get(`${PUBLIC_URL}/post/${postId}/dellike`);
+  if (request.status === 200) {
     return {
-      type: POST_DELLIKE_FAIL,
-      dellikeSuccess: false,
+      type: POST_DELLIKE,
+      status: request.status,
     };
   } else {
     return {
-      type: POST_DELLIKE,
-      payload: postId, // payload: postId??
-      dellikeSuccess: true,
+      type: POST_DELLIKE_FAIL,
+      status: request.status,
     };
   }
 };
 
+// request  query로 보내야하는데..
+// 스웨거 request URL은 맞춤 , 500
 export const postScrap = async (postId) => {
-  const request = await axios
-    .post('/user/scrap', postId)
-    .then((response) => response.message);
-  if (request == '') {
+  const request = await axios.post(`${PUBLIC_URL}/user/scrap`, null, {
+    params: { postId: postId },
+  });
+  if (request.status === 200) {
     return {
       type: POST_SCRAP,
-      success: true,
+      status: request.status,
     };
   } else {
     return {
       type: POST_SCRAP_FAIL,
-      success: false,
-      message: request,
+      status: request.status,
     };
   }
 };
 
+// id가 스크랩 아이디라서 조금 다른데 해결필요
 export const deleteScrap = async (postId) => {
-  const request = await axios
-    .delete('/user/scrap', postId)
-    .then((response) => response.message);
-  if (request == '') {
+  const request = await axios.delete(`${PUBLIC_URL}/user/scrap`, null, {
+    params: { id: postId },
+  });
+  if (request.status === 200) {
     return {
       type: POST_SCRAP_REMOVE,
-      success: true,
+      status: request.status,
     };
   } else {
     return {
       type: POST_SCRAP_REMOVE_FAIL,
-      success: false,
-      message: request,
+      status: request.status,
     };
   }
 };

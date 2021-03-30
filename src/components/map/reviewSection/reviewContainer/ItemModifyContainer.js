@@ -1,4 +1,4 @@
-import ItemModifyForm from "../ReviewEditPage"
+import ItemModifyForm from "../ItemModifyForm"
 import { useDispatch, useSelector } from "react-redux"
 import React, { useEffect } from "react"
 import { withRouter } from "react-router-dom"
@@ -14,14 +14,14 @@ const ItemModifyContainer = ({ match, history }) => {
         isLoading: loading[FETCH_ITEM]
     }))
 
-    const { itemId } = match.params
+    const { id } = match.params
 
-    const onModify = (itemName, price, description, file) => {
+    const onModify = (title, score, content, file) => {
         const itemObject = {
-            itemId: itemId,
-            itemName: itemName,
-            price: price,
-            description: description
+            id: id,
+            title: title,
+            score: score,
+            content: content
         }
 
         const formData = new FormData()
@@ -29,27 +29,28 @@ const ItemModifyContainer = ({ match, history }) => {
         formData.append("file", file)
         formData.append("item", JSON.stringify(itemObject))
 
-        axios.put("/items", formData, {
+        axios.put(`http://52.78.2.40:8080/store/review/${id}`, formData, {
             headers: {
                 "Content-type": "multipart/form-data"
             }
         }).then(res => {
             alert("수정되었습니다.")
-            history.push("/read/" + itemId)
+            history.push(`${match.url}/${id}`)
         }).catch(err => {
             alert(err.response.data.msg)
         })
     }
 
     useEffect(() => {
-        dispatch(fetchItem(itemId))
-    }, [dispatch, itemId])
+        dispatch(fetchItem(id))
+    }, [dispatch, id])
 
     return (
         <ItemModifyForm
             item={item}
             isLoading={isLoading}
             onModify={onModify}
+            match={match}
         />
     )
 }
