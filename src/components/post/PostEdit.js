@@ -10,6 +10,7 @@ import { PUBLIC_URL } from '../../config';
 import Header from '../../views/Header/Header';
 import Quick from '../../views/Quick/Quick';
 import Footer from '../../views/Footer/Footer';
+import { Button } from 'antd';
 
 let uploadedImg = [];
 function PostEdit(props) {
@@ -20,7 +21,7 @@ function PostEdit(props) {
       axios.delete(`${PUBLIC_URL}/post/back`, uploadedImg);
     };
   });
-  console.log(props.location.state.detail.substring(1));
+  // console.log(props.location.state.detail.substring(1));
   const [value, setvalue] = useState({ title: '', content: '' });
   const onSubmit = (e) => {
     e.preventDefault();
@@ -72,8 +73,9 @@ function PostEdit(props) {
 
   return (
     <>
-      <div className="community-main">
+      <div id="community-main">
         <input
+          className="title-bar"
           type="text"
           placeholder="제목"
           value={value.title}
@@ -92,8 +94,14 @@ function PostEdit(props) {
           modules={modules}
           formats={formats}
         ></ReactQuill>
-        <button onClick={onSubmit}>제출</button>
-        <button onClick={onExit}>취소</button>
+        <div id="button-bar">
+          <Button type="primary" onClick={onSubmit} style={{
+            margin: '10px'
+          }}>제출</Button>
+          <Button type="primary" onClick={onSubmit} style={{
+            margin: '10px'
+          }}>취소</Button>
+        </div>
       </div>
     </>
   );
