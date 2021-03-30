@@ -1,30 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-function UserPost() {
-  const { posts } = useSelector((state) => state.user);
+import { Link } from 'react-router-dom';
+import { Table } from 'antd';
+function UserPost({ match }) {
+  const { Column } = Table;
+  const { myPost } = useSelector((state) => state.user);
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>글 번호</th>
-            <th>제목</th>
-            <th>userId</th>
-            <th>조회</th>
-          </tr>
-        </thead>
-        {posts
-          ? posts.map((post, index) => {
-              return (
-                <>
-                  <div key={index}>{post.postId}</div>
-                  <div>{post.content}</div>
-                </>
-              );
-            })
-          : null}
-      </table>
+      <Table pagination={false} dataSource={myPost}>
+        <Column title="-" dataIndex="id" key="id" />
+        <Column
+          title="내가 쓴 글"
+          key="title"
+          render={(text, record) => (
+            <Link to={`1/${record.id}`}>
+              {record.title.length > 30
+                ? record.title.slice(0, 29)
+                : record.title}
+            </Link>
+          )}
+        />
+      </Table>
     </div>
   );
 }

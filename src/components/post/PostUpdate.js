@@ -5,30 +5,58 @@ import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
 
 import { withRouter } from 'react-router-dom';
-import { postUpdate } from '../../_actions/post_action';
+import { postUpdate, postView } from '../../_actions/post_action';
 import axios from 'axios';
+import { PUBLIC_URL } from '../../config';
+import Footer from '../../views/Footer/Footer';
+import Header from '../../views/Header/Header';
+import Quick from '../../views/Quick/Quick';
+import { Button, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
 let uploadedImg = [];
 function PostUpdate({ match, history }) {
   const dispatch = useDispatch();
+  const [updated, setUpdated] = useState(false);
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('img/delete', uploadedImg);
+      axios.post(`${PUBLIC_URL}/post/back`, { url: uploadedImg });
     };
   });
-  const { posts } = useSelector((state) => state.post);
-  const post = posts.find((post) => post.id === +match.params.id);
-  const [updated, setUpdated] = useState(post);
-  useEffect(() => {
-    const firstImg = Array.from(
-      new DOMParser()
-        .parseFromString(post.content, 'text/html')
-        .querySelectorAll('img'),
-    ).map((img) => img.getAttribute('src'));
-    wholeImg = wholeImg.concat(firstImg);
+  useEffect(async () => {
+    dispatch(postView(+match.params.id))
+      .then((response) => {
+        if (response.status === 200) {
+          const firstImg = Array.from(
+            new DOMParser()
+              .parseFromString(response.payload.content, 'text/html')
+              .querySelectorAll('img'),
+          ).map((img) => img.getAttribute('src'));
+          setUpdated({
+            title: response.payload.title,
+            content: response.payload.content,
+          });
+          wholeImg = wholeImg.concat(firstImg);
+        }
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            break;
+          case 404:
+            alert('존재하지 않는 게시글입니다');
+            break;
+          default:
+            break;
+        }
+      });
   }, []);
 
   const onUpdate = () => {
@@ -41,20 +69,35 @@ function PostUpdate({ match, history }) {
 
     const needDelete = getUnused(wholeImg, afterEdit); // return : 삭제해야 할 이미지 url
 
-    dispatch(postUpdate(updated, needDelete))
+    dispatch(postUpdate(updated, needDelete, +match.params.id))
       .then((response) => {
-        if (response.updateSuccess) {
+        if (response.status === 200) {
           history.goBack();
-        } else {
-          alert('수정에 실패했습니다. / ');
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 200:
+            break;
+          case 401:
+            alert('로그인하지 않은 사용자');
+            history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            break;
+          default:
+            break;
+        }
+      });
   };
   const onExit = () => {
     const answer = window.confirm('진짜?');
     if (answer) {
-      axios.delete('post/delete', uploadedImg).then(history.goBack());
+      axios
+        .post(`${PUBLIC_URL}/post/back`, { url: uploadedImg })
+        .then(history.goBack())
+        .catch(history.goBack());
     }
   };
 
@@ -63,35 +106,39 @@ function PostUpdate({ match, history }) {
   }, [updated]);
 
   return (
-    <div>
-      {post ? (
-        <div>
-          <p>글 번호: {post.id}</p>
-          <input
-            type="text"
-            placeholder="제목"
-            value={updated.title}
-            onChange={(e) => setUpdated({ ...updated, title: e.target.value })}
-          />
-          <ReactQuill
-            className="1"
-            placeholder="하이"
-            theme="snow"
-            value={updated.content}
-            onChange={(content, delta, source, editor) => {
-              setUpdated({ ...updated, content: editor.getHTML() });
-            }}
-            modules={modules}
-            formats={formats}
-          ></ReactQuill>
+    <>
+      <div className="community-main">
+        {updated ? (
+          <div>
+            <p>글 번호: {updated.id}</p>
+            <input
+              type="text"
+              placeholder="제목"
+              value={updated.title}
+              onChange={(e) =>
+                setUpdated({ ...updated, title: e.target.value })
+              }
+            />
+            <ReactQuill
+              className="1"
+              placeholder="하이"
+              theme="snow"
+              value={updated.content}
+              onChange={(content, delta, source, editor) => {
+                setUpdated({ ...updated, content: editor.getHTML() });
+              }}
+              modules={modules}
+              formats={formats}
+            ></ReactQuill>
 
-          <button onClick={onUpdate}>수정하기</button>
-          <button onClick={onExit}>취소하기</button>
-        </div>
-      ) : (
-        'isLoading'
-      )}
-    </div>
+            <Button onClick={onUpdate}>수정</Button>
+            <Button onClick={onExit}>취소</Button>
+          </div>
+        ) : (
+          <Skeleton />
+        )}
+      </div>
+    </>
   );
 }
 
@@ -157,24 +204,19 @@ function imageHandler() {
       // this.quill.enable(false);
 
       axios
-        .post('/api/image', formData)
+        .post(`${PUBLIC_URL}/post/img`, { img: formData })
         .then((response) => {
           this.quill.enable(true);
-          this.quill.editor.insertEmbed(
-            range.index,
-            'image',
-            response.data.url_path,
-            // dispatch로 url을 스토어에 보내서 보관하면 어떨까?
-          );
-          wholeImg = wholeImg.concat(response.data.url_path);
-          uploadedImg = uploadedImg.concat(response.data.url_path);
+          this.quill.editor.insertEmbed(range.index, 'image', response.data);
+          wholeImg = wholeImg.concat(response.data);
+          uploadedImg = uploadedImg.concat(response.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log('quill image upload failed');
           console.log(error);
+          alert('업로드 실패');
           this.quill.enable(true);
         });
     });

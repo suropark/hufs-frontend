@@ -1,24 +1,167 @@
-@import '~antd/dist/antd.css';
-.site-layout-content {
-  min-height: 280px;
-  padding: 24px;
-  background: #fff;
+.Head {
+  position: relative;
+  left: 15%;
+  width: 1100px;
+  height: 140px;
+  background-color: #8897cb;
 }
-#components-layout-demo-top .logo {
+
+.Head > .Pagename {
+  /* 페이지 이름 */
+
+  display: flex;
+  flex-direction: row;
+  padding: 15px 0px 15px 0px;
+  border: '1px solid violet';
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 68px;
+  left: 0px;
+  top: 35px;
+}
+.Head > .Pagename img {
+  width: 250px;
+  height: auto;
+  max-width: 250px;
+  max-height: 68px;
+}
+.Head > .Image {
+  /* 이미지 */
+
+  position: absolute;
+  width: 169px;
+  height: 60px;
+  left: 492px;
+  top: 0px;
+
+  /* background: #abad43; */
+}
+
+#Menubar {
+  /* MenuBar */
+
+  /* Auto Layout */
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  /* align-content: center; */
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+
+  width: 850px;
+  height: 80px;
+  left: 250px;
+  top: 61px;
+}
+
+#Searchbar {
+  /* 검색창 */
+
+  position: absolute;
+  /* width: 278px; */
+
+  left: 822px;
+  top: 20px;
+}
+
+.Head > .loginbar {
+  /* 로그인 */
+
+  position: absolute;
+
+  width: 278px;
+  height: 20px;
+  left: 822px;
+  top: 0px;
+
+  /* background: #abad43; */
+}
+
+.Main {
+  position: relative;
+  left: 15%;
+  width: 1120px;
+  height: 1200px;
+
+  top: 20px;
+  border: '1px solid violet';
+  background: #8897cb;
+}
+
+.Main > .Mainbanner {
+  position: absolute;
+  width: 1100px;
+  height: 370px;
+  left: 10px;
+  top: 12px;
+
+  background: #d38383;
+}
+.Main > .MainCalendar {
+  /* 학사,장학일정 */
+
+  position: absolute;
+  width: 980px;
+  height: 330px;
+  left: 70px;
+  top: 433px;
+  /* background: #aba85e; */
+}
+
+.Main > .board {
+  /* favorite board */
+
+  position: absolute;
+  width: 1100px;
+  height: 370px;
+  left: 10px;
+  top: 813px;
+
+  /* background: #cd7d7d; */
+}
+
+.Footer {
+  /* Footer */
+
+  position: relative;
+  left: 15%;
+  width: 1100px;
+  height: 100px;
+  top: 100px;
+  background: #f0d0d0;
+}
+
+.Quick {
+  text-align: left;
+  width: 130px;
+  height: 206px;
+  right: 0px;
+  top: 224px;
+
+  background: #8897cb;
+}
+/* 오른쪽 부유 바 */
+.ant-anchor-wrapper {
+  position: absolute;
+  text-align: left;
+  width: 130px;
+  height: 206px;
+  top: 224px;
+  left: 1400px;
+
+  background: #8897cb;
+}
+.ant-anchor-ink {
+  display: none;
+}
+
+/* 작은 캘린더 */
+.site-calendar-demo-card {
   float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-.ant-row-rtl #components-layout-demo-top .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
-}
-body {
-  font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif;
-}
-.layout {
-  width: 1000px;
-  margin: 200px;
+  width: 500px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
 }

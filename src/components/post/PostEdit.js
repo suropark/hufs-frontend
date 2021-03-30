@@ -6,6 +6,11 @@ import { postSave } from '../../_actions/post_action';
 import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { PUBLIC_URL } from '../../config';
+import Header from '../../views/Header/Header';
+import Quick from '../../views/Quick/Quick';
+import Footer from '../../views/Footer/Footer';
+import { Button } from 'antd';
 
 let uploadedImg = [];
 function PostEdit(props) {
@@ -13,11 +18,11 @@ function PostEdit(props) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete('img/delete', uploadedImg);
+      axios.delete(`${PUBLIC_URL}/post/back`, uploadedImg);
     };
   });
+  console.log(props.location.state.detail.substring(1));
   const [value, setvalue] = useState({ title: '', content: '' });
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -28,52 +33,70 @@ function PostEdit(props) {
     ).map((img) => img.getAttribute('src'));
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
-
+    let boardId = props.location.state.detail;
+    console.log(boardId);
     let body = {
       title: value.title,
       content: value.content,
     };
-
-    dispatch(postSave(body, needDelete))
+    dispatch(postSave(body, needDelete, boardId.substring(1)))
       .then((response) => {
-        if (response.saveSuccess) {
-          props.history.push('/list');
-        } else {
-          alert('저장 실패');
+        if (response.status === 200) {
+          props.history.goBack();
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 401:
+            alert('로그인이 필요합니다.');
+            props.history.push('/');
+          case 403:
+            alert('접근 권한 오류');
+            props.history.push('/');
+            break;
+          default:
+            break;
+        }
+      });
   };
   const onExit = () => {
     const answer = window.confirm(
       '작성하던 글은 저장되지 않습니다. 그래도 나가시겠습니까?',
     );
     if (answer) {
-      axios.delete('post/delete', uploadedImg).then(props.history.goBack());
+      axios
+        .delete(`${PUBLIC_URL}/post/back`, uploadedImg)
+        .then(props.history.goBack())
+        .catch(props.history.goBack());
     }
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="제목"
-        value={value.title}
-        onChange={(e) => setvalue({ ...value, title: e.target.value })}
-      />
-      <ReactQuill
-        placeholder="하이"
-        theme="snow"
-        onChange={(content, delta, source, editor) => {
-          console.log(value);
-          setvalue({ ...value, content: editor.getHTML() });
-        }}
-        modules={modules}
-        formats={formats}
-      ></ReactQuill>
-      <button onClick={onSubmit}>제출</button>
-      <button onClick={onExit}>취소</button>
-    </div>
+    <>
+      <div className="community-main">
+        <input
+          type="text"
+          placeholder="제목"
+          value={value.title}
+          onChange={(e) => {
+            console.log(value);
+            setvalue({ ...value, title: e.target.value });
+          }}
+        />
+        <ReactQuill
+          placeholder="하이"
+          theme="snow"
+          onChange={(content, delta, source, editor) => {
+            console.log(value);
+            setvalue({ ...value, content: editor.getHTML() });
+          }}
+          modules={modules}
+          formats={formats}
+        ></ReactQuill>
+        <Button onClick={onSubmit}>제출</Button>
+        <Button onClick={onExit}>취소</Button>
+      </div>
+    </>
   );
 }
 
@@ -140,24 +163,16 @@ function imageHandler() {
       // this.quill.enable(false);
 
       await axios
-        .post('/api/image', formData)
+        .post(`${PUBLIC_URL}/post/img`, { img: formData })
         .then((response) => {
-          this.quill.editor.insertEmbed(
-            range.index,
-            'image',
-            response.data.url_path,
-            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-          );
-          uploadedImg = uploadedImg.concat(
-            // 'https://ckeditor.com/assets/images/bg/volcano-8967c4575e.jpg',
-            response.data.url_path,
-          );
+          this.quill.editor.insertEmbed(range.index, 'image', response.data);
+          uploadedImg = uploadedImg.concat(response.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log('quill image upload failed');
+          console.log('업로드 실패');
           console.log(error);
           this.quill.enable(true);
         });

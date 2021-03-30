@@ -2,27 +2,37 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Post from './views/PostPage/Post';
 import LandingPage from './views/LandingPage/LandingPage';
-import PostEdit from './components/post/PostEdit';
-//import ImageTest from './testJS/ImageTest';
-//import TestView from './testJS/TestView';
 import MyPage from './views/MyPage/MyPage';
 import MapPage from './views/MapPage/MapPage';
 import './App.css';
+import './App2.css';
+import LoginPage from './views/LoginPage/LoginPage';
+import CalendarPage from './views/CalendarPage/CalendarPage';
+import Board from './views/Board/Board';
+import Page404 from './views/Page404/Page404';
+import EmailAuthPage from './views/EmailAuthPage/EmailAuthPage';
+import SignUpModal from './components/login/modals/SignUpModal';
 
 function App() {
   return (
     <Router>
-      {/* <header> 항상 보여요 header</header> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/list" component={Post} />
-        {/* <Route path="/info" component={InfoPage} /> */}
-        {/* <Route path="/scholar" component={ScholarShipPage} /> */}
-        <Route path="/map" component={MapPage}/>
+        <Route exact path="/register" component={SignUpModal} />
+        <Route path="/1" component={Post} />
+        <Route path="/2" component={Post} />
+        <Route path="/3" component={Post} />
+        <Route path="/4" component={Post} />
+        <Route path="/5" component={Post} />
+        <Route path="/6" component={Post} />
+        <Route path="/redirect" component={SignUpModal} />
+        <Route path="/board" component={Board} />
+        <Route path={`/user/email`} component={EmailAuthPage} />
+        <Route path="/map" component={MapPage} />
+        <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />
-        <Route path="/edit" component={PostEdit} />
-        {/*<Route path="/test" component={ImageTest} />*/}
-        {/*<Route path="/testView" component={TestView} />*/}
+        <Route path="/auth" component={EmailAuthPage} />
+        <Route path="*" component={Page404} />
       </Switch>
       {/* <footer>항상 보여요 footer</footer> */}
     </Router>
