@@ -129,7 +129,7 @@ function PostView({ match, history }) {
         switch (error.response.status) {
           case 401:
             alert('로그인이 필요합니다.');
-            history.push('/');
+            // history.push('/');
             break;
           case 403:
             alert('접근 권한이 없습니다');
@@ -161,42 +161,37 @@ function PostView({ match, history }) {
     }
   }
   return (
-    <>
-      {post ? (
-        <div className="community-main">
-          <PageHeader
-            title={findBoardName(post.boardId)}
-            subTitle="게시판 설명 적는 곳"
-          />
-          <div className="community-box">
-            <Card
-              title={
-                <>
-                  <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
-                    {post.title}
-                  </div>
+    <div className="community-main">
+      <PageHeader
+        title={findBoardName(post.boardId)}
+        subTitle="게시판 설명 적는 곳"
+      />
+      <div className="community-box">
+        <Card
+          title={
+            <>
+              <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
+                {post.title}
+              </div>
 
-                  {post.User === null ? (
-                    <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
-                  ) : (
-                    <span style={{ fontSize: '8px' }}>
-                      {' '}
-                      {post.User.nickname}{' '}
-                    </span>
-                  )}
-                  <span style={{ marginLeft: '24px', fontSize: '4px' }}>
-                    {post.createdAt?.slice(0, 10)}
-                  </span>
-                </>
-              }
-              extra={post.id}
-            >
-              <div
-                dangerouslySetInnerHTML={{ __html: post.content }}
-                style={{ display: 'inline-block', minHeight: '500px' }}
-              />
-              <div>
-                {/* 추천 수: {post.like}
+              {post.User === null ? (
+                <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
+              ) : (
+                <span style={{ fontSize: '8px' }}> {post.User.nickname} </span>
+              )}
+              <span style={{ marginLeft: '24px', fontSize: '4px' }}>
+                {post.createdAt?.slice(0, 10)}
+              </span>
+            </>
+          }
+          extra={post.id}
+        >
+          <div
+            dangerouslySetInnerHTML={{ __html: post.content }}
+            style={{ display: 'inline-block', minHeight: '500px' }}
+          />
+          <div>
+            {/* 추천 수: {post.like}
                 <div>신고 수: {post.report}</div>
                 <div>
                   <span onClick={onLike} style={{ cursor: 'pointer' }}>
@@ -208,48 +203,44 @@ function PostView({ match, history }) {
                     추천취소
                   </span>
                 </div> */}
-                <div style={{ fontSize: '12px' }}>
-                  <ReportModal type="post" id={post.id} history={history} />{' '}
-                  <div>
-                    <span
-                      onClick={onDelete}
-                      style={{
-                        cursor: 'pointer',
-                        float: 'right',
-                        marginLeft: '12px',
-                      }}
-                    >
-                      삭제하기
-                    </span>
-                  </div>{' '}
-                  <div>
-                    <span
-                      onClick={onScrap}
-                      style={{ cursor: 'pointer', float: 'right' }}
-                    >
-                      스크랩하기
-                    </span>
-                  </div>
-                  <Link to={`${post.id}/update`}>
-                    <span>수정하기</span>
-                  </Link>
-                </div>{' '}
-              </div>
+            <div style={{ fontSize: '12px' }}>
+              <ReportModal type="post" id={post.id} history={history} />{' '}
               <div>
-                <hr />
+                <span
+                  onClick={onDelete}
+                  style={{
+                    cursor: 'pointer',
+                    float: 'right',
+                    marginLeft: '12px',
+                  }}
+                >
+                  삭제하기
+                </span>
+              </div>{' '}
+              <div>
+                <span
+                  onClick={onScrap}
+                  style={{ cursor: 'pointer', float: 'right' }}
+                >
+                  스크랩하기
+                </span>
               </div>
-              <CommentList
-                history={history}
-                comments={post.Replies ? post.Replies : []}
-              />
-              <CommentEdit history={history} match={match} />
-            </Card>
+              <Link to={`${post.id}/update`}>
+                <span>수정하기</span>
+              </Link>
+            </div>{' '}
           </div>
-        </div>
-      ) : (
-        <Skeleton />
-      )}
-    </>
+          <div>
+            <hr />
+          </div>
+          <CommentList
+            history={history}
+            comments={post.Replies ? post.Replies : []}
+          />
+          <CommentEdit history={history} match={match} />
+        </Card>
+      </div>
+    </div>
   );
 }
 
