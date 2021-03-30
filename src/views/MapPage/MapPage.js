@@ -10,17 +10,17 @@ import './Map.css'
 
 function MapPage({ match }) {
   return (
-  <>
+    <>
       <Header /><Quick />
 
-     /* jshint ignore:start */
-    <BrowserRouter>
-      <Switch>
-        <Route exact path={`${match.path}`} component={MapContainer} />
-        {/* <Route exact path={`${match.path}/info`} component = {inforPage}/> */}
-        <Route exact path={`${match.path}/info/:name/:id/ReviewPage`} component = {ReviewPage}/>
-        <Route exact path={`${match.path}/info/:name/:id`} component = {inforPage}/>
-       
+
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={`${match.path}`} component={MapContainer} />
+          {/* <Route exact path={`${match.path}/info`} component = {inforPage}/> */}
+          <Route exact path={`${match.path}/info/:name/:id/ReviewPage`} component={ReviewPage} />
+          <Route exact path={`${match.path}/info/:name/:id`} component={inforPage} />
+
 
 
 
