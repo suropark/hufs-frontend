@@ -4,7 +4,7 @@ import { Anchor } from 'antd';
 function Quick() {
   const { Link } = Anchor;
   return (
-    <Anchor >
+    <Anchor>
       <Link
         href="https://wis.hufs.ac.kr/src08/jsp/index.jsp"
         target="_blank"

@@ -30,7 +30,7 @@ function PostList({ match, history }) {
         switch (error.response?.status) {
           case 401:
             message.error('로그인하지 않은 사용자');
-            history.push('/');
+            // history.push('/');
             break;
           case 403:
             message.error('접근 권한 오류');
@@ -51,17 +51,17 @@ function PostList({ match, history }) {
   function findBoardName(boardId) {
     switch (boardId) {
       case 1:
-        return '떠들어 boo';
+        return '떠들 어 boo';
       case 2:
-        return '학교해 boo';
+        return '학교 해 boo';
       case 3:
-        return '학교간 boo';
+        return '학교 간 boo';
       case 4:
-        return '4 게시판';
+        return '학교 떠난 boo';
       case 5:
-        return '5 게시판';
+        return '정면 승 boo';
       case 6:
-        return '6 게시판';
+        return '이거 모르면 바 boo';
       default:
         break;
     }
@@ -69,45 +69,41 @@ function PostList({ match, history }) {
   return (
     <>
       {' '}
-      {loading ? (
-        <table className="community-main">
-          {/* <span className="navi"> */}
-          <PageHeader
-            title={findBoardName(+match.url.substring(1))}
-            subTitle="설명"
-          />{' '}
-          {/* </span>{' '} */}
-          <div className="community-box">
-            <Button
-              onClick={(e) =>
-                history.push({
-                  pathname: `${match.path}/edit`,
-                  state: { detail: match.path },
-                })
-              }
-            >
-              글 작성
-            </Button>
-            <Search
-              placeholder="검색창"
-              allowClear
-              onSearch={(e) => console.log(e)}
-              style={{
-                float: 'right',
-                marginBottom: '10px',
-                width: '300px',
-                height: '30px',
-              }}
-            />
-            <TableBody
-              currentList={posts.slice(firstIndex, lastIndex)}
-              match={match}
-            />
-          </div>
-        </table>
-      ) : (
-        <Skeleton />
-      )}
+      <table className="community-main">
+        <PageHeader
+          title={findBoardName(+match.url.substring(1))}
+          subTitle="설명"
+        />{' '}
+        {/* <span className="navi"> */}
+        {/* </span>{' '} */}
+        <div className="community-box">
+          <Button
+            onClick={(e) =>
+              history.push({
+                pathname: `${match.path}/edit`,
+                state: { detail: match.path },
+              })
+            }
+          >
+            글 작성
+          </Button>
+          <Search
+            placeholder="검색창"
+            allowClear
+            onSearch={(e) => console.log(e)}
+            style={{
+              float: 'right',
+              marginBottom: '10px',
+              width: '300px',
+              height: '30px',
+            }}
+          />
+          <TableBody
+            currentList={posts.slice(firstIndex, lastIndex)}
+            match={match}
+          />
+        </div>
+      </table>
       <div className="bottom">
         <ReactPaginate
           pageCount={Math.ceil(posts.length / 10)}

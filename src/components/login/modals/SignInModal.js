@@ -1,36 +1,45 @@
-import { render } from '@testing-library/react';
 import React, { useState } from 'react';
 import axios from 'axios';
-// import SignUpModal from './signUpModal';
 import { message, Modal, Button } from 'antd';
 import kakao_pic from '../style/kakao_pic.png';
 import google_pic from '../style/google_pic.png';
-
+import { PUBLIC_URL } from '../../../config';
 const SignInModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
-
   const signInGoogle = async (e) => {
-    const request = await axios
-      .get(`http://52.78.2.40:8080/user/sign-in/google`)
+    const request = await axios({
+      method: 'get',
+      url: `${PUBLIC_URL}/user/sign-in/google`,
+      headers: {
+        accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      // .get(`http://localhost:5000/user/sign-in/google`)
+
       .then((response) => {
-        console.log(response.status);
         message.success('소셜 로그인 성공!');
       })
       .catch((error) => {
-        console.log(error);
         message.error('로그인 실패');
       });
   };
 
   const signInKakao = async (e) => {
-    const request = await axios
-      .get(`http://52.78.2.40:8080/user/sign-in/kakao`)
+    const request = await axios({
+      method: 'get',
+      url: `${PUBLIC_URL}/user/sign-in/google`,
+      headers: {
+        accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      // .get(`http://127.0.0.1:5000/user/sign-in/kakao`)
+
       .then((response) => {
-        console.log(response.status);
         message.success('소셜 로그인 성공!');
       })
       .catch((error) => {
-        console.log(error);
         message.error('로그인 실패');
       });
   };
@@ -57,7 +66,15 @@ const SignInModal = () => {
           style={{ cursor: 'pointer', marginLeft: '66px' }}
           onClick={signInKakao}
           src={kakao_pic}
+
         />
+        <a href={`${PUBLIC_URL}/user/sign-in/kakao`}>
+          <img
+            style={{ cursor: 'pointer', marginLeft: '66px' }}
+            // onClick={signInKakao}
+            src={kakao_pic}
+          />
+        </a>
       </Modal>
     </>
   );

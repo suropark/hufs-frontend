@@ -19,11 +19,7 @@ function UserScrap() {
           setScraps(request.data.data); // [스크랩 id, 포스트 id, 포스트 title]
         }
       })
-      .catch((error) => {
-        console.log(error);
-        console.log(error.request);
-        console.log(error.response);
-      });
+      .catch((error) => {});
     // }
   }, []);
   const onRemove = (e) => {

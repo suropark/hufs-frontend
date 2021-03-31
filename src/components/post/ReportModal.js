@@ -86,7 +86,6 @@ function ReportModal({ type, id, history }) {
           defaultValue={1}
           style={{ width: 170 }}
           onChange={(e) => {
-            console.log(body);
             setBody({ ...body, content: e });
           }}
         >

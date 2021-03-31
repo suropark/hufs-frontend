@@ -33,7 +33,6 @@ function UserInfo(props) {
       });
   }, []);
   const onSubmit = () => {
-    console.log(change);
     const answer = window.confirm('변경은 한 번 ');
 
     if (answer) {

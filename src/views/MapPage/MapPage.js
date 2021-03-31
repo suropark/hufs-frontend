@@ -1,25 +1,36 @@
-import React from "react";
-import { Route, Switch,BrowserRouter } from "react-router-dom";
-import MapContainer from "../../components/map/mapSection/MapContainer";
-import inforPage from "../MapInforPage/MapInforPage";
-import ReviewPage from "../ReviewPage/ReviewPage"
-
-function MapPage({match}) {
+import React from 'react';
+import loadable from '@loadable/component';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+const MapContainer = loadable(() =>
+  import('../../components/map/mapSection/MapContainer'),
+);
+const inforPage = loadable(() => import('../MapInforPage/MapInforPage'));
+const ReviewPage = loadable(() => import('../ReviewPage/ReviewPage'));
+function MapPage({ match }) {
   return (
-     /* jshint ignore:start */
+    <>
+     <Header /><Quick />
+    /* jshint ignore:start */
     <BrowserRouter>
       <Switch>
         <Route exact path={`${match.path}`} component={MapContainer} />
         {/* <Route exact path={`${match.path}/info`} component = {inforPage}/> */}
-        <Route exact path={`${match.path}/info/:name/ReviewPage`} component = {ReviewPage}/>
-        <Route exact path={`${match.path}/info/:name`} component = {inforPage}/>
-       
-
+        <Route
+          exact
+          path={`${match.path}/info/:name/:id/ReviewPage`}
+          component={ReviewPage}
+        />
+        <Route
+          exact
+          path={`${match.path}/info/:name/:id`}
+          component={inforPage}
+        />
       </Switch>
     </BrowserRouter>
+ <Footer />
+</>
     /* jshint ignore:end */
-      
-    
+
   );
 }
 
