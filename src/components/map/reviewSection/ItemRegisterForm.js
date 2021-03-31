@@ -1,6 +1,6 @@
-import { Link,useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import React, { useState, useCallback } from 'react';
-import {Rate, Form, Input, InputNumber, Button} from 'antd';
+import { Rate, Form, Input, InputNumber, Button } from 'antd';
 const { TextArea } = Input;
 
 export default function ItemRegisterForm({ onRegister, match }) {
@@ -20,10 +20,9 @@ export default function ItemRegisterForm({ onRegister, match }) {
   const handleChangeScore = useCallback((e) => {
     setScore(e.currentTarget);
   }, []);*/
-  const handleChangeScore = score => {
-      setScore(score);
-
-  }
+  const handleChangeScore = (score) => {
+    setScore(score);
+  };
 
   // 음식 설명
   const handleChangeContent = useCallback((e) => {
@@ -32,7 +31,6 @@ export default function ItemRegisterForm({ onRegister, match }) {
 
   // 업로드 파일
   const handleChangeFile = useCallback((e) => {
-    console.log(e.target.files[0]);
     setFile(e.target.files[0]);
   }, []);
 
@@ -46,32 +44,28 @@ export default function ItemRegisterForm({ onRegister, match }) {
   );
 
   return (
-      <div style={{ maxWidth: "700px", margin: "2rem auto"}}>
-          <form onSubmit={handleSubmit}>
-              <br />
-              <div style={{ maxWidth: "700px", margin: "2rem"}}>
-                  <label>제목 </label>
-                  <Input type="text" value={title} onChange={handleChangeTitle} />
-                  <hr></hr>
-                  <label>평점  </label>
-                  <Rate allowHalf value = {score} onChange={handleChangeScore}/>
-                  <hr></hr>
-                  <label>사진</label>
-                  <Input type="file" onChange={handleChangeFile} />
-                  <hr></hr>
-                  <label>후기</label>
-                  <TextArea
-                  rows="5"
-                  value={content}
-                  onChange={handleChangeContent}
-                />
-                </div>
-                <div>
-                <button type="submit" >등록</button>
+    <div style={{ maxWidth: '700px', margin: '2rem auto' }}>
+      <form onSubmit={handleSubmit}>
+        <br />
+        <div style={{ maxWidth: '700px', margin: '2rem' }}>
+          <label>제목 </label>
+          <Input type="text" value={title} onChange={handleChangeTitle} />
+          <hr></hr>
+          <label>평점 </label>
+          <Rate allowHalf value={score} onChange={handleChangeScore} />
+          <hr></hr>
+          <label>사진</label>
+          <Input type="file" onChange={handleChangeFile} />
+          <hr></hr>
+          <label>후기</label>
+          <TextArea rows="5" value={content} onChange={handleChangeContent} />
+        </div>
+        <div>
+          <button type="submit">등록</button>
           &nbsp;
-          <Button onClick={()=>history.goBack()}>취소</Button>&nbsp;
-          </div>
-          </form>
-          </div>
+          <Button onClick={() => history.goBack()}>취소</Button>&nbsp;
+        </div>
+      </form>
+    </div>
   );
 }

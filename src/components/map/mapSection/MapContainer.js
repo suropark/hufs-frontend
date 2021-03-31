@@ -1,30 +1,38 @@
 import React, { useState } from 'react';
 import KaKaoMap from './KakaoMap';
 import storeSeoul from './store-seoul.json';
-import Fuse from 'fuse.js';
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
-import axios from "axios";
+import axios from 'axios';
 import { Button, Breadcrumb } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
-  console.log(data);
-  const searchData = (pattern) => {
-    if (!pattern) {
-      setData(storeSeoul);
-      return;
-    }
+  // const searchData = (pattern) => {
+  //   if (!pattern) {
+  //     setData(storeSeoul);
+  //     return;
+  //   }
 
-    const fuse = new Fuse(data, {
-      keys: ["name"],
-    });
+  //     const fuse = new Fuse(data, {
+  //       keys: ["name"],
+  //     });
 
-    //const fuse = new Fuse(, options);
+  //     //const fuse = new Fuse(, options);
 
-    const result = fuse.search(pattern);
+  //     const result = fuse.search(pattern);
+
+  //     //const result = fuse.search(pattern);
+  //     const matches = [];
+  //     if (!result.length) {
+  //       setData([]);
+  //     } else {
+  //       result.forEach(({ item }) => {
+  //         matches.push(item);
+  //       });
+  //       setData(matches);
 
 
     //const result = fuse.search(pattern);
@@ -44,14 +52,10 @@ const MapContainer = () => {
     e.stopPropagation();
   }
 
-
   return (
-
     <div className="Map">
-
       <div className="Map-left">
-        <div className="navi" >
-
+        <div className="navi">
           <Breadcrumb>
             <Breadcrumb.Item href="http://localhost:3000/">
               <HomeOutlined />
@@ -62,6 +66,12 @@ const MapContainer = () => {
             <Breadcrumb.Item>Now</Breadcrumb.Item>
           </Breadcrumb>
         </div>
+
+        <div className="content" >
+
+          <div id="seoul" defaultSelectedKeys={['1']}>
+            <Button type="text" id="button-head" key="1">Seoul</Button>
+
         <div className="content" >
 
           <div id="seoul" defaultSelectedKeys={['1']}>
@@ -80,15 +90,15 @@ const MapContainer = () => {
       <div className="up-down" />
       <div className="Map-main">
         <div id="KaKaoMap">
-          <KaKaoMap>
-          </KaKaoMap>
-
+          <KaKaoMap></KaKaoMap>
         </div>
         <div id="Food-list">
           <SearchBar
             placeholder="Search"
+
             onChange={(e) => searchData(e.target.value)}
             style={{ width: '100 %' }}
+
           />
           <div className="itemContainer">
 
@@ -99,18 +109,8 @@ const MapContainer = () => {
         </div>
 
       </div>
-
-
     </div>
-
-
-
-
-
-
-
   );
-
 };
 
 export default MapContainer;

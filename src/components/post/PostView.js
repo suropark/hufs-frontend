@@ -17,7 +17,6 @@ import { Card, PageHeader, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
-  console.log(match);
   const [post, setPost] = useState();
   const dispatch = useDispatch();
   useEffect(async () => {

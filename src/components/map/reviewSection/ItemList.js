@@ -1,12 +1,10 @@
 import { Link, useHistory } from 'react-router-dom';
-import { Table, Empty,Button, List, Avatar,Card,Typography } from 'antd';
+import { Table, Empty, Button, List, Avatar, Card, Typography } from 'antd';
 
-const { Text,Title } = Typography;
+const { Text, Title } = Typography;
 
 export default function ItemList({ items, isLoading, match, props }) {
   const { params } = props.match;
-  console.log('ItemListMatch', match);
-  console.log('ItemListLoc', props.location);
   items = [
     {
       id: 1,
@@ -43,7 +41,7 @@ export default function ItemList({ items, isLoading, match, props }) {
   }));
 
   return (
-    <div style={{width: "800px", margin: "0 auto", paddingTop:"150px"}}>
+    <div style={{ width: '800px', margin: '0 auto', paddingTop: '150px' }}>
       {isLoading && '로딩중...'}
       {!isLoading && items && (
         <>

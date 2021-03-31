@@ -63,7 +63,6 @@ function CalendarComponent() {
         );
       }
     });
-    console.log(selectedMatchedData);
     setDataList(selectedMatchedData);
   };
 

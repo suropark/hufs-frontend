@@ -1,3 +1,4 @@
+@import '~antd/dist/antd.css';
 .Map {
   top: 1%;
   right: 15%;
@@ -94,7 +95,6 @@
   left: 15%;
   top: 20px;
   border: solid 1px black;
-
   /* background: #afa1a1; */
 }
 .row {

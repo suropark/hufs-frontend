@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .Head {
   position: relative;
   left: 15%;
@@ -163,14 +165,4 @@
   width: 500px;
   border: 1px solid #f0f0f0;
   border-radius: 2px;
-}
-
-@media (max-width: 1200px) {
-  .Head,
-  .Main,
-  .Footer {
-    width: 80%;
-    height: 80%;
-    display: 80%;
-  }
 }
