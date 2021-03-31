@@ -246,6 +246,7 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
         map.panTo(new kakao.maps.LatLng(lat + 0.0003, long));
       }
       customOverlay1.setMap(map);
+      // overlay 변경
     });
 
     markers.push(marker);
