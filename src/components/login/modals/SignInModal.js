@@ -62,6 +62,12 @@ const SignInModal = () => {
           onClick={signInGoogle}
           src={google_pic}
         />
+        <img
+          style={{ cursor: 'pointer', marginLeft: '66px' }}
+          onClick={signInKakao}
+          src={kakao_pic}
+
+        />
         <a href={`${PUBLIC_URL}/user/sign-in/kakao`}>
           <img
             style={{ cursor: 'pointer', marginLeft: '66px' }}

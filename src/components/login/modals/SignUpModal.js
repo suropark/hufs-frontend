@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { message, Select, Modal, Button, Input, Form, Checkbox } from 'antd';
+import { message, Select, Button, Input, Form, Checkbox } from 'antd';
 import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
 import Cookies from 'js-cookie';
@@ -11,6 +11,7 @@ const SignUpModal = (props) => {
   const { Option } = Select;
   const [major, setMajor] = useState(false);
   const [doubleMajor, setDoubleMajor] = useState(false);
+
 
   const [submit, setSubmit] = useState({
     // email: Cookies.get('email'),
@@ -31,6 +32,7 @@ const SignUpModal = (props) => {
     const request2 = await axios
       .get(`http://52.78.2.40:5000/major/double-major`) //이중전공
       .then((response) => response.data.data)
+
       .catch((e) => {}); // 배열 [id, name ]
     setDoubleMajor(request2);
   }, []);
@@ -39,11 +41,7 @@ const SignUpModal = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const request = await axios
-      .post(
-        `${PUBLIC_URL}/user/sign-up`,
-        submit,
-        // { withCredentials: true })
-      )
+      .post('http://52.78.2.40:5000/user/sign-up', submit)
       .then((response) => {
         message.success('회원가입이 성공적으로 완료되었습니다 :)');
         props.history.push('/');
@@ -53,7 +51,8 @@ const SignUpModal = (props) => {
           case 401:
             alert('개인 정보 수집 동의를 하지 않으셨습니다');
           case 409:
-            alert('이미 존재하는 닉네임입니다');
+            alert('이미 존재하는 닉네임입니다')
+
         }
       });
   };
@@ -64,8 +63,9 @@ const SignUpModal = (props) => {
   };
 
   const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+    wrapperCol: { offset: 10, span: 16 },
   };
+
 
   return (
     <>
@@ -82,37 +82,44 @@ const SignUpModal = (props) => {
           onValuesChange={(e) => setSubmit({ ...submit, [e[0]]: e })}
           name="basic"
           initialValues={{ remember: true }}
-        >
+          style={{ 
+            border: "3px solid #8897cb",
+            borderRadius: "8px",
+            
+            margin: "15%",
+            padding: "5%",
+        }}
+
           <Form.Item
             label="닉네임"
             name="nickname"
             rules={[{ required: true, message: '닉네임을 입력하세요!' }]}
+
             onChange={(event) =>
               setSubmit({ ...submit, nickname: event.target.value })
             }
           >
-            <Input />
+            <Input style={{ width: "90%", textAlign: "center"}}></Input>
           </Form.Item>
 
           <Form.Item
             label="웹메일"
             extra="@hufs.ac.kr 앞 부분까지만 입력해주세요.
-            위 웹메일로 학생 확인 인증 메일이 발송됩니다. 메일 인증은 24시간이 지나면 만료됩니다."
+            위 웹메일로 학생 확인 인증 메일이 발송되며, 인증은 24시간이 지나면 만료됩니다."
             name="webMail"
             rules={[{ required: true, message: 'put your password!' }]}
-            onChange={(event) =>
-              setSubmit({ ...submit, webMail: event.target.value })
-            }
+            onChange={event => setSubmit({...submit, webmail: event.target.value})}
+            style={{ width: "91%" }}
           >
-            <Input suffix="@hufs.ac.kr"></Input>
+            <Input style={{ textAlign: "center" }} suffix="@hufs.ac.kr" ></Input>
+
           </Form.Item>
 
           <Form.Item label="1전공" name="majorId">
             <Select
-              style={{ width: 170 }}
-              onChange={(event) =>
-                setSubmit({ ...submit, mainMajorId: +event })
-              }
+              style={{ width: "90%" }}
+              onChange={event=> setSubmit({...submit, mainMajorId: +event})}
+
             >
               {major ? (
                 major.map((major) => {
@@ -129,10 +136,9 @@ const SignUpModal = (props) => {
           </Form.Item>
           <Form.Item label="이중전공 / 부전공" name="doubleMajorId">
             <Select
-              style={{ width: 170 }}
-              onChange={(event) =>
-                setSubmit({ ...submit, doubleMajorId: +event })
-              }
+              style={{ width: "89%" }}
+              onChange={event => setSubmit({...submit, doubleMajorId: +event})}
+
             >
               {doubleMajor ? (
                 doubleMajor.map((major) => {
@@ -147,21 +153,25 @@ const SignUpModal = (props) => {
               )}
             </Select>
           </Form.Item>
-          <Checkbox
-            onClick={(event) =>
-              setSubmit({ ...submit, isAgreed: event.target.checked })
-            }
+          <Form.Item
+          {...tailLayout}
+            name="agreement"
+            valuePropName="checked"
+            rules={[{
+              validator: ( _, value) =>
+                value ? Promise.resolve() : Promise.reject(new Error('필수 항목입니다.')),
+          }]}
           >
-            동의합니다
-          </Checkbox>
+            <Checkbox  onClick={event => setSubmit({...submit, isAgrred: event.target.checked})}>동의합니다</Checkbox>
+          </Form.Item>
           <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit" onClick={onSubmit}>
+            <Button type="primary" htmlType="submit" onClick={onSubmit} >
+
               회원가입
             </Button>
           </Form.Item>
         </Form>
       </div>
-      {/* </Modal> */}
     </>
   );
 };
