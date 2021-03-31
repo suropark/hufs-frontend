@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import KaKaoMap from './KakaoMap';
 import storeSeoul from './store-seoul.json';
-import Fuse from 'fuse.js';
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
 import axios from "axios";
@@ -10,35 +9,34 @@ import { HomeOutlined } from '@ant-design/icons';
 
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
-  console.log(data);
-  const searchData = (pattern) => {
-    if (!pattern) {
-      setData(storeSeoul);
-      return;
-    }
+  // const searchData = (pattern) => {
+  //   if (!pattern) {
+  //     setData(storeSeoul);
+  //     return;
+  //   }
 
-    const fuse = new Fuse(data, {
-      keys: ["name"],
-    });
+//     const fuse = new Fuse(data, {
+//       keys: ["name"],
+//     });
 
-    //const fuse = new Fuse(, options);
+//     //const fuse = new Fuse(, options);
 
-    const result = fuse.search(pattern);
+//     const result = fuse.search(pattern);
 
 
-    //const result = fuse.search(pattern);
-    const matches = [];
-    if (!result.length) {
-      setData([]);
-    } else {
-      result.forEach(({ item }) => {
-        matches.push(item);
-      });
-      setData(matches);
+//     //const result = fuse.search(pattern);
+//     const matches = [];
+//     if (!result.length) {
+//       setData([]);
+//     } else {
+//       result.forEach(({ item }) => {
+//         matches.push(item);
+//       });
+//       setData(matches);
 
-    }
+//     }
 
-  }
+  
 
 
   return (

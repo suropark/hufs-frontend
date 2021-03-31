@@ -102,9 +102,7 @@ function PostUpdate({ match, history }) {
     }
   };
 
-  useEffect(() => {
-    console.log(updated);
-  }, [updated]);
+  useEffect(() => {}, [updated]);
 
   return (
     <>
@@ -224,8 +222,7 @@ function imageHandler() {
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log(error);
-          alert('업로드 실패');
+          alert(error);
           this.quill.enable(true);
         });
     });

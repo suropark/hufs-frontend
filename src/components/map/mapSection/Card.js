@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { Card, Button, Typography, Col, Row } from 'antd';
 import { useHistory, withRouter, useLocation } from 'react-router-dom';
 
-import './Card.css'
+import './Card.css';
 import icon_rstrn from './icon_rstrn.png';
 
 const { kakao } = window;
@@ -20,7 +21,6 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
   const location = useLocation();
   const [, setMarkers] = useState([]);
 
-
   //const {map} = useSelector(state => state.map,[]);
 
   //const infor = [image, title, author];
@@ -28,9 +28,6 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
   // 변수 초기값
 
   useEffect(() => {
-
-
-    // 지도에 마커를 표시하는 함수입니다
 
   }, []);
   var map = state;
@@ -48,12 +45,10 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
     const map = new kakao.maps.Map(container, options);
     setstate(map);
 
-    console.log(map);
-
-    console.log(map.getLevel())
     if (map.getLevel() >= 3) {
       map.setLevel(3);
-      map.panTo(new kakao.maps.LatLng(lat + 0.0010, long));
+      map.panTo(new kakao.maps.LatLng(lat + 0.001, long));
+
     } else if (map.getLevel() === 2) {
       map.panTo(new kakao.maps.LatLng(lat + 0.0005, long));
     } else {
@@ -64,13 +59,8 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
       map: map,
       position: new kakao.maps.LatLng(lat, long),
       content: content,
-      yAnchor: 1
+      yAnchor: 1,
     });
-
-
-
-    //customOverlay1.setMap(null);
-
 
     /*
     var content = '<div class="wrap">' +// 
@@ -96,57 +86,58 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
             
            */
 
-    var content = document.createElement("div");
-    content.className = "wrap";//
+    var content = document.createElement('div');
+    content.className = 'wrap'; //
 
-    var content1 = document.createElement("div");
-    content1.className = "info";
+    var content1 = document.createElement('div');
+    content1.className = 'info';
 
-    var content2 = document.createElement("div");
-    content2.className = "title";
+    var content2 = document.createElement('div');
+    content2.className = 'title';
 
     content2.appendChild(document.createTextNode(name));
 
-    var content3 = document.createElement("div");
-    content3.className = "close";
-    content3.title = "닫기";
+    var content3 = document.createElement('div');
+    content3.className = 'close';
+    content3.title = '닫기';
     content3.onclick = function () {
       customOverlay1.setMap(null);
-    }
+    };
     content2.appendChild(content3);
     content1.appendChild(content2);
 
-    var content4 = document.createElement("div");
-    content4.className = "body";
+    var content4 = document.createElement('div');
+    content4.className = 'body';
 
-    var content5 = document.createElement("div");
-    content5.className = "img";
+    var content5 = document.createElement('div');
+    content5.className = 'img';
 
-    var content11 = document.createElement("img");
+    var content11 = document.createElement('img');
     content11.src = icon_rstrn;
-    content11.width = "73";
-    content11.height = "70";
+    content11.width = '73';
+    content11.height = '70';
+
 
     content5.appendChild(content11);
     content4.appendChild(content5);
 
-    var content6 = document.createElement("div");
-    content6.className = "desc";
+    var content6 = document.createElement('div');
+    content6.className = 'desc';
 
-    var content7 = document.createElement("div");
-    content7.className = "ellipsis";
+    var content7 = document.createElement('div');
+    content7.className = 'ellipsis';
     content7.appendChild(document.createTextNode(numAddress));
 
     content6.appendChild(content7);
 
-    var content8 = document.createElement("div");
-    content8.className = "jibun ellipsis";
+    var content8 = document.createElement('div');
+    content8.className = 'jibun ellipsis';
     content8.appendChild(document.createTextNode(roadAddress));
 
-    var content9 = document.createElement("div");
-    var content10 = document.createElement("button");
-    content10.className = "link";
-    content10.appendChild(document.createTextNode("상세 보기"));
+    var content9 = document.createElement('div');
+    var content10 = document.createElement('button');
+    content10.className = 'link';
+    content10.appendChild(document.createTextNode('상세 보기'));
     content10.onclick = function () {
       history.push({
         pathname: `${match.path}/info/${name}/${id}`,
@@ -155,6 +146,7 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
           name: name,
           numAddress: numAddress,
           roadAddress: roadAddress,
+
         }
 
       }
@@ -168,29 +160,16 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
 
     content6.appendChild(content9);
 
+    content6.appendChild(content8);
 
+    content6.appendChild(content9);
 
     content4.appendChild(content6);
 
     content1.appendChild(content4);
     content.appendChild(content1);
 
-
-
     customOverlay1.setContent(content);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*
@@ -252,28 +231,19 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
     }*/
 
 
-    // 커스텀 오버레이를 생성합니다
-    /*
-    var customOverlay = new kakao.maps.CustomOverlay({
-       map: null,
-       position: new kakao.maps.LatLng(lat, lng),
-       content: content,
-       yAnchor: 1
-     });
- 
- */
 
     // 마커 이미지의 이미지 크기 입니다
     //var imageSize = new kakao.maps.Size(30, 35);
-    // 마커 이미지를 생성합니다    
+    // 마커 이미지를 생성합니다
     //var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
       //map: map, // 마커를 표시할 지도
       position: new kakao.maps.LatLng(lat, long), // 마커를 표시할 위치
       title: name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-      //image: markerImage // 마커 이미지 
+      //image: markerImage // 마커 이미지
     });
+
 
 
 
@@ -294,6 +264,7 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
     });
 
 
+
     markers.push(marker);
     marker.setMap(map);
   };
@@ -309,24 +280,35 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
   };
 
 
+    markers.push(marker);
+    marker.setMap(map);
+  }
+
+  function hideMarkers(markers) {
+    markers.forEach((marker) => marker.setMap(null));
+  }
+
+
+  const style = {
+    height: '80px',
+    width: '100px',
+  };
 
   return (
     /* jshint ignore:start */
     <>
       <div>
         {
-
           <Card size="small" style={{ width: 300, height: 40 }}>
             <Title level={5}>{name}</Title>
             <h5>{roadAddress}</h5>
             <Button type="primary" onClick={displayMarker}>
               위치 확인
-        </Button>
+            </Button>
           </Card>
         }
       </div>
       <div id="map" style={style}></div>
-
 
     </>
     /* jshint ignore:end */

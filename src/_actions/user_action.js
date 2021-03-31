@@ -83,7 +83,7 @@ export const authEmail = async (token) => {
   const request = await axios.get(`${PUBLIC_URL}/user/email`, null, {
     params: { token: token },
   });
-  if (request.status === 200) {
+  if (request.data) {
     return {
       type: AUTH_EMAIL,
       status: request.status,

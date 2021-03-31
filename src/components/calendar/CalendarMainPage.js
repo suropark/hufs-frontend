@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Calendar, Badge } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, List, Typography, Divider } from 'antd';
-import axios from 'axios';
-import { PUBLIC_URL } from '../../config';
+import { useDispatch } from 'react-redux';
+import { Button, List, Typography } from 'antd';
 import { getScholar } from '../../_actions/calender_action';
 import { withRouter } from 'react-router';
 function CalendarMainPage(props) {
