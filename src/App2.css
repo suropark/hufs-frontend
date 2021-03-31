@@ -1,11 +1,13 @@
 .Map {
-  top: 20px;
+  top: 1%;
+  right: 15%;
+
   display: flex;
 }
 .Map-left {
   /* Title */
   position: relative;
-  width: 250px;
+  width: 10%;
   height: 907px;
   left: 15%;
   top: 20px;
@@ -14,25 +16,25 @@
 }
 .Map-left > .navi {
   position: absolute;
-  width: 200px;
-  height: 46px;
-  left: 23%;
-  top: 20px;
+  width: 80%;
+  height: 3%;
+  left: 10%;
+  top: 3%;
 }
 .Map-left > .content {
   position: absolute;
-  width: 219px;
+  width: 80%;
   height: 447px;
-  left: 17px;
+  left: 10%;
   top: 10%;
   background-color: navajowhite;
 }
 #seoul {
   position: absolute;
-  width: 201px;
-  height: 196px;
-  left: 8px;
-  top: 18px;
+  width: 80%;
+  height: 45%;
+  left: 10%;
+  top: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,10 +49,10 @@
   justify-content: center;
 
   position: absolute;
-  width: 201px;
-  height: 196px;
-  left: 7px;
-  top: 230px;
+  width: 80%;
+  height: 45%;
+  left: 10%;
+  bottom: 3%;
 
   background: #ffffff;
 }
@@ -65,34 +67,22 @@
 }
 
 .Map-main {
+  position: absolute;
+  width: 48%;
+  height: 90%;
+  left: 27%;
+  top: 15%;
+}
+/* Map Content */
+/* .Map-main > .Map-board {
   position: relative;
-  width: 823px;
-  height: 907px;
-  left: 17%;
-  top: 20px;
-
-  background: #fde6e6;
-}
-.Map-main > .Mini-map {
-  position: absolute;
-  width: 750px;
-  height: 398px;
-  left: 25px;
-  top: 25px;
-
-  background: #4e3a3a;
-}
-.Map-main > .Map-board {
-  /* Map Content */
-
-  position: absolute;
   width: 100%;
   height: 45%;
   left: 0%;
   top: 500px;
 
   background: #ce7d7d;
-}
+} */
 /* 이까지 Board  */
 
 .community-main {
