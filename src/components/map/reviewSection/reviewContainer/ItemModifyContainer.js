@@ -29,7 +29,7 @@ const ItemModifyContainer = ({ match, history }) => {
         formData.append("file", file)
         formData.append("item", JSON.stringify(itemObject))
 
-        axios.put(`http://52.78.2.40:8080/store/review/${id}`, formData, {
+        axios.put(`http://52.78.2.40:5000/store/review/${id}`, formData, {
             headers: {
                 "Content-type": "multipart/form-data"
             }

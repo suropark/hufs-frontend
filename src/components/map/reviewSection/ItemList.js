@@ -1,5 +1,5 @@
-import { Link, useHistory } from 'react-router-dom';
-import { Table, Empty,Button, List, Avatar,Card,Typography } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { Table, Empty,Button, Typography } from 'antd';
 
 const { Text,Title } = Typography;
 
@@ -41,7 +41,6 @@ export default function ItemList({ items, isLoading, match, props }) {
     title: item.title,
     score: item.score,
   }));
-
   return (
     <div style={{width: "800px", margin: "0 auto", paddingTop:"150px"}}>
       {isLoading && '로딩중...'}

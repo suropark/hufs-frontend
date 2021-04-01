@@ -1,17 +1,10 @@
 import React, { useState, useEffect, } from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  useParams,
-  Switch,
-  useHistory,
+  BrowserRouter as 
    useLocation
 } from 'react-router-dom';
-import ReviewPage from '../../components/map/reviewSection/ReviewPage';
-import ReviewPostView from '../../components/map/reviewSection/ReviewPostView';
-import ReviewPostList from '../../components/map/reviewSection/ReviewPostList';
 
-const InforPage = ({ match, history }) => {
+const InforPage = ({ history }) => {
   const [state, setState] = useState('');
 
   useEffect(() => {

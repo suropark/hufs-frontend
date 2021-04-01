@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import KaKaoMap from './KakaoMap';
 import storeSeoul from './store-seoul.json';
-import Fuse from 'fuse.js';
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
 import axios from "axios";
@@ -9,11 +8,15 @@ import axios from "axios";
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
   console.log(data);
+
+  
   const searchData = (pattern) => {
     if (!pattern) {
       setData(storeSeoul);
       return;
     }
+  }
+    /*
 
     const fuse = new Fuse(data, {
       keys: ["name"],
@@ -36,6 +39,7 @@ const MapContainer = () => {
     
     }
     }
+    */
     /*
 
     const style1 = {

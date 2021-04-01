@@ -1,28 +1,19 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, } from 'react';
 import {
-   useLocation,Route, Switch,BrowserRouter
+   useLocation
 } from 'react-router-dom';
-import { List, Avatar,Card,Button,Typography } from 'antd';
+import { List, Avatar,Button,Typography } from 'antd';
 import numIcon from '../../components/map/exampleInfo/icon1.png';
 import roadIcon from '../../components/map/exampleInfo/icon2.png';
 //import StarPage from '../../components/map/reviewSection/starRating/StarPage';
 import 'antd/dist/antd.css';
 
-import ReviewPage from '../ReviewPage/ReviewPage'
-
-import ItemRegisterFrom from '../../components/map/reviewSection/ItemRegisterForm';
-import ItemList from '../../components/map/reviewSection/ItemList.js';
-
-import ItemListContainer from "../../components/map/reviewSection/reviewContainer/ItemListContainer"
-import ItemRegisterContainer from "../../components/map/reviewSection/reviewContainer/ItemRegisterContainer"
-import ItemModifyContainer from "../../components/map/reviewSection/reviewContainer/ItemModifyContainer"
-import ItemReadContainer from "../../components/map/reviewSection/reviewContainer/ItemReadContainer"
 /*
 import ReviewPostView from '../../components/map/reviewSection/ReviewPostView';
 import ReviewPostList from '../../components/map/reviewSection/ReviewPostList';
 */
 
-const { Text,Title } = Typography;
+const { Title } = Typography;
 
 const InforPage = ({match,history,props }) => {
   const {value, setVlue} = useState(0);
