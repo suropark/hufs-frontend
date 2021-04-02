@@ -34,28 +34,27 @@ const MapContainer = () => {
   //       });
   //       setData(matches);
 
+  //const result = fuse.search(pattern);
+  //   const matches = [];
+  //   if (!result.length) {
+  //     setData([]);
+  //   } else {
+  //     result.forEach(({ item }) => {
+  //       matches.push(item);
+  //     });
+  //     setData(matches);
 
-    //const result = fuse.search(pattern);
-    const matches = [];
-    if (!result.length) {
-      setData([]);
-    } else {
-      result.forEach(({ item }) => {
-        matches.push(item);
-      });
-      setData(matches);
+  //   }
 
-    }
-
-  }
-  const restrictclick = (e) => {
-    e.stopPropagation();
-  }
+  // }
+  // const restrictclick = (e) => {
+  //   e.stopPropagation();
+  // }
 
   return (
     <div className="Map">
-      <div className="Map-left">
-        <div className="navi">
+      {/* <div className="Map-left"> */}
+      {/* <div className="navi">
           <Breadcrumb>
             <Breadcrumb.Item href="http://localhost:3000/">
               <HomeOutlined />
@@ -65,20 +64,17 @@ const MapContainer = () => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>Now</Breadcrumb.Item>
           </Breadcrumb>
-        </div>
+        </div> */}
 
-        <div className="content" >
+      {/* <div className="content" >
 
           <div id="seoul" defaultSelectedKeys={['1']}>
             <Button type="text" id="button-head" key="1">Seoul</Button>
-
         <div className="content" >
-
           <div id="seoul" defaultSelectedKeys={['1']}>
             <Button type="text" id="button-head" key="1">Seoul</Button>
             <Button type="text">맛집공간</Button>
             <Button type="text">주거공간</Button>
-
           </div>
           <div id="global">
             <Button type="text" id="button-head">Global</Button>
@@ -100,15 +96,13 @@ const MapContainer = () => {
             style={{ width: '100 %' }}
 
           />
-          <div className="itemContainer">
+      <div className="itemContainer">
 
             {data.mydata ? data.mydata.map((d, index) => (
               <Card id="aa" {...d} key={index} />
             )) : <h1>null</h1>}
-          </div>
-        </div>
-
       </div>
+      </div> */}
     </div>
   );
 };
