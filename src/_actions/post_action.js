@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { PUBLIC_IP } from '../config';
 import {
+  POST_SEARCH,
+  POST_SEARCH_FAIL,
   POST_REPORT,
   POST_LIST,
   POST_LIST_FAIL,
@@ -187,6 +189,26 @@ export const deleteScrap = async (postId) => {
     return {
       type: POST_SCRAP_REMOVE_FAIL,
       status: request.status,
+    };
+  }
+};
+
+export const postSearch = async (boardId, keyword, option) => {
+  const request = axios.get(`${PUBLIC_IP}/board/${boardId}/search`, null, {
+    params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
+  });
+
+  if (request.data) {
+    return {
+      type: POST_SEARCH,
+      status: request.status,
+      payload: request.data.data,
+    };
+  } else {
+    return {
+      type: POST_SEARCH_FAIL,
+      status: request.status,
+      // payload: request.error,
     };
   }
 };

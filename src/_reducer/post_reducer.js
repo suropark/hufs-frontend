@@ -18,6 +18,8 @@ import {
   POST_LIST_FAIL,
   POST_VIEW,
   POST_VIEW_FAIL,
+  POST_SEARCH_FAIL,
+  POST_SEARCH,
 } from '../_actions/types';
 
 export default function post(state = {}, action) {
@@ -31,6 +33,7 @@ export default function post(state = {}, action) {
     case POST_UPDATE:
     case POST_REMOVE:
     case POST_LIKE:
+    case POST_SEARCH:
     case POST_REMOVE_FAIL:
     case POST_UPDATE_FAIL:
     case POST_REPORT_FAIL:
@@ -43,6 +46,7 @@ export default function post(state = {}, action) {
     case POST_SCRAP_REMOVE:
     case POST_SCRAP_REMOVE_FAIL:
     case POST_LIST_FAIL:
+    case POST_SEARCH_FAIL:
       return {
         ...state,
       };

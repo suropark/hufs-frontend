@@ -5,12 +5,10 @@ import ReactPaginate from 'react-paginate';
 import './PostList.css';
 import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
-import { PageHeader, Button, Table, Tag, Input, Space } from 'antd';
-import loading from '../../_actions/loading_action';
-const { Search } = Input;
-const { Column, ColumnGroup } = Table;
+import { PageHeader, Button, Table } from 'antd';
+import PostSearch from './PostSearch';
+const { Column } = Table;
 function PostList({ match, history }) {
-
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,7 +42,7 @@ function PostList({ match, history }) {
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
-  }, [currentPage]);
+  }, [posts, currentPage]);
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
@@ -74,8 +72,6 @@ function PostList({ match, history }) {
           title={findBoardName(+match.url.substring(1))}
           subTitle="설명"
         />{' '}
-        {/* <span className="navi"> */}
-        {/* </span>{' '} */}
         <div className="community-box">
           <Button
             onClick={(e) =>
@@ -87,20 +83,11 @@ function PostList({ match, history }) {
           >
             글 작성
           </Button>
-          <Search
-            placeholder="검색창"
-            allowClear
-            onSearch={(e) => console.log(e)}
-            style={{
-              float: 'right',
-              marginBottom: '10px',
-              width: '300px',
-              height: '30px',
-            }}
-          />
+          <PostSearch setPosts={setPosts} match={match} />
           <TableBody
             currentList={posts.slice(firstIndex, lastIndex)}
             match={match}
+            loading={loading}
           />
         </div>
       </table>
@@ -125,7 +112,7 @@ function PostList({ match, history }) {
 
 export default withRouter(PostList);
 
-export function TableBody({ currentList, match }) {
+export function TableBody({ currentList, match, loading }) {
   return (
     <>
       {loading ? (
@@ -165,27 +152,9 @@ export function TableBody({ currentList, match }) {
         </Table>
       ) : (
         <>
-          {' '}
           <Skeleton />
         </>
-      )}{' '}
+      )}
     </>
-    // <tbody>
-    //   {currentList ? (
-    //     currentList.map((post, index) => {
-    //       return (
-    //         <tr key={index}>
-    //           <td>{post.title.slice(0, 4)}</td>
-    //           <td>
-    //             <Link to={`${match.path}/${post.id}`}>{post.content}</Link>
-    //           </td>
-    //           <td>{post.User === null ? post.User : post.User.nickname}</td>
-    //         </tr>
-    //       );
-    //     })
-    //   ) : (
-    //     <h2>loading</h2>
-    //   )}
-    // </tbody>
   );
 }
