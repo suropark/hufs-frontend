@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PUBLIC_URL } from '../../config';
+import { PUBLIC_IP } from '../../config';
 import { deleteScrap } from '../../_actions/post_action';
 import { message } from 'antd';
 function UserScrap() {
@@ -11,7 +11,7 @@ function UserScrap() {
   const [scraps, setScraps] = useState([]);
   useEffect(async () => {
     const request = await axios
-      .get(`${PUBLIC_URL}/user/scrap`, null, {
+      .get(`${PUBLIC_IP}/user/scrap`, null, {
         params: { directoryId: 1 },
       })
       .then((response) => {

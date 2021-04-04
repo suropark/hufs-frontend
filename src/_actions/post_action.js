@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PUBLIC_URL } from '../config';
+import { PUBLIC_IP } from '../config';
 import {
   POST_REPORT,
   POST_LIST,
@@ -24,7 +24,7 @@ import {
 } from './types';
 // 완료
 export const postView = async (postId) => {
-  const request = await axios.get(`${PUBLIC_URL}/post/${postId}`);
+  const request = await axios.get(`${PUBLIC_IP}/post/${postId}`);
 
   if (request.status === 200) {
     return {
@@ -41,7 +41,7 @@ export const postView = async (postId) => {
 };
 // 완료
 export const postList = async (match) => {
-  const request = await axios.get(`${PUBLIC_URL}/board${match.path}`);
+  const request = await axios.get(`${PUBLIC_IP}/board${match.path}`);
   if (request.status === 200) {
     return {
       type: POST_LIST,
@@ -58,7 +58,7 @@ export const postList = async (match) => {
 //완료
 export const postReport = async (postId, body) => {
   const request = await axios //body : postId, content, detail
-    .post(`${PUBLIC_URL}/post/${postId}/report`, body);
+    .post(`${PUBLIC_IP}/post/${postId}/report`, body);
   if (request.status === 200) {
     return {
       type: POST_REPORT,
@@ -73,10 +73,10 @@ export const postReport = async (postId, body) => {
 };
 // 완료
 export const postSave = async (body, needDelete, boardId) => {
-  const request = await axios.post(`${PUBLIC_URL}/board/${boardId}/post`, body);
+  const request = await axios.post(`${PUBLIC_IP}/board/${boardId}/post`, body);
 
   if (needDelete.length !== 0) {
-    await axios.post(`${PUBLIC_URL}/post/back`, { url: needDelete });
+    await axios.post(`${PUBLIC_IP}/post/back`, { url: needDelete });
   }
   if (request.status === 200) {
     return {
@@ -92,10 +92,10 @@ export const postSave = async (body, needDelete, boardId) => {
 };
 // 완료
 export const postUpdate = async (updated, needDelete, postId) => {
-  const request = await axios.put(`${PUBLIC_URL}/post/${postId}`, updated);
+  const request = await axios.put(`${PUBLIC_IP}/post/${postId}`, updated);
 
   if (needDelete.length !== 0) {
-    await axios.post(`${PUBLIC_URL}/post/back`, { url: needDelete });
+    await axios.post(`${PUBLIC_IP}/post/back`, { url: needDelete });
   }
   if (request.status === 200) {
     return {
@@ -111,7 +111,7 @@ export const postUpdate = async (updated, needDelete, postId) => {
 };
 // 완료
 export const postRemove = async (postId) => {
-  const request = await axios.delete(`${PUBLIC_URL}/post/${postId}`);
+  const request = await axios.delete(`${PUBLIC_IP}/post/${postId}`);
   if (request.status === 200) {
     return {
       type: POST_REMOVE,
@@ -126,7 +126,7 @@ export const postRemove = async (postId) => {
 };
 // 완료
 export const postLike = async (postId) => {
-  const request = await axios.get(`${PUBLIC_URL}/post/${postId}/addlike`);
+  const request = await axios.get(`${PUBLIC_IP}/post/${postId}/addlike`);
   if (request.status === 200) {
     return {
       type: POST_LIKE,
@@ -140,7 +140,7 @@ export const postLike = async (postId) => {
   }
 };
 export const postDellike = async (postId) => {
-  const request = await axios.get(`${PUBLIC_URL}/post/${postId}/dellike`);
+  const request = await axios.get(`${PUBLIC_IP}/post/${postId}/dellike`);
   if (request.status === 200) {
     return {
       type: POST_DELLIKE,
@@ -157,7 +157,7 @@ export const postDellike = async (postId) => {
 // request  query로 보내야하는데..
 // 스웨거 request URL은 맞춤 , 500
 export const postScrap = async (postId) => {
-  const request = await axios.post(`${PUBLIC_URL}/user/scrap`, null, {
+  const request = await axios.post(`${PUBLIC_IP}/user/scrap`, null, {
     params: { postId: postId },
   });
   if (request.status === 200) {
@@ -175,7 +175,7 @@ export const postScrap = async (postId) => {
 
 // id가 스크랩 아이디라서 조금 다른데 해결필요
 export const deleteScrap = async (postId) => {
-  const request = await axios.delete(`${PUBLIC_URL}/user/scrap`, null, {
+  const request = await axios.delete(`${PUBLIC_IP}/user/scrap`, null, {
     params: { id: postId },
   });
   if (request.status === 200) {

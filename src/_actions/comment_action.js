@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PUBLIC_URL } from '../config';
+import { PUBLIC_IP } from '../config';
 import {
   COMMENT_REMOVE,
   COMMENT_SAVE,
@@ -12,7 +12,7 @@ import {
 } from './types';
 //  완료
 export const commentSave = async (body) => {
-  const request = await axios.post(`${PUBLIC_URL}/reply/add`, body);
+  const request = await axios.post(`${PUBLIC_IP}/reply/add`, body);
   if (request.status === 200) {
     return {
       type: COMMENT_SAVE,
@@ -27,7 +27,7 @@ export const commentSave = async (body) => {
 };
 // 완료
 export const commentLike = async (commentId) => {
-  const request = await axios.get(`${PUBLIC_URL}/reply/${commentId}/addlike`);
+  const request = await axios.get(`${PUBLIC_IP}/reply/${commentId}/addlike`);
   if (request.status === 200) {
     return {
       type: COMMENT_LIKE,
@@ -42,7 +42,7 @@ export const commentLike = async (commentId) => {
 };
 // 완료
 export const commentRemove = async (commentId) => {
-  const request = await axios.delete(`${PUBLIC_URL}/reply/${commentId}`);
+  const request = await axios.delete(`${PUBLIC_IP}/reply/${commentId}`);
   if (request.status === 200) {
     return {
       type: COMMENT_REMOVE,
@@ -58,7 +58,7 @@ export const commentRemove = async (commentId) => {
 // 완료
 export const commentReport = async (commentId, body) => {
   const request = await axios.post(
-    `${PUBLIC_URL}/reply/${commentId}/report`,
+    `${PUBLIC_IP}/reply/${commentId}/report`,
     body,
   );
   if (request.status === 200) {

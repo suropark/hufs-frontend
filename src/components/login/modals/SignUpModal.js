@@ -5,7 +5,7 @@ import { message, Select, Button, Input, Form, Checkbox } from 'antd';
 import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
 import Cookies from 'js-cookie';
-import { PUBLIC_URL } from '../../../config';
+import { PUBLIC_IP } from '../../../config';
 
 const SignUpModal = (props) => {
   const { Option } = Select;
@@ -24,12 +24,12 @@ const SignUpModal = (props) => {
 
   useEffect(async () => {
     const request1 = await axios
-      .get(`${PUBLIC_URL}/major/main-major`) //1전공
+      .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
       .catch((e) => {});
     setMajor(request1);
     const request2 = await axios
-      .get(`http://52.78.2.40:5000/major/double-major`) //이중전공
+      .get(`${PUBLIC_IP}/major/double-major`) //이중전공
       .then((response) => response.data.data)
 
       .catch((e) => {}); // 배열 [id, name ]
@@ -40,7 +40,7 @@ const SignUpModal = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const request = await axios
-      .post('http://52.78.2.40:5000/user/sign-up', submit)
+      .post(`${PUBLIC_IP}/user/sign-up`, submit)
       .then((response) => {
         message.success('회원가입이 성공적으로 완료되었습니다 :)');
         props.history.push('/');

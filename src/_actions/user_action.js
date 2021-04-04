@@ -1,7 +1,7 @@
 // login, logout, register, auth
 
 import axios from 'axios';
-import { PUBLIC_URL } from '../config';
+import { PUBLIC_IP } from '../config';
 import {
   INFO_USER,
   AUTH_USER,
@@ -17,7 +17,7 @@ import {
 } from './types';
 // 완료
 export const withdrawUser = async () => {
-  const request = await axios.delete(`${PUBLIC_URL}/user`);
+  const request = await axios.delete(`${PUBLIC_IP}/user`);
   if (request.status === 200) {
     return {
       type: WITHDRAW_USER,
@@ -33,7 +33,7 @@ export const withdrawUser = async () => {
 //완료
 
 export const updateUser = async (updatedData) => {
-  const request = await axios.put(`${PUBLIC_URL}/user`, updatedData);
+  const request = await axios.put(`${PUBLIC_IP}/user`, updatedData);
   if (request.status === 200) {
     return {
       type: UPDATE_USER,
@@ -49,7 +49,7 @@ export const updateUser = async (updatedData) => {
 };
 //완료
 export const getUserInfo = async () => {
-  const request = await axios.get(`${PUBLIC_URL}/user`);
+  const request = await axios.get(`${PUBLIC_IP}/user`);
 
   if (request.status === 200) {
     return {
@@ -65,7 +65,7 @@ export const getUserInfo = async () => {
   }
 };
 export const logoutUser = async () => {
-  const request = await axios.post(`${PUBLIC_URL}/user/sign-out`);
+  const request = await axios.post(`${PUBLIC_IP}/user/sign-out`);
 
   if (request.status === 200) {
     return {
@@ -80,7 +80,7 @@ export const logoutUser = async () => {
   }
 };
 export const authEmail = async (token) => {
-  const request = await axios.get(`${PUBLIC_URL}/user/email`, null, {
+  const request = await axios.get(`${PUBLIC_IP}/user/email`, null, {
     params: { token: token },
   });
   if (request.data) {

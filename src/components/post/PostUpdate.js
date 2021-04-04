@@ -7,7 +7,7 @@ import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import { postUpdate, postView } from '../../_actions/post_action';
 import axios from 'axios';
-import { PUBLIC_URL } from '../../config';
+import { PUBLIC_IP } from '../../config';
 import Footer from '../../views/Footer/Footer';
 import Header from '../../views/Header/Header';
 import Quick from '../../views/Quick/Quick';
@@ -23,7 +23,7 @@ function PostUpdate({ match, history }) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.post(`${PUBLIC_URL}/post/back`, { url: uploadedImg });
+      axios.post(`${PUBLIC_IP}/post/back`, { url: uploadedImg });
     };
   });
   useEffect(async () => {
@@ -96,7 +96,7 @@ function PostUpdate({ match, history }) {
     const answer = window.confirm('진짜?');
     if (answer) {
       axios
-        .post(`${PUBLIC_URL}/post/back`, { url: uploadedImg })
+        .post(`${PUBLIC_IP}/post/back`, { url: uploadedImg })
         .then(history.goBack())
         .catch(history.goBack());
     }
@@ -132,14 +132,25 @@ function PostUpdate({ match, history }) {
             ></ReactQuill>
 
             <div id="button-bar">
-              <Button type="primary" onClick={onUpdate} style={{
-                margin: '10px'
-              }}>수정하기</Button>
-              <Button type="primary" onClick={onExit} style={{
-                margin: '10px'
-              }}>취소하기</Button>
+              <Button
+                type="primary"
+                onClick={onUpdate}
+                style={{
+                  margin: '10px',
+                }}
+              >
+                수정하기
+              </Button>
+              <Button
+                type="primary"
+                onClick={onExit}
+                style={{
+                  margin: '10px',
+                }}
+              >
+                취소하기
+              </Button>
             </div>
-
           </div>
         ) : (
           <Skeleton />
@@ -211,7 +222,7 @@ function imageHandler() {
       // this.quill.enable(false);
 
       axios
-        .post(`${PUBLIC_URL}/post/img`, { img: formData })
+        .post(`${PUBLIC_IP}/post/img`, { img: formData })
         .then((response) => {
           this.quill.enable(true);
           this.quill.editor.insertEmbed(range.index, 'image', response.data);

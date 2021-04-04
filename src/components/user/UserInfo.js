@@ -3,7 +3,7 @@ import { message, Button, Input } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
-import { PUBLIC_URL } from '../../config';
+import { PUBLIC_IP } from '../../config';
 import { updateUser } from '../../_actions/user_action';
 import MajorSelect from './MajorSelect';
 import SecondMajorSelect from './SecondMajorSelect';
@@ -24,8 +24,8 @@ function UserInfo(props) {
   useEffect(async () => {
     await axios
       .all([
-        axios.get(`${PUBLIC_URL}/major/main-major`),
-        axios.get(`${PUBLIC_URL}/major/double-major`),
+        axios.get(`${PUBLIC_IP}/major/main-major`),
+        axios.get(`${PUBLIC_IP}/major/double-major`),
       ])
       .then((response) => {
         setMainMajorList(response[0].data.data);
@@ -70,7 +70,7 @@ function UserInfo(props) {
 
   const onAuth = async () => {
     await axios
-      .post(`${PUBLIC_URL}/user/email`)
+      .post(`${PUBLIC_IP}/user/email`)
       .then((response) => {
         message.success(
           '이메일이 성공적으로 전송되었습니다. 웹메일을 확인해주세요',

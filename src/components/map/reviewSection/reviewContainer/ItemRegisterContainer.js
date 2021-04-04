@@ -8,6 +8,7 @@ withRouter 함수는 High-order component이다.
 컴포넌트 속성값으로 match, location, history 객체를 전달받는다.
 */
 import { withRouter, useHistory, useLocation } from 'react-router-dom';
+import { PUBLIC_IP } from '../../../../config';
 
 const ItemRegisterContainer = ({ history, match }) => {
   const location = useLocation();
@@ -27,15 +28,11 @@ const ItemRegisterContainer = ({ history, match }) => {
 
     // 파일 업로드
     axios
-      .post(
-        `http://52.78.2.40:8080/store/${location.state.id}/review`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+      .post(`${PUBLIC_IP}/store/${location.state.id}/review`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
         },
-      )
+      })
       .then((res) => {
         alert('등록되었습니다.');
         history.push(`${match.path}/read` + res.data.id);

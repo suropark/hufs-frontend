@@ -3,13 +3,13 @@ import axios from 'axios';
 import { message, Modal, Button } from 'antd';
 import kakao_pic from '../style/kakao_pic.png';
 import google_pic from '../style/google_pic.png';
-import { PUBLIC_URL } from '../../../config';
+import { PUBLIC_IP } from '../../../config';
 const SignInModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const signInGoogle = async (e) => {
     const request = await axios({
       method: 'get',
-      url: `${PUBLIC_URL}/user/sign-in/google`,
+      url: `${PUBLIC_IP}/user/sign-in/google`,
       headers: {
         accept: 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -28,7 +28,7 @@ const SignInModal = () => {
   const signInKakao = async (e) => {
     const request = await axios({
       method: 'get',
-      url: `${PUBLIC_URL}/user/sign-in/google`,
+      url: `${PUBLIC_IP}/user/sign-in/google`,
       headers: {
         accept: 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -62,13 +62,12 @@ const SignInModal = () => {
           onClick={signInGoogle}
           src={google_pic}
         />
-        <img
+        {/* <img
           style={{ cursor: 'pointer', marginLeft: '66px' }}
           onClick={signInKakao}
           src={kakao_pic}
-
-        />
-        <a href={`${PUBLIC_URL}/user/sign-in/kakao`}>
+        /> */}
+        <a href={`${PUBLIC_IP}/user/sign-in/kakao`}>
           <img
             style={{ cursor: 'pointer', marginLeft: '66px' }}
             // onClick={signInKakao}
