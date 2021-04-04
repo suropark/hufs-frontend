@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import { fetchItem, FETCH_ITEM } from '../../../../_actions/reviewPost_action';
 import axios from 'axios';
+import { PUBLIC_IP } from '../../../../config';
 
 const ItemModifyContainer = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const ItemModifyContainer = ({ match, history }) => {
     formData.append('item', JSON.stringify(itemObject));
 
     axios
-      .put(`http://52.78.2.40:8080/store/review/${id}`, formData, {
+      .put(`${PUBLIC_IP}/store/review/${id}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },

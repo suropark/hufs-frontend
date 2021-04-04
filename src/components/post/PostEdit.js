@@ -6,7 +6,7 @@ import { postSave } from '../../_actions/post_action';
 import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import { PUBLIC_URL } from '../../config';
+import { PUBLIC_IP } from '../../config';
 import Header from '../../views/Header/Header';
 import Quick from '../../views/Quick/Quick';
 import Footer from '../../views/Footer/Footer';
@@ -18,7 +18,7 @@ function PostEdit(props) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete(`${PUBLIC_URL}/post/back`, uploadedImg);
+      axios.delete(`${PUBLIC_IP}/post/back`, uploadedImg);
     };
   });
 
@@ -64,7 +64,7 @@ function PostEdit(props) {
     );
     if (answer) {
       axios
-        .delete(`${PUBLIC_URL}/post/back`, uploadedImg)
+        .delete(`${PUBLIC_IP}/post/back`, uploadedImg)
         .then(props.history.goBack())
         .catch(props.history.goBack());
     }
@@ -93,14 +93,25 @@ function PostEdit(props) {
         ></ReactQuill>
 
         <div id="button-bar">
-          <Button type="primary" onClick={onSubmit} style={{
-            margin: '10px'
-          }}>제출</Button>
-          <Button type="primary" onClick={onSubmit} style={{
-            margin: '10px'
-          }}>취소</Button>
+          <Button
+            type="primary"
+            onClick={onSubmit}
+            style={{
+              margin: '10px',
+            }}
+          >
+            제출
+          </Button>
+          <Button
+            type="primary"
+            onClick={onSubmit}
+            style={{
+              margin: '10px',
+            }}
+          >
+            취소
+          </Button>
         </div>
-
       </div>
     </>
   );
@@ -169,7 +180,7 @@ function imageHandler() {
       // this.quill.enable(false);
 
       await axios
-        .post(`${PUBLIC_URL}/post/img`, { img: formData })
+        .post(`${PUBLIC_IP}/post/img`, { img: formData })
         .then((response) => {
           this.quill.editor.insertEmbed(range.index, 'image', response.data);
           uploadedImg = uploadedImg.concat(response.data);
