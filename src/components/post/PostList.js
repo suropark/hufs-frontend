@@ -138,7 +138,6 @@ export function TableBody({ currentList, match, loading }) {
                 <>{record.User.nickname}</>
               )
             }
-            // console.log(record);
             key="User"
           />
           <Column
