@@ -47,3 +47,6 @@ export const WITHDRAW_USER_FAIL = 'withdraw_user_fail';
 
 export const AUTH_EMAIL = 'auth_email';
 export const AUTH_EMAIL_FAIL = 'auth_eamil_fail';
+
+export const SEARCH_ALL = 'search_all';
+export const SEARCH_ALL_FAIL = 'search_all_fail';

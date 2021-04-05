@@ -5,7 +5,7 @@ import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import SignUp from '../../components/login/SignUp';
 import Logout from '../../components/login/Logout';
-
+import SearchAll from '../../components/post/SearchAll';
 const { Search } = Input;
 
 function Header(props) {
@@ -47,14 +47,7 @@ function Header(props) {
         </Button>
         {/* <Button type="text">언어 선택</Button> */}
       </span>
-      {/* <Space id="Searchbar" direction=" vertical">
-        <Search
-          placeholder="검색창"
-          allowClear
-          onSearch={onSearch}
-          style={{ width: '278px' }}
-        />
-      </Space> */}
+      <SearchAll />
       {/* <input id="Searchbar"className="Searchbar" value="검색창" /> */}
       <Space direction="vertical">
         <Space id="Menubar">

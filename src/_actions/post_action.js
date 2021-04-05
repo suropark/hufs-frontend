@@ -23,6 +23,8 @@ import {
   POST_DELLIKE_FAIL,
   POST_VIEW_FAIL,
   POST_VIEW,
+  SEARCH_ALL,
+  SEARCH_ALL_FAIL,
 } from './types';
 // 완료
 export const postView = async (postId) => {
@@ -212,3 +214,24 @@ export const postSearch = async (boardId, keyword, option) => {
     };
   }
 };
+
+export const searchAll = async (keyword, option) => {
+  const request = axios.get(`${PUBLIC_IP}/search`, null, {
+    params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
+  });
+
+  if (request.data) {
+    return {
+      type: SEARCH_ALL,
+      status: request.status,
+      payload: request.data.data,
+    };
+  } else {
+    return {
+      type: SEARCH_ALL_FAIL,
+      status: request.status,
+      // payload: request.error,
+    };
+  }
+};
+
