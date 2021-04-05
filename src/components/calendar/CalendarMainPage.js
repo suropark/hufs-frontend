@@ -98,9 +98,9 @@ function CalendarMainPage(props) {
           onSelect={onSelect}
         />
       </div>
-      <div style={{ overflow: 'auto', height: '400px' }}>
+      <div style={{ overflow: 'auto', height: '354px' }}>
         <List
-          style={{ height: '400px' }}
+          style={{ height: '354px' }}
           header={
             <div>
               <span>장학금</span>
