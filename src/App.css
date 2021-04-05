@@ -3,9 +3,9 @@
 .Head {
   position: relative;
   left: 15%;
-  width: 1100px;
+  width: 1120px;
   height: 140px;
-  background-color: #8897cb;
+  /* background-color: #8897cb; */
 }
 
 .Head > .Pagename {
@@ -18,10 +18,10 @@
   position: absolute;
   justify-content: center;
   align-items: center;
-  width: 250px;
-  height: 68px;
-  left: 0px;
-  top: 35px;
+  width: 22%;
+  height: 50%;
+
+  top: 30%;
 }
 .Head > .Pagename img {
   width: 250px;
@@ -51,12 +51,12 @@
   /* align-content: center; */
   align-items: center;
   justify-content: space-between;
-  padding: 40px;
+  padding: 20px;
 
   width: 850px;
-  height: 80px;
-  left: 250px;
-  top: 61px;
+  height: 57%;
+  left: 35%;
+  top: 45px;
 }
 
 #Searchbar {
@@ -64,9 +64,9 @@
 
   position: absolute;
   /* width: 278px; */
-
-  left: 822px;
-  top: 20px;
+  width: 37%;
+  right: 0%;
+  top: 20%;
 }
 
 .Head > .loginbar {
@@ -74,10 +74,9 @@
 
   position: absolute;
 
-  width: 278px;
-  height: 20px;
-  left: 822px;
-  top: 0px;
+  width: 25%;
+  height: 25%;
+  left: 77%;
 
   /* background: #abad43; */
 }
@@ -90,26 +89,24 @@
 
   top: 20px;
   border: '1px solid violet';
-  background: #8897cb;
+  /* background: #8897cb; */
 }
 
 .Main > .Mainbanner {
   position: absolute;
-  width: 1100px;
-  height: 370px;
+  width: 100%;
+  height: 34%;
   left: 10px;
-  top: 12px;
-
-  background: #d38383;
+  top: 1%;
 }
 .Main > .MainCalendar {
   /* 학사,장학일정 */
 
   position: absolute;
-  width: 980px;
-  height: 330px;
-  left: 70px;
-  top: 433px;
+  width: 100%;
+  height: 30%;
+
+  top: 38%;
   /* background: #aba85e; */
 }
 
@@ -117,10 +114,10 @@
   /* favorite board */
 
   position: absolute;
-  width: 1100px;
-  height: 370px;
+  width: 100%;
+  height: 33%;
   left: 10px;
-  top: 813px;
+  top: 69%;
 
   /* background: #cd7d7d; */
 }
@@ -136,14 +133,6 @@
   background: #f0d0d0;
 }
 
-.Quick {
-  width: 130px;
-  height: 206px;
-  right: 0px;
-  top: 224px;
-
-  background: #8897cb;
-}
 /* 오른쪽 부유 바 */
 .ant-anchor-wrapper {
   position: absolute;

@@ -1,0 +1,26 @@
+@media (max-width: 768px) {
+  /* 반응형 최대 768 테스트 */
+  .ant-anchor-wrapper {
+    display: none;
+  }
+  .Head {
+    width: 100%;
+  }
+  .Main {
+    width: 100%;
+  }
+  .Main > .Mainbanner {
+    display: none;
+  }
+  .Main > .MainCalendar {
+    top: 1%;
+    max-width: 85%;
+  }
+  .site-calendar-demo-card {
+    width: 50%;
+    height: 50%;
+  }
+  .Footer {
+    display: none;
+  }
+}

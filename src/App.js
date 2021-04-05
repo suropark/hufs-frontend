@@ -3,6 +3,7 @@ import loadable from '@loadable/component';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import './App2.css';
+import './Media.css';
 const Post = loadable(() => import('./views/PostPage/Post'));
 const LandingPage = loadable(() => import('./views/LandingPage/LandingPage'));
 const MyPage = loadable(() => import('./views/MyPage/MyPage'));

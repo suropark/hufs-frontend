@@ -42,10 +42,10 @@ function SearchAll(props) {
       });
   };
   return (
-    <span style={{ marginTop: '40px' }}>
+    <span id="Searchbar" >
       <Select
         defaultValue="제목"
-        style={{ width: 120 }}
+        style={{ width: 70 }}
         onChange={(e) => setSearchType(e)}
       >
         <Option value="titleAndContent">제목&내용</Option>
@@ -60,12 +60,12 @@ function SearchAll(props) {
         onChange={setKeyword}
         onSearch={onSearch}
         style={{
-          marginBottom: '10px',
-          width: '300px',
+
+          width: '330px',
           height: '30px',
         }}
       />
-    </span>
+    </span >
   );
 }
 
