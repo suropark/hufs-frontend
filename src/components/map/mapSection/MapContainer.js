@@ -10,6 +10,7 @@ import { Menu } from 'antd';
 
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
+
   const searchData = (pattern) => {
     if (!pattern) {
       setData(storeSeoul);
@@ -17,45 +18,19 @@ const MapContainer = () => {
     }
   }
 
-  // const fuse = new Fuse(data, {
-  //   keys: ["name"],
-  // });
-
-  //const fuse = new Fuse(, options);
-
-  // const result = fuse.search(pattern);
-
-  //const result = fuse.search(pattern);
-
-  // if (!result.length) {
-  //   setData([]);
-  // } else {
-  //   result.forEach(({ item }) => {
-  //     matches.push(item);
-  //   });
-  //   setData(matches);
-
-  //   const result = fuse.search(pattern);
-  // const matches = [];
-  // if (!result.length) {
-  //   setData([]);
-  // } else {
-  //   result.forEach(({ item }) => {
-  //     matches.push(item);
-  //   });
-  //   setData(matches);
-
-  // }
-
-
-  const restrictclick = (e) => {
-    e.stopPropagation();
-  }
 
   return (
     <div className="Map">
       <div className="Map-left">
         <div className="navi">
+
+  
+
+  return (
+    <div className="Map">
+      <div className="Map-left"> 
+       <div className="navi">
+
           <Breadcrumb>
             <Breadcrumb.Item href="http://localhost:3000/">
               <HomeOutlined />
@@ -103,8 +78,11 @@ const MapContainer = () => {
           </div>
         </div>
       </div>
+
     </div>
+    
   );
+  
 };
 
 export default MapContainer;

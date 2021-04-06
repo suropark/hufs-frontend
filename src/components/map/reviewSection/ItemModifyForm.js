@@ -1,6 +1,8 @@
 import { Link, useHistory } from 'react-router-dom';
-import { Rate } from 'antd';
+import { Rate,Button,Input } from 'antd';
 import React, { useState, useEffect, useCallback } from 'react';
+
+const { TextArea } = Input;
 
 // 이미지 표시 URL 생성
 const pictureUrl = (id) => {
@@ -44,83 +46,41 @@ export default function ItemModifyFrom({ item, isLoading, onModify, match }) {
     onModify(title, score, content, file);
   };
 
-  return (
-    <div align="center">
-      <h2>수정</h2>
+    return (
+        <div style={{width: "800px", margin: "0 auto", paddingTop:"150px"}}>
       {isLoading && '로딩중...'}
       {!isLoading && item && (
-        <form onSubmit={handleSubmit}>
-          <table>
-            <tbody>
-              <tr>
-                <td className="form-label">번호</td>
-                <td>
-                  <input type="text" value={item.id} disabled />
-                </td>
-              </tr>
-              <tr>
-                <td className="form-label">음식이름</td>
-                <td>
-                  <input
-                    type="text"
-                    value={title}
-                    onChange={handleChangeTitle}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="form-label">음식 평점</td>
-                <td>
-                  <Rate allowHalf value={score} onChange={handleChangeScore} />
-                  {/*
-                                <select value={score} onChange={handleChangeScore}>
-                  <option value="1pt">1점</option>
-                  <option value="2pt">2점</option>
-                  <option value="3pt">3점</option>
-                  <option value="4pt">4점</option>
-                  <option value="5pt">5점</option>
-                                    </select>*/}
-                </td>
-              </tr>
-              <tr>
-                <td className="form-label">음식파일</td>
-                <td>
-                  <input type="file" onChange={handleChangeFile} />
-                </td>
-              </tr>
-              <tr>
-                <td className="form-label">미리보기</td>
-                <td>
-                  <img
-                    src={pictureUrl(item.id)}
-                    alt=""
-                    width="200"
-                    className="img-preview"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="form-label">음식설명</td>
-                <td>
-                  <textarea
-                    rows="5"
-                    value={content}
-                    onChange={handleChangeContent}
-                  ></textarea>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <form onSubmit={handleSubmit}>
+          <br />
+          <div style={{ maxWidth: "700px", margin: "2rem"}}>
+              <label>제목 </label>
+              <Input type="text" value={item.title} onChange={handleChangeTitle} />
+              <hr></hr>
+              <label>평점  </label>
+              <Rate allowHalf value = {item.score} onChange={handleChangeScore}/>
+              <hr></hr>
+              <label>사진</label>
+              <Input type="file" onChange={handleChangeFile} />
+              <hr></hr>
+              <label>미리보기</label>
+              <img src={pictureUrl(item.id)} alt="" width="200" className="img-preview" />
+              <hr></hr>
+              <label>후기</label>
+              <TextArea
+              rows="5"
+              value={item.content}
+              onChange={handleChangeContent}
+            />
+            </div>
+            <div>
+            <button type="submit" >수정</button>
+      &nbsp;
+      <Button onClick={()=>history.goBack()}>취소</Button>&nbsp;
+      </div>
 
-          <div>
-            <button type="submit" className="like-a-button">
-              수정
-            </button>
-            &nbsp;
-            <button onClick={() => history.goBack()}>취소</button>&nbsp;
-          </div>
-        </form>
-      )}
+                    
+                </form>
+            )}
     </div>
   );
 }
