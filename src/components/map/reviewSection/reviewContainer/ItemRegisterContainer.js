@@ -26,7 +26,7 @@ const ItemRegisterContainer = ({ history, match }) => {
     formData.append('file', file);
     formData.append('item', JSON.stringify(itemObject));
 
-    // 파일 업로드
+    // 파일 업로드 //${location.state.id}
     axios
       .post(`${PUBLIC_IP}/store/${location.state.id}/review`, formData, {
         headers: {

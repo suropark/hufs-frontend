@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { Card, Button, Typography, Col, Row } from 'antd';
+import { Card, Button, Typography, Col, Row,Modal,List,Avatar } from 'antd';
 import { useHistory, withRouter, useLocation } from 'react-router-dom';
 import Quick from '../../../views/Quick/Quick';
 import Header from '../../../views/Header/Header';
 import Footer from '../../../views/Footer/Footer';
 import './Card.css';
 import icon_rstrn from './icon_rstrn.png';
+import numIcon from '../exampleInfo/icon1.png'
+import roadIcon from '../exampleInfo/icon2.png';
+import cateIcon from '../exampleInfo/icon3.png';
+
 
 const { kakao } = window;
 const { Text, Title } = Typography;
 
-const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
+const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match,props }) => {
   //const history = useHistory();
 
   //const [markerPositions, setMarkerPositions] = useState();
@@ -22,6 +26,25 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
   const history = useHistory();
   const location = useLocation();
   const [marker, setMarkers] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const data = [
+    {
+      title: "카테고리",
+      //description : StoreSubCategory.name,
+      img: cateIcon,
+    },
+    {
+      title: "지번주소",
+      description: numAddress,
+      img: numIcon
+    },
+    {
+      title: "도로명주소",
+      description : roadAddress,
+      img: roadIcon,
+    },
+
+   ];
 
   //const {map} = useSelector(state => state.map,[]);
 
@@ -120,22 +143,24 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
     var content6 = document.createElement('div');
     content6.className = 'desc';
 
-    var content7 = document.createElement('div');
-    content7.className = 'ellipsis';
-    content7.appendChild(document.createTextNode(numAddress));
+    var content7 = document.createElement("div");
+    content7.className = "ellipsis";
+    content7.appendChild(document.createTextNode(name));
 
     content6.appendChild(content7);
 
-    var content8 = document.createElement('div');
-    content8.className = 'jibun ellipsis';
-    content8.appendChild(document.createTextNode(roadAddress));
+    var content8 = document.createElement("div");
+    content8.className = "jibun ellipsis";
+    //content8.appendChild(document.createTextNode(roadAddress));
 
     var content9 = document.createElement('div');
     var content10 = document.createElement('button');
     content10.className = 'link';
     content10.appendChild(document.createTextNode('상세 보기'));
     content10.onclick = function () {
-      history.push({
+      setIsModalVisible(true);
+      /*
+      history.push( {
         pathname: `${match.path}/info/${name}/${id}`,
         state: {
           id: id,
@@ -246,38 +271,78 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match }) => {
         map.panTo(new kakao.maps.LatLng(lat + 0.0003, long));
       }
       customOverlay1.setMap(map);
-      // overlay 변경
-    });
+  });
+  
+    
+  markers.push(marker);   
+  marker.setMap(map);
+};
+
+function hideMarkers(markers) {
+  markers.forEach(marker => marker.setMap(null)); 
+}
 
     markers.push(marker);
     marker.setMap(map);
   }
-
-  function hideMarkers(markers) {
-    markers.forEach((marker) => marker.setMap(null));
-  }
-
   const style = {
     height: '80px',
     width: '100px',
   };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+  
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  
 
-  return (
-    /* jshint ignore:start */
-    <>
-      <div>
-        {
-          <Card size="small" style={{ width: 300, height: 40 }}>
-            <Title level={5}>{name}</Title>
-            <h5>{roadAddress}</h5>
-            <Button type="primary" onClick={displayMarker}>
-              위치 확인
-            </Button>
-          </Card>
-        }
+return (
+  /* jshint ignore:start */
+<div>
+<div>
+  {
+    <Card size="small" style={{ width: 300, height:40 }}>
+      <Title level={5}>{name}</Title>
+      <h5>{roadAddress}</h5>
+      <Button type="primary"onClick={displayMarker}>
+          위치 확인
+        </Button>
+  </Card>}
+    </div>
+    <div id="map" style={style}></div>
+    <Modal title={<Title level={3}>{name}</Title>} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+    
+      <List
+    itemLayout="horizontal"
+    dataSource={data}
+    renderItem={item => (
+      <List.Item>
+        <List.Item.Meta
+          avatar={<Avatar src={item.img} />}
+          title={item.title}
+          description={item.description}
+        />
+      </List.Item>
+    )}/>
+        <div>
+      <Button onClick={(e) => {console.log('mapinfo', props);
+    console.log(match)
+    // map/info -> map/info/:name 24시해장국
+    history.push( { // map/info/:name/24시해장국/reviewpage
+      pathname:`${match.path}/info/${name}/${id}/ReviewPage`,
+      state: {
+      id:id}}
+      );}}>
+      리뷰 보러가기</Button>
+      {/*<ItemListContainer/>*/}
+
       </div>
-      <div id="map" style={style}></div>
-    </>
+      </Modal>
+
+ </div>
+  
     /* jshint ignore:end */
   );
 };

@@ -10,11 +10,11 @@ import { Menu } from 'antd';
 
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
-  // const searchData = (pattern) => {
-  //   if (!pattern) {
-  //     setData(storeSeoul);
-  //     return;
-  //   }
+   const searchData = (pattern) => {
+     if (!pattern) {
+       setData(storeSeoul);
+      return;
+     }}
 
   //     const fuse = new Fuse(data, {
   //       keys: ["name"],
@@ -50,11 +50,13 @@ const MapContainer = () => {
   // const restrictclick = (e) => {
   //   e.stopPropagation();
   // }
+  //
+  
 
   return (
     <div className="Map">
-      {/* <div className="Map-left"> */}
-      {/* <div className="navi">
+      <div className="Map-left"> 
+       <div className="navi">
           <Breadcrumb>
             <Breadcrumb.Item href="http://localhost:3000/">
               <HomeOutlined />
@@ -64,9 +66,9 @@ const MapContainer = () => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>Now</Breadcrumb.Item>
           </Breadcrumb>
-        </div> */}
+        </div>
 
-      {/* <div className="content" >
+      <div className="content" >
 
           <div id="seoul" defaultSelectedKeys={['1']}>
             <Button type="text" id="button-head" key="1">Seoul</Button>
@@ -102,9 +104,14 @@ const MapContainer = () => {
               <Card id="aa" {...d} key={index} />
             )) : <h1>null</h1>}
       </div>
-      </div> */}
+      </div> 
     </div>
+    </div>
+    </div>
+    </div>
+    
   );
+  
 };
 
 export default MapContainer;

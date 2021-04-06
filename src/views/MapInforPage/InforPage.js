@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  useParams,
-  Switch,
-  useHistory,
-  useLocation,
+  BrowserRouter as 
+   useLocation
 } from 'react-router-dom';
-import ReviewPage from '../../components/map/reviewSection/ReviewPage';
-import ReviewPostView from '../../components/map/reviewSection/ReviewPostView';
-import ReviewPostList from '../../components/map/reviewSection/ReviewPostList';
 
-const InforPage = ({ match, history }) => {
+const InforPage = ({ history }) => {
   const [state, setState] = useState('');
 
   useEffect(() => {
@@ -33,7 +26,6 @@ const InforPage = ({ match, history }) => {
         <h5>도로명주소 : {location.state.roadAddress}</h5>
       </div>
       <div>
-        <h1>{location.state.StoreSubCategory}</h1>
       </div>
       <div>
         {/*

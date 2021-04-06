@@ -14,7 +14,7 @@ export default function ItemRegisterForm({ onRegister, match }) {
   const handleChangeTitle = useCallback((e) => {
     setTitle(e.target.value);
   }, []);
-
+  console.log(title, score, content)
   // 가격이 사용자의 입력에 변경되면 price 설정 함수를 호출한다.
   /*
   const handleChangeScore = useCallback((e) => {
@@ -37,10 +37,11 @@ export default function ItemRegisterForm({ onRegister, match }) {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-
-      onRegister({ title, score, content, file });
+      let body = { title, score ,content}
+      console.log(body)
+      onRegister({ title: title, score:  score, content: content});
     },
-    [onRegister, title, score, content, file],
+    [onRegister, title, score, content],
   );
 
   return (
