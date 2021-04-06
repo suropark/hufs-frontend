@@ -34,6 +34,7 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
+    "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
