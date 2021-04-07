@@ -9,7 +9,7 @@
 .Map-left {
   /* Title */
   position: relative;
-  width: 10%;
+  width: 8%;
   height: 907px;
   left: 15%;
   top: 20px;
@@ -71,9 +71,9 @@
 .Map-main {
   position: absolute;
   width: 48%;
-  height: 90%;
-  left: 27%;
-  top: 16%;
+  height: 907px;
+  left: 25%;
+  top: 15%;
 }
 /* Map Content */
 /* .Map-main > .Map-board {
