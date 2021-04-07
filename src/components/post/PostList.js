@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate';
 import './PostList.css';
 import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
-import { PageHeader, Button, Table } from 'antd';
+import { PageHeader, Button, Table, Pagination } from 'antd';
 import PostSearch from './PostSearch';
 const { Column } = Table;
 function PostList({ match, history }) {
@@ -92,7 +92,7 @@ function PostList({ match, history }) {
         </div>
       </table>
       <div className="bottom">
-        <ReactPaginate
+        {/* <ReactPaginate
           pageCount={Math.ceil(posts.length / 10)}
           pageRangeDisplayed={5}
           marginPagesDisplayed={0}
@@ -104,6 +104,11 @@ function PostList({ match, history }) {
           activeClassName={'currentPage'}
           previousClassName={'pageLabel-btn'}
           nextClassName={'pageLabel-btn'}
+        /> */}
+        <Pagination
+          defaultCurrent={1}
+          onChange={(event) => setCurrentPage(event.selected + 1)}
+          total={posts.length}
         />
       </div>
     </>
