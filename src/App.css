@@ -69,7 +69,9 @@
   right: 0%;
   top: 20%;
 }
-
+.ant-input-group-wrapper.ant-input-search {
+  width: 80%;
+}
 .Head > .loginbar {
   /* 로그인 */
 

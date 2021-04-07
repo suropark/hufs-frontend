@@ -24,13 +24,6 @@ const MapContainer = () => {
       <div className="Map-left">
         <div className="navi">
 
-  
-
-  return (
-    <div className="Map">
-      <div className="Map-left"> 
-       <div className="navi">
-
           <Breadcrumb>
             <Breadcrumb.Item href="http://localhost:3000/">
               <HomeOutlined />
@@ -80,9 +73,9 @@ const MapContainer = () => {
       </div>
 
     </div>
-    
+
   );
-  
+
 };
 
 export default MapContainer;
