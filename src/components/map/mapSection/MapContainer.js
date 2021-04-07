@@ -47,12 +47,12 @@ const MapContainer = () => {
           <div id="seoul" defaultSelectedKeys={['1']}>
             <Button type="text" id="button-head" key="1">Seoul</Button>
             <Button type="text">맛집공간</Button>
-            <Button type="text">주거공간</Button>
+
           </div>
           <div id="global" defaultSelectedKeys={['2']}>
             <Button type="text" id="button-head" key="2">Global</Button>
             <Button type="text">맛집공간</Button>
-            <Button type="text">주거공간</Button>
+
           </div>
 
         </div>

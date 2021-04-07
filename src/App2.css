@@ -5,6 +5,7 @@
 
   display: flex;
 }
+/* 반응형에서 수정 */
 .Map-left {
   /* Title */
   position: relative;
@@ -15,6 +16,7 @@
 
   background: #eda6a6;
 }
+
 .Map-left > .navi {
   position: absolute;
   width: 80%;
@@ -25,10 +27,9 @@
 .Map-left > .content {
   position: absolute;
   width: 80%;
-  height: 447px;
+  height: 50%;
   left: 10%;
   top: 10%;
-  background-color: navajowhite;
 }
 #seoul {
   position: absolute;
@@ -72,7 +73,7 @@
   width: 48%;
   height: 90%;
   left: 27%;
-  top: 15%;
+  top: 16%;
 }
 /* Map Content */
 /* .Map-main > .Map-board {
@@ -93,11 +94,11 @@
   width: 1100px;
   height: 920px;
   left: 15%;
-  top: 20px;
+  top: 2.5%;
   border: solid 1px black;
   /* background: #afa1a1; */
 }
-.row {
+/* .row {
   position: absolute;
   width: 1100px;
   height: 0px;
@@ -105,8 +106,8 @@
   top: 115px;
 
   border: 1px solid #000000;
-}
-.page-name {
+} */
+/* .page-name {
   position: absolute;
   width: 205px;
   height: 52px;
@@ -114,26 +115,26 @@
   top: 29px;
 
   background: red;
-}
-.community-main > .navi {
+} */
+/* .community-main > .navi {
   position: absolute;
   width: 144px;
   height: 46px;
   left: 5%;
   top: 20px;
   background-color: red;
-}
+} */
 .community-main > .community-box {
   position: absolute;
-  width: 915px;
-  height: 720px;
-  left: 93px;
-  top: 90px;
+  width: 85%;
+  height: 80%;
+  left: 9%;
+  top: 15%;
 
   /* background: #ecb3b3; */
 }
 
-.community-box > .content {
+/* .community-box > .content {
   position: absolute;
   width: 915px;
   height: 629px;
@@ -141,8 +142,8 @@
   top: 38px;
 
   background: rgb(135, 135, 168);
-}
-.community-box > .page-number {
+} */
+/* .community-box > .page-number {
   position: absolute;
   width: 915px;
   height: 53px;
@@ -150,7 +151,7 @@
   top: 667px;
 
   background: #ffffff;
-}
+} */
 #root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {
   border: none;
 }
@@ -167,15 +168,15 @@
   > div.ant-picker-panel {
   border-top: none;
 }
-#community-main {
+/* #community-main {
   position: relative;
   width: 1100px;
   height: 470px;
   left: 15%;
-  top: 20ox;
+  top: 20px;
   border: solid 1px black;
-}
-.title-bar {
+} */
+/* .title-bar {
   width: 100%;
   height: 5%;
   margin-top: 10px;
@@ -189,17 +190,21 @@
 .ql-container.ql-snow {
   height: 300px;
   max-height: 500px;
-}
+} */
 
 #button-bar {
   float: right;
   justify-content: space-between;
 }
+Search {
+  width: 330px;
+  height: 30px;
+}
 
-#button-head {
+/* #button-head {
   font-size: 25px;
   top: 0%;
-}
-.Map .content Button {
+} */
+/* .Map .content Button {
   margin: 3%;
-}
+} */
