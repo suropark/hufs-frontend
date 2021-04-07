@@ -59,11 +59,7 @@ function SearchAll(props) {
         value={keyword}
         onChange={setKeyword}
         onSearch={onSearch}
-        style={{
 
-          width: '330px',
-          height: '30px',
-        }}
       />
     </span >
   );

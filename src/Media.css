@@ -1,10 +1,15 @@
 @media (max-width: 768px) {
   /* 반응형 최대 768 테스트 */
-  .ant-anchor-wrapper {
-    display: none;
-  }
+
   .Head {
     width: 100%;
+    max-width: 700px;
+  }
+  .Head > .Pagename {
+    padding: 0px;
+  }
+  .Head > .Pagename img {
+    height: 50px;
   }
   .Main {
     width: 100%;
@@ -19,6 +24,36 @@
   .site-calendar-demo-card {
     width: 50%;
     height: 50%;
+  }
+  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+    display: none;
+  }
+  .ant-space.ant-space-vertical,
+  .ant-space-item {
+    width: 100%;
+  }
+  .Head > .loginbar {
+    width: 250px;
+    left: 91%;
+    margin-bottom: 5px;
+    display: flex;
+  }
+  #Searchbar {
+    width: 350px;
+    left: 75%;
+    height: 38px;
+    margin-top: 5px;
+    display: flex;
+  }
+  #Searchbar > .ant-input-group-wrapper.ant-input-search {
+    width: 300px;
+  }
+  #Menubar {
+    width: 700px;
+
+    padding: 0px;
+    left: 23%;
+    overflow: visible;
   }
   .Footer {
     display: none;
