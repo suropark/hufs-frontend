@@ -1,117 +1,88 @@
 import React, { useState } from 'react';
+import { PUBLIC_IP } from '../../../config';
 import axios from 'axios';
 import { message, Modal, Button } from 'antd';
 import kakao_pic from '../style/kakao_pic.png';
 import google_pic from '../style/google_pic.png';
-import { PUBLIC_IP } from '../../../config';
-const SignInModal = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const signInGoogle = async (e) => {
-    const request = await axios({
-      method: 'get',
-      url: `${PUBLIC_IP}/user/sign-in/google`,
-      headers: {
-        accept: 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    })
-      // .get(`http://localhost:5000/user/sign-in/google`)
+import GoogleSignIn  from '../social/GoogleSignIn';
+import { useHistory } from 'react-router-dom';
 
-      .then((response) => {
-        message.success('소셜 로그인 성공!');
-      })
-      .catch((error) => {
-        message.error('로그인 실패');
-      });
-  };
+function SignInModal() {
+  const [ modalVisible, setModalVisible ] = useState(false);
+  const [ emailInfo, setEmailInfo ] = useState({ email: ' ', });
+  const { Kakao } = window;
+  const history = useHistory();
 
   const signInKakao = async (e) => {
-    const request = await axios({
-      method: 'get',
-      url: `${PUBLIC_IP}/user/sign-in/google`,
-      headers: {
-        accept: 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
+    console.log(e);
+    console.log("hi")
+    //const kakaoInit = () => {
+      Kakao.init('690082dcedf6efeca17e320160913cb3');
+      console.log(Kakao.isInitialized());
+    //}
+    Kakao.Auth.authorize({
+      redirectUri: `${PUBLIC_IP}/user/sign-in/kakao`,
+    });
+
+    // setEmailInfo({ ... emailInfo, email: e.target})
+    // console.log(emailInfo);
+
+    const request = await axios
+    .post(`${PUBLIC_IP}/user/sign-in/kakao`, emailInfo)
+    .then((response) => {
+      message.success("로그인이 정상 완료 되었습니다.")
+      history.push('/');
     })
-      // .get(`http://127.0.0.1:5000/user/sign-in/kakao`)
+    .catch((error) => {
+      switch (error.response?.status) {
+        case 404:
+          message.error("회원가입이 되지 않은 사용자입니다. 회원가입 페이지로 넘어갑니다.")
+          history.push('/redirect');
+      }
+    })
+  }
 
-      .then((response) => {
-        message.success('소셜 로그인 성공!');
-      })
-      .catch((error) => {
-        message.error('로그인 실패');
-      });
-  };
+ 
+  //  const authorization = async (e) => {
+  //    console.log("here");
+  //    console.log(e);
+  //    const request = await axios
+  //    .post(`${PUBLIC_IP}/user/sign-in/kakao`, emailInfo)
+  //    .then((response) => {
+  //     message.success("로그인이 정상 완료 되었습니다.")
+  //     history.push('/');
+  //    })
+  //    .catch((error) => {
+  //      switch (error.response?.status) {
+  //        case 404:
+  //          message.error("회원가입이 되지 않은 사용자입니다. 회원가입 페이지로 넘어갑니다.")
+  //          history.push('/redirect') //회원가입 페이지로 넘겨주기
+  //      }
+  //    })
+  // }
 
-  return (
-    <>
-      <Button type="text" onClick={() => setModalVisible(true)}>
-        로그인
-      </Button>
-      <Modal
-        title="로그인 / LOGIN"
-        centered
-        okButtonProps={{ style: { display: 'none' } }}
-        visible={modalVisible}
-        onOk={() => setModalVisible(false)}
-        onCancel={() => setModalVisible(false)}
-      >
-        <img
-          style={{ cursor: 'pointer' }}
-          onClick={signInGoogle}
-          src={google_pic}
-        />
-        {/* <img
-          style={{ cursor: 'pointer', marginLeft: '66px' }}
+ return (
+   <>
+    <Button type="text" onClick={() => setModalVisible(true)}>
+      로그인
+    </Button>
+    <Modal
+    title="로그인 / LOGIN"
+    centered
+    okButtunProps={{ style: { display: 'none' } }}
+    visible = {modalVisible}
+    onOk = {() => setModalVisible(false)}
+    onCancel = {() => setModalVisible(false)}
+    >
+      <GoogleSignIn />
+      <a id="custom-login-kakaoBtn" href="javascript:loginWithKakao()">
+        <img style={{ cursor: 'pointer' }}
           onClick={signInKakao}
-          src={kakao_pic}
-        /> */}
-        <a href={`${PUBLIC_IP}/user/sign-in/kakao`}>
-          <img
-            style={{ cursor: 'pointer', marginLeft: '66px' }}
-            // onClick={signInKakao}
-            src={kakao_pic}
-          />
-        </a>
-      </Modal>
-    </>
-  );
-};
+          src={kakao_pic}/>
+      </a>
+    </Modal>
+   </>
+ )
+}
 
 export default SignInModal;
-
-// <Modal
-//   show={show}
-//   onHide={onHide}
-//   size="lg"
-//   aria-labelledby="contained-modal-title-vcenter"
-//   centered
-// >
-//   <Container>
-//     <Modal.Header closeButton>
-//       <Modal.Title id="contained-modal-title-vcenter">Sign In</Modal.Title>
-//     </Modal.Header>
-//     <Modal.Body>
-//       <button
-//         id="customBtn"
-//         className="customG"
-//         style={{ display: 'inline' }}
-//         onClick={signInGoogle}
-//       >
-//         구글로그인
-//       </button>
-//       <button
-//         id="customBtn"
-//         className="customK"
-//         style={{ display: 'inline' }}
-//         onClick={signInKakao}
-//       >
-//         카카오로그인
-//       </button>
-//     </Modal.Body>
-//     <Modal.Footer>
-//       <Button onClick={onHide}>Close</Button>
-//     </Modal.Footer>
-//   </Container>
-// </Modal>

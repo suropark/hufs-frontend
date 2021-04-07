@@ -22,7 +22,7 @@ const SignUpModal = (props) => {
     isAgreed: false,
   });
 
-  useEffect(async () => {
+  useEffect( async () => {
     const request1 = await axios
       .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
