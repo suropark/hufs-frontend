@@ -9,25 +9,73 @@ import SearchAll from '../../components/post/SearchAll';
 const { Search } = Input;
 
 function Header(props) {
-  // const menu = (
+  const menu1 = (
+    <Menu>
+      <Menu.Item>
+        <Link to="/1">
+          자유공간
+          </Link>
+      </Menu.Item>
+
+    </Menu >
+  )
+  const menu2 = (
+    <Menu>
+      <Menu.Item>
+        <Link to="/2">
+          장학공간
+          </Link>
+      </Menu.Item>
+
+    </Menu >
+  )
+
+  const menu3 = (
+    <Menu>
+      <Menu.Item>
+        <Link to="/3">
+          서울
+          </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/3">
+          글로벌
+          </Link>
+      </Menu.Item>
+
+    </Menu >
+  );
+  const menu4 = (
+    <Menu>
+      <Menu.Item>
+        <Link to="/4">
+          졸업생공간
+          </Link>
+      </Menu.Item>
+
+    </Menu >
+  )
+  const menu5 = (
+    <Menu>
+      <Menu.Item>
+        <Link to="/5">
+          스펙공간
+          </Link>
+      </Menu.Item>
+
+    </Menu >
+  )
+  // const menu6 = (
   //   <Menu>
   //     <Menu.Item>
-  //       <a rel="noopener noreferrer" href="https://www.antgroup.com">
-  //         1st menu item
-  //       </a>
+  //       <Link to="/6">
+  //         자유공간
+  //         </Link>
   //     </Menu.Item>
-  //     <Menu.Item>
-  //       <a rel="noopener noreferrer" href="https://www.aliyun.com">
-  //         2nd menu item
-  //       </a>
-  //     </Menu.Item>
-  //     <Menu.Item>
-  //       <a rel="noopener noreferrer" href="https://www.luohanacademy.com">
-  //         3rd menu item
-  //       </a>
-  //     </Menu.Item>
-  //   </Menu>
-  // );
+
+  //   </Menu >
+  // )
+
   const onSearch = (value) => console.log(value);
   const { Search } = Input;
   return (
@@ -48,26 +96,35 @@ function Header(props) {
         {/* <Button type="text">언어 선택</Button> */}
       </span>
       <SearchAll />
-      {/* <input id="Searchbar"className="Searchbar" value="검색창" /> */}
+
       <Space direction="vertical">
         <Space id="Menubar">
           <Menu mode="horizontal">
             <Menu.Item key="mail">
-              {' '}
-              <Link to="/1">떠들어 Boo </Link>
+              <Dropdown overlay={menu1}>
+                <Link to="/1">떠들어 Boo </Link>
+              </Dropdown >
             </Menu.Item>
             <Menu.Item key="app">
-              <Link to="/2">학교해 boo</Link>
+              <Dropdown overlay={menu2}>
+                <Link to="/2">학교해 boo</Link>
+              </Dropdown >
+
             </Menu.Item>
             <Menu.Item>
-              <Link to="/3">학교 간 boo</Link>
+              <Dropdown overlay={menu3}>
+                <Link to="/3">학교 간 boo</Link>
+              </Dropdown>
             </Menu.Item>
             <Menu.Item key="setting:4">
-              {' '}
-              <Link to="/4">학교 떠난 Boo </Link>
+              <Dropdown overlay={menu4}>
+                <Link to="/4">학교 떠난 Boo </Link>
+              </Dropdown >
             </Menu.Item>
             <Menu.Item key="alipay">
-              <Link to="/5"> 정면승 Boo </Link>
+              <Dropdown overlay={menu5}>
+                <Link to="/5"> 정면승 Boo </Link>
+              </Dropdown >
             </Menu.Item>
             <Menu.Item>
               <Link to="/6">이거 모르면 바 Boo </Link>

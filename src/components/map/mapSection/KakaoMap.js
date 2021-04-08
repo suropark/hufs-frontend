@@ -18,12 +18,9 @@ const KakaoMap = () => {
 
   }, []);
 
-  const style={
-    height:"150%",
-    width:"100%"
-  }
 
-  return <div id="map" style={style}> </div>;
+
+  return <div id="map" />;
 }
 
 export default KakaoMap;
