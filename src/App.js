@@ -1,9 +1,10 @@
 import React from 'react';
 import loadable from '@loadable/component';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
-import './App2.css';
-import './Media.css';
+import './Css/App.css';
+import './Css/App2.css';
+import './Css/Map.css';
+import './Css/Media.css';
 const Post = loadable(() => import('./views/PostPage/Post'));
 const LandingPage = loadable(() => import('./views/LandingPage/LandingPage'));
 const MyPage = loadable(() => import('./views/MyPage/MyPage'));

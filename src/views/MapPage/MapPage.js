@@ -4,7 +4,6 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Quick from '../Quick/Quick';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import './Map.css'
 const MapContainer = loadable(() =>
   import('../../components/map/mapSection/MapContainer'),
 );

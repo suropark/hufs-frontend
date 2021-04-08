@@ -57,10 +57,11 @@ table th {
 }
 .bottom {
   position: absolute;
-  width: 915px;
-  height: 53px;
-  left: 410px;
-  top: 969px;
+  width: 70%;
+  height: 2%;
+  left: 30%;
+
+  top: 83%;
 }
 
 /* 검색창 위치고정 */

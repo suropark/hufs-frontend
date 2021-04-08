@@ -12,7 +12,7 @@
   width: 8%;
   height: 907px;
   left: 15%;
-  top: 20px;
+  top: 3%;
 
   background: #eda6a6;
 }
@@ -73,7 +73,7 @@
   width: 48%;
   height: 907px;
   left: 25%;
-  top: 15%;
+  top: 16%;
 }
 /* Map Content */
 /* .Map-main > .Map-board {
@@ -98,32 +98,7 @@
   border: solid 1px black;
   /* background: #afa1a1; */
 }
-/* .row {
-  position: absolute;
-  width: 1100px;
-  height: 0px;
-  left: 0.5px;
-  top: 115px;
 
-  border: 1px solid #000000;
-} */
-/* .page-name {
-  position: absolute;
-  width: 205px;
-  height: 52px;
-  left: 448px;
-  top: 29px;
-
-  background: red;
-} */
-/* .community-main > .navi {
-  position: absolute;
-  width: 144px;
-  height: 46px;
-  left: 5%;
-  top: 20px;
-  background-color: red;
-} */
 .community-main > .community-box {
   position: absolute;
   width: 85%;
@@ -134,24 +109,6 @@
   /* background: #ecb3b3; */
 }
 
-/* .community-box > .content {
-  position: absolute;
-  width: 915px;
-  height: 629px;
-  left: 0;
-  top: 38px;
-
-  background: rgb(135, 135, 168);
-} */
-/* .community-box > .page-number {
-  position: absolute;
-  width: 915px;
-  height: 53px;
-  left: 0px;
-  top: 667px;
-
-  background: #ffffff;
-} */
 #root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {
   border: none;
 }
@@ -168,29 +125,6 @@
   > div.ant-picker-panel {
   border-top: none;
 }
-/* #community-main {
-  position: relative;
-  width: 1100px;
-  height: 470px;
-  left: 15%;
-  top: 20px;
-  border: solid 1px black;
-} */
-/* .title-bar {
-  width: 100%;
-  height: 5%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 1px #969393;
-}
-.ql-toolbar.ql-snow {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-.ql-container.ql-snow {
-  height: 300px;
-  max-height: 500px;
-} */
 
 #button-bar {
   float: right;
@@ -200,11 +134,3 @@ Search {
   width: 330px;
   height: 30px;
 }
-
-/* #button-head {
-  font-size: 25px;
-  top: 0%;
-} */
-/* .Map .content Button {
-  margin: 3%;
-} */
