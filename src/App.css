@@ -56,8 +56,12 @@
 
   width: 850px;
   height: 57%;
-  left: 35%;
-  top: 45px;
+  left: 32%;
+  top: 50px;
+}
+/* 서브메뉴 사이즈 */
+.ant-dropdown-menu.ant-dropdown-menu-light.ant-dropdown-menu-root.ant-dropdown-menu-vertical {
+  width: 120%;
 }
 
 #Searchbar {
