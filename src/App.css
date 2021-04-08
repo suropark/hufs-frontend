@@ -34,8 +34,8 @@
   /* 이미지 */
 
   position: absolute;
-  width: 13%;
-  height: 50%;
+  width: 8%;
+  height: 60%;
   left: 45%;
 }
 /* 여기서 부터 수정필요 */
@@ -52,12 +52,12 @@
   /* align-content: center; */
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0 20px;
 
   width: 850px;
   height: 57%;
   left: 32%;
-  top: 50px;
+  top: 60px;
 }
 /* 서브메뉴 사이즈 */
 .ant-dropdown-menu.ant-dropdown-menu-light.ant-dropdown-menu-root.ant-dropdown-menu-vertical {
@@ -73,6 +73,7 @@
   right: 0%;
   top: 20%;
 }
+
 .ant-input-group-wrapper.ant-input-search {
   width: 80%;
 }

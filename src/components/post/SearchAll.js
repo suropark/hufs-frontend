@@ -45,7 +45,7 @@ function SearchAll(props) {
     <span id="Searchbar" >
       <Select
         defaultValue="제목"
-        style={{ width: 70 }}
+        style={{ width: 80 }}
         onChange={(e) => setSearchType(e)}
       >
         <Option value="titleAndContent">제목&내용</Option>
