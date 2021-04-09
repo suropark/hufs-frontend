@@ -1,3 +1,59 @@
+@media (max-width: 1280px) {
+  .Head {
+    width: 86%;
+    max-width: 1280px;
+  }
+  .Head > .loginbar {
+    left: 65%;
+    width: 30%;
+  }
+
+  #Searchbar {
+    width: 350px;
+    right: 12%;
+    height: 38px;
+    margin-top: 5px;
+    display: flex;
+  }
+  #Searchbar > .ant-input-group-wrapper.ant-input-search {
+    width: 300px;
+  }
+  #Menubar {
+    left: 28%;
+    padding: 0px;
+  }
+  .map-boo img {
+    width: 100%;
+  }
+  .Map-main {
+    width: 65%;
+  }
+  /* 퀵메뉴 */
+  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+    position: absolute;
+    text-align: left;
+    width: 160px;
+    height: 206px;
+    top: 224px;
+    left: 2%;
+  }
+  .ant-breadcrumb {
+    font-size: 12px;
+  }
+  #community-main {
+    /* Content */
+
+    position: relative;
+    width: 80%;
+    top: 30px;
+    border: solid 1px black;
+    /* background: #afa1a1; */
+  }
+
+  .Footer {
+    width: 75%;
+  }
+}
 @media (max-width: 768px) {
   /* 반응형 최대 768 테스트 */
 
@@ -70,10 +126,12 @@
   }
   /* 아래버튼 */
   .bottom {
-    top: 94%;
+    top: 100%;
+    left: 5%;
+  }
+  #community-main {
     left: 30%;
   }
-
   .community-main > .community-box {
     height: 77%;
   }
@@ -109,5 +167,14 @@
   }
   .ant-breadcrumb {
     font-size: 11px;
+  }
+  .map-boo {
+    position: relative;
+    top: 67%;
+    width: 100%;
+    height: 31%;
+  }
+  .map-boo img {
+    width: 100%;
   }
 }

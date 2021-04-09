@@ -102,7 +102,7 @@ function PostUpdate({ match, history }) {
     }
   };
 
-  useEffect(() => {}, [updated]);
+  useEffect(() => { }, [updated]);
 
   return (
     <>
