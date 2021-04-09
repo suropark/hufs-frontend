@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './Css/App.css';
 import './Css/App2.css';
 import './Css/Map.css';
+import './Css/PostList.css';
 import './Css/Media.css';
 const Post = loadable(() => import('./views/PostPage/Post'));
 const LandingPage = loadable(() => import('./views/LandingPage/LandingPage'));
