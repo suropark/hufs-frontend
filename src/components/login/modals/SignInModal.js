@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PUBLIC_IP } from '../../../config';
 import axios from 'axios';
 import { message, Modal, Button } from 'antd';
@@ -9,9 +9,10 @@ import { useHistory } from 'react-router-dom';
 
 function SignInModal() {
   const [ modalVisible, setModalVisible ] = useState(false);
-  const [ emailInfo, setEmailInfo ] = useState({ email: ' ', });
+  const [ emailInfo, setEmailInfo ] = useState({ email: '', provider: '', });
   const { Kakao } = window;
   const history = useHistory();
+  
 
   const signInKakao = async (e) => {
     console.log(e);
@@ -21,14 +22,14 @@ function SignInModal() {
       console.log(Kakao.isInitialized());
     //}
     Kakao.Auth.authorize({
-      redirectUri: `${PUBLIC_IP}/user/sign-in/kakao`,
+      redirectUri: `${PUBLIC_IP}/user/sign-in`,
     });
 
     // setEmailInfo({ ... emailInfo, email: e.target})
     // console.log(emailInfo);
 
     const request = await axios
-    .post(`${PUBLIC_IP}/user/sign-in/kakao`, emailInfo)
+    .get(`${PUBLIC_IP}/user/sign-in`, emailInfo)
     .then((response) => {
       message.success("로그인이 정상 완료 되었습니다.")
       history.push('/');
@@ -60,6 +61,7 @@ function SignInModal() {
   //      }
   //    })
   // }
+  
 
  return (
    <>

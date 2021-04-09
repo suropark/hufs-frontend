@@ -6,6 +6,7 @@ import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
 import Cookies from 'js-cookie';
 import { PUBLIC_IP } from '../../../config';
+import { getDefaultNormalizer } from '@testing-library/dom';
 
 const SignUpModal = (props) => {
   const { Option } = Select;
@@ -14,12 +15,14 @@ const SignUpModal = (props) => {
 
   const [submit, setSubmit] = useState({
     // email: Cookies.get('email'),
-    email: props.location.search.substring(7),
+    //email: props.location.search.substring(7),
+    email: 'hufs.web@gmail.com',
+    provider: 'google',
     nickname: '',
     webMail: '',
     mainMajorId: 1,
     doubleMajorId: 2,
-    isAgreed: false,
+    isAgreed: true,
   });
 
   useEffect( async () => {
@@ -38,9 +41,11 @@ const SignUpModal = (props) => {
   useEffect(() => {}, [submit]);
 
   const onSubmit = async (e) => {
+    console.log(submit);
     e.preventDefault();
     const request = await axios
       .post(`${PUBLIC_IP}/user/sign-up`, submit)
+      //.post(`http://localhost:80/user/sign-up`, submit)
       .then((response) => {
         message.success('회원가입이 성공적으로 완료되었습니다 :)');
         props.history.push('/');
@@ -49,8 +54,10 @@ const SignUpModal = (props) => {
         switch (error.response?.status) {
           case 401:
             alert('개인 정보 수집 동의를 하지 않으셨습니다');
+            break;
           case 409:
             alert('이미 존재하는 닉네임입니다');
+            break;
         }
       });
   };
@@ -105,7 +112,7 @@ const SignUpModal = (props) => {
             name="webMail"
             rules={[{ required: true, message: 'put your password!' }]}
             onChange={(event) =>
-              setSubmit({ ...submit, webmail: event.target.value })
+              setSubmit({ ...submit, webMail: event.target.value })
             }
             style={{ width: '91%' }}
           >
@@ -167,9 +174,10 @@ const SignUpModal = (props) => {
           >
             <Checkbox
               onClick={(event) =>
-                setSubmit({ ...submit, isAgrred: event.target.checked })
+                setSubmit({ ...submit, isAgreed: event.target.checked })
               }
             >
+              
               동의합니다
             </Checkbox>
           </Form.Item>
