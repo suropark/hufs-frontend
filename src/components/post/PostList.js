@@ -88,23 +88,24 @@ function PostList({ match, history }) {
             match={match}
             loading={loading}
           />
+          <div className="bottom">
+            <ReactPaginate
+              pageCount={Math.ceil(posts.length / 10)}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={0}
+              breakLabel={''}
+              previousLabel={'이전'}
+              nextLabel={'다음'}
+              onPageChange={(event) => setCurrentPage(event.selected + 1)}
+              containerClassName={'pagination-ul'}
+              activeClassName={'currentPage'}
+              previousClassName={'pageLabel-btn'}
+              nextClassName={'pageLabel-btn'}
+            />
+          </div>
         </div>
       </table>
-      <div className="bottom">
-        <ReactPaginate
-          pageCount={Math.ceil(posts.length / 10)}
-          pageRangeDisplayed={5}
-          marginPagesDisplayed={0}
-          breakLabel={''}
-          previousLabel={'이전'}
-          nextLabel={'다음'}
-          onPageChange={(event) => setCurrentPage(event.selected + 1)}
-          containerClassName={'pagination-ul'}
-          activeClassName={'currentPage'}
-          previousClassName={'pageLabel-btn'}
-          nextClassName={'pageLabel-btn'}
-        />
-      </div>
+
     </>
   );
 }

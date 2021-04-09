@@ -7,9 +7,6 @@ import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../config';
-import Header from '../../views/Header/Header';
-import Quick from '../../views/Quick/Quick';
-import Footer from '../../views/Footer/Footer';
 import { Button } from 'antd';
 
 let uploadedImg = [];
