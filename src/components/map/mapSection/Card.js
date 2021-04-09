@@ -7,16 +7,16 @@ import Quick from '../../../views/Quick/Quick';
 import Header from '../../../views/Header/Header';
 import Footer from '../../../views/Footer/Footer';
 import './Card.css';
-import icon_rstrn from './icon_rstrn.png';
-import numIcon from '../exampleInfo/icon1.png'
-import roadIcon from '../exampleInfo/icon2.png';
-import cateIcon from '../exampleInfo/icon3.png';
+import icon_rstrn from './mapData/icon_rstrn.png';
+import numIcon from './mapData/icon1.png';
+import roadIcon from './mapData/icon2.png';
+import cateIcon from './mapData/icon3.png';
 
 
 const { kakao } = window;
 const { Text, Title } = Typography;
 
-const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match,props }) => {
+const Rstrn = ({ id, name, numAddress, StoreSubCategory, roadAddress, lat, long, match}) => {
   //const history = useHistory();
 
   //const [markerPositions, setMarkerPositions] = useState();
@@ -30,7 +30,7 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match,props }) =>
   const data = [
     {
       title: "카테고리",
-      //description : StoreSubCategory.name,
+      description : StoreSubCategory.name,
       img: cateIcon,
     },
     {
@@ -159,18 +159,8 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match,props }) =>
     content10.appendChild(document.createTextNode('상세 보기'));
     content10.onclick = function () {
       setIsModalVisible(true);
-      /*
-      history.push( {
-        pathname: `${match.path}/info/${name}/${id}`,
-        state: {
-          id: id,
-          name: name,
-          numAddress: numAddress,
-          roadAddress: roadAddress,
-        },
-      });
-      // history.pushState(query, '', `${match.path}/info/${name}`);
-    };
+    }
+      
     content9.appendChild(content10);
 
     content6.appendChild(content8);
@@ -272,15 +262,6 @@ const Rstrn = ({ id, name, numAddress, roadAddress, lat, long, match,props }) =>
       }
       customOverlay1.setMap(map);
   });
-  
-    
-  markers.push(marker);   
-  marker.setMap(map);
-};
-
-function hideMarkers(markers) {
-  markers.forEach(marker => marker.setMap(null)); 
-}
 
     markers.push(marker);
     marker.setMap(map);
@@ -327,7 +308,7 @@ return (
       </List.Item>
     )}/>
         <div>
-      <Button onClick={(e) => {console.log('mapinfo', props);
+      <Button onClick={(e) => {
     console.log(match)
     // map/info -> map/info/:name 24시해장국
     history.push( { // map/info/:name/24시해장국/reviewpage

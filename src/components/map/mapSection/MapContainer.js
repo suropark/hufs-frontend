@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import KaKaoMap from './KakaoMap';
-import storeSeoul from './store-seoul.json';
+import storeSeoul from './mapData/store-seoul.json';
+import storeGlobal from './mapData/store-global.json'
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
 import mapboo from '../../../banner/mapboo.png';
@@ -8,8 +9,10 @@ import { Button, Breadcrumb } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 
 
-const MapContainer = () => {
+const MapContainer = ({match}) => {
   const [data, setData] = useState(storeSeoul);
+  const [lat, setLat] = useState(37.59732049638715); // default 서울캠
+  const [lng, setLng] = useState(127.0588283395548);
 
   const searchData = (pattern) => {
     if (!pattern) {
@@ -40,12 +43,17 @@ const MapContainer = () => {
 
           <div id="seoul" defaultSelectedKeys={['1']}>
             <Button type="text" id="button-head" key="1">Seoul</Button>
-            <Button type="text">맛집공간</Button>
+            <Button type="text" onClick={(e) => {setData(storeSeoul);
+            setLat(37.59732049638715);
+          setLng(127.0588283395548)}} >맛집공간</Button>
 
           </div>
           <div id="global" defaultSelectedKeys={['2']}>
             <Button type="text" id="button-head" key="2">Global</Button>
-            <Button type="text">맛집공간</Button>
+            <Button type="text" onClick={(e) => {setData(storeGlobal);
+            setLat(37.336538181222245);
+            setLng(127.25253858610613);
+            }}>맛집공간</Button>
 
           </div>
 
@@ -57,7 +65,7 @@ const MapContainer = () => {
       <div className="up-down" />
       <div className="Map-main">
         <div id="KaKaoMap">
-          <KaKaoMap></KaKaoMap>
+          <KaKaoMap lat = {lat} lng = {lng}/>
         </div>
         <div id="Food-list">
           <SearchBar
@@ -70,7 +78,7 @@ const MapContainer = () => {
           <div className="itemContainer">
 
             {data.mydata ? data.mydata.map((d, index) => (
-              <Card id="aa" {...d} key={index} />
+              <Card id="aa" {...d} key={index} match = {match}/>
             )) : <h1>null</h1>}
           </div>
         </div>
