@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
-import { PageHeader, Button, Table } from 'antd';
+import { PageHeader, Button, Table, Pagination } from 'antd';
 import PostSearch from './PostSearch';
 const { Column } = Table;
 function PostList({ match, history }) {
@@ -105,6 +105,17 @@ function PostList({ match, history }) {
           </div>
         </div>
       </table>
+
+
+
+    /*  <div className="bottom">
+       
+        <Pagination
+          defaultCurrent={1}
+          onChange={(event) => setCurrentPage(event.selected + 1)}
+          total={posts.length}
+        />
+      </div> */
 
     </>
   );
