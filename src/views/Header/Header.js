@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../banner/logo.png';
+// import mainboo from '../../banner/mainboo.png';
 import { Menu, Dropdown, Button, Space, Input, message } from 'antd';
 import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -85,7 +86,7 @@ function Header(props) {
           <img src={logo} />
         </Link>
       </div>
-      <img src="#" className="Image" alt="이미지 들어갈 곳" />
+      {/* <img src={mainboo} className="Image" alt="이미지 들어갈 곳" /> */}
       <span className="loginbar">
         <SignUp /> <Logout />
         <Button type="text">
