@@ -41,7 +41,7 @@ function PostSearch({ setPosts, match }) {
     <span style={{ float: 'right' }}>
       <Select
         defaultValue="제목"
-        style={{ width: 120 }}
+        style={{ width: 100 }}
         onChange={(e) => setSearchType(e)}
       >
         <Option value="titleAndContent">제목&내용</Option>

@@ -70,8 +70,16 @@
   }
   /* 아래버튼 */
   .bottom {
-    top: 90%;
+    top: 94%;
+    left: 30%;
   }
+
+  .community-main > .community-box {
+    height: 77%;
+  }
+  /* .community-box span {
+    width: 65%;
+  } */
 
   /* 지도부분 */
   .Map {

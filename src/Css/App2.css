@@ -12,7 +12,7 @@
   width: 8%;
   height: 907px;
   left: 15%;
-  top: 3%;
+  top: 30px;
 
   background: #eda6a6;
 }
@@ -58,10 +58,16 @@
 
   background: #ffffff;
 }
+.map-boo {
+  position: relative;
+  top: 70%;
+  width: 52%;
+  height: 20%;
+}
 
 .up-down {
   position: relative;
-  top: 20px;
+  top: 30px;
   left: 16%;
   border-right: thin solid black;
 
@@ -105,8 +111,6 @@
   height: 80%;
   left: 9%;
   top: 15%;
-
-  /* background: #ecb3b3; */
 }
 
 #root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {

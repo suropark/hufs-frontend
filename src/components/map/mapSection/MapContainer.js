@@ -3,10 +3,10 @@ import KaKaoMap from './KakaoMap';
 import storeSeoul from './store-seoul.json';
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
-import axios from 'axios';
+import mapboo from '../../../banner/mapboo.png';
 import { Button, Breadcrumb } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
+
 
 const MapContainer = () => {
   const [data, setData] = useState(storeSeoul);
@@ -49,6 +49,9 @@ const MapContainer = () => {
 
           </div>
 
+        </div>
+        <div className="map-boo">
+          <img src={mapboo} alt="숨어 있는 부" />
         </div>
       </div>
       <div className="up-down" />
