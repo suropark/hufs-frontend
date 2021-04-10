@@ -1,0 +1,158 @@
+@import '~antd/dist/antd.css';
+.Map {
+  top: 1%;
+  right: 15%;
+
+  display: flex;
+}
+/* 반응형에서 수정 */
+.Map-left {
+  /* Title */
+  position: relative;
+  width: 8%;
+  min-width: 8%;
+  height: 907px;
+  left: 15%;
+  top: 30px;
+
+  background: #eda6a6;
+}
+
+.Map-left > .navi {
+  position: absolute;
+  width: 80%;
+  height: 3%;
+  left: 10%;
+  top: 3%;
+}
+.Map-left > .content {
+  position: absolute;
+  width: 80%;
+  height: 50%;
+  left: 10%;
+  top: 10%;
+}
+#seoul {
+  position: absolute;
+  width: 80%;
+  height: 45%;
+  left: 10%;
+  top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+}
+#global {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  width: 80%;
+  height: 45%;
+  left: 10%;
+  bottom: 3%;
+
+  background: #ffffff;
+}
+.map-boo {
+  position: relative;
+  top: 67%;
+  width: 100%;
+  height: 31%;
+}
+
+.up-down {
+  position: relative;
+  top: 30px;
+  left: 16%;
+  border-right: thin solid black;
+
+  height: 907px;
+}
+
+.Map-main {
+  position: absolute;
+  width: 48%;
+  min-width: 48%;
+  height: 907px;
+  left: 25%;
+  top: 170px;
+}
+/* Map Content */
+/* .Map-main > .Map-board {
+  position: relative;
+  width: 100%;
+  height: 45%;
+  left: 0%;
+  top: 500px;
+
+  background: #ce7d7d;
+} */
+/* 이까지 Board  */
+
+.community-main {
+  /* Content */
+
+  position: relative;
+  width: 1100px;
+  height: 920px;
+  left: 15%;
+  top: 2.5%;
+  border: solid 1px black;
+  /* background: #afa1a1; */
+}
+
+.community-main > .community-box {
+  position: absolute;
+  width: 85%;
+  height: 80%;
+  left: 9%;
+  top: 15%;
+}
+
+#root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {
+  border: none;
+}
+#root > div > div.Main > div.MainCalendar > div > div.site-calendar-demo-card {
+  border: none;
+}
+#root
+  > div
+  > div.Main
+  > div.MainCalendar
+  > div
+  > div.site-calendar-demo-card
+  > div
+  > div.ant-picker-panel {
+  border-top: none;
+}
+#community-main {
+  /* Content */
+
+  position: relative;
+  width: 1100px;
+  height: 700px;
+  left: 15%;
+  top: 2.5%;
+  border: solid 1px black;
+  /* background: #afa1a1; */
+}
+#community-main .title-bar {
+  width: 100%;
+}
+#community-main .quill {
+  height: 70%;
+}
+#button-bar {
+  float: right;
+  justify-content: space-between;
+}
+Search {
+  width: 330px;
+  height: 30px;
+}

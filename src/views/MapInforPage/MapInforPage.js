@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Route, Switch, BrowserRouter } from 'react-router-dom';
 import { List, Avatar, Card, Button, Typography } from 'antd';
-import numIcon from '../../components/map/exampleInfo/icon1.png';
-import roadIcon from '../../components/map/exampleInfo/icon2.png';
+import numIcon from '../../components/map/mapSection/mapData/icon1.png';
+import roadIcon from '../../components/map/mapSection/mapData/icon2.png';
 //import StarPage from '../../components/map/reviewSection/starRating/StarPage';
 import 'antd/dist/antd.css';
 

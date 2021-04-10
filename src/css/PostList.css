@@ -1,0 +1,74 @@
+/* li {
+  list-style: none;
+  display: inline-block;
+}
+li a {
+  display: block;
+  padding: 20px;
+  border: solid 1px blue;
+} */
+a:hover {
+  cursor: pointer;
+}
+.pagination-ul {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  margin: 0 0;
+  justify-content: space-around;
+}
+.community {
+  position: absolute;
+  width: 915px;
+  height: 725px;
+  left: 410px;
+  top: 300px;
+}
+
+.community > .cut-row {
+  position: absolute;
+  width: 915px;
+  height: 0px;
+
+  top: 47px;
+
+  border: 1px solid #000000;
+}
+tr {
+  height: 40px;
+}
+td {
+  overflow: hidden;
+}
+.pageLabel-btn {
+  color: blue;
+}
+.pagination-ul > li {
+  list-style: none;
+}
+.pagination-ul > button {
+  align-items: flex-end;
+}
+table th:first-child {
+  width: 5%;
+}
+table th {
+  width: 20%;
+}
+.bottom {
+  position: absolute;
+  width: 70%;
+  height: 2%;
+  left: 14%;
+
+  top: 95%;
+}
+
+/* 검색창 위치고정 */
+#community-searchbar .ant-input-wrapper.ant-input-group {
+  height: 38px;
+  top: 10px;
+}
+#community-searchbar .ant-input-affix-wrapper {
+  height: 38px;
+}
