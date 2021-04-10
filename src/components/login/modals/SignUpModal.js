@@ -12,20 +12,18 @@ const SignUpModal = (props) => {
   const { Option } = Select;
   const [major, setMajor] = useState(false);
   const [doubleMajor, setDoubleMajor] = useState(false);
-
   const [submit, setSubmit] = useState({
     // email: Cookies.get('email'),
-    //email: props.location.search.substring(7),
-    email: 'hufs.web@gmail.com',
-    provider: 'google',
+    email: props.location.state.email,
     nickname: '',
     webMail: '',
     mainMajorId: 1,
     doubleMajorId: 2,
-    isAgreed: true,
+    isAgreed: false,
+    provider: props.location.state.provider,
   });
 
-  useEffect( async () => {
+  useEffect(async () => {
     const request1 = await axios
       .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
@@ -38,7 +36,7 @@ const SignUpModal = (props) => {
       .catch((e) => {}); // 배열 [id, name ]
     setDoubleMajor(request2);
   }, []);
-  useEffect(() => {}, [submit]);
+  useEffect(() => console.log(submit), [submit]);
 
   const onSubmit = async (e) => {
     console.log(submit);
@@ -48,6 +46,9 @@ const SignUpModal = (props) => {
       //.post(`http://localhost:80/user/sign-up`, submit)
       .then((response) => {
         message.success('회원가입이 성공적으로 완료되었습니다 :)');
+        message.success(
+          '웹메일을 확인해주세요. 웹메일 인증이 완료되면 HUFSpace의 모든 기능을 사용하실 수 있습니다.',
+        );
         props.history.push('/');
       })
       .catch((error) => {
@@ -83,7 +84,9 @@ const SignUpModal = (props) => {
         }}
       >
         <Form
-          onValuesChange={(e) => setSubmit({ ...submit, [e[0]]: e })}
+          onValuesChange={(e) =>
+            setSubmit({ ...submit, [Object.keys(e)[0]]: e[Object.keys(e)[0]] })
+          }
           name="basic"
           initialValues={{ remember: true }}
           style={{
@@ -161,7 +164,7 @@ const SignUpModal = (props) => {
           </Form.Item>
           <Form.Item
             {...tailLayout}
-            name="agreement"
+            name="isAgreed"
             valuePropName="checked"
             rules={[
               {

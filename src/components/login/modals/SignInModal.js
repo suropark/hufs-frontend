@@ -4,10 +4,11 @@ import axios from 'axios';
 import { message, Modal, Button } from 'antd';
 import kakao_pic from '../style/kakao_pic.png';
 import google_pic from '../style/google_pic.png';
-import GoogleSignIn  from '../social/GoogleSignIn';
+import GoogleSignIn from '../social/GoogleSignIn';
 import { useHistory } from 'react-router-dom';
-
+import ReactGoogle from '../social/ReactGoogle';
 function SignInModal() {
+
   const [ modalVisible, setModalVisible ] = useState(false);
   const [ emailInfo, setEmailInfo ] = useState({ email: '', provider: '', });
   const { Kakao } = window;
@@ -16,10 +17,10 @@ function SignInModal() {
 
   const signInKakao = async (e) => {
     console.log(e);
-    console.log("hi")
+    console.log('hi');
     //const kakaoInit = () => {
-      Kakao.init('690082dcedf6efeca17e320160913cb3');
-      console.log(Kakao.isInitialized());
+    Kakao.init('690082dcedf6efeca17e320160913cb3');
+    console.log(Kakao.isInitialized());
     //}
     Kakao.Auth.authorize({
       redirectUri: `${PUBLIC_IP}/user/sign-in`,
@@ -29,6 +30,7 @@ function SignInModal() {
     // console.log(emailInfo);
 
     const request = await axios
+
     .get(`${PUBLIC_IP}/user/sign-in`, emailInfo)
     .then((response) => {
       message.success("로그인이 정상 완료 되었습니다.")
@@ -43,7 +45,6 @@ function SignInModal() {
     })
   }
 
- 
   //  const authorization = async (e) => {
   //    console.log("here");
   //    console.log(e);
@@ -63,28 +64,31 @@ function SignInModal() {
   // }
   
 
- return (
-   <>
-    <Button type="text" onClick={() => setModalVisible(true)}>
-      로그인
-    </Button>
-    <Modal
-    title="로그인 / LOGIN"
-    centered
-    okButtunProps={{ style: { display: 'none' } }}
-    visible = {modalVisible}
-    onOk = {() => setModalVisible(false)}
-    onCancel = {() => setModalVisible(false)}
-    >
-      <GoogleSignIn />
-      <a id="custom-login-kakaoBtn" href="javascript:loginWithKakao()">
-        <img style={{ cursor: 'pointer' }}
-          onClick={signInKakao}
-          src={kakao_pic}/>
-      </a>
-    </Modal>
-   </>
- )
+  return (
+    <>
+      <Button type="text" onClick={() => setModalVisible(true)}>
+        로그인
+      </Button>
+      <Modal
+        title="로그인 / LOGIN"
+        centered
+        okButtunProps={{ style: { display: 'none' } }}
+        visible={modalVisible}
+        onOk={() => setModalVisible(false)}
+        onCancel={() => setModalVisible(false)}
+      >
+        {/* <GoogleSignIn /> */}
+        <ReactGoogle setModalVisible={setModalVisible} />
+        <a id="custom-login-kakaoBtn" href="javascript:loginWithKakao()">
+          <img
+            style={{ cursor: 'pointer' }}
+            onClick={signInKakao}
+            src={kakao_pic}
+          />
+        </a>
+      </Modal>
+    </>
+  );
 }
 
 export default SignInModal;
