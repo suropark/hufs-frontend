@@ -1,0 +1,180 @@
+@media (max-width: 1280px) {
+  .Head {
+    width: 86%;
+    max-width: 1280px;
+  }
+  .Head > .loginbar {
+    left: 65%;
+    width: 30%;
+  }
+
+  #Searchbar {
+    width: 350px;
+    right: 12%;
+    height: 38px;
+    margin-top: 5px;
+    display: flex;
+  }
+  #Searchbar > .ant-input-group-wrapper.ant-input-search {
+    width: 300px;
+  }
+  #Menubar {
+    left: 28%;
+    padding: 0px;
+  }
+  .map-boo img {
+    width: 100%;
+  }
+  .Map-main {
+    width: 65%;
+  }
+  /* 퀵메뉴 */
+  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+    position: absolute;
+    text-align: left;
+    width: 160px;
+    height: 206px;
+    top: 224px;
+    left: 2%;
+  }
+  .ant-breadcrumb {
+    font-size: 12px;
+  }
+  #community-main {
+    /* Content */
+
+    position: relative;
+    width: 80%;
+    top: 30px;
+    border: solid 1px black;
+    /* background: #afa1a1; */
+  }
+
+  .Footer {
+    width: 75%;
+  }
+}
+@media (max-width: 768px) {
+  /* 반응형 최대 768 테스트 */
+
+  .Head {
+    width: 100%;
+    max-width: 700px;
+  }
+  .Head > .Pagename {
+    padding: 0px;
+  }
+  .Head > .Pagename img {
+    height: 50px;
+  }
+  .Head > .Image {
+    width: 80px;
+  }
+  .Main {
+    width: 110%;
+  }
+  .Main > .Mainbanner {
+    display: none;
+  }
+  .Main > .MainCalendar {
+    top: 3%;
+    width: 100%;
+  }
+  .site-calendar-demo-card {
+    width: 60%;
+    height: 50%;
+  }
+  /* 배너 숨김 */
+  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+    display: none;
+  }
+  .ant-space.ant-space-vertical,
+  .ant-space-item {
+    width: 100%;
+  }
+  .Head > .loginbar {
+    width: 250px;
+    left: 91%;
+    margin-bottom: 5px;
+    display: flex;
+  }
+  #Searchbar {
+    width: 350px;
+    left: 75%;
+    height: 38px;
+    margin-top: 5px;
+    display: flex;
+  }
+  #Searchbar > .ant-input-group-wrapper.ant-input-search {
+    width: 300px;
+  }
+  #Menubar {
+    width: 750px;
+    padding: 0px;
+    left: 23%;
+    justify-content: space-evenly;
+  }
+  .Footer {
+    display: none;
+  }
+
+  /* 아래 게시판 */
+  .community-main {
+    left: 20%;
+    width: 100%;
+    height: 750px;
+  }
+  /* 아래버튼 */
+  .bottom {
+    top: 100%;
+    left: 5%;
+  }
+  #community-main {
+    left: 30%;
+  }
+  .community-main > .community-box {
+    height: 77%;
+  }
+  /* .community-box span {
+    width: 65%;
+  } */
+
+  /* 지도부분 */
+  .Map {
+    right: 0%;
+    height: 700px;
+  }
+  .Map-left {
+    width: 13%;
+    height: 100%;
+  }
+  .up-down {
+    height: 100%;
+  }
+  .Map-main {
+    width: 100%;
+    height: 700px;
+    left: 30%;
+  }
+  #KaKaoMap {
+    height: 700px;
+  }
+  #map {
+    height: 700px;
+  }
+  #Food-list {
+    width: 35%;
+  }
+  .ant-breadcrumb {
+    font-size: 11px;
+  }
+  .map-boo {
+    position: relative;
+    top: 67%;
+    width: 100%;
+    height: 31%;
+  }
+  .map-boo img {
+    width: 100%;
+  }
+}
