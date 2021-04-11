@@ -22,12 +22,27 @@
     left: 28%;
     padding: 0px;
   }
+  /* 달력부분 조절 */
+  .Main > .MainCalendar {
+    width: 90%;
+    left: 3%;
+  }
+
   .map-boo img {
     width: 100%;
   }
   .Map-main {
     width: 65%;
   }
+  .ant-picker-cell {
+    padding: 2px;
+  }
+  .ant-picker-cell .events {
+    padding: 0 0;
+  }
+  /* .ant-badge.ant-badge-status.ant-badge-not-a-wrapper {
+    display: flex;
+  } */
   /* 퀵메뉴 */
   .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
     position: absolute;
@@ -81,7 +96,7 @@
     width: 100%;
   }
   .site-calendar-demo-card {
-    width: 60%;
+    width: 50%;
     height: 50%;
   }
   /* 배너 숨김 */
