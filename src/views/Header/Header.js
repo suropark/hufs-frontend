@@ -124,7 +124,7 @@ function Header(props) {
             </Menu.Item>
             <Menu.Item key="alipay">
               <Dropdown overlay={menu5}>
-                <Link to="/5">학교 간 Boo </Link>
+                <Link to="/map">학교 간 Boo </Link>
               </Dropdown >
             </Menu.Item>
             <Menu.Item>
