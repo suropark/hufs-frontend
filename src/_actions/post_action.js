@@ -45,7 +45,9 @@ export const postView = async (postId) => {
 };
 // 완료
 export const postList = async (match) => {
-  const request = await axios.get(`${PUBLIC_IP}/board${match.path}`);
+  const request = await axios.get(`${PUBLIC_IP}/board${match.path}`, {
+    withCredentials: true,
+  });
   if (request.status === 200) {
     return {
       type: POST_LIST,
@@ -234,4 +236,3 @@ export const searchAll = async (keyword, option) => {
     };
   }
 };
-
