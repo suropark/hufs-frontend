@@ -24,7 +24,7 @@ function Header(props) {
     <Menu>
       <Menu.Item>
         <Link to="/2">
-          장학공간
+          졸업생공간
           </Link>
       </Menu.Item>
 
@@ -35,12 +35,7 @@ function Header(props) {
     <Menu>
       <Menu.Item>
         <Link to="/3">
-          서울
-          </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/3">
-          글로벌
+          진로공간
           </Link>
       </Menu.Item>
 
@@ -50,7 +45,7 @@ function Header(props) {
     <Menu>
       <Menu.Item>
         <Link to="/4">
-          졸업생공간
+          장학공간
           </Link>
       </Menu.Item>
 
@@ -60,7 +55,12 @@ function Header(props) {
     <Menu>
       <Menu.Item>
         <Link to="/5">
-          스펙공간
+          서울
+          </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/5">
+          글로벌
           </Link>
       </Menu.Item>
 
@@ -108,23 +108,23 @@ function Header(props) {
             </Menu.Item>
             <Menu.Item key="app">
               <Dropdown overlay={menu2}>
-                <Link to="/2">학교해 boo</Link>
+                <Link to="/2">학교 떠난 Boo</Link>
               </Dropdown >
 
             </Menu.Item>
             <Menu.Item>
               <Dropdown overlay={menu3}>
-                <Link to="/3">학교 간 boo</Link>
+                <Link to="/3">정면승 Boo</Link>
               </Dropdown>
             </Menu.Item>
             <Menu.Item key="setting:4">
               <Dropdown overlay={menu4}>
-                <Link to="/4">학교 떠난 Boo </Link>
+                <Link to="/4">학교해 Boo </Link>
               </Dropdown >
             </Menu.Item>
             <Menu.Item key="alipay">
               <Dropdown overlay={menu5}>
-                <Link to="/5"> 정면승 Boo </Link>
+                <Link to="/5">학교 간 Boo </Link>
               </Dropdown >
             </Menu.Item>
             <Menu.Item>
