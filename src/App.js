@@ -39,7 +39,7 @@ function App() {
         <Route path="/map" component={MapPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />
-        <Route path="/auth" component={EmailAuthPage} />
+        <Route path="/email" component={EmailAuthPage} />
         <Route path="*" component={Page404} />
       </Switch>
       {/* <footer>항상 보여요 footer</footer> */}
