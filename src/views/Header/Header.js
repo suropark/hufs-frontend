@@ -13,59 +13,42 @@ function Header(props) {
   const menu1 = (
     <Menu>
       <Menu.Item>
-        <Link to="/1">
-          자유공간
-          </Link>
+        <Link to="/1">자유공간</Link>
       </Menu.Item>
-
-    </Menu >
-  )
+    </Menu>
+  );
   const menu2 = (
     <Menu>
       <Menu.Item>
-        <Link to="/2">
-          졸업생공간
-          </Link>
+        <Link to="/2">졸업생공간</Link>
       </Menu.Item>
-
-    </Menu >
-  )
+    </Menu>
+  );
 
   const menu3 = (
     <Menu>
       <Menu.Item>
-        <Link to="/3">
-          진로공간
-          </Link>
+        <Link to="/3">진로공간</Link>
       </Menu.Item>
-
-    </Menu >
+    </Menu>
   );
   const menu4 = (
     <Menu>
       <Menu.Item>
-        <Link to="/4">
-          장학공간
-          </Link>
+        <Link to="/calendar">장학공간</Link>
       </Menu.Item>
-
-    </Menu >
-  )
+    </Menu>
+  );
   const menu5 = (
     <Menu>
       <Menu.Item>
-        <Link to="/5">
-          서울
-          </Link>
+        <Link to="/map">서울</Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="/5">
-          글로벌
-          </Link>
+        <Link to="/map">글로벌</Link>
       </Menu.Item>
-
-    </Menu >
-  )
+    </Menu>
+  );
   // const menu6 = (
   //   <Menu>
   //     <Menu.Item>
@@ -104,13 +87,12 @@ function Header(props) {
             <Menu.Item key="mail">
               <Dropdown overlay={menu1}>
                 <Link to="/1">떠들어 Boo </Link>
-              </Dropdown >
+              </Dropdown>
             </Menu.Item>
             <Menu.Item key="app">
               <Dropdown overlay={menu2}>
                 <Link to="/2">학교 떠난 Boo</Link>
-              </Dropdown >
-
+              </Dropdown>
             </Menu.Item>
             <Menu.Item>
               <Dropdown overlay={menu3}>
@@ -119,13 +101,13 @@ function Header(props) {
             </Menu.Item>
             <Menu.Item key="setting:4">
               <Dropdown overlay={menu4}>
-                <Link to="/4">학교해 Boo </Link>
-              </Dropdown >
+                <Link to="/calendar">학교해 Boo </Link>
+              </Dropdown>
             </Menu.Item>
             <Menu.Item key="alipay">
               <Dropdown overlay={menu5}>
-                <Link to="/5">학교 간 Boo </Link>
-              </Dropdown >
+                <Link to="/map">학교 간 Boo </Link>
+              </Dropdown>
             </Menu.Item>
             <Menu.Item>
               <Link to="/6">이거 모르면 바 Boo </Link>
