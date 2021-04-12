@@ -11,8 +11,10 @@ function EmailAuthPage(props) {
   const [loading, setloading] = useState(true);
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
-  const token = props.location.search.substring(7);
   useEffect(() => {
+    const query = new URLSearchParams(props.location.search);
+    const token = query.get('token');
+    console.log('token = ', token);
     dispatch(authEmail(token))
       .then((response) => {
         setStatus(response.status);
@@ -23,7 +25,7 @@ function EmailAuthPage(props) {
         setloading(false);
       });
   }, []);
-  function stautsRender() {
+  function statusRender() {
     switch (status) {
       case 200:
         return <AuthSuccess />;
@@ -38,7 +40,7 @@ function EmailAuthPage(props) {
         break;
     }
   }
-  return <div>{loading ? null : stautsRender()}</div>;
+  return <div>{loading ? null : statusRender()}</div>;
 }
 
 export default EmailAuthPage;

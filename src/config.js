@@ -1,1 +1,1 @@
-export const PUBLIC_IP = 'http://3.36.226.238';
+export const PUBLIC_IP = 'https://api.hufspace.com';

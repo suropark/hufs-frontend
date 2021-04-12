@@ -73,7 +73,7 @@ function GoogleSignIn() {
     console.log(emailInfo);
     console.log(e);
     await axios
-      .post(`${PUBLIC_IP}/user/sign-in`, emailInfo)
+      .post(`${PUBLIC_IP}/user/sign-in`, emailInfo, {withCredentials: true})
       //.get(`http://52.78.2.40:8080/user.sign-in/kakao`)
       .then((response) => {
         //console.log("this?", response); 확인
