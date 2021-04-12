@@ -148,6 +148,7 @@ function imageHandler() {
   if (fileInput == null) {
     fileInput = document.createElement('input');
     fileInput.setAttribute('type', 'file');
+fileInput.setAttribute('name', 'img');
     fileInput.setAttribute(
       'accept',
       'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
@@ -156,7 +157,7 @@ function imageHandler() {
     fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
       const formData = new FormData();
-      formData.append('file', files[0]);
+      formData.append('img', files[0]);
       console.log(formData);
       console.log(files);
       const range = this.quill.getSelection(true);
@@ -176,7 +177,7 @@ function imageHandler() {
 
       // this.quill.enable(false);
       await axios
-        .post(`${PUBLIC_IP}/post/img`, formData, {
+        .post(`${PUBLIC_IP}/post/img`,  formData, {
           header: {
             'Content-Type': 'multipart/form-data',
           },
