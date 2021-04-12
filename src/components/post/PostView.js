@@ -25,6 +25,7 @@ function PostView({ match, history }) {
       .then((response) => {
         if (response.status === 200) {
           setPost(response.payload);
+	setLoading(false);
         }
       })
       .catch((error) => {
