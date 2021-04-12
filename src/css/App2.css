@@ -110,9 +110,9 @@
 .community-main > .community-box {
   position: absolute;
   width: 85%;
-  height: 80%;
-  left: 9%;
-  top: 15%;
+  height: 90%;
+  left: 7%;
+  top: 6%;
 }
 
 #root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {

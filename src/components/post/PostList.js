@@ -108,14 +108,14 @@ function PostList({ match, history }) {
 
 
 
-    /*  <div className="bottom">
-       
+      {/* <div className="bottom">
+
         <Pagination
           defaultCurrent={1}
           onChange={(event) => setCurrentPage(event.selected + 1)}
           total={posts.length}
         />
-      </div> */
+      </div> */}
 
     </>
   );

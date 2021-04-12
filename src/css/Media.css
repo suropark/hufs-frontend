@@ -141,8 +141,8 @@
   }
   /* 아래버튼 */
   .bottom {
-    top: 100%;
-    left: 5%;
+    top: 115%;
+    left: 4%;
   }
   #community-main {
     left: 30%;
@@ -150,6 +150,7 @@
   .community-main > .community-box {
     height: 77%;
   }
+
   /* .community-box span {
     width: 65%;
   } */
