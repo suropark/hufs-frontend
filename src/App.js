@@ -35,7 +35,6 @@ function App() {
         <Route path="/5" component={Post} />
         <Route path="/6" component={Post} />
         <Route path="/redirect" component={SignUpModal} />
-        <Route path={`/user/email`} component={EmailAuthPage} />
         <Route path="/map" component={MapPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/mypage" component={MyPage} />

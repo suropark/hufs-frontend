@@ -3,7 +3,9 @@ import { PUBLIC_IP } from '../config';
 import { GET_SCHOLAR, GET_SCHOLAR_FAIL } from './types';
 // 완료
 export const getScholar = async () => {
-  const request = await axios.get(`${PUBLIC_IP}/scholarship`);
+  const request = await axios.get(`${PUBLIC_IP}/scholarship`, {
+    params: { token: 'x' },
+  });
   if (request.data) {
     return {
       type: GET_SCHOLAR,

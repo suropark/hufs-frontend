@@ -11,9 +11,10 @@ function EmailAuthPage(props) {
   const [loading, setloading] = useState(true);
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
-  const token = props.location.search.substring(7);
   useEffect(() => {
-    console.log(token);
+    const query = new URLSearchParams(props.location.search);
+    const token = query.get('token');
+    console.log('token = ', token);
     dispatch(authEmail(token))
       .then((response) => {
         setStatus(response.status);
@@ -33,7 +34,7 @@ function EmailAuthPage(props) {
       case 409:
         return <AuthAlready />;
       case 401:
-        return <AuthUnauthorized token={token} />;
+        return <AuthUnauthorized />;
       default:
         return <Page404 />;
         break;
