@@ -44,7 +44,7 @@ function PostView({ match, history }) {
             break;
         }
       });
-  }, []);
+  }, [match.params.id]);
   const onDelete = () => {
     const answer = window.confirm('게시글을 삭제하시겠습니까?');
     if (answer) {
@@ -161,10 +161,10 @@ function PostView({ match, history }) {
   }
   return (
     <div className="community-main">
-      <PageHeader
-        title={findBoardName(post.boardId)}
+      {/* <PageHeader
+        title={'1'}
         subTitle="게시판 설명 적는 곳"
-      />
+      /> */}
       <div className="community-box">
         <Card
           title={
