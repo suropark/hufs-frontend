@@ -19,7 +19,7 @@ import { Card, PageHeader, Skeleton } from 'antd';
 function PostView({ match, history }) {
   const [post, setPost] = useState();
   const dispatch = useDispatch();
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(postView(+match.params.id))
       .then((response) => {
         if (response.status === 200) {
