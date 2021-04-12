@@ -21,7 +21,6 @@ function UserInfo(props) {
     DoubleMajorId: DoubleMajor,
   });
   const [webMailInput, setWebMailInput] = useState(webMail);
-  console.log(email, webMail, nickName, MainMajor, DoubleMajor);
   useEffect(async () => {
     await axios
       .all([

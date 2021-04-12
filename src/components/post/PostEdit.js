@@ -7,7 +7,7 @@ import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../config';
-import { Button } from 'antd';
+import { Button, Input } from 'antd';
 
 let uploadedImg = [];
 function PostEdit(props) {
@@ -70,7 +70,7 @@ function PostEdit(props) {
   return (
     <>
       <div id="community-main">
-        <input
+        <Input
           className="title-bar"
           type="text"
           placeholder="제목"
@@ -101,7 +101,7 @@ function PostEdit(props) {
           </Button>
           <Button
             type="primary"
-            onClick={onSubmit}
+            onClick={onExit}
             style={{
               margin: '10px',
             }}
@@ -156,9 +156,9 @@ function imageHandler() {
     fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
       const formData = new FormData();
-
       formData.append('file', files[0]);
-
+      console.log(formData);
+      console.log(files);
       const range = this.quill.getSelection(true);
 
       if (!files || !files.length) {
@@ -171,16 +171,25 @@ function imageHandler() {
       // reader.readAsDataURL(files[0]);
       // reader.onload = () => {
       //   this.quill.insertEmbed(range.index, 'image', reader.result);
-      // };
+      // }; `
       //
 
       // this.quill.enable(false);
-
       await axios
-        .post(`${PUBLIC_IP}/post/img`, { img: formData })
+        .post(`${PUBLIC_IP}/post/img`, formData, {
+          header: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+
         .then((response) => {
-          this.quill.editor.insertEmbed(range.index, 'image', response.data);
-          uploadedImg = uploadedImg.concat(response.data);
+          console.log(response);
+          this.quill.editor.insertEmbed(
+            range.index,
+            'image',
+            response.data.data,
+          );
+          uploadedImg = uploadedImg.concat(response.data.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
