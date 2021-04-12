@@ -65,7 +65,10 @@ function CommentList({ comments, history }) {
   //   );
   // };
   return (
-    <div style={{ width: '900px' }}>
+    <div
+      className="comment-body"
+    // style={{ width: '900px' }}
+    >
       <List
         className="comment-list"
         header={`${comments.length} replies`}

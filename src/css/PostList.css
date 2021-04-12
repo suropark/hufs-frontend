@@ -76,6 +76,9 @@ table th {
   display: inline-block;
   min-height: 300px;
 }
+/* .comment-body {
+  height: ;
+} */
 .ant-card.ant-card-bordered {
   height: 100%;
 }
