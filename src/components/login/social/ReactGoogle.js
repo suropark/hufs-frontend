@@ -27,7 +27,7 @@ function ReactGoogle({ setModalVisible }) {
               }
             })
             .catch((error) => {
-              if (error.response.status === 404) {
+              if (error.response?.status === 404) {
                 history.push('/register', {
                   email: googleData.profileObj.email,
                   provider: 'google',

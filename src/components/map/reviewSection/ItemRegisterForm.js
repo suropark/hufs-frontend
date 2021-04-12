@@ -1,6 +1,9 @@
 import { Link, useHistory } from 'react-router-dom';
 import React, { useState, useCallback } from 'react';
 import { Rate, Form, Input, InputNumber, Button } from 'antd';
+import axios from 'axios';
+import FileUpload from './FileUpload';
+import { PUBLIC_IP } from '../../../config'
 const { TextArea } = Input;
 
 export default function ItemRegisterForm({ onRegister, match }) {
@@ -14,7 +17,7 @@ export default function ItemRegisterForm({ onRegister, match }) {
   const handleChangeTitle = useCallback((e) => {
     setTitle(e.target.value);
   }, []);
-  console.log(title, score, content)
+  console.log(title, score, content, file)
   // 가격이 사용자의 입력에 변경되면 price 설정 함수를 호출한다.
   /*
   const handleChangeScore = useCallback((e) => {
@@ -30,10 +33,20 @@ export default function ItemRegisterForm({ onRegister, match }) {
   }, []);
 
   // 업로드 파일
-  const handleChangeFile = useCallback((e) => {
-    setFile(e.target.files[0]);
-  }, []);
-
+  const imgStore = (file) => {
+    setFile(file);
+  }
+  // 백엔드에 name, email, pw, store, img 를 같이 보내기 때문에 sedData라는 변수를 만들어 넣어주었다.
+const handleAccount = () => {
+  let sendData = {
+    image_url: file,
+  };
+//featch 함수를 사용해 sendData를 백엔드에 보내준다.
+fetch(`https://hufspace.com/post/img`, {
+      method: 'POST',
+      body: JSON.stringify(sendData),
+    })
+}
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -56,7 +69,7 @@ export default function ItemRegisterForm({ onRegister, match }) {
           <Rate allowHalf value={score} onChange={handleChangeScore} />
           <hr></hr>
           <label>사진</label>
-          <Input type="file" onChange={handleChangeFile} />
+          <FileUpload imgStore = {imgStore}/>
           <hr></hr>
           <label>후기</label>
           <TextArea rows="5" value={content} onChange={handleChangeContent} />

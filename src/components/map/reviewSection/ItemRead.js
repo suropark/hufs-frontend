@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function ItemRead({ id, item, isLoading, onRemove, match }) {
+  
   // 이미지 표시 URL 생성
   const pictureUrl = () => {
     return `/items/display?id=${id}&timestamp=${new Date().getTime()}`;

@@ -22,13 +22,15 @@ const ItemRegisterContainer = ({ history, match }) => {
     };
 
     // FormData 객체 생성
+    /*
     const formData = new FormData();
     formData.append('file', file);
     formData.append('item', JSON.stringify(itemObject));
+    */
 
     // 파일 업로드 //${location.state.id}
     axios
-      .post(`${PUBLIC_IP}/store/${location.state.id}/review`, formData, {
+      .post(`https://hufspace.com/store/${location.state.id}/review`, itemObject, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
