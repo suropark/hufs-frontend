@@ -21,6 +21,7 @@ function UserInfo(props) {
     DoubleMajorId: DoubleMajor,
   });
   const [webMailInput, setWebMailInput] = useState(webMail);
+
   useEffect(async () => {
     await axios
       .all([
@@ -91,7 +92,7 @@ function UserInfo(props) {
   return (
     // google, kakao 연동 필요.
     <div>
-      {webMail ? (
+      {!webMail ? (
         <h3>로딩 중...</h3>
       ) : (
         <>
@@ -109,7 +110,7 @@ function UserInfo(props) {
             <label>웹메일</label>
             <div style={{ margin: '8px 0' }}>
               <Input
-                value={webMailInput}
+                value={webMail}
                 onChange={(e) => setWebMailInput(e.target.value)}
                 style={{ width: '200px' }}
                 suffix={<>@hufs.ac.kr</>}
