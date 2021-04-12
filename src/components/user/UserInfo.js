@@ -10,19 +10,18 @@ import SecondMajorSelect from './SecondMajorSelect';
 function UserInfo(props) {
   const dispatch = useDispatch();
   // 인증 여부 받아서 disabled
-  const { email, webMail, nickname, mainMajor, doubleMajor } = useSelector(
+  const { Providers, webMail, nickName, MainMajor, DoubleMajor } = useSelector(
     (state) => state.user,
   );
-  const [loading, setLoading] = useState(true);
   const [mainMajorList, setMainMajorList] = useState([]);
   const [doubleMajorList, setDoubleMajorList] = useState([]);
   const [change, setChange] = useState({
-    nickname: nickname,
-    mainMajorId: mainMajor,
-    doubleMajorId: doubleMajor,
+    nickname: nickName,
+    mainMajorId: MainMajor,
+    DoubleMajorId: DoubleMajor,
   });
   const [webMailInput, setWebMailInput] = useState(webMail);
-  console.log(email, webMail, nickname, mainMajor, doubleMajor);
+  console.log(email, webMail, nickName, MainMajor, DoubleMajor);
   useEffect(async () => {
     await axios
       .all([
@@ -63,10 +62,10 @@ function UserInfo(props) {
         });
     }
   };
-  function mainMajorChange(value) {
+  function MainMajorChange(value) {
     setChange({ ...change, majorId: value });
   }
-  function doubleMajorChange(value) {
+  function DoubleMajorChange(value) {
     setChange({ ...change, secondMajorId: value });
   }
 
@@ -93,7 +92,7 @@ function UserInfo(props) {
   return (
     // google, kakao 연동 필요.
     <div>
-      {loading ? (
+      {webMail ? (
         <h3>로딩 중...</h3>
       ) : (
         <>
@@ -101,7 +100,7 @@ function UserInfo(props) {
             <label>이메일</label>
             <div style={{ margin: '8px 0' }}>
               <Input
-                value={email}
+                value={Providers[0].email}
                 style={{ width: '200px' }}
                 disabled={true}
               ></Input>
@@ -129,25 +128,25 @@ function UserInfo(props) {
           <div style={{ margin: '8px 0' }}>
             <Input
               style={{ width: '200px' }}
-              type="nickname"
-              placeholder={nickname}
+              type="nickName"
+              placeholder={nickName}
               value={change.nickname}
               onChange={(e) =>
-                setChange({ ...change, nickname: e.target.value })
+                setChange({ ...change, nickName: e.target.value })
               }
             />
           </div>
           <label>본전공</label>
           <MajorSelect
             list={mainMajorList}
-            defaultMajor={mainMajor}
-            onChange={mainMajorChange}
+            defaultMajor={MainMajor.name}
+            onChange={MainMajorChange}
           />
           <label>이중전공/부전공</label>
           <SecondMajorSelect
             list={doubleMajorList}
-            defaultSecondMajor={doubleMajor}
-            onChange={doubleMajorChange}
+            defaultSecondMajor={DoubleMajor.name}
+            onChange={DoubleMajorChange}
           />
           <button onClick={onSubmit}> 유저 정보 변경 </button>{' '}
         </>
