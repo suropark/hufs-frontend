@@ -17,6 +17,7 @@ import { Card, PageHeader, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
+  const [loading, setLoading] = useState(true);
   const [post, setPost] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,7 +45,7 @@ function PostView({ match, history }) {
             break;
         }
       });
-  }, [match.params.id]);
+  }, []);
   const onDelete = () => {
     const answer = window.confirm('게시글을 삭제하시겠습니까?');
     if (answer) {
@@ -166,31 +167,36 @@ function PostView({ match, history }) {
         subTitle="게시판 설명 적는 곳"
       /> */}
       <div className="community-box">
-        <Card
-          title={
-            <>
-              <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
-                {post.title}
-              </div>
-
-              {post.User === null ? (
-                <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
-              ) : (
-                <span style={{ fontSize: '8px' }}> {post.User.nickname} </span>
-              )}
-              <span style={{ marginLeft: '24px', fontSize: '4px' }}>
-                {post.createdAt?.slice(0, 10)}
-              </span>
-            </>
-          }
-          extra={post.id}
-        >
-          <div
-            dangerouslySetInnerHTML={{ __html: post.content }}
-            style={{ display: 'inline-block', minHeight: '500px' }}
-          />
-          <div>
-            {/* 추천 수: {post.like}
+        {loading ? (
+          <h1>loading</h1>
+        ) : (
+          <Card
+            title={
+              <>
+                <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
+                  {post.title}
+                </div>
+                {post.User === null ? (
+                  <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
+                ) : (
+                  <span style={{ fontSize: '8px' }}>
+                    {' '}
+                    {post.User.nickname}{' '}
+                  </span>
+                )}
+                <span style={{ marginLeft: '24px', fontSize: '4px' }}>
+                  {post.createdAt?.slice(0, 10)}
+                </span>
+              </>
+            }
+            extra={post.id}
+          >
+            <div
+              dangerouslySetInnerHTML={{ __html: post.content }}
+              style={{ display: 'inline-block', minHeight: '500px' }}
+            />
+            <div>
+              {/* 추천 수: {post.like}
                 <div>신고 수: {post.report}</div>
                 <div>
                   <span onClick={onLike} style={{ cursor: 'pointer' }}>
@@ -202,42 +208,43 @@ function PostView({ match, history }) {
                     추천취소
                   </span>
                 </div> */}
-            <div style={{ fontSize: '12px' }}>
-              <ReportModal type="post" id={post.id} history={history} />{' '}
-              <div>
-                <span
-                  onClick={onDelete}
-                  style={{
-                    cursor: 'pointer',
-                    float: 'right',
-                    marginLeft: '12px',
-                  }}
-                >
-                  삭제하기
-                </span>
+              <div style={{ fontSize: '12px' }}>
+                <ReportModal type="post" id={post.id} history={history} />{' '}
+                <div>
+                  <span
+                    onClick={onDelete}
+                    style={{
+                      cursor: 'pointer',
+                      float: 'right',
+                      marginLeft: '12px',
+                    }}
+                  >
+                    삭제하기
+                  </span>
+                </div>{' '}
+                <div>
+                  <span
+                    onClick={onScrap}
+                    style={{ cursor: 'pointer', float: 'right' }}
+                  >
+                    스크랩하기
+                  </span>
+                </div>
+                <Link to={`${post.id}/update`}>
+                  <span>수정하기</span>
+                </Link>
               </div>{' '}
-              <div>
-                <span
-                  onClick={onScrap}
-                  style={{ cursor: 'pointer', float: 'right' }}
-                >
-                  스크랩하기
-                </span>
-              </div>
-              <Link to={`${post.id}/update`}>
-                <span>수정하기</span>
-              </Link>
-            </div>{' '}
-          </div>
-          <div>
-            <hr />
-          </div>
-          <CommentList
-            history={history}
-            comments={post.Replies ? post.Replies : []}
-          />
-          <CommentEdit history={history} match={match} />
-        </Card>
+            </div>
+            <div>
+              <hr />
+            </div>
+            <CommentList
+              history={history}
+              comments={post.Replies ? post.Replies : []}
+            />
+            <CommentEdit history={history} match={match} />
+          </Card>
+        )}
       </div>
     </div>
   );
