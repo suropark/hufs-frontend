@@ -49,7 +49,7 @@ export const updateUser = async (updatedData) => {
 };
 //완료
 export const getUserInfo = async () => {
-  const request = await axios.get(`${PUBLIC_IP}/user`);
+  const request = await axios.get(`${PUBLIC_IP}/user`, {withCredentials: true});
 
   if (request.status === 200) {
     return {
@@ -65,7 +65,7 @@ export const getUserInfo = async () => {
   }
 };
 export const logoutUser = async () => {
-  const request = await axios.post(`${PUBLIC_IP}/user/sign-out`);
+  const request = await axios.post(`${PUBLIC_IP}/user/sign-out`,null,{withCredentials: true});
 
   if (request.status === 200) {
     return {
@@ -82,7 +82,8 @@ export const logoutUser = async () => {
 export const authEmail = async (token) => {
   const request = await axios.get(`${PUBLIC_IP}/user/email`, null, {
     params: { token: token },
-  });
+	  withCredentials: true,
+ });
   if (request.data) {
     return {
       type: AUTH_EMAIL,

@@ -17,7 +17,7 @@ function ReactGoogle({ setModalVisible }) {
             .post(`${PUBLIC_IP}/user/sign-in`, {
               email: googleData.profileObj.email,
               provider: 'google',
-            })
+            }, {withCredentials : true})
             .then((response) => {
               if (response.status === 200) {
                 console.log('this?', response);
