@@ -8,6 +8,7 @@ import PromiseMiddleware from 'redux-promise';
 import App from './App';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import axios from 'axios';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,6 +16,8 @@ const createStoreWithMiddleware = applyMiddleware(
   PromiseMiddleware,
   ReduxThunk,
 )(createStore);
+
+axios.defaults.withCredentials = true;
 
 ReactDOM.render(
   <Provider
