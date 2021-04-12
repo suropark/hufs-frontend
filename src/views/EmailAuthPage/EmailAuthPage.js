@@ -13,6 +13,7 @@ function EmailAuthPage(props) {
   const dispatch = useDispatch();
   const token = props.location.search.substring(7);
   useEffect(() => {
+    console.log(token);
     dispatch(authEmail(token))
       .then((response) => {
         setStatus(response.status);
@@ -23,7 +24,7 @@ function EmailAuthPage(props) {
         setloading(false);
       });
   }, []);
-  function stautsRender() {
+  function statusRender() {
     switch (status) {
       case 200:
         return <AuthSuccess />;
@@ -32,13 +33,13 @@ function EmailAuthPage(props) {
       case 409:
         return <AuthAlready />;
       case 401:
-        return <AuthUnauthorized />;
+        return <AuthUnauthorized token={token} />;
       default:
         return <Page404 />;
         break;
     }
   }
-  return <div>{loading ? null : stautsRender()}</div>;
+  return <div>{loading ? null : statusRender()}</div>;
 }
 
 export default EmailAuthPage;
