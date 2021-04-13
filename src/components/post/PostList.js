@@ -50,13 +50,13 @@ function PostList({ match, history }) {
       case 1:
         return '떠들 어 boo';
       case 2:
-        return '학교 해 boo';
-      case 3:
-        return '학교 간 boo';
-      case 4:
         return '학교 떠난 boo';
-      case 5:
+      case 3:
         return '정면 승 boo';
+      case 4:
+        return '학교 해 boo';
+      case 5:
+        return '학교 간 boo';
       case 6:
         return '이거 모르면 바 boo';
       default:
@@ -108,14 +108,14 @@ function PostList({ match, history }) {
 
 
 
-    /*  <div className="bottom">
-       
+      {/* <div className="bottom">
+
         <Pagination
           defaultCurrent={1}
           onChange={(event) => setCurrentPage(event.selected + 1)}
           total={posts.length}
         />
-      </div> */
+      </div> */}
 
     </>
   );

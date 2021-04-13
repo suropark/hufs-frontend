@@ -98,7 +98,7 @@ function CalendarMainPage(props) {
           onSelect={onSelect}
         />
       </div>
-      <div style={{ overflow: 'auto', height: '354px' }}>
+      <div>
         <List
           style={{ height: '354px' }}
           header={

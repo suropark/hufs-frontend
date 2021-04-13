@@ -67,12 +67,13 @@ function CalendarComponent() {
   };
 
   return (
-    <div>
+    <div className="community-main" >
       <Calendar
         dateCellRender={scholar ? dateCellRender : null}
         // monthCellRender={monthCellRender}
         fullscreen={false}
         onSelect={scholar ? onSelect : null}
+
       />
 
       <div></div>

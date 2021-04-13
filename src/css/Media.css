@@ -139,17 +139,23 @@
     width: 100%;
     height: 750px;
   }
-  /* 아래버튼 */
+  .community-main > .community-box {
+    top: 6%;
+  }
+  .ant-list.ant-list-split.ant-list-bordered {
+    top: 13%;
+  }
   .bottom {
-    top: 100%;
-    left: 5%;
+    top: 98%;
+    left: 1%;
   }
   #community-main {
     left: 30%;
   }
   .community-main > .community-box {
-    height: 77%;
+    height: 92%;
   }
+
   /* .community-box span {
     width: 65%;
   } */

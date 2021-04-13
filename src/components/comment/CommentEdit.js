@@ -36,9 +36,13 @@ function CommentEdit({ history, match }) {
     setContent('');
   };
   return (
-    <div style={{ width: '900px' }}>
+    <div
+      className="comment-input"
+    // style={{ width: '900px' }}
+    >
       <TextArea
-        style={{ display: 'inline-block', width: '750px' }}
+        className="comment-textarea"
+        // style={{ display: 'inline-block', width: '750px' }}
         size={'large'}
         rows={4}
         autoSize={{ minRows: 4, maxRows: 4 }}

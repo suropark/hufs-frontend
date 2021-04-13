@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { Table } from 'antd';
 function UserPost({ match }) {
   const { Column } = Table;
-  const { myPost } = useSelector((state) => state.user);
+  const { Posts } = useSelector((state) => state.user);
   return (
     <div>
-      <Table pagination={false} dataSource={myPost}>
+      <Table pagination={false} dataSource={Posts}>
         <Column title="-" dataIndex="id" key="id" />
         <Column
           title="내가 쓴 글"
