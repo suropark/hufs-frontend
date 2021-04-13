@@ -2,12 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../_actions/user_action';
 import { message, Button } from 'antd';
-import Cookies from 'js-cookie';
 function Logout() {
   const dispatch = useDispatch();
   const onLogout = () => {
     dispatch(logoutUser())
-      .then((response) => message.success('로그아웃 성공!'))
+      .then((response) => {
+        message.success('로그아웃 성공!');
+        window.location.reload();
+      })
       .catch((error) => {
         if (error.response) {
           if (error.response?.status === 401) {

@@ -42,7 +42,7 @@ function SearchAll(props) {
       });
   };
   return (
-    <span id="Searchbar" >
+    <span id="Searchbar">
       <Select
         defaultValue="제목"
         style={{ width: 80 }}
@@ -59,9 +59,8 @@ function SearchAll(props) {
         value={keyword}
         onChange={setKeyword}
         onSearch={onSearch}
-
       />
-    </span >
+    </span>
   );
 }
 

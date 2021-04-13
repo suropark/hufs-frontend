@@ -3,13 +3,14 @@ import { message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { postSearch } from '../../_actions/post_action';
+import { useHistory } from 'react-router';
 const { Option } = Select;
 const { Search } = Input;
 function PostSearch({ setPosts, match }) {
   const dispatch = useDispatch();
   const [toSearch, onChangeSearch] = useInput('');
   const [searchType, setSearchType] = useState('titleAndContent');
-
+  const history = useHistory();
   const onSearch = () => {
     if (toSearch === '') {
       return message.warn('검색 키워드를 입력해주세요.');
@@ -24,11 +25,11 @@ function PostSearch({ setPosts, match }) {
         switch (error.response?.status) {
           case 401:
             message.error('로그인하지 않은 사용자');
-            // history.push('/');
+            history.push('/');
             break;
           case 403:
             message.error('접근 권한 오류');
-            // history.push('/');
+            history.push('/');
             break;
           case 404:
             message.info('검색 결과가 존재하지 않습니다.');
