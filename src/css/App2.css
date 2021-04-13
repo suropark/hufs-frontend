@@ -156,3 +156,11 @@ Search {
   width: 330px;
   height: 30px;
 }
+
+.ant-picker-calendar.ant-picker-calendar-mini {
+  height: 44%;
+}
+.ant-list.ant-list-split.ant-list-bordered {
+  height: 45%;
+  overflow: scroll;
+}

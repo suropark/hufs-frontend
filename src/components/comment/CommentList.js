@@ -77,6 +77,7 @@ function CommentList({ comments, history }) {
         renderItem={(item) => (
           <li>
             <Comment
+              className="comment-comment"
               actions={item.actions}
               author={item.User === null ? '탈퇴한 사용자' : item.User.nickname}
               avatar={<Avatar icon={<UserOutlined />} />}
