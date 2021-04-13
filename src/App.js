@@ -31,7 +31,7 @@ function App() {
         <Route path="/1" component={Post} />
         <Route path="/2" component={Post} />
         <Route path="/3" component={Post} />
-        <Route path="/4" component={CalendarPaget} />
+        <Route path="/4" component={CalendarPage} />
         <Route path="/5" component={MapPage} />
         <Route path="/6" component={Post} />
         <Route path="/redirect" component={SignUpModal} />

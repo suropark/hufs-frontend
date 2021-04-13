@@ -54,7 +54,7 @@ function PostList({ match, history }) {
       case 3:
         return '정면 승 boo';
       case 4:
-        return '학교해 boo';
+        return '학교 해 boo';
       case 5:
         return '학교 간 boo';
       case 6:
