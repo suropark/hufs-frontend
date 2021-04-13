@@ -11,7 +11,7 @@ function UserScrap() {
   const [scraps, setScraps] = useState([]);
   useEffect(async () => {
     const request = await axios
-      .get(`${PUBLIC_IP}/user/scrap`, null, {
+      .get(`${PUBLIC_IP}/user/scrap`, {
         params: { directoryId: 1 },
       })
       .then((response) => {

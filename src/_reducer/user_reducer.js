@@ -19,9 +19,9 @@ export default function user(state = {}, action) {
     case UPDATE_USER:
       return {
         ...state,
-        nickname: action.payload.nickname,
-        mainMajor: action.payload.mainMajor,
-        doubleMajor: action.payload.doubleMajor,
+        nickName: action.payload.nickname,
+        MainMajor: action.payload.mainMajor,
+        DoubleMajor: action.payload.doubleMajor,
       };
     case LOGOUT_USER:
     case WITHDRAW_USER:
