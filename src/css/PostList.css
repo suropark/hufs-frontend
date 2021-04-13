@@ -74,7 +74,8 @@ table th {
 }
 .board-content {
   display: inline-block;
-  min-height: 300px;
+  min-height: 40%;
+  overflow-y: scroll;
 }
 /* .comment-body {
   height: ;
@@ -93,8 +94,8 @@ table th {
 }
 /* 댓글 전체부분 */
 .comment-body {
-  overflow: scroll;
-  height: 45%;
+  overflow-y: scroll;
+  height: 40%;
 }
 
 /* 댓글  */
@@ -105,7 +106,7 @@ table th {
 /* 댓글 쓰고 제출부분 */
 .comment-input {
   width: 90%;
-  height: 13%;
+  height: 9%;
   position: absolute;
 }
 /* .ant-input-textarea.ant-input-textarea-show-count {
@@ -119,12 +120,11 @@ table th {
 }
 .comment-textarea textarea {
   height: 100% !important;
-  min-height: none !important;
+  min-height: 74px !important;
   max-height: none !important;
   overflow-y: scroll !important;
 }
 .comment-input button {
   width: 10% !important ;
-  height: 11% !important;
-  position: absolute;
+  height: 100% !important;
 }
