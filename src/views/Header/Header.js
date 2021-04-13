@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../banner/logo.png';
 // import mainboo from '../../banner/mainboo.png';
 import { Menu, Dropdown, Button, Space, Input, message } from 'antd';
@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import SignUp from '../../components/login/SignUp';
 import Logout from '../../components/login/Logout';
 import SearchAll from '../../components/post/SearchAll';
-import Cookies from 'js-cookie';
+import axios from 'axios';
+import { PUBLIC_IP } from '../../config';
 const { Search } = Input;
-
 function Header(props) {
   const menu1 = (
     <Menu>
@@ -25,7 +25,6 @@ function Header(props) {
       </Menu.Item>
     </Menu>
   );
-
   const menu3 = (
     <Menu>
       <Menu.Item>
@@ -60,9 +59,16 @@ function Header(props) {
 
   //   </Menu >
   // )
+  const [login, setLogin] = useState(false);
+  useEffect(async () => {
+    await axios
+      .get(`${PUBLIC_IP}/user`)
+      .then((response) => setLogin(true))
+      .catch((error) => {
+        setLogin(false);
+      });
+  }, []);
 
-  const onSearch = (value) => console.log(value);
-  const { Search } = Input;
   return (
     <div className="Head">
       <div className="Pagename">
@@ -72,8 +78,7 @@ function Header(props) {
       </div>
       {/* <img src={mainboo} className="Image" alt="이미지 들어갈 곳" /> */}
       <span className="loginbar">
-        {Cookies.get('G_AUTHUSER_H') ? <Logout /> : <SignUp />}
-
+        {login ? <Logout /> : <SignUp />}
         <Button type="text">
           <Link style={{ color: 'rgba(0, 0, 0, 0.85)' }} to="/mypage">
             My page

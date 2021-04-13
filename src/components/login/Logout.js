@@ -7,9 +7,6 @@ function Logout() {
   const dispatch = useDispatch();
   const onLogout = () => {
     dispatch(logoutUser())
-      .then((response) =>
-        Cookies.remove('G_AUTHUSER_H', { path: '', domain: '.hufspace.com' }),
-      )
       .then((response) => message.success('로그아웃 성공!'))
       .catch((error) => {
         if (error.response) {
