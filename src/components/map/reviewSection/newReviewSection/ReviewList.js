@@ -69,13 +69,23 @@ function ReviewList ({ match, history }) {
         <div className="community-box">
           <Button
             onClick={(e) =>{
-              
-              console.log(match.path);
               history.push({
-                pathname: `${match.path}/register`,
-                state: { detail: match.path },
-              }
-            )}
+                pathname: '/map/register',
+                state: { detail: match.path,
+                    name : history.location.state.name,
+                  id : history.location.state.id },
+                  }   
+                        
+                  )
+
+            //   history.push({
+            //     pathname: "map/register",
+            //     state: { detail: match.path,
+            //     name : history.location.state.name,
+            //   id : history.location.state.id },
+            //   }
+            // )
+          }
             }
           >
             글 작성

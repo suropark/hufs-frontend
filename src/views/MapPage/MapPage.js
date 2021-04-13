@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 const MapContainer = loadable(() =>
   import('../../components/map/mapSection/MapContainer'),
 );
+const ReviewEdit = loadable(() => import('../../components/map/reviewSection/newReviewSection/ReviewEdit'));
 const inforPage = loadable(() => import('../MapInforPage/MapInforPage'));
 const ReviewPage = loadable(() => import('../ReviewPage/ReviewPage'));
 function MapPage({ match }) {
@@ -23,6 +24,7 @@ function MapPage({ match }) {
             path={`${match.path}/info/:name/:id/ReviewPage`}
             component={ReviewPage}
           />
+          <Route path={`${match.path}/register`}  component={ReviewEdit} />
           {/*<Route
             exact
             path={`${match.path}/info/:name/:id`}

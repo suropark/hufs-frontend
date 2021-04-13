@@ -9,11 +9,12 @@ function ReviewPage(props) {
   return (
     <>
       <Switch>
-        <Route path={`${props.match.url}/register`} component={ReviewEdit} />
+        {/* <Route path="/register" component={ReviewEdit} /> */}
         <Route exact path={`${props.match.url}/:id`} component={ReviewView} />
-      </Switch>
+     
       <Route exact path={props.match.url}component={ReviewList} />
       <Route exact path={`${props.match.url}/:id/update`} component={ReviewUpdate} />
+      </Switch>
     </>
   );
 }
