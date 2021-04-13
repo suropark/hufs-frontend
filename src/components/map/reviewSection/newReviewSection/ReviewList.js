@@ -70,7 +70,7 @@ function ReviewList ({ match, history }) {
           <Button
             onClick={(e) =>{
               history.push({
-                pathname: '/map/register',
+                pathname: '/5/register',
                 state: { detail: match.path,
                     name : history.location.state.name,
                   id : history.location.state.id },
