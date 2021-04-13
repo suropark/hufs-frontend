@@ -15,7 +15,7 @@ import Quick from '..//Quick/Quick';
 function MyPage(props) {
   const { Header, Content, Footer } = Layout;
   const dispatch = useDispatch();
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(getUserInfo()).then((response) => {
       switch (response.status) {
         case 401:

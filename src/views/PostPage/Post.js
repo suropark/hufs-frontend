@@ -13,11 +13,11 @@ function Post({ match }) {
     <>
       <Header /> <Quick />
       <Switch>
-        <Route path={`${match.path}/edit`} component={PostEdit} />
+        <Route exact path={`${match.path}/edit`} component={PostEdit} />
         <Route exact path={`${match.path}/:id`} component={PostView} />
+        <Route exact path={`${match.path}/:id/update`} component={PostUpdate} />
+        <Route exact path={match.path} component={PostList} />
       </Switch>
-      <Route exact path={match.path} component={PostList} />
-      <Route exact path={`${match.path}/:id/update`} component={PostUpdate} />
       <Footer />
     </>
   );

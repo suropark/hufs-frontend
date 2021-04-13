@@ -10,17 +10,18 @@ import SecondMajorSelect from './SecondMajorSelect';
 function UserInfo(props) {
   const dispatch = useDispatch();
   // 인증 여부 받아서 disabled
-  const { email, webMail, nickname, mainMajor, doubleMajor } = useSelector(
+  const { Providers, webMail, nickName, MainMajor, DoubleMajor } = useSelector(
     (state) => state.user,
   );
   const [mainMajorList, setMainMajorList] = useState([]);
   const [doubleMajorList, setDoubleMajorList] = useState([]);
   const [change, setChange] = useState({
-    nickname: nickname,
-    majorId: mainMajor,
-    majorId: doubleMajor,
+    nickname: nickName,
+    mainMajorId: MainMajor,
+    DoubleMajorId: DoubleMajor,
   });
   const [webMailInput, setWebMailInput] = useState(webMail);
+
   useEffect(async () => {
     await axios
       .all([
@@ -61,10 +62,10 @@ function UserInfo(props) {
         });
     }
   };
-  function mainMajorChange(value) {
+  function MainMajorChange(value) {
     setChange({ ...change, majorId: value });
   }
-  function doubleMajorChange(value) {
+  function DoubleMajorChange(value) {
     setChange({ ...change, secondMajorId: value });
   }
 
@@ -91,57 +92,65 @@ function UserInfo(props) {
   return (
     // google, kakao 연동 필요.
     <div>
-      <div style={{ margin: '8px 0' }}>
-        <label>이메일</label>
-        <div style={{ margin: '8px 0' }}>
-          <Input
-            value={email}
-            style={{ width: '200px' }}
-            disabled={true}
-          ></Input>
-        </div>
-      </div>
-      <div style={{ margin: '8px 0' }}>
-        <label>웹메일</label>
-        <div style={{ margin: '8px 0' }}>
-          <Input
-            value={webMailInput}
-            onChange={(e) => setWebMailInput(e.target.value)}
-            style={{ width: '200px' }}
-            suffix={<>@hufs.ac.kr</>}
-          ></Input>
-          <Button onClick={onAuth} style={{ marginLeft: '8px' }}>
-            인증하기
-          </Button>
-        </div>
+      {!webMail ? (
+        <h3>로딩 중...</h3>
+      ) : (
+        <>
+          <div style={{ margin: '8px 0' }}>
+            <label>이메일</label>
+            <div style={{ margin: '8px 0' }}>
+              <Input
+                value={Providers[0].email}
+                style={{ width: '200px' }}
+                disabled={true}
+              ></Input>
+            </div>
+          </div>
+          <div style={{ margin: '8px 0' }}>
+            <label>웹메일</label>
+            <div style={{ margin: '8px 0' }}>
+              <Input
+                value={webMail}
+                onChange={(e) => setWebMailInput(e.target.value)}
+                style={{ width: '200px' }}
+                suffix={<>@hufs.ac.kr</>}
+              ></Input>
+              <Button onClick={onAuth} style={{ marginLeft: '8px' }}>
+                인증하기
+              </Button>
+            </div>
 
-        {/* 인증 하기, 인증 여부에 따른 disabled 작성 필요 */}
-      </div>
-      <div style={{ margin: '8px 0' }}>
-        <label>닉네임</label>
-      </div>
-      <div style={{ margin: '8px 0' }}>
-        <Input
-          style={{ width: '200px' }}
-          type="nickname"
-          placeholder={nickname}
-          value={change.nickname}
-          onChange={(e) => setChange({ ...change, nickname: e.target.value })}
-        />
-      </div>
-      <label>본전공</label>
-      <MajorSelect
-        list={mainMajorList}
-        defaultMajor={mainMajor}
-        onChange={mainMajorChange}
-      />
-      <label>이중전공/부전공</label>
-      <SecondMajorSelect
-        list={doubleMajorList}
-        defaultSecondMajor={doubleMajor}
-        onChange={doubleMajorChange}
-      />
-      <button onClick={onSubmit}> 유저 정보 변경 </button>
+            {/* 인증 하기, 인증 여부에 따른 disabled 작성 필요 */}
+          </div>
+          <div style={{ margin: '8px 0' }}>
+            <label>닉네임</label>
+          </div>
+          <div style={{ margin: '8px 0' }}>
+            <Input
+              style={{ width: '200px' }}
+              type="nickName"
+              placeholder={nickName}
+              value={change.nickname}
+              onChange={(e) =>
+                setChange({ ...change, nickName: e.target.value })
+              }
+            />
+          </div>
+          <label>본전공</label>
+          <MajorSelect
+            list={mainMajorList}
+            defaultMajor={MainMajor.name}
+            onChange={MainMajorChange}
+          />
+          <label>이중전공/부전공</label>
+          <SecondMajorSelect
+            list={doubleMajorList}
+            defaultSecondMajor={DoubleMajor.name}
+            onChange={DoubleMajorChange}
+          />
+          <button onClick={onSubmit}> 유저 정보 변경 </button>{' '}
+        </>
+      )}
     </div>
   );
 }
