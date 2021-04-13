@@ -40,16 +40,16 @@ function Header(props) {
       </Menu.Item>
     </Menu>
   );
-  const menu5 = (
-    <Menu>
-      <Menu.Item>
-        <Link to="/5">서울</Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/5">글로벌</Link>
-      </Menu.Item>
-    </Menu>
-  );
+  // const menu5 = (
+  //   <Menu>
+  //     <Menu.Item>
+  //       <Link to="/5">서울</Link>
+  //     </Menu.Item>
+  //     <Menu.Item>
+  //       <Link to="/5">글로벌</Link>
+  //     </Menu.Item>
+  //   </Menu>
+  // );
   // const menu6 = (
   //   <Menu>
   //     <Menu.Item>
@@ -107,9 +107,7 @@ function Header(props) {
               </Dropdown>
             </Menu.Item>
             <Menu.Item key="alipay">
-              <Dropdown overlay={menu5}>
-                <Link to="/5">학교 간 Boo </Link>
-              </Dropdown>
+              <Link to="/5">학교 간 Boo </Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/6">이거 모르면 바 Boo </Link>
