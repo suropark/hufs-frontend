@@ -17,9 +17,9 @@ function UserComment() {
           key="content"
           render={(text, record) => (
             <Link to={`1/${record.Post.id}`}>
-              {record.title.length > 30
-                ? record.title.slice(0, 29)
-                : record.title}
+              {record.content.length > 30
+                ? record.content.slice(0, 29)
+                : record.content}
             </Link>
           )}
         />{' '}
