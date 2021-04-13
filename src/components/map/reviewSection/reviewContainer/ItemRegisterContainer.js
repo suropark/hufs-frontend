@@ -30,7 +30,7 @@ const ItemRegisterContainer = ({ history, match }) => {
 
     // 파일 업로드 //${location.state.id}
     axios
-      .post(`https://hufspace.com/store/${location.state.id}/review`, itemObject, {
+      .post(`${PUBLIC_IP}/store/${location.state.id}/review`, itemObject, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -36,13 +36,12 @@ export default function ItemRegisterForm({ onRegister, match }) {
   const imgStore = (file) => {
     setFile(file);
   }
-  // 백엔드에 name, email, pw, store, img 를 같이 보내기 때문에 sedData라는 변수를 만들어 넣어주었다.
 const handleAccount = () => {
   let sendData = {
     image_url: file,
   };
-//featch 함수를 사용해 sendData를 백엔드에 보내준다.
-fetch(`https://hufspace.com/post/img`, {
+//fetch 함수를 사용해 sendData를 백엔드에 보내준다.
+fetch(`${PUBLIC_IP}/post/img`, {
       method: 'POST',
       body: JSON.stringify(sendData),
     })
