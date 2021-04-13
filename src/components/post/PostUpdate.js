@@ -200,7 +200,7 @@ function imageHandler() {
       'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
     );
     fileInput.classList.add('ql-image');
-    fileInput.addEventListener('change', () => {
+    fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
       const range = this.quill.getSelection(true);
 
