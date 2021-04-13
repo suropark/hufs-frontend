@@ -75,6 +75,7 @@ table th {
 .board-content {
   display: inline-block;
   min-height: 40%;
+  width: 100%;
   overflow-y: scroll;
 }
 /* .comment-body {
@@ -83,7 +84,7 @@ table th {
 
 /* 글부분 + 댓글 부분 파트 분할 */
 .ant-card.ant-card-bordered {
-  height: 100%;
+  height: 97%;
 }
 .ant-card.ant-card-bordered > .ant-card-head {
   height: 10%;
