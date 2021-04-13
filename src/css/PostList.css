@@ -72,3 +72,20 @@ table th {
 #community-searchbar .ant-input-affix-wrapper {
   height: 38px;
 }
+.board-content {
+  display: inline-block;
+  min-height: 300px;
+}
+/* .comment-body {
+  height: ;
+} */
+.ant-card.ant-card-bordered {
+  height: 100%;
+}
+.ant-card.ant-card-bordered > .ant-card-head {
+  height: 10%;
+}
+
+.ant-card.ant-card-bordered > .ant-card-body {
+  height: 90%;
+}

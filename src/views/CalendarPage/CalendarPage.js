@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
 import CalendarComponent from '../../components/calendar/CalendarComponent';
 import { getScholar } from '../../_actions/calender_action';
+import Header from '../Header/Header';
+import Quick from '../Quick/Quick';
 function CalendarPage(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getScholar())
-      .then((response) => {})
+      .then((response) => { })
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
@@ -24,6 +26,8 @@ function CalendarPage(props) {
   }, []);
   return (
     <div>
+      <Header />
+      <Quick />
       <CalendarComponent />
     </div>
   );

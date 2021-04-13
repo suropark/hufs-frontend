@@ -25,7 +25,7 @@ function PostView({ match, history }) {
       .then((response) => {
         if (response.status === 200) {
           setPost(response.payload);
-	setLoading(false);
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -194,7 +194,8 @@ function PostView({ match, history }) {
           >
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
-              style={{ display: 'inline-block', minHeight: '500px' }}
+              className="board-content"
+            // style={{ display: 'inline-block', minHeight: '300px' }}
             />
             <div>
               {/* 추천 수: {post.like}
