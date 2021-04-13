@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import SignUp from '../../components/login/SignUp';
 import Logout from '../../components/login/Logout';
 import SearchAll from '../../components/post/SearchAll';
+import Cookies from 'js-cookie';
 const { Search } = Input;
 
 function Header(props) {
@@ -71,7 +72,7 @@ function Header(props) {
       </div>
       {/* <img src={mainboo} className="Image" alt="이미지 들어갈 곳" /> */}
       <span className="loginbar">
-        <SignUp /> <Logout />
+        {Cookies.get('user') === undefined ? <SignUp /> : <Logout />}
         <Button type="text">
           <Link style={{ color: 'rgba(0, 0, 0, 0.85)' }} to="/mypage">
             My page
@@ -107,7 +108,6 @@ function Header(props) {
             <Menu.Item key="alipay">
               <Dropdown overlay={menu5}>
                 <Link to="/map">학교 간 Boo </Link>
-
               </Dropdown>
             </Menu.Item>
             <Menu.Item>

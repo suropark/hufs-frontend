@@ -10,14 +10,19 @@ import SecondMajorSelect from './SecondMajorSelect';
 function UserInfo(props) {
   const dispatch = useDispatch();
   // 인증 여부 받아서 disabled
-  const { Providers, webMail, nickName, MainMajor, DoubleMajor } = useSelector(
-    (state) => state.user,
-  );
+  const {
+    Providers,
+    webMail,
+    nickName,
+    MainMajor,
+    DoubleMajor,
+    Token,
+  } = useSelector((state) => state.user);
   const [mainMajorList, setMainMajorList] = useState([]);
   const [doubleMajorList, setDoubleMajorList] = useState([]);
   const [change, setChange] = useState({
-    nickname: nickName,
-    mainMajorId: MainMajor,
+    nickName: nickName,
+    MainMajorId: MainMajor,
     DoubleMajorId: DoubleMajor,
   });
   const [webMailInput, setWebMailInput] = useState(webMail);
@@ -109,15 +114,26 @@ function UserInfo(props) {
           <div style={{ margin: '8px 0' }}>
             <label>웹메일</label>
             <div style={{ margin: '8px 0' }}>
-              <Input
-                value={webMail}
-                onChange={(e) => setWebMailInput(e.target.value)}
-                style={{ width: '200px' }}
-                suffix={<>@hufs.ac.kr</>}
-              ></Input>
-              <Button onClick={onAuth} style={{ marginLeft: '8px' }}>
-                인증하기
-              </Button>
+              {Token.isEmailAuthenticated ? (
+                <Input
+                  disabled
+                  value={webMail}
+                  style={{ width: '200px' }}
+                  suffix={<>@hufs.ac.kr</>}
+                ></Input>
+              ) : (
+                <>
+                  <Input
+                    value={webMail}
+                    onChange={(e) => setWebMailInput(e.target.value)}
+                    style={{ width: '200px' }}
+                    suffix={<>@hufs.ac.kr</>}
+                  ></Input>
+                  <Button onClick={onAuth} style={{ marginLeft: '8px' }}>
+                    인증하기
+                  </Button>
+                </>
+              )}
             </div>
 
             {/* 인증 하기, 인증 여부에 따른 disabled 작성 필요 */}

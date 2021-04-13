@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom';
 import { removeItemApi } from '../api';
 
 const ItemReadContainer = ({ match, history }) => {
+  console.log("ItemRead "+ match);
   // match 객체의 params 속성값 참조
   const { id } = match.params;
   // console.log(match.params, id)
@@ -44,7 +45,7 @@ const ItemReadContainer = ({ match, history }) => {
   // console.log(item, isLoading )
 
   return (
-    <ItemRead id={id} item={item} isLoading={isLoading} onRemove={onRemove} />
+    <ItemRead id={id} item={item} isLoading={isLoading} onRemove={onRemove} match = {match} />
   );
 };
 

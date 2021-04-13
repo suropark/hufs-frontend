@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import { useDispatch } from 'react-redux';
 import 'react-quill/dist/quill.snow.css';
-import { postSave } from '../../_actions/post_action';
+import { postSave } from '../../../../_actions/post_action';
 import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import { PUBLIC_IP } from '../../config';
-import { Button, Input } from 'antd';
+import { PUBLIC_IP } from '../../../../config';
+import { Button, Rate } from 'antd';
 
 let uploadedImg = [];
-function PostEdit(props) {
+function ReviewEdit(props) {
   const dispatch = useDispatch();
   useBeforeunload((e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ function PostEdit(props) {
     };
   });
 
-  const [value, setvalue] = useState({ title: '', content: '' });
+  const [value, setvalue] = useState({ title: '', content: '', score: 0 });
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -34,6 +34,7 @@ function PostEdit(props) {
     let body = {
       title: value.title,
       content: value.content,
+      score: value.score
     };
     dispatch(postSave(body, needDelete, boardId.substring(1)))
       .then((response) => {
@@ -70,7 +71,7 @@ function PostEdit(props) {
   return (
     <>
       <div id="community-main">
-        <Input
+        <input
           className="title-bar"
           type="text"
           placeholder="제목"
@@ -79,6 +80,11 @@ function PostEdit(props) {
             setvalue({ ...value, title: e.target.value });
           }}
         />
+        <label>평점 </label>
+        <Rate allowHalf value={value.score} onChange={(e) => {
+            setvalue({ ...value, score: e.target.value });
+          }} />
+        <hr></hr>
         <ReactQuill
           placeholder="하이"
           theme="snow"
@@ -101,7 +107,7 @@ function PostEdit(props) {
           </Button>
           <Button
             type="primary"
-            onClick={onExit}
+            onClick={onSubmit}
             style={{
               margin: '10px',
             }}
@@ -114,7 +120,7 @@ function PostEdit(props) {
   );
 }
 
-export default withRouter(PostEdit);
+export default withRouter(ReviewEdit);
 
 const myToolbar = [
   [{ header: [1, 2, false] }],
@@ -148,7 +154,6 @@ function imageHandler() {
   if (fileInput == null) {
     fileInput = document.createElement('input');
     fileInput.setAttribute('type', 'file');
-    fileInput.setAttribute('name', 'img');
     fileInput.setAttribute(
       'accept',
       'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
@@ -157,7 +162,9 @@ function imageHandler() {
     fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
       const formData = new FormData();
-      formData.append('img', files[0]);
+
+      formData.append('file', files[0]);
+
       const range = this.quill.getSelection(true);
 
       if (!files || !files.length) {
@@ -170,25 +177,16 @@ function imageHandler() {
       // reader.readAsDataURL(files[0]);
       // reader.onload = () => {
       //   this.quill.insertEmbed(range.index, 'image', reader.result);
-      // }; `
+      // };
       //
 
       // this.quill.enable(false);
-      await axios
-        .post(`${PUBLIC_IP}/post/img`, formData, {
-          header: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
 
+      await axios
+        .post(`${PUBLIC_IP}/post/img`, { img: formData })
         .then((response) => {
-          console.log(response);
-          this.quill.editor.insertEmbed(
-            range.index,
-            'image',
-            response.data.data[0],
-          );
-          uploadedImg = uploadedImg.concat(response.data.data[0]);
+          this.quill.editor.insertEmbed(range.index, 'image', response.data);
+          uploadedImg = uploadedImg.concat(response.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';

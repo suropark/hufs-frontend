@@ -4,6 +4,8 @@ import { Table, Empty,Button, Typography } from 'antd';
 const { Text, Title } = Typography;
 
 export default function ItemList({ items, isLoading, match, props }) {
+  console.log("props.match.path "+ props.match.path);
+  console.log("match"+ match);
   const { Column } = Table;
   const { params } = props.match;
   items = [

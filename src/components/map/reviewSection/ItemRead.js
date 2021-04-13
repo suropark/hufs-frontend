@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-export default function ItemRead({ id, item, isLoading, onRemove, match }) {
+export default function ItemRead({ id, item, isLoading, onRemove, match },props) {
+  const history = useHistory();
+  console.log("itemreadcheck" + props.match)
+  
   // 이미지 표시 URL 생성
   const pictureUrl = () => {
     return `/items/display?id=${id}&timestamp=${new Date().getTime()}`;
@@ -54,17 +57,15 @@ export default function ItemRead({ id, item, isLoading, onRemove, match }) {
           </table>
         </>
       )}
-      <Link to={`${match.path}/edit/${id}`} className="like-a-button">
+      {/* <Link to={`${match.url}/edit/${id}`} className="like-a-button">
         편집
-      </Link>
+      </Link> */}
       &nbsp;
       <button onClick={onRemove} className="like-a-button danger">
         삭제
       </button>
       &nbsp;
-      <Link to={`${match.path}`} className="like-a-button">
-        목록
-      </Link>
+      <button onClick={() => history.goBack()}>목록</button>
     </div>
   );
 }

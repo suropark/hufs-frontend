@@ -5,19 +5,16 @@ import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
 
 import { withRouter } from 'react-router-dom';
-import { postUpdate, postView } from '../../_actions/post_action';
+import { postUpdate, postView } from '../../../../_actions/post_action';
 import axios from 'axios';
-import { PUBLIC_IP } from '../../config';
-import Footer from '../../views/Footer/Footer';
-import Header from '../../views/Header/Header';
-import Quick from '../../views/Quick/Quick';
-import { Skeleton, Button } from 'antd';
+import { PUBLIC_IP } from '../../../../config';
+import { Skeleton, Button, Rate } from 'antd';
 
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
 let uploadedImg = [];
-function PostUpdate({ match, history }) {
+function ReviewUpdate({ match, history }) {
   const dispatch = useDispatch();
   const [updated, setUpdated] = useState(false);
   useBeforeunload((e) => {
@@ -26,7 +23,7 @@ function PostUpdate({ match, history }) {
       axios.post(`${PUBLIC_IP}/post/back`, { url: uploadedImg });
     };
   });
-  useEffect(() => {
+  useEffect(async () => {
     dispatch(postView(+match.params.id))
       .then((response) => {
         if (response.status === 200) {
@@ -38,6 +35,7 @@ function PostUpdate({ match, history }) {
           setUpdated({
             title: response.payload.title,
             content: response.payload.content,
+            score: response.payload.score,
           });
           wholeImg = wholeImg.concat(firstImg);
         }
@@ -102,7 +100,7 @@ function PostUpdate({ match, history }) {
     }
   };
 
-  useEffect(() => {}, [updated]);
+  useEffect(() => { }, [updated]);
 
   return (
     <>
@@ -119,6 +117,11 @@ function PostUpdate({ match, history }) {
                 setUpdated({ ...updated, title: e.target.value })
               }
             />
+            <label>평점 </label>
+        <Rate allowHalf value={updated.score} onChange={(e) => {
+            setUpdated({ ...updated, score: e.target.value });
+          }} />
+        <hr></hr>
             <ReactQuill
               className="1"
               placeholder="하이"
@@ -160,7 +163,7 @@ function PostUpdate({ match, history }) {
   );
 }
 
-export default withRouter(PostUpdate);
+export default withRouter(ReviewUpdate);
 
 const myToolbar = [
   [{ header: [1, 2, false] }],
@@ -194,13 +197,12 @@ function imageHandler() {
   if (fileInput == null) {
     fileInput = document.createElement('input');
     fileInput.setAttribute('type', 'file');
-    fileInput.setAttribute('name', 'img');
     fileInput.setAttribute(
       'accept',
       'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
     );
     fileInput.classList.add('ql-image');
-    fileInput.addEventListener('change', async () => {
+    fileInput.addEventListener('change', () => {
       const files = fileInput.files;
       const range = this.quill.getSelection(true);
 
@@ -219,19 +221,16 @@ function imageHandler() {
 
       const formData = new FormData();
       formData.append('file', files[0]);
+      console.log(formData);
       // this.quill.enable(false);
 
-      await axios
-      .post(`${PUBLIC_IP}/post/img`, formData, {
-        header: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      axios
+        .post(`${PUBLIC_IP}/post/img`, { img: formData })
         .then((response) => {
           this.quill.enable(true);
-          this.quill.editor.insertEmbed(range.index, 'image', response.data.data[0]);
-          wholeImg = wholeImg.concat(response.data.data[0]);
-          uploadedImg = uploadedImg.concat(response.data.data[0]);
+          this.quill.editor.insertEmbed(range.index, 'image', response.data);
+          wholeImg = wholeImg.concat(response.data);
+          uploadedImg = uploadedImg.concat(response.data);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';

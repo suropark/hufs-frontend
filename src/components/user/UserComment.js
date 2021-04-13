@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 import { Table } from 'antd';
 function UserComment() {
   const { Column } = Table;
-  const { myReplies } = useSelector((state) => state.user); //  유저 리듀서에 있는 유저 정보 가져오기?
+  const { Replies } = useSelector((state) => state.user); //  유저 리듀서에 있는 유저 정보 가져오기?
 
   return (
     <div>
-      <Table pagination={false} dataSource={myReplies}>
+      <Table pagination={false} dataSource={Replies}>
         <Column title="-" dataIndex="id" key="id" />
         <Column
           title="내가 쓴 댓글"
@@ -32,8 +32,8 @@ function UserComment() {
             <th>게시글</th>
           </tr>
         </thead>
-        {myReplies
-          ? myReplies.map((comment, index) => {
+        {Replies
+          ? Replies.map((comment, index) => {
               return (
                 <tr key={index}>
                   <td>{comment.id}</td>
