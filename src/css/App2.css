@@ -112,7 +112,7 @@
   width: 85%;
   height: 90%;
   left: 7%;
-  top: 6%;
+  top: 12%;
 }
 
 #root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {
@@ -161,6 +161,7 @@ Search {
   height: 44%;
 }
 .ant-list.ant-list-split.ant-list-bordered {
-  height: 45%;
-  overflow: scroll;
+  height: 43%;
+  overflow-y: scroll;
+  top: 13%;
 }
