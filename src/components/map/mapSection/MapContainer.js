@@ -41,19 +41,21 @@ const MapContainer = ({match}) => {
 
         <div className="content" >
 
-          <div id="seoul" defaultSelectedKeys={['1']}>
-            <Button type="text" id="button-head" key="1">Seoul</Button>
-            <Button type="text" onClick={(e) => {setData(storeSeoul);
+          <div id="seoul" defaultSelectedKeys={['1']}
+          onClick={(e) => {setData(storeSeoul);
             setLat(37.59732049638715);
-          setLng(127.0588283395548)}} >맛집공간</Button>
+          setLng(127.0588283395548)}}>
+            <Button type="text" id="button-head" key="1">Seoul</Button>
+            <Button type="text"  >맛집공간</Button>
 
           </div>
-          <div id="global" defaultSelectedKeys={['2']}>
-            <Button type="text" id="button-head" key="2">Global</Button>
-            <Button type="text" onClick={(e) => {setData(storeGlobal);
+          <div id="global" defaultSelectedKeys={['2']}
+          onClick={(e) => {setData(storeGlobal);
             setLat(37.336538181222245);
             setLng(127.25253858610613);
-            }}>맛집공간</Button>
+            }}>
+            <Button type="text" id="button-head" key="2">Global</Button>
+            <Button type="text" >맛집공간</Button>
 
           </div>
 
