@@ -67,7 +67,7 @@ function CommentList({ comments, history }) {
   return (
     <div
       className="comment-body"
-    // style={{ width: '900px' }}
+
     >
       <List
         className="comment-list"
@@ -77,7 +77,7 @@ function CommentList({ comments, history }) {
         renderItem={(item) => (
           <li>
             <Comment
-              className="comment-comment"
+
               actions={item.actions}
               author={item.User === null ? '탈퇴한 사용자' : item.User.nickname}
               avatar={<Avatar icon={<UserOutlined />} />}

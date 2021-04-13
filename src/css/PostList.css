@@ -79,6 +79,8 @@ table th {
 /* .comment-body {
   height: ;
 } */
+
+/* 글부분 + 댓글 부분 파트 분할 */
 .ant-card.ant-card-bordered {
   height: 100%;
 }
@@ -88,4 +90,41 @@ table th {
 
 .ant-card.ant-card-bordered > .ant-card-body {
   height: 90%;
+}
+/* 댓글 전체부분 */
+.comment-body {
+  overflow: scroll;
+  height: 45%;
+}
+
+/* 댓글  */
+.ant-comment-inner {
+  padding: 6px 0;
+}
+
+/* 댓글 쓰고 제출부분 */
+.comment-input {
+  width: 90%;
+  height: 13%;
+  position: absolute;
+}
+/* .ant-input-textarea.ant-input-textarea-show-count {
+  width: 90% !important;
+  height: 100% !important;
+} */
+.comment-textarea {
+  display: inline-block;
+  width: 90%;
+  height: 100%;
+}
+.comment-textarea textarea {
+  height: 100% !important;
+  min-height: none !important;
+  max-height: none !important;
+  overflow-y: scroll !important;
+}
+.comment-input button {
+  width: 10% !important ;
+  height: 11% !important;
+  position: absolute;
 }
