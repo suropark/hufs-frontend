@@ -72,7 +72,6 @@ function Header(props) {
       </div>
       {/* <img src={mainboo} className="Image" alt="이미지 들어갈 곳" /> */}
       <span className="loginbar">
-
         {Cookies.get('G_AUTHUSER_H') ? <Logout /> : <SignUp />}
 
         <Button type="text">
