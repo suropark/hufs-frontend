@@ -26,7 +26,7 @@ function PostUpdate({ match, history }) {
       axios.post(`${PUBLIC_IP}/post/back`, { url: uploadedImg });
     };
   });
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(postView(+match.params.id))
       .then((response) => {
         if (response.status === 200) {
@@ -102,7 +102,7 @@ function PostUpdate({ match, history }) {
     }
   };
 
-  useEffect(() => { }, [updated]);
+  useEffect(() => {}, [updated]);
 
   return (
     <>
@@ -194,6 +194,7 @@ function imageHandler() {
   if (fileInput == null) {
     fileInput = document.createElement('input');
     fileInput.setAttribute('type', 'file');
+    fileInput.setAttribute('name', 'img');
     fileInput.setAttribute(
       'accept',
       'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
@@ -218,16 +219,19 @@ function imageHandler() {
 
       const formData = new FormData();
       formData.append('file', files[0]);
-      console.log(formData);
       // this.quill.enable(false);
 
-      axios
-        .post(`${PUBLIC_IP}/post/img`, { img: formData })
+      await axios
+      .post(`${PUBLIC_IP}/post/img`, formData, {
+        header: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
         .then((response) => {
           this.quill.enable(true);
-          this.quill.editor.insertEmbed(range.index, 'image', response.data);
-          wholeImg = wholeImg.concat(response.data);
-          uploadedImg = uploadedImg.concat(response.data);
+          this.quill.editor.insertEmbed(range.index, 'image', response.data.data[0]);
+          wholeImg = wholeImg.concat(response.data.data[0]);
+          uploadedImg = uploadedImg.concat(response.data.data[0]);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
