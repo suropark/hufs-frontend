@@ -79,6 +79,8 @@ table th {
 /* .comment-body {
   height: ;
 } */
+
+/* 글부분 + 댓글 부분 파트 분할 */
 .ant-card.ant-card-bordered {
   height: 100%;
 }
@@ -88,4 +90,13 @@ table th {
 
 .ant-card.ant-card-bordered > .ant-card-body {
   height: 90%;
+}
+/* 댓글 전체부분 */
+.comment-body {
+  overflow: scroll;
+}
+
+/* 댓글  */
+.ant-comment-inner {
+  padding: 6px 0;
 }
