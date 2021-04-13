@@ -36,17 +36,17 @@ function Header(props) {
   const menu4 = (
     <Menu>
       <Menu.Item>
-        <Link to="/calendar">장학공간</Link>
+        <Link to="/4">장학공간</Link>
       </Menu.Item>
     </Menu>
   );
   const menu5 = (
     <Menu>
       <Menu.Item>
-        <Link to="/map">서울</Link>
+        <Link to="/5">서울</Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="/map">글로벌</Link>
+        <Link to="/5">글로벌</Link>
       </Menu.Item>
     </Menu>
   );
