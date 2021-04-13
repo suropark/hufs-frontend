@@ -23,11 +23,11 @@ function MapPage({ match }) {
             path={`${match.path}/info/:name/:id/ReviewPage`}
             component={ReviewPage}
           />
-          <Route
+          {/*<Route
             exact
             path={`${match.path}/info/:name/:id`}
             component={inforPage}
-          />
+          />*/}
         </Switch>
       </BrowserRouter>
       <Footer />
