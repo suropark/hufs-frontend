@@ -72,7 +72,7 @@ function Header(props) {
       </div>
       {/* <img src={mainboo} className="Image" alt="이미지 들어갈 곳" /> */}
       <span className="loginbar">
-        {Cookies.get('user') === undefined ? <SignUp /> : <Logout />}
+        {Cookies.get('G_AUTHUSER_H') ? <Logout /> : <SignUp />}
         <Button type="text">
           <Link style={{ color: 'rgba(0, 0, 0, 0.85)' }} to="/mypage">
             My page
