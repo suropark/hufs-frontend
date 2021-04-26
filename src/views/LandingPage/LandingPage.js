@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Quick from '../Quick/Quick';
 import Footer from '../Footer/Footer';
 import Slide from '../../components/slide/Slide';
+import SearchAll from '../../components/post/SearchAll';
 import CalendarMainPage from '../../components/calendar/CalendarMainPage';
 function LandingPage(props) {
   return (
@@ -11,7 +12,9 @@ function LandingPage(props) {
       <Header />
       <Quick />
       <div className="Main">
+        <SearchAll />
         <div className="Mainbanner">
+
           <Slide />
         </div>
         <div className="MainCalendar">

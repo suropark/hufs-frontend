@@ -43,7 +43,7 @@ function SearchAll(props) {
   };
   return (
     <span id="Searchbar" >
-      <Select
+      {/* <Select
         defaultValue="제목"
         style={{ width: 80 }}
         onChange={(e) => setSearchType(e)}
@@ -52,7 +52,7 @@ function SearchAll(props) {
         <Option value="title">제목</Option>
         <Option value="content">내용</Option>
         <Option value="nick">닉네임</Option>
-      </Select>
+      </Select> */}
       <Search
         placeholder="검색창"
         allowClear

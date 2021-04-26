@@ -6,9 +6,8 @@ import { Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import SignUp from '../../components/login/SignUp';
 import Logout from '../../components/login/Logout';
-import SearchAll from '../../components/post/SearchAll';
 import Cookies from 'js-cookie';
-const { Search } = Input;
+
 
 function Header(props) {
   const menu1 = (
@@ -40,29 +39,10 @@ function Header(props) {
       </Menu.Item>
     </Menu>
   );
-  // const menu5 = (
-  //   <Menu>
-  //     <Menu.Item>
-  //       <Link to="/5">서울</Link>
-  //     </Menu.Item>
-  //     <Menu.Item>
-  //       <Link to="/5">글로벌</Link>
-  //     </Menu.Item>
-  //   </Menu>
-  // );
-  // const menu6 = (
-  //   <Menu>
-  //     <Menu.Item>
-  //       <Link to="/6">
-  //         자유공간
-  //         </Link>
-  //     </Menu.Item>
 
-  //   </Menu >
-  // )
 
-  const onSearch = (value) => console.log(value);
-  const { Search } = Input;
+  // const onSearch = (value) => console.log(value);
+  // const { Search } = Input;
   return (
     <div className="Head">
       <div className="Pagename">
@@ -81,7 +61,7 @@ function Header(props) {
         </Button>
         {/* <Button type="text">언어 선택</Button> */}
       </span>
-      <SearchAll />
+
 
       <Space direction="vertical">
         <Space id="Menubar">
@@ -120,51 +100,3 @@ function Header(props) {
 }
 
 export default withRouter(Header);
-// {
-//   /* <Dropdown overlay={menu}> */
-// }
-// <Button type="default"></Button>;
-// {
-//   /* </Dropdown> */
-// }
-// {
-//   /* <Dropdown overlay={menu}> */
-// }
-// <Button type="default"></Button>;
-// {
-//   /* </Dropdown> */
-// }
-// {
-//   /* <Dropdown overlay={menu}> */
-// }
-// <Button type="default" onClick={(e) => props.history.push('/3')}></Button>;
-// {
-//   /* </Dropdown> */
-// }
-// {
-//   /* <Dropdown overlay={menu}> */
-// }
-// <Button type="default" onClick={(e) => props.history.push('/4')}>
-//   <Link to="/4">학교 떠난 Boo </Link>
-// </Button>;
-// {
-//   /* </Dropdown> */
-// }
-// {
-//   /* <Dropdown overlay={menu}> */
-// }
-// <Button type="default" onClick={(e) => props.history.push('/5')}>
-//   <Link to="/5"> 정면승 Boo </Link>
-// </Button>;
-// {
-//   /* </Dropdown> */
-// }
-// {
-//   /* <Dropdown overlay={menu}> */
-// }
-// <Button type="default" onClick={(e) => props.history.push('/6')}>
-//   <Link to="/6">이거 모르면 바 Boo </Link>
-// </Button>;
-// {
-//   /* </Dropdown> */
-// }
