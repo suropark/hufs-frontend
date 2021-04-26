@@ -43,17 +43,17 @@
   height: 60%;
   left: 45%;
 }
-/* 여기서 부터 수정필요 */
+
 .ant-space-item {
   position: relative;
 }
 .ant-space.ant-space-vertical {
   /* MenuBar */
-  left: 28%;
+  left: 24%;
   position: relative;
   width: 850px;
   height: 50%;
-  top: 40px;
+  top: 50px;
 
   /* Auto Layout */
   align-items: center;
@@ -75,22 +75,26 @@
 
   position: absolute;
 
-  width: 30%;
+  width: 25%;
   right: 1%;
+  height: 30px;
   top: 0%;
 }
 
+/* 검색 상위 */
 .ant-input-group-wrapper.ant-input-search {
   width: 100%;
+  height: 100%;
 }
+
 .Head > .loginbar {
   /* 로그인 */
 
   position: absolute;
 
-  width: 23%;
+  width: 20%;
   height: 25%;
-  left: 75%;
+  right: 0%;
 }
 
 .Main {
@@ -117,7 +121,7 @@
   width: 100%;
   height: 30%;
 
-  top: 38%;
+  top: 40%;
   /* background: #aba85e; */
 }
 
