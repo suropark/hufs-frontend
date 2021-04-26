@@ -91,6 +91,7 @@ function CalendarMainPage(props) {
   return (
     <div>
       <div className="site-calendar-demo-card">
+
         <Calendar
           dateCellRender={scholar ? dateCellRender : null}
           // monthCellRender={monthCellRender}
