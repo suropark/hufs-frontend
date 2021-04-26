@@ -3,6 +3,11 @@
 :root {
   /* 색 */
   --navy-color: #030a66;
+  --white-color: #ffffff;
+  --black-color: #0a0a0a;
+
+  /* 사이즈 */
+  --logo-size: 75px;
 }
 .Head {
   position: relative;
