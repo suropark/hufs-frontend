@@ -314,7 +314,9 @@ return (
     history.push( { // map/info/:name/24시해장국/reviewpage
       pathname:`${match.path}/info/${name}/${id}/ReviewPage`,
       state: {
-      id:id}}
+      id:id,
+      name : name,
+      }}
       );}}>
       리뷰 보러가기</Button>
       {/*<ItemListContainer/>*/}

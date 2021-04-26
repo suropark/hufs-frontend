@@ -11,6 +11,7 @@ import { Button, Rate } from 'antd';
 
 let uploadedImg = [];
 function ReviewEdit(props) {
+  console.log(props.location.state.name);
   const dispatch = useDispatch();
   useBeforeunload((e) => {
     e.preventDefault();
@@ -30,13 +31,14 @@ function ReviewEdit(props) {
     ).map((img) => img.getAttribute('src'));
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
+    let rstrnId = props.location.state.id;
     let boardId = props.location.state.detail;
     let body = {
       title: value.title,
       content: value.content,
       score: value.score
     };
-    dispatch(postSave(body, needDelete, boardId.substring(1)))
+    dispatch(postSave(body, needDelete,rstrnId, boardId.substring(1)))
       .then((response) => {
         if (response.status === 200) {
           props.history.goBack();
@@ -82,7 +84,8 @@ function ReviewEdit(props) {
         />
         <label>평점 </label>
         <Rate allowHalf value={value.score} onChange={(e) => {
-            setvalue({ ...value, score: e.target.value });
+          console.log(e);
+            setvalue({ ...value, score: e });
           }} />
         <hr></hr>
         <ReactQuill

@@ -20,11 +20,7 @@ function UserInfo(props) {
   } = useSelector((state) => state.user);
   const [mainMajorList, setMainMajorList] = useState([]);
   const [doubleMajorList, setDoubleMajorList] = useState([]);
-  const [change, setChange] = useState({
-    nickName: nickName,
-    MainMajorId: MainMajor,
-    DoubleMajorId: DoubleMajor,
-  });
+  const [change, setChange] = useState({});
   const [webMailInput, setWebMailInput] = useState(webMail);
 
   useEffect(async () => {
@@ -37,6 +33,12 @@ function UserInfo(props) {
         setMainMajorList(response[0].data.data);
         setDoubleMajorList(response[1].data.data);
       });
+
+    setChange({
+      nickname: nickName,
+      mainMajorId: MainMajor.id,
+      doubleMajorId: DoubleMajor.id,
+    });
   }, []);
   const onSubmit = () => {
     const answer = window.confirm('변경은 한 번 ');
@@ -68,10 +70,10 @@ function UserInfo(props) {
     }
   };
   function MainMajorChange(value) {
-    setChange({ ...change, majorId: value });
+    setChange({ ...change, mainMajorId: value });
   }
   function DoubleMajorChange(value) {
-    setChange({ ...change, secondMajorId: value });
+    setChange({ ...change, doubleMajorId: value });
   }
 
   const onAuth = async () => {
@@ -97,7 +99,7 @@ function UserInfo(props) {
   return (
     // google, kakao 연동 필요.
     <div>
-      {!webMail ? (
+      {!nickName ? (
         <h3>로딩 중...</h3>
       ) : (
         <>

@@ -139,24 +139,24 @@ function ReviewView({ match, history }) {
   //       }
   //     });
   // };
-  function findBoardName(boardId) {
-    switch (boardId) {
-      case 1:
-        return '1 게시판';
-      case 2:
-        return '2 게시판';
-      case 3:
-        return '3 게시판';
-      case 4:
-        return '4 게시판';
-      case 5:
-        return '5 게시판';
-      case 6:
-        return '6 게시판';
-      default:
-        break;
-    }
-  }
+  // function findBoardName(boardId) {
+  //   switch (boardId) {
+  //     case 1:
+  //       return '1 게시판';
+  //     case 2:
+  //       return '2 게시판';
+  //     case 3:
+  //       return '3 게시판';
+  //     case 4:
+  //       return '4 게시판';
+  //     case 5:
+  //       return '5 게시판';
+  //     case 6:
+  //       return '6 게시판';
+  //     default:
+  //       break;
+  //   }
+  // }
   return (
     <div className="community-main">
       <div className="community-box">

@@ -218,7 +218,7 @@ export const postSearch = async (boardId, keyword, option) => {
 };
 
 export const searchAll = async (keyword, option) => {
-  const request = axios.get(`${PUBLIC_IP}/search`, null, {
+  const request = axios.get(`${PUBLIC_IP}/search`, {
     params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
   });
 

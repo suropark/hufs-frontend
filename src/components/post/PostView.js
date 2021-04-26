@@ -13,7 +13,7 @@ import {
 import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
-import { Card, PageHeader, Skeleton } from 'antd';
+import { Card, message, PageHeader, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
@@ -124,7 +124,9 @@ function PostView({ match, history }) {
   const onScrap = () => {
     dispatch(postScrap(post.id))
       .then((response) => {
-        alert('스크랩에 성공했습니다. 마이페이지에서 확인할 수 있습니다.');
+        message.success(
+          '스크랩에 성공했습니다. 마이페이지에서 확인할 수 있습니다.',
+        );
       })
       .catch((error) => {
         switch (error.response.status) {
@@ -195,7 +197,7 @@ function PostView({ match, history }) {
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
               className="board-content"
-            // style={{ display: 'inline-block', minHeight: '300px' }}
+              // style={{ display: 'inline-block', minHeight: '300px' }}
             />
             <div>
               {/* 추천 수: {post.like}
