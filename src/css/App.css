@@ -1,12 +1,18 @@
 @import '~antd/dist/antd.css';
 
+:root {
+  /* 색 */
+  --navy-color: #030a66;
+}
 .Head {
   position: relative;
   left: 15%;
   width: 1120px;
   height: 140px;
 }
-
+.ant-menu-horizontal > .ant-menu-item a {
+  color: var(--navy-color);
+}
 .Head > .Pagename {
   /* 페이지 이름 */
 
@@ -41,23 +47,24 @@
 .ant-space-item {
   position: relative;
 }
-#Menubar {
+.ant-space.ant-space-vertical {
   /* MenuBar */
+  left: 28%;
+  position: relative;
+  width: 850px;
+  height: 50%;
+  top: 40px;
 
   /* Auto Layout */
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  /* align-content: center; */
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-
-  width: 850px;
-  height: 57%;
-  left: 32%;
-  top: 60px;
 }
+/* #Menubar {
+  position: relative; 
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+} */
 /* 서브메뉴 사이즈 */
 .ant-dropdown-menu.ant-dropdown-menu-light.ant-dropdown-menu-root.ant-dropdown-menu-vertical {
   width: 120%;
