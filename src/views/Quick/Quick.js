@@ -6,12 +6,12 @@ const { SubMenu } = Menu;
 
 function Quick() {
 
-
-
   const handleClick = e => {
     console.log('click ', e);
   };
+
   return (
+
     <Menu
       onClick={handleClick}
 
@@ -28,17 +28,9 @@ function Quick() {
       </SubMenu>
     </Menu >
 
+
   );
 }
-{/* <Anchor>
-        <Link
-          href="https://wis.hufs.ac.kr/src08/jsp/index.jsp"
-          target="_blank"
-          title="종합정보시스템"
-        />
-        <Link href="#components-anchor-demo-static" title="시간표" />
-        <Link href="#Anchor-Props" title="장학 게시판" />
-        <Link href="#Link-Props" title="과 게시판" />
-      </Anchor> */}
+
 
 export default Quick;

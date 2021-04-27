@@ -1,28 +1,40 @@
+@media (max-width: 1400px) {
+  .Head,
+  .Footer,
+  .community-main {
+    left: 3%;
+  }
+  .Main {
+    left: 1%;
+  }
+  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+    left: 99%;
+  }
+}
 @media (max-width: 1280px) {
   .Head {
-    width: 86%;
+    left: 2%;
+    width: 80%;
     max-width: 1280px;
   }
   .Head > .loginbar {
-    left: 65%;
-    width: 30%;
+    width: 20%;
+  }
+  .ant-space.ant-space-vertical {
+    left: 20%;
+  }
+  .community-main {
+    left: 2%;
   }
 
-  #Searchbar {
-    width: 350px;
-    right: 12%;
-    height: 38px;
-    margin-top: 5px;
-    display: flex;
-  }
-  #Searchbar > .ant-input-group-wrapper.ant-input-search {
-    width: 300px;
-  }
   #Menubar {
     left: 28%;
     padding: 0px;
   }
   /* 달력부분 조절 */
+  .Main {
+    left: 2%;
+  }
   .Main > .MainCalendar {
     width: 90%;
     left: 3%;
@@ -40,6 +52,9 @@
   .ant-picker-cell .events {
     padding: 0 0;
   }
+  .Main > .Mainbanner {
+    width: 90%;
+  }
   /* .ant-badge.ant-badge-status.ant-badge-not-a-wrapper {
     display: flex;
   } */
@@ -47,12 +62,12 @@
   .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
     position: absolute;
     text-align: left;
-    width: 160px;
     height: 206px;
-    top: 224px;
-    left: 2%;
+    left: 94.5%;
   }
-
+  #Searchbar {
+    right: 7%;
+  }
   .ant-breadcrumb {
     font-size: 12px;
   }
@@ -67,6 +82,7 @@
   }
 
   .Footer {
+    left: 2%;
     width: 75%;
   }
 }

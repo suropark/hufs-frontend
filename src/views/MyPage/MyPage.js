@@ -57,7 +57,7 @@ function MyPage(props) {
   return (
     <>
       <Header1 />
-      <Quick />
+
       <div className="community-main">
         {/* <Card title="마이 페이지" /> */}
         <Layout
