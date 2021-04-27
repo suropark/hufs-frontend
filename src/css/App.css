@@ -82,7 +82,7 @@
   position: absolute;
 
   width: 25%;
-  right: 1%;
+  right: 2%;
   height: 30px;
   top: 0%;
 }
@@ -98,7 +98,7 @@
 
   position: absolute;
 
-  width: 15%;
+  width: 20%;
   height: 25%;
   right: 0%;
 }
@@ -115,9 +115,9 @@
 /* 반응형 배너 사이즈 조절  필요 */
 .Main > .Mainbanner {
   position: absolute;
-  width: 100%;
+  width: 95%;
   height: 34%;
-  left: 1%;
+  left: 3%;
   top: 4%;
 }
 .Main > .MainCalendar {
@@ -159,10 +159,10 @@
 .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
   position: absolute;
   text-align: left;
-  width: 170px;
+  width: 160px;
   height: 206px;
-
-  right: 15%;
+  top: 120px;
+  left: 102%;
 }
 .ant-menu-submenu.ant-menu-submenu-inline {
   border: 1px solid var(--navy-color);
