@@ -7,6 +7,10 @@
   .Main {
     left: 1%;
   }
+  /* .Map {
+    left: 2%;
+    right: inherit;
+  } */
   .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
     left: 99%;
   }
