@@ -155,14 +155,17 @@
   /* background: #f0d0d0; */
 }
 
-/* 오른쪽 부유 바 */
+/* 오른쪽 퀵메뉴*/
 .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
   position: absolute;
   text-align: left;
-  width: 180px;
+  width: 170px;
   height: 206px;
-  top: 224px;
-  right: 8%;
+
+  right: 15%;
+}
+.ant-menu-submenu.ant-menu-submenu-inline {
+  border: 1px solid var(--navy-color);
 }
 .ant-menu-inline,
 .ant-menu-vertical,
