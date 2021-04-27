@@ -7,7 +7,8 @@ import Slide from '../../components/slide/Slide';
 import SearchAll from '../../components/post/SearchAll';
 import CalendarMainPage from '../../components/calendar/CalendarMainPage';
 function LandingPage(props) {
-  const opner = 'https://hufspace.com/';
+  const now_url = window.location.href;
+  console.log(now_url);
 
   return (
     <div>
@@ -15,7 +16,7 @@ function LandingPage(props) {
 
       <div className="Main">
         <SearchAll />
-        {opner === 'https://hufspace.com/' ? <Quick /> : null}
+        {now_url === 'http://localhost:3000/' ? <Quick /> : null}
         {/* <Quick /> */}
         <div className="Mainbanner">
 

@@ -5,9 +5,6 @@ import { MailOutlined } from '@ant-design/icons';
 const { SubMenu } = Menu;
 
 function Quick() {
-  // const [forMain, setforMain] = useState(true)
-
-
 
   const handleClick = e => {
     console.log('click ', e);
