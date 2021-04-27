@@ -15,12 +15,12 @@ const SignUpModal = (props) => {
   const [submit, setSubmit] = useState({
     // email: Cookies.get('email'),
     email: props.location.state.email,
+    provider: props.location.state.provider,
     nickname: '',
     webMail: '',
     mainMajorId: 1,
     doubleMajorId: 2,
     isAgreed: false,
-    provider: props.location.state.provider,
   });
 
   useEffect(async () => {
@@ -176,9 +176,10 @@ const SignUpModal = (props) => {
             ]}
           >
             <Checkbox
-              onClick={(event) =>
+              onChange={(event) => {
                 setSubmit({ ...submit, isAgreed: event.target.checked })
-              }
+                console.log(event.target.checked, submit.isAgreed);
+              }}
             >
               
               동의합니다

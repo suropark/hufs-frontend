@@ -24,31 +24,37 @@ function PostList(props) {
 
   return (
     <>
-      <table className="community-main">
-        <PageHeader title="몇 건의 결과가 있니" subTitle="설명" />{' '}
-        <div className="community-box">
-          <TableBody
-            currentList={posts.slice(firstIndex, lastIndex)}
-            match={props.match}
-            loading={loading}
-          />
-        </div>
-      </table>
-      <div className="bottom">
-        <ReactPaginate
-          pageCount={Math.ceil(posts.length / 10)}
-          pageRangeDisplayed={5}
-          marginPagesDisplayed={0}
-          breakLabel={''}
-          previousLabel={'이전'}
-          nextLabel={'다음'}
-          onPageChange={(event) => setCurrentPage(event.selected + 1)}
-          containerClassName={'pagination-ul'}
-          activeClassName={'currentPage'}
-          previousClassName={'pageLabel-btn'}
-          nextClassName={'pageLabel-btn'}
-        />
-      </div>
+      {props.location.state.detail ? (
+        <>
+          <table className="community-main">
+            <PageHeader title="몇 건의 결과가 있니" subTitle="설명" />{' '}
+            <div className="community-box">
+              <TableBody
+                currentList={posts.slice(firstIndex, lastIndex)}
+                match={props.match}
+                loading={loading}
+              />
+            </div>
+          </table>
+          <div className="bottom">
+            <ReactPaginate
+              pageCount={Math.ceil(posts.length / 10)}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={0}
+              breakLabel={''}
+              previousLabel={'이전'}
+              nextLabel={'다음'}
+              onPageChange={(event) => setCurrentPage(event.selected + 1)}
+              containerClassName={'pagination-ul'}
+              activeClassName={'currentPage'}
+              previousClassName={'pageLabel-btn'}
+              nextClassName={'pageLabel-btn'}
+            />
+          </div>{' '}
+        </>
+      ) : (
+        <>X</>
+      )}
     </>
   );
 }

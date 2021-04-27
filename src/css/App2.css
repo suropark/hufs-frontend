@@ -15,7 +15,7 @@
   left: 15%;
   top: 30px;
 
-  background: #eda6a6;
+  background: #d88bbe;
 }
 
 .Map-left > .navi {
@@ -112,7 +112,7 @@
   width: 85%;
   height: 90%;
   left: 7%;
-  top: 12%;
+  top: 7%;
 }
 
 #root > div > div.Main > div.MainCalendar > div > div:nth-child(2) > div {

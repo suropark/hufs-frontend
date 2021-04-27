@@ -34,7 +34,7 @@ function App() {
         <Route path="/4" component={CalendarPage} />
         <Route path="/5" component={MapPage} />
         <Route path="/6" component={Post} />
-        <Route path="/redirect" component={SignUpModal} />
+        {/* <Route path="/redirect" component={SignUpModal} /> */}
         <Route path="/mypage" component={MyPage} />
         <Route path="/email" component={EmailAuthPage} />
         <Route path="*" component={Page404} />
