@@ -9,7 +9,7 @@ import { Button, Breadcrumb } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 
 
-const MapContainer = ({match}) => {
+const MapContainer = ({ match }) => {
   const [data, setData] = useState(storeSeoul);
   const [lat, setLat] = useState(37.59732049638715); // default 서울캠
   const [lng, setLng] = useState(127.0588283395548);
@@ -26,7 +26,7 @@ const MapContainer = ({match}) => {
   return (
     <div className="Map">
       <div className="Map-left">
-        <div className="navi">
+        {/* <div className="navi">
 
           <Breadcrumb>
             <Breadcrumb.Item href="http://localhost:3000/">
@@ -37,23 +37,26 @@ const MapContainer = ({match}) => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>Now</Breadcrumb.Item>
           </Breadcrumb>
-        </div>
+        </div> */}
 
         <div className="content" >
 
           <div id="seoul" defaultSelectedKeys={['1']}>
             <Button type="text" id="button-head" key="1">Seoul</Button>
-            <Button type="text" onClick={(e) => {setData(storeSeoul);
-            setLat(37.59732049638715);
-          setLng(127.0588283395548)}} >맛집공간</Button>
+            <Button type="text" onClick={(e) => {
+              setData(storeSeoul);
+              setLat(37.59732049638715);
+              setLng(127.0588283395548)
+            }} >맛집 공간</Button>
 
           </div>
           <div id="global" defaultSelectedKeys={['2']}>
             <Button type="text" id="button-head" key="2">Global</Button>
-            <Button type="text" onClick={(e) => {setData(storeGlobal);
-            setLat(37.336538181222245);
-            setLng(127.25253858610613);
-            }}>맛집공간</Button>
+            <Button type="text" onClick={(e) => {
+              setData(storeGlobal);
+              setLat(37.336538181222245);
+              setLng(127.25253858610613);
+            }}>맛집 공간</Button>
 
           </div>
 
@@ -65,7 +68,7 @@ const MapContainer = ({match}) => {
       <div className="up-down" />
       <div className="Map-main">
         <div id="KaKaoMap">
-          <KaKaoMap lat = {lat} lng = {lng}/>
+          <KaKaoMap lat={lat} lng={lng} />
         </div>
         <div id="Food-list">
           <SearchBar
@@ -78,7 +81,7 @@ const MapContainer = ({match}) => {
           <div className="itemContainer">
 
             {data.mydata ? data.mydata.map((d, index) => (
-              <Card id="aa" {...d} key={index} match = {match}/>
+              <Card id="aa" {...d} key={index} match={match} />
             )) : <h1>null</h1>}
           </div>
         </div>

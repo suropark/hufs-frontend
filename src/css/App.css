@@ -129,9 +129,9 @@
 /* 반응형 배너 사이즈 조절  필요 */
 .Main > .Mainbanner {
   position: absolute;
-  width: 95%;
+  width: 94%;
   height: 34%;
-  left: 2%;
+  left: 3%;
   top: 2%;
 }
 .Main > .MainCalendar {
