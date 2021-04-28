@@ -130,7 +130,7 @@ export function TableBody({ currentList, match, loading }) {
     <>
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
-          <Column title="-" dataIndex="id" key="id" />
+          <Column title="글 번호" dataIndex="id" key="id" />
           <Column
             title="제목"
             key="title"
