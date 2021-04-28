@@ -15,28 +15,28 @@ function Header(props) {
   const menu1 = (
     <Menu>
       <Menu.Item>
-        <Link to="/1">자유공간</Link>
+        <Link to="/1">자유 공간</Link>
       </Menu.Item>
     </Menu>
   );
   const menu2 = (
     <Menu>
       <Menu.Item>
-        <Link to="/2">졸업생공간</Link>
+        <Link to="/2">졸업생 공간</Link>
       </Menu.Item>
     </Menu>
   );
   const menu3 = (
     <Menu>
       <Menu.Item>
-        <Link to="/3">진로공간</Link>
+        <Link to="/3">진로 공간</Link>
       </Menu.Item>
     </Menu>
   );
   const menu4 = (
     <Menu>
       <Menu.Item>
-        <Link to="/4">장학공간</Link>
+        <Link to="/4">장학 공간</Link>
       </Menu.Item>
     </Menu>
   );
