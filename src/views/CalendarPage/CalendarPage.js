@@ -27,7 +27,7 @@ function CalendarPage(props) {
   return (
     <div>
       <Header />
-      <Quick />
+
       <CalendarComponent />
     </div>
   );

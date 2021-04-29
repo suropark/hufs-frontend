@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PUBLIC_IP } from '../../config';
 import { deleteScrap } from '../../_actions/post_action';
-import { message } from 'antd';
+import { Button, message } from 'antd';
+import { Link } from 'react-router-dom';
 function UserScrap() {
   const dispatch = useDispatch();
   // const { scraps } = useSelector((state) => state.user);
@@ -16,7 +17,8 @@ function UserScrap() {
       })
       .then((response) => {
         if (response.status === 200) {
-          setScraps(request.data.data); // [스크랩 id, 포스트 id, 포스트 title]
+          console.log(response.data.data); //
+          setScraps(response.data.data); // [스크랩 id, 포스트 Post.id, 포스트 Post.title]
         }
       })
       .catch((error) => {});
@@ -25,7 +27,7 @@ function UserScrap() {
   const onRemove = (e) => {
     console.log(e.target.value);
     dispatch(deleteScrap(e.target.value)).then((response) => {
-      if (response.success) {
+      if (response.status === 200) {
         alert('스크랩 삭제');
       } else {
         alert(response.message);
@@ -39,19 +41,19 @@ function UserScrap() {
           <tr>
             <th>글 번호</th>
             <th>제목</th>
-            <th>내용</th>
-            <th>조회</th>
+            <th></th>
           </tr>
         </thead>
         {scraps
           ? scraps.map((post, index) => {
               return (
-                <tr>
-                  <td key={index}>{post.postId}</td>
-                  <td>제목</td>
-                  <td>{post.content}</td>
+                <tr key={index}>
+                  <td>{post.Post.id}</td>
                   <td>
-                    <button value={post.postId} onClick={onRemove}>
+                    <Link to={`1/${post.Post.id}`}>{post.Post.title}</Link>
+                  </td>
+                  <td>
+                    <button value={post.id} onClick={onRemove}>
                       스크랩 제거
                     </button>
                   </td>

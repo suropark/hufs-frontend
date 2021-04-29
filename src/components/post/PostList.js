@@ -48,17 +48,17 @@ function PostList({ match, history }) {
   function findBoardName(boardId) {
     switch (boardId) {
       case 1:
-        return '떠들 어 boo';
+        return '떠들어Boo';
       case 2:
-        return '학교 떠난 boo';
+        return '학교 떠난 Boo';
       case 3:
-        return '정면 승 boo';
+        return '정면승Boo';
       case 4:
-        return '학교 해 boo';
+        return '학교 해Boo';
       case 5:
-        return '학교 간 boo';
+        return '학교 간 Boo';
       case 6:
-        return '이거 모르면 바 boo';
+        return '이거 모르면 바Boo';
       default:
         break;
     }
@@ -72,7 +72,15 @@ function PostList({ match, history }) {
           subTitle="설명"
         />{' '}
         <div className="community-box">
+
+          <PostSearch setPosts={setPosts} match={match} />
+          <TableBody
+            currentList={posts.slice(firstIndex, lastIndex)}
+            match={match}
+            loading={loading}
+          />
           <Button
+            className="makepost"
             onClick={(e) =>
               history.push({
                 pathname: `${match.path}/edit`,
@@ -82,12 +90,6 @@ function PostList({ match, history }) {
           >
             글 작성
           </Button>
-          <PostSearch setPosts={setPosts} match={match} />
-          <TableBody
-            currentList={posts.slice(firstIndex, lastIndex)}
-            match={match}
-            loading={loading}
-          />
           <div className="bottom">
             <ReactPaginate
               pageCount={Math.ceil(posts.length / 10)}
@@ -128,7 +130,7 @@ export function TableBody({ currentList, match, loading }) {
     <>
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
-          <Column title="-" dataIndex="id" key="id" />
+          <Column title="글 번호" dataIndex="id" key="id" />
           <Column
             title="제목"
             key="title"
