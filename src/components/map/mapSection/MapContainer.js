@@ -26,19 +26,6 @@ const MapContainer = ({ match }) => {
   return (
     <div className="Map">
       <div className="Map-left">
-        {/* <div className="navi">
-
-          <Breadcrumb>
-            <Breadcrumb.Item href="http://localhost:3000/">
-              <HomeOutlined />
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="http://localhost:3000/mypage">
-              next
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>Now</Breadcrumb.Item>
-          </Breadcrumb>
-        </div> */}
-
         <div className="content" >
 
           <div id="seoul" defaultSelectedKeys={['1']}>

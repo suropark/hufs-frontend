@@ -72,10 +72,13 @@
   border: 1px solid var(--navy-color);
 }
 .map-boo {
-  position: relative;
-  top: 67%;
-  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  width: 99%;
   height: 31%;
+}
+.map-boo img {
+  width: 100%;
 }
 
 .up-down {
