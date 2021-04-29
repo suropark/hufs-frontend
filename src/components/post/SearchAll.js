@@ -59,7 +59,7 @@ function SearchAll(props) {
         <Option value="nick">닉네임</Option>
       </Select> */}
       <Search
-        placeholder="검색창"
+
         allowClear
         value={keyword}
         onChange={setKeyword}
