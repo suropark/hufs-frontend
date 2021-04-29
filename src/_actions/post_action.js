@@ -198,7 +198,7 @@ export const deleteScrap = async (postId) => {
 };
 
 export const postSearch = async (boardId, keyword, option) => {
-  const request = axios.get(`${PUBLIC_IP}/board/${boardId}/search`, {
+  const request = await axios.get(`${PUBLIC_IP}/board/${boardId}/search`, {
     params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
   });
 
@@ -218,7 +218,7 @@ export const postSearch = async (boardId, keyword, option) => {
 };
 
 export const searchAll = async (keyword, option) => {
-  const request = axios.get(`${PUBLIC_IP}/search`, {
+  const request = await axios.get(`${PUBLIC_IP}/search`, {
     params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
   });
 
@@ -232,6 +232,7 @@ export const searchAll = async (keyword, option) => {
     return {
       type: SEARCH_ALL_FAIL,
       status: request.status,
+      payload: request,
       // payload: request.error,
     };
   }

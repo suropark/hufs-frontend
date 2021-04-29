@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import { PageHeader, Button, Table } from 'antd';
 import { TableBody } from '../../components/post/PostList';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 const { Column } = Table;
 function PostList(props) {
   const [currentList, setCurrentList] = useState([]);
@@ -17,17 +19,23 @@ function PostList(props) {
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
+    setloading(true);
   }, [currentPage]);
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
-
+  console.log(props.location);
+  console.log(posts);
   return (
     <>
+      <Header />
       {props.location.state.detail ? (
         <>
           <table className="community-main">
-            <PageHeader title="몇 건의 결과가 있니" subTitle="설명" />{' '}
+            <PageHeader
+              title="검색 결과"
+              subTitle={`${props.location.state.detail.length} 건의 검색결과`}
+            />{' '}
             <div className="community-box">
               <TableBody
                 currentList={posts.slice(firstIndex, lastIndex)}
@@ -35,26 +43,27 @@ function PostList(props) {
                 loading={loading}
               />
             </div>
+            <div className="bottom">
+              <ReactPaginate
+                pageCount={Math.ceil(posts.length / 10)}
+                pageRangeDisplayed={5}
+                marginPagesDisplayed={0}
+                breakLabel={''}
+                previousLabel={'이전'}
+                nextLabel={'다음'}
+                onPageChange={(event) => setCurrentPage(event.selected + 1)}
+                containerClassName={'pagination-ul'}
+                activeClassName={'currentPage'}
+                previousClassName={'pageLabel-btn'}
+                nextClassName={'pageLabel-btn'}
+              />
+            </div>{' '}
           </table>
-          <div className="bottom">
-            <ReactPaginate
-              pageCount={Math.ceil(posts.length / 10)}
-              pageRangeDisplayed={5}
-              marginPagesDisplayed={0}
-              breakLabel={''}
-              previousLabel={'이전'}
-              nextLabel={'다음'}
-              onPageChange={(event) => setCurrentPage(event.selected + 1)}
-              containerClassName={'pagination-ul'}
-              activeClassName={'currentPage'}
-              previousClassName={'pageLabel-btn'}
-              nextClassName={'pageLabel-btn'}
-            />
-          </div>{' '}
         </>
       ) : (
         <>X</>
       )}
+      <Footer />
     </>
   );
 }
