@@ -58,7 +58,7 @@ function PostSearch({ setPosts, match }) {
         onSearch={onSearch}
         style={{
           marginBottom: '10px',
-          width: '300px',
+          width: '250px',
           height: '30px',
         }}
       />

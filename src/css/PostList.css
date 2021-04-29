@@ -108,15 +108,6 @@ table tr td:nth-child(5) {
 
   top: 86%;
 }
-
-/* 검색창 위치고정 */
-#community-searchbar .ant-input-wrapper.ant-input-group {
-  height: 38px;
-  top: 10px;
-}
-#community-searchbar .ant-input-affix-wrapper {
-  height: 38px;
-}
 .board-content {
   display: inline-block;
   min-height: 40%;

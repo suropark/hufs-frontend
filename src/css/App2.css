@@ -55,8 +55,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  background: #ffffff;
+  border: 1px solid var(--navy-color);
 }
 #global {
   display: flex;
@@ -70,7 +69,7 @@
   left: 10%;
   bottom: 3%;
 
-  background: #ffffff;
+  border: 1px solid var(--navy-color);
 }
 .map-boo {
   position: relative;
