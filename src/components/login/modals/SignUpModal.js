@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { message, Select, Button, Input, Form, Checkbox } from 'antd';
+import { message, Select, Button, Input, Form, Checkbox, Descriptions } from 'antd';
 import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
 import Cookies from 'js-cookie';
@@ -14,8 +14,8 @@ const SignUpModal = (props) => {
   const [doubleMajor, setDoubleMajor] = useState(false);
   const [submit, setSubmit] = useState({
     // email: Cookies.get('email'),
-    email: props.location.state.email,
-    provider: props.location.state.provider,
+    //email: props.location.state.email,
+    //provider: props.location.state.provider,
     nickname: '',
     webMail: '',
     mainMajorId: 1,
@@ -184,6 +184,7 @@ const SignUpModal = (props) => {
               
               동의합니다
             </Checkbox>
+            
           </Form.Item>
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit" onClick={onSubmit}>
@@ -191,6 +192,9 @@ const SignUpModal = (props) => {
             </Button>
           </Form.Item>
         </Form>
+        <Descriptions title="개인정보 이용약관">
+          blabla
+        </Descriptions>
       </div>
     </>
   );
