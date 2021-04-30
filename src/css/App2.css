@@ -159,11 +159,16 @@
 }
 #community-main .title-bar {
   width: 100%;
+  height: 10%;
 }
 #community-main .quill {
-  height: 70%;
+  height: 83%;
+}
+#community-main .quill .ql-container {
+  border-style: none;
 }
 #button-bar {
+  top: 5%;
   float: right;
   justify-content: space-between;
 }
