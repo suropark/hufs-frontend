@@ -73,7 +73,7 @@ function ReportModal({ type, id, history }) {
           onClick={showModal}
           style={{ cursor: 'pointer', float: 'right', marginLeft: '12px' }}
         >
-          신고하기
+          신고
         </span>
       </div>
       <Modal
