@@ -187,12 +187,13 @@ function PostView({ match, history }) {
                     {post.User.nickname}{' '}
                   </span>
                 )}
-                <span style={{ marginLeft: '24px', fontSize: '4px' }}>
+                <span style={{ marginLeft: '24px', fontSize: '5px' }}>
                   {post.createdAt?.slice(0, 10)}
                 </span>
+                <span style={{ marginLeft: '24px', fontSize: '5px' }}> 글 번호 {post.id}</span>
               </>
             }
-            extra={post.id}
+          // extra={<span>글 번호 {post.id}</span>}
           >
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
@@ -259,7 +260,7 @@ function PostView({ match, history }) {
           </Card>
         )}
       </div>
-    </div>
+    </div >
   );
 }
 
