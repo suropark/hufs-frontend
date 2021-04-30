@@ -88,23 +88,24 @@ function PostEdit(props) {
           modules={modules}
           formats={formats}
         ></ReactQuill>
-
+        <hr />
         <div id="button-bar">
           <Button
             type="primary"
             onClick={onSubmit}
             style={{
-              margin: '10px',
+              marginLeft: '10px',
             }}
           >
-            제출
+            등록
           </Button>
           <Button
             type="primary"
             onClick={onExit}
             style={{
-              margin: '10px',
+              marginLeft: '10px',
             }}
+
           >
             취소
           </Button>

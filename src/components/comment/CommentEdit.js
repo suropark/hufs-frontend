@@ -43,7 +43,7 @@ function CommentEdit({ history, match }) {
       <TextArea
         className="comment-textarea"
         // style={{ display: 'inline-block', width: '750px' }}
-        size={'large'}
+        size={'small'}
         rows={4}
         autoSize={{ minRows: 4, maxRows: 4 }}
         showCount
