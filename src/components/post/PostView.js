@@ -14,6 +14,7 @@ import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
 import { Card, message, PageHeader, Skeleton } from 'antd';
+import styles from '../../css/PostView.module.css'
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
@@ -164,12 +165,12 @@ function PostView({ match, history }) {
     }
   }
   return (
-    <div className="community-main">
+    <div className={styles.communitymain}>
       {/* <PageHeader
         title={'1'}
         subTitle="게시판 설명 적는 곳"
       /> */}
-      <div className="community-box">
+      <div className={styles.communitybox}>
         {loading ? (
           <h1>loading</h1>
         ) : (

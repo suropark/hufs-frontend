@@ -110,7 +110,7 @@ table tr td:nth-child(5) {
 }
 .board-content {
   display: inline-block;
-  min-height: 40%;
+  min-height: 50%;
   width: 100%;
   overflow-y: scroll;
 }
@@ -120,19 +120,19 @@ table tr td:nth-child(5) {
 
 /* 글부분 + 댓글 부분 파트 분할 */
 .ant-card.ant-card-bordered {
-  height: 97%;
+  height: 98%;
 }
 .ant-card.ant-card-bordered > .ant-card-head {
-  height: 10%;
+  height: 8%;
 }
 
 .ant-card.ant-card-bordered > .ant-card-body {
-  height: 90%;
+  height: 92%;
 }
 /* 댓글 전체부분 */
 .comment-body {
   overflow-y: scroll;
-  height: 40%;
+  height: 38%;
 }
 
 /* 댓글  */
@@ -142,8 +142,9 @@ table tr td:nth-child(5) {
 
 /* 댓글 쓰고 제출부분 */
 .comment-input {
-  width: 90%;
-  height: 9%;
+  padding-top: 10px;
+  width: 94%;
+  height: 7%;
   position: absolute;
 }
 /* .ant-input-textarea.ant-input-textarea-show-count {
@@ -157,11 +158,21 @@ table tr td:nth-child(5) {
 }
 .comment-textarea textarea {
   height: 100% !important;
-  min-height: 74px !important;
+  min-height: 100% !important;
   max-height: none !important;
   overflow-y: scroll !important;
 }
 .comment-input button {
   width: 10% !important ;
-  height: 100% !important;
+  height: 90% !important;
+}
+hr {
+  border: 1px solid var(--navy-color);
+}
+/* .ant-list-split .ant-list-header {
+  border-bottom: 1px solid var(--navy-color);
+} */
+.ant-list-split .ant-list-header {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
