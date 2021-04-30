@@ -7,7 +7,7 @@ import { message } from 'antd';
 
 function GoogleSignIn ({ setModalVisible, modalVisible, SignInModal }) {
   const history = useHistory();
-  const [ modalState, setModalState ] = useState(false);
+  const [ modalState, setModalState ] = useState(true);
  
   console.log("Where are you", setModalVisible);
   console.log("work?", modalState);
@@ -30,6 +30,7 @@ function GoogleSignIn ({ setModalVisible, modalVisible, SignInModal }) {
                 history.push('/');
                 //SignInModal.setModalVisible(false);
                 setModalState(false);
+                setModalVisible(false);
                 //console.log("::",modalState)
                 //console.log(":::", setModalVisible(false))
               }
