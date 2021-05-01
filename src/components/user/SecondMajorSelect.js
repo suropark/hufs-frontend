@@ -7,10 +7,13 @@ function SecondMajorSelect({ list, onChange, defaultSecondMajor }) {
 
   return (
     <>
-      <div style={{ margin: '8px 0' }}>
+      <div>
         <Select
           defaultValue={defaultSecondMajor}
-          style={{ width: 170 }}
+          style={{
+            width: '200px',
+            height: '30px'
+          }}
           onChange={onChange}
         >
           {list ? (
