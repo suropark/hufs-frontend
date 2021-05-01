@@ -2,13 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../_actions/user_action';
 import { message, Button } from 'antd';
-function Logout() {
+function Logout({ setLogin }) {
   const dispatch = useDispatch();
   const onLogout = () => {
     dispatch(logoutUser())
       .then((response) => {
         message.success('로그아웃 성공!');
-        window.location.reload();
+        setLogin(false);
       })
       .catch((error) => {
         if (error.response) {
