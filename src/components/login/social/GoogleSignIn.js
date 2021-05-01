@@ -5,7 +5,7 @@ import axios from 'axios';
 import { PUBLIC_IP } from '../../../config';
 import { message } from 'antd';
 
-function GoogleSignIn ({ setModalVisible }) {
+function GoogleSignIn({ setModalVisible }) {
   const history = useHistory();
   return (
     <>
@@ -18,7 +18,7 @@ function GoogleSignIn ({ setModalVisible }) {
             .post(`${PUBLIC_IP}/user/sign-in`, {
               email: googleData.profileObj.email,
               provider: 'google',
-            }, {withCredentials : true})
+            }, { withCredentials: true })
             .then((response) => {
               if (response.status === 200) {
                 console.log('this?', response);
