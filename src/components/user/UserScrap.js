@@ -21,7 +21,7 @@ function UserScrap() {
           setScraps(response.data.data); // [스크랩 id, 포스트 Post.id, 포스트 Post.title]
         }
       })
-      .catch((error) => {});
+      .catch((error) => { });
     // }
   }, []);
   const onRemove = (e) => {
@@ -39,27 +39,27 @@ function UserScrap() {
       <table>
         <thead>
           <tr>
-            <th>글 번호</th>
-            <th>제목</th>
+            <th style={{ textAlign: 'center' }}>글 번호</th>
+            <th style={{ textAlign: 'center' }}>제목</th>
             <th></th>
           </tr>
         </thead>
         {scraps
           ? scraps.map((post, index) => {
-              return (
-                <tr key={index}>
-                  <td>{post.Post.id}</td>
-                  <td>
-                    <Link to={`1/${post.Post.id}`}>{post.Post.title}</Link>
-                  </td>
-                  <td>
-                    <button value={post.id} onClick={onRemove}>
-                      스크랩 제거
+            return (
+              <tr key={index}>
+                <td>{post.Post.id}</td>
+                <td>
+                  <Link to={`1/${post.Post.id}`}>{post.Post.title}</Link>
+                </td>
+                <td>
+                  <button value={post.id} onClick={onRemove}>
+                    스크랩 취소
                     </button>
-                  </td>
-                </tr>
-              );
-            })
+                </td>
+              </tr>
+            );
+          })
           : null}
       </table>
     </div>

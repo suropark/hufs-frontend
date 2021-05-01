@@ -12,6 +12,7 @@ import { withRouter } from 'react-router';
 import Page404 from '../Page404/Page404';
 import Header1 from '../Header/Header';
 import Quick from '..//Quick/Quick';
+import styles from '../../css/MyPage.module.css';
 function MyPage(props) {
   const { Header, Content, Footer } = Layout;
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function MyPage(props) {
   const selectedMenu = () => {
     switch (click) {
       case '1':
-        return <UserInfo />;
+        return null;
       case '2':
         return <UserScrap />;
       case '3':
@@ -57,45 +58,49 @@ function MyPage(props) {
   return (
     <>
       <Header1 />
-
-      <div className="community-main">
-        {/* <Card title="마이 페이지" /> */}
-        <Layout
-          className="layout"
-          style={{ width: '1100px', minHeight: '100%' }}
-        >
-          <Header>
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[click]}>
-              <Menu.Item key="1" onClick={onClick}>
-                회원정보관리
-              </Menu.Item>
-              <Menu.Item key="2" onClick={onClick}>
-                나의 스크랩
-              </Menu.Item>
-              <Menu.Item key="3" onClick={onClick}>
-                내가 쓴 글{' '}
-              </Menu.Item>
-              <Menu.Item key="4" onClick={onClick}>
-                내가 쓴 댓글
-              </Menu.Item>
-              <Menu.Item key="5" onClick={onClick}>
-                회원 탈퇴
-              </Menu.Item>
-            </Menu>
-          </Header>
-          <Content style={{ padding: '0 50px', margin: '16px 0' }}>
-            {selectedMenu()}
-          </Content>
-          <Footer
-            style={{
-              textAlign: 'center',
-              fontWeight: 'bold',
-              border: '1px solid white',
-            }}
+      <div className={styles.main}>
+        <div className={styles.communitymain}>
+          {/* <Card title="마이 페이지" /> */}
+          <Layout
+            className={styles.layout}
           >
-            HUFSpace_
+            <UserInfo />
+            <Header>
+              <Menu
+
+                theme="dark"
+                mode="horizontal" defaultSelectedKeys={[click]}>
+                {/* <Menu.Item key="1" onClick={onClick}>
+                  회원정보관리
+              </Menu.Item> */}
+                <Menu.Item key="2" onClick={onClick}>
+                  나의 스크랩
+              </Menu.Item>
+                <Menu.Item key="3" onClick={onClick}>
+                  내가 쓴 글{' '}
+                </Menu.Item>
+                <Menu.Item key="4" onClick={onClick}>
+                  내가 쓴 댓글
+              </Menu.Item>
+                <Menu.Item key="5" onClick={onClick}>
+                  회원 탈퇴
+              </Menu.Item>
+              </Menu>
+            </Header>
+            <Content style={{ padding: '0 50px', margin: '16px 0' }}>
+              {selectedMenu()}
+            </Content>
+            <Footer
+              style={{
+                textAlign: 'center',
+                fontWeight: 'bold',
+                border: '1px solid white',
+              }}
+            >
+              HUFSpace_
           </Footer>
-        </Layout>
+          </Layout>
+        </div>
       </div>
     </>
   );
