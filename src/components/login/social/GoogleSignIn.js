@@ -7,6 +7,7 @@ import { message } from 'antd';
 
 
 function GoogleSignIn({ setModalVisible, setLogin }) {
+
   const history = useHistory();
   const [ modalState, setModalState ] = useState(true);
  
@@ -19,6 +20,7 @@ function GoogleSignIn({ setModalVisible, setLogin }) {
         clientId="13311386829-vlj3ciu02fu1tqriq8dqo0a3nsm4f90u.apps.googleusercontent.com"
         onSuccess={(googleData) => {
           axios
+
             .post(
               `${PUBLIC_IP}/user/sign-in`,
               {
@@ -27,6 +29,7 @@ function GoogleSignIn({ setModalVisible, setLogin }) {
               },
               { withCredentials: true },
             )
+
             .then((response) => {
               if (response.status === 200) {
                 message.success('로그인이 정상 완료 되었습니다.');

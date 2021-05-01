@@ -1,0 +1,26 @@
+.ant-modal-title {
+  text-align: center;
+}
+.ant-modal-body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.ant-modal-body button {
+  width: 60%;
+
+  margin: 10px auto;
+  border: 1px solid gray !important;
+  box-shadow: none !important;
+}
+.ant-modal-body span {
+  text-align: center;
+  width: 80%;
+}
+.ant-modal-body img {
+  width: 60%;
+  height: 50px;
+
+  display: block;
+  margin: 10px auto;
+}

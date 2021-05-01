@@ -6,6 +6,7 @@ import './css/App2.css';
 import './css/Map.css';
 import './css/Post.css';
 import './css/Media.css';
+import './css/SignInModal.css';
 const Post = loadable(() => import('./views/PostPage/Post'));
 const LandingPage = loadable(() => import('./views/LandingPage/LandingPage'));
 const MyPage = loadable(() => import('./views/MyPage/MyPage'));

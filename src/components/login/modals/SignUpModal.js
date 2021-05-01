@@ -27,13 +27,13 @@ const SignUpModal = (props) => {
     const request1 = await axios
       .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
-      .catch((e) => {});
+      .catch((e) => { });
     setMajor(request1);
     const request2 = await axios
       .get(`${PUBLIC_IP}/major/double-major`) //이중전공
       .then((response) => response.data.data)
 
-      .catch((e) => {}); // 배열 [id, name ]
+      .catch((e) => { }); // 배열 [id, name ]
     setDoubleMajor(request2);
   }, []);
   useEffect(() => console.log(submit), [submit]);
@@ -181,7 +181,7 @@ const SignUpModal = (props) => {
                 console.log(event.target.checked, submit.isAgreed);
               }}
             >
-              
+
               동의합니다
             </Checkbox>
             
