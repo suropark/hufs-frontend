@@ -87,9 +87,7 @@ function Header(props) {
               </Dropdown>
             </Menu.Item>
             <Menu.Item>
-              <Dropdown >
-                <Link to="/3">학교 간 Boo</Link>
-              </Dropdown>
+              <Link to="/3">학교 간 Boo</Link>
             </Menu.Item>
             <Menu.Item key="setting:4">
               <Dropdown overlay={menu4}>
@@ -97,7 +95,9 @@ function Header(props) {
               </Dropdown>
             </Menu.Item>
             <Menu.Item key="alipay">
-              <Link to="/5">정면승Boo</Link>
+              <Dropdown overlay={menu5}>
+                <Link to="/5">정면승Boo</Link>
+              </Dropdown>
             </Menu.Item>
             <Menu.Item>
               <Link to="/6">이거 모르면 바Boo</Link>
