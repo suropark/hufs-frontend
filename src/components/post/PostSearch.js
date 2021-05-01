@@ -59,7 +59,7 @@ function PostSearch({ setPosts, match }) {
         style={{
           marginBottom: '10px',
           width: '250px',
-          height: '30px',
+          height: '25px',
         }}
       />
     </span>

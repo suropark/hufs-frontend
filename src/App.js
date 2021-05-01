@@ -29,10 +29,10 @@ function App() {
         <Route exact path="/register" component={SignUpModal} />
         <Route exact path="/search" component={SearchPage} />
         <Route path="/1" component={Post} />
-        <Route path="/2" component={Post} />
-        <Route path="/3" component={Post} />
-        <Route path="/4" component={CalendarPage} />
-        <Route path="/5" component={MapPage} />
+        <Route path="/2" component={CalendarPage} />
+        <Route path="/3" component={MapPage} />
+        <Route path="/4" component={Post} />
+        <Route path="/5" component={Post} />
         <Route path="/6" component={Post} />
         {/* <Route path="/redirect" component={SignUpModal} /> */}
         <Route path="/mypage" component={MyPage} />
