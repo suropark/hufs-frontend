@@ -181,7 +181,7 @@ export const postScrap = async (postId) => {
 
 // id가 스크랩 아이디라서 조금 다른데 해결필요
 export const deleteScrap = async (postId) => {
-  const request = await axios.delete(`${PUBLIC_IP}/user/scrap`, null, {
+  const request = await axios.delete(`${PUBLIC_IP}/user/scrap`, {
     params: { id: postId },
   });
   if (request.status === 200) {
@@ -198,7 +198,7 @@ export const deleteScrap = async (postId) => {
 };
 
 export const postSearch = async (boardId, keyword, option) => {
-  const request = axios.get(`${PUBLIC_IP}/board/${boardId}/search`, {
+  const request = await axios.get(`${PUBLIC_IP}/board/${boardId}/search`, {
     params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
   });
 
@@ -218,7 +218,7 @@ export const postSearch = async (boardId, keyword, option) => {
 };
 
 export const searchAll = async (keyword, option) => {
-  const request = axios.get(`${PUBLIC_IP}/search`, {
+  const request = await axios.get(`${PUBLIC_IP}/search`, {
     params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
   });
 
@@ -232,6 +232,7 @@ export const searchAll = async (keyword, option) => {
     return {
       type: SEARCH_ALL_FAIL,
       status: request.status,
+      payload: request,
       // payload: request.error,
     };
   }

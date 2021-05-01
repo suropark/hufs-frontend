@@ -27,7 +27,7 @@ function PostList({ match, history }) {
         switch (error.response?.status) {
           case 401:
             message.error('로그인하지 않은 사용자');
-            // history.push('/');
+            history.push('/');
             break;
           case 403:
             message.error('접근 권한 오류');
@@ -72,7 +72,6 @@ function PostList({ match, history }) {
           subTitle="설명"
         />{' '}
         <div className="community-box">
-
           <PostSearch setPosts={setPosts} match={match} />
           <TableBody
             currentList={posts.slice(firstIndex, lastIndex)}
@@ -107,9 +106,6 @@ function PostList({ match, history }) {
           </div>
         </div>
       </table>
-
-
-
       {/* <div className="bottom">
 
         <Pagination
@@ -118,7 +114,6 @@ function PostList({ match, history }) {
           total={posts.length}
         />
       </div> */}
-
     </>
   );
 }

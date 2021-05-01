@@ -8,7 +8,9 @@ import KakaoSignIn from '../social/KakaoSignIn';
 // import axios from 'axios';
 // import { PUBLIC_IP } from '../../../config';
 
-function SignInModal() {
+
+function SignInModal({ setLogin }) {
+
   const [modalVisible, setModalVisible] = useState(false);
   // const [ emailInfo, setEmailInfo ] = useState({ email: '', provider: '', });
   // const { Kakao } = window;
@@ -18,9 +20,9 @@ function SignInModal() {
     <>
       <Button type="text" onClick={() => setModalVisible(true)}>
         로그인
-    </Button>
-      <Modal
 
+      </Button>
+      <Modal
         title="로그인 / LOGIN"
 
         centered
@@ -29,14 +31,19 @@ function SignInModal() {
         onOk={() => setModalVisible(false)}
         onCancel={() => setModalVisible(false)}
       >
-        <GoogleSignIn />
-        <img style={{ cursor: 'pointer' }}
+
+        <GoogleSignIn setLogin={setLogin} setModalVisible={setModalVisible} />
+        <img
+          style={{ cursor: 'pointer' }}
+
           onClick={KakaoSignIn}
           src={kakao_pic}
         />
       </Modal>
     </>
-  )
+
+  );
+
 }
 
 export default SignInModal;

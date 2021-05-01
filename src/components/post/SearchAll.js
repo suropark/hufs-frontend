@@ -3,7 +3,7 @@ import { message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { searchAll } from '../../_actions/post_action';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 const { Option } = Select;
 const { Search } = Input;
 function SearchAll(props) {
@@ -15,9 +15,11 @@ function SearchAll(props) {
     if (keyword === '') {
       return message.warn('검색 키워드를 입력해주세요.');
     }
-    dispatch(searchAll(keyword, searchType))
+    dispatch(searchAll(keyword, 'titleAndContent'))
       .then((response) => {
         if (response.status === 200) {
+          console.log(response);
+          console.log('success');
           props.history.push({
             pathname: `/search`,
             state: { detail: response.payload.reverse() },
@@ -42,13 +44,8 @@ function SearchAll(props) {
       });
   };
   return (
-
-    <span id="Searchbar" >
-      {/* <Select
-
     <span id="Searchbar">
-      <Select
-
+      {/* <Select
         defaultValue="제목"
         style={{ width: 80 }}
         onChange={(e) => setSearchType(e)}
@@ -59,7 +56,6 @@ function SearchAll(props) {
         <Option value="nick">닉네임</Option>
       </Select> */}
       <Search
-
         allowClear
         value={keyword}
         onChange={setKeyword}

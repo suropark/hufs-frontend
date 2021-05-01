@@ -33,15 +33,14 @@ function UserInfo(props) {
         setMainMajorList(response[0].data.data);
         setDoubleMajorList(response[1].data.data);
       });
-
-    setChange({
-      nickname: nickName,
-      mainMajorId: MainMajor.id,
-      doubleMajorId: DoubleMajor.id,
-    });
+    // setChange({
+    //   nickname: nickName,
+    //   mainMajorId: MainMajor.id,
+    //   doubleMajorId: DoubleMajor.id,
+    // });
   }, []);
   const onSubmit = () => {
-    const answer = window.confirm('변경은 한 번 ');
+    const answer = window.confirm('변경은 한 번입니다.');
 
     if (answer) {
       dispatch(updateUser(change))
@@ -75,7 +74,9 @@ function UserInfo(props) {
   function DoubleMajorChange(value) {
     setChange({ ...change, doubleMajorId: value });
   }
-
+  useEffect(() => {
+    console.log(change);
+  }, [change]);
   const onAuth = async () => {
     await axios
       .post(`${PUBLIC_IP}/user/email`)

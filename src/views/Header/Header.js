@@ -41,7 +41,6 @@ function Header(props) {
     </Menu>
   );
 
-
   const [login, setLogin] = useState(false);
   useEffect(async () => {
     await axios
@@ -61,7 +60,11 @@ function Header(props) {
       </div>
       {/* <img src={mainboo} className="Image" alt="이미지 들어갈 곳" /> */}
       <span className="loginbar">
-        {login ? <Logout /> : <SignUp />}
+        {login ? (
+          <Logout setLogin={setLogin} />
+        ) : (
+          <SignUp setLogin={setLogin} />
+        )}
         <Button type="text">
           <Link style={{ color: 'rgba(0, 0, 0, 0.85)' }} to="/mypage">
             My page
@@ -69,7 +72,6 @@ function Header(props) {
         </Button>
         {/* <Button type="text">언어 선택</Button> */}
       </span>
-
 
       <Space direction="vertical">
         <Space id="Menubar">
