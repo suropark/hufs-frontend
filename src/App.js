@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './css/App.css';
 import './css/App2.css';
 import './css/Map.css';
-import './css/PostList.css';
+import './css/Post.css';
 import './css/Media.css';
+import './css/SignInModal.css';
 const Post = loadable(() => import('./views/PostPage/Post'));
 const LandingPage = loadable(() => import('./views/LandingPage/LandingPage'));
 const MyPage = loadable(() => import('./views/MyPage/MyPage'));
@@ -29,10 +30,10 @@ function App() {
         <Route exact path="/register" component={SignUpModal} />
         <Route exact path="/search" component={SearchPage} />
         <Route path="/1" component={Post} />
-        <Route path="/2" component={Post} />
-        <Route path="/3" component={Post} />
-        <Route path="/4" component={CalendarPage} />
-        <Route path="/5" component={MapPage} />
+        <Route path="/2" component={CalendarPage} />
+        <Route path="/3" component={MapPage} />
+        <Route path="/4" component={Post} />
+        <Route path="/5" component={Post} />
         <Route path="/6" component={Post} />
         {/* <Route path="/redirect" component={SignUpModal} /> */}
         <Route path="/mypage" component={MyPage} />

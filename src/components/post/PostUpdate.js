@@ -222,14 +222,18 @@ function imageHandler() {
       // this.quill.enable(false);
 
       await axios
-      .post(`${PUBLIC_IP}/post/img`, formData, {
-        header: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+        .post(`${PUBLIC_IP}/post/img`, formData, {
+          header: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
         .then((response) => {
           this.quill.enable(true);
-          this.quill.editor.insertEmbed(range.index, 'image', response.data.data[0]);
+          this.quill.editor.insertEmbed(
+            range.index,
+            'image',
+            response.data.data[0],
+          );
           wholeImg = wholeImg.concat(response.data.data[0]);
           uploadedImg = uploadedImg.concat(response.data.data[0]);
 

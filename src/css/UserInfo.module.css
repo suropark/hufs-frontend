@@ -1,0 +1,56 @@
+.card {
+  width: 600px;
+  height: 260px;
+  /* 원래 250임  */
+  border: 1px solid black;
+  display: flex;
+}
+.image {
+  width: 35%;
+}
+.info {
+  width: 65%;
+  margin-top: 5%;
+}
+label {
+  line-height: 36px;
+}
+.info div {
+  padding: 2px 0;
+}
+
+.email {
+  display: flex;
+}
+.email div {
+  margin: auto;
+}
+.webMail {
+  display: flex;
+}
+.webMail div {
+  margin: auto;
+}
+.nickName {
+  display: flex;
+}
+.nickName div {
+  margin: auto;
+}
+.mainMajor {
+  display: flex;
+}
+.mainMajor div {
+  margin: auto;
+}
+.secondMajor {
+  display: flex;
+}
+.secondMajor div {
+  margin: 0 13px;
+}
+
+button {
+  float: right;
+  color: navy;
+}

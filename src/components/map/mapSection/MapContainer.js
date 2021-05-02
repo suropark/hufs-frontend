@@ -9,7 +9,7 @@ import { Button, Breadcrumb } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 
 
-const MapContainer = ({match}) => {
+const MapContainer = ({ match }) => {
   const [data, setData] = useState(storeSeoul);
   const [lat, setLat] = useState(37.59732049638715); // default 서울캠
   const [lng, setLng] = useState(127.0588283395548);
@@ -26,19 +26,6 @@ const MapContainer = ({match}) => {
   return (
     <div className="Map">
       <div className="Map-left">
-        <div className="navi">
-
-          <Breadcrumb>
-            <Breadcrumb.Item href="http://localhost:3000/">
-              <HomeOutlined />
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="http://localhost:3000/mypage">
-              next
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>Now</Breadcrumb.Item>
-          </Breadcrumb>
-        </div>
-
         <div className="content" >
 
           <div id="seoul" defaultSelectedKeys={['1']}
@@ -67,7 +54,7 @@ const MapContainer = ({match}) => {
       <div className="up-down" />
       <div className="Map-main">
         <div id="KaKaoMap">
-          <KaKaoMap lat = {lat} lng = {lng}/>
+          <KaKaoMap lat={lat} lng={lng} />
         </div>
         <div id="Food-list">
           <SearchBar
@@ -80,7 +67,7 @@ const MapContainer = ({match}) => {
           <div className="itemContainer">
 
             {data.mydata ? data.mydata.map((d, index) => (
-              <Card id="aa" {...d} key={index} match = {match}/>
+              <Card id="aa" {...d} key={index} match={match} />
             )) : <h1>null</h1>}
           </div>
         </div>

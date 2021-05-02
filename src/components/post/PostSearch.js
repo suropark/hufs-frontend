@@ -51,15 +51,15 @@ function PostSearch({ setPosts, match }) {
         <Option value="nick">닉네임</Option>
       </Select>
       <Search
-        placeholder="검색창"
+
         allowClear
         value={toSearch}
         onChange={onChangeSearch}
         onSearch={onSearch}
         style={{
           marginBottom: '10px',
-          width: '300px',
-          height: '30px',
+          width: '250px',
+          height: '25px',
         }}
       />
     </span>

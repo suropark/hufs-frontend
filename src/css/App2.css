@@ -24,7 +24,7 @@
   left: 15%;
   top: 30px;
 
-  border-color: var(--navy-color);
+  border: 1px solid var(--navy-color);
 }
 
 .Map-left > .navi {
@@ -41,6 +41,10 @@
   left: 10%;
   top: 10%;
 }
+.Map-left > .content button {
+  font-size: 17px;
+  font-weight: bold;
+}
 #seoul {
   position: absolute;
   width: 80%;
@@ -51,8 +55,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  background: #ffffff;
+  border: 1px solid var(--navy-color);
 }
 #global {
   display: flex;
@@ -66,13 +69,16 @@
   left: 10%;
   bottom: 3%;
 
-  background: #ffffff;
+  border: 1px solid var(--navy-color);
 }
 .map-boo {
-  position: relative;
-  top: 67%;
-  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  width: 99%;
   height: 31%;
+}
+.map-boo img {
+  width: 100%;
 }
 
 .up-down {
@@ -108,9 +114,9 @@
   /* Content */
 
   position: relative;
-  width: 1100px;
+  width: 1050px;
   height: 920px;
-  left: 15%;
+  left: 12.5%;
   top: 2.5%;
   border: solid 1px black;
   /* background: #afa1a1; */
@@ -118,9 +124,9 @@
 
 .community-main > .community-box {
   position: absolute;
-  width: 85%;
+  width: 90%;
   height: 90%;
-  left: 7%;
+  left: 5%;
   top: 7%;
 }
 
@@ -153,11 +159,16 @@
 }
 #community-main .title-bar {
   width: 100%;
+  height: 10%;
 }
 #community-main .quill {
-  height: 70%;
+  height: 83%;
+}
+#community-main .quill .ql-container {
+  border-style: none;
 }
 #button-bar {
+  top: 5%;
   float: right;
   justify-content: space-between;
 }

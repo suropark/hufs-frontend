@@ -1,0 +1,182 @@
+:root {
+  /* 색 */
+  --navy-color: #030a66;
+  --white-color: #ffffff;
+  --black-color: #0a0a0a;
+
+  /* 사이즈 */
+  --logo-size: 75px;
+}
+a:hover {
+  cursor: pointer;
+}
+.ant-page-header.ant-page-header-ghost {
+  /* 커뮤니티 이름 위치 */
+  left: 3%;
+  top: 2%;
+}
+.ant-page-header-heading-title {
+  /* 커뮤니티 이름색 */
+  color: var(--navy-color);
+}
+.pagination-ul {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  margin: 0 0;
+  justify-content: space-around;
+}
+.community {
+  position: absolute;
+  width: 915px;
+  height: 725px;
+  left: 410px;
+  top: 300px;
+}
+
+.community > .cut-row {
+  position: absolute;
+  width: 915px;
+  height: 0px;
+
+  top: 47px;
+
+  border: 1px solid #000000;
+}
+tr {
+  height: 40px;
+}
+td {
+  overflow: hidden;
+}
+.pageLabel-btn {
+  color: blue;
+}
+.pagination-ul > li {
+  list-style: none;
+}
+.pagination-ul > button {
+  align-items: flex-end;
+}
+.ant-table-thead > tr > th {
+  text-align: center;
+  font-weight: bold;
+  color: var(--navy-color);
+}
+table th:first-child {
+  width: 10%;
+}
+table th:nth-child(2) {
+  width: 40%;
+}
+table th:nth-child(3) {
+  width: 20%;
+}
+table th:nth-child(4) {
+  width: 12%;
+}
+table th:nth-child(5) {
+  width: 8%;
+}
+table tr td:nth-child(1) {
+  text-align: center;
+}
+table tr td:nth-child(3) {
+  text-align: center;
+}
+table tr td:nth-child(4) {
+  text-align: center;
+  font-size: 12px;
+}
+table tr td:nth-child(5) {
+  text-align: center;
+}
+.makepost {
+  position: absolute;
+  top: 80%;
+  right: 0;
+  border-color: var(--navy-color);
+}
+.makepost span {
+  color: var(--navy-color);
+}
+.bottom {
+  position: absolute;
+  width: 70%;
+  height: 2%;
+  left: 14%;
+
+  top: 86%;
+}
+.board-content {
+  display: inline-block;
+  min-height: 50%;
+  width: 100%;
+  overflow-y: scroll;
+}
+/* .comment-body {
+  height: ;
+} */
+
+/* 글부분 + 댓글 부분 파트 분할 */
+.ant-card.ant-card-bordered {
+  height: 98%;
+}
+.ant-card.ant-card-bordered > .ant-card-head {
+  height: 8%;
+}
+
+.ant-card.ant-card-bordered > .ant-card-body {
+  height: 92%;
+}
+/* 댓글 전체부분 */
+.comment-body {
+  overflow-y: scroll;
+  height: 38%;
+}
+
+/* 댓글  */
+.ant-comment-inner {
+  padding: 6px 0;
+}
+
+/* 댓글 쓰고 제출부분 */
+.comment-input {
+  padding-top: 10px;
+  width: 94%;
+  height: 7%;
+  position: absolute;
+}
+/* .ant-input-textarea.ant-input-textarea-show-count {
+  width: 90% !important;
+  height: 100% !important;
+} */
+.comment-textarea {
+  display: inline-block;
+  width: 90%;
+  height: 100%;
+}
+.comment-textarea textarea {
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
+  overflow-y: scroll !important;
+}
+.comment-input button {
+  width: 10% !important ;
+  height: 90% !important;
+}
+hr {
+  border: 1px solid var(--navy-color);
+}
+/* .ant-list-split .ant-list-header {
+  border-bottom: 1px solid var(--navy-color);
+} */
+.ant-list-split .ant-list-header {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#button-bar button {
+  background: var(--navy-color);
+  border-color: var(--navy-color);
+}

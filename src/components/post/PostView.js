@@ -14,6 +14,7 @@ import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
 import { Card, message, PageHeader, Skeleton } from 'antd';
+import styles from '../../css/PostView.module.css'
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
@@ -164,12 +165,12 @@ function PostView({ match, history }) {
     }
   }
   return (
-    <div className="community-main">
+    <div className={styles.communitymain}>
       {/* <PageHeader
         title={'1'}
         subTitle="게시판 설명 적는 곳"
       /> */}
-      <div className="community-box">
+      <div className={styles.communitybox}>
         {loading ? (
           <h1>loading</h1>
         ) : (
@@ -187,33 +188,51 @@ function PostView({ match, history }) {
                     {post.User.nickname}{' '}
                   </span>
                 )}
-                <span style={{ marginLeft: '24px', fontSize: '4px' }}>
+                <span style={{ marginLeft: '24px', fontSize: '5px' }}>
                   {post.createdAt?.slice(0, 10)}
                 </span>
+                <span style={{ marginLeft: '24px', fontSize: '5px' }}> 글 번호 {post.id}</span>
               </>
             }
-            extra={post.id}
+          // extra={<span>글 번호 {post.id}</span>}
           >
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
               className="board-content"
-              // style={{ display: 'inline-block', minHeight: '300px' }}
+            // style={{ display: 'inline-block', minHeight: '300px' }}
             />
             <div>
               {/* 추천 수: {post.like}
-                <div>신고 수: {post.report}</div>
-                <div>
-                  <span onClick={onLike} style={{ cursor: 'pointer' }}>
-                    추천하기
-                  </span>
-                </div>
-                <div>
+                <div>신고 수: {post.report}</div> */}
+
+              {/* <div>
                   <span onClick={onDellike} style={{ cursor: 'pointer' }}>
                     추천취소
                   </span>
                 </div> */}
               <div style={{ fontSize: '12px' }}>
                 <ReportModal type="post" id={post.id} history={history} />{' '}
+                <div>
+                  <span
+                    onClick={onScrap}
+                    style={{
+                      cursor: 'pointer',
+                      float: 'right',
+                      marginLeft: '12px'
+                    }}
+                  >
+                    스크랩
+                  </span>
+                </div>
+                <div>
+                  <span onClick={onLike} style={{
+                    cursor: 'pointer',
+                    float: 'right',
+                    marginLeft: '12px'
+                  }}>
+                    추천
+                  </span>
+                </div>
                 <div>
                   <span
                     onClick={onDelete}
@@ -223,19 +242,11 @@ function PostView({ match, history }) {
                       marginLeft: '12px',
                     }}
                   >
-                    삭제하기
+                    삭제
                   </span>
                 </div>{' '}
-                <div>
-                  <span
-                    onClick={onScrap}
-                    style={{ cursor: 'pointer', float: 'right' }}
-                  >
-                    스크랩하기
-                  </span>
-                </div>
                 <Link to={`${post.id}/update`}>
-                  <span>수정하기</span>
+                  <span>수정</span>
                 </Link>
               </div>{' '}
             </div>
@@ -250,7 +261,7 @@ function PostView({ match, history }) {
           </Card>
         )}
       </div>
-    </div>
+    </div >
   );
 }
 

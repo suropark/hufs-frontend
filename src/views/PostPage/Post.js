@@ -12,6 +12,7 @@ function Post({ match }) {
   return (
     <>
       <Header />
+
       <Switch>
         <Route exact path={`${match.path}/edit`} component={PostEdit} />
         <Route exact path={`${match.path}/:id`} component={PostView} />

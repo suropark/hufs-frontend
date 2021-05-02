@@ -1,0 +1,16 @@
+.communitymain {
+  position: relative;
+  width: 1050px;
+
+  left: 12.5%;
+  top: 2.5%;
+  border: solid 1px black;
+  height: 1200px;
+}
+.communitybox {
+  position: absolute;
+  width: 90%;
+  height: 95%;
+  left: 5%;
+  top: 3%;
+}

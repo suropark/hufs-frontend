@@ -7,10 +7,14 @@ function MajorSelect({ list, onChange, defaultMajor }) {
 
   return (
     <>
-      <div style={{ margin: '8px 0' }}>
+      <div>
         <Select
           defaultValue={defaultMajor}
-          style={{ width: 170 }}
+          style=
+          {{
+            width: '200px',
+            height: '30px'
+          }}
           onChange={onChange}
         >
           {list ? (
