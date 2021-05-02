@@ -103,7 +103,7 @@ function CalendarMainPage(props) {
         <List
           style={{ height: '354px' }}
           header={
-            <div>
+            <div className="main-Calendar-head">
               <span>장학금</span>
               <Button
                 style={{ float: 'right' }}
