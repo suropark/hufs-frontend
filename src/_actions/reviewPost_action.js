@@ -31,7 +31,7 @@ export const postView = async (postId) => {
   }
 };
 // 완료
-export const postList = async (match,rstrnId) => {
+export const postList = async (rstrnId) => {
   const request = await axios.get(`${PUBLIC_IP}/store/${rstrnId}/review`, {
     withCredentials: true,
   });
@@ -49,7 +49,7 @@ export const postList = async (match,rstrnId) => {
   }
 };
 //완료
-export const postSave = async (body, needDelete, rstrnId, boardId) => {
+export const postSave = async (body, needDelete, rstrnId) => {
   const request = await axios.post(`${PUBLIC_IP}/store/${rstrnId}/review`, body);
 
   if (needDelete.length !== 0) {

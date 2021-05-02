@@ -1,0 +1,33 @@
+:root {
+  /* 색 */
+  --navy-color: #030a66;
+  --white-color: #ffffff;
+  --black-color: #0a0a0a;
+}
+.scholarhead {
+  color: var(--navy-color);
+  font-weight: bold;
+  display: flex;
+  font-size: 13px;
+}
+.scholarhead * {
+  text-align: center;
+}
+.scholarhead .s1 {
+  width: 3%;
+}
+.scholarhead .s2 {
+  width: 8%;
+}
+.scholarhead .s3 {
+  width: 70%;
+}
+.scholarhead .s4 {
+  width: 19%;
+  text-align: end;
+}
+/* 여긴 메인 캘린더 */
+.main-Calendar-head * {
+  color: var(--navy-color);
+  font-weight: bold;
+}

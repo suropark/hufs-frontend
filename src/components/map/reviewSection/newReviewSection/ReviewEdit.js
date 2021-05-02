@@ -11,7 +11,7 @@ import { Button, Rate } from 'antd';
 
 let uploadedImg = [];
 function ReviewEdit(props) {
-  console.log(props.location.state.name);
+  //console.log(props.location.state.name);
   const dispatch = useDispatch();
   useBeforeunload((e) => {
     e.preventDefault();
@@ -32,14 +32,14 @@ function ReviewEdit(props) {
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
     let rstrnId = props.location.state.id;
-    let boardId = props.location.state.detail;
-    console.log(boardId);
+    console.log(rstrnId);
+    //let boardId = props.location.state.detail;
     let body = {
       title: value.title,
       content: value.content,
       score: value.score
     };
-    dispatch(postSave(body, needDelete,rstrnId, boardId.substring(1)))
+    dispatch(postSave(body, needDelete,rstrnId))
       .then((response) => {
         if (response.status === 200) {
           props.history.goBack();

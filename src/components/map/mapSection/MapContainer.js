@@ -36,13 +36,14 @@ const MapContainer = ({ match }) => {
             <Button type="text"  >맛집공간</Button>
 
           </div>
-          <div id="global" defaultSelectedKeys={['2']}
-          onClick={(e) => {setData(storeGlobal);
-            setLat(37.336538181222245);
-            setLng(127.25253858610613);
-            }}>
-            <div type="text" id="button-head" key="2">Global</div>
-            <Button type="text" >맛집공간</Button>
+          <hr className="line" />
+          <div id="global" defaultSelectedKeys={['2']}>
+            <Button type="text" id="button-head" key="2">Global</Button>
+            <Button type="text" onClick={(e) => {
+              setData(storeGlobal);
+              setLat(37.336538181222245);
+              setLng(127.25253858610613);
+            }}>맛집 공간</Button>
 
           </div>
 

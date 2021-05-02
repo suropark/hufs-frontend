@@ -9,8 +9,8 @@ import { message } from 'antd';
 function GoogleSignIn({ setModalVisible, setLogin }) {
 
   const history = useHistory();
-  const [ modalState, setModalState ] = useState(true);
- 
+  const [modalState, setModalState] = useState(true);
+
   console.log("Where are you", setModalVisible);
   console.log("work?", modalState);
 

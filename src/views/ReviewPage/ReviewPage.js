@@ -6,6 +6,7 @@ const ReviewView = loadable(() => import('../../components/map/reviewSection/new
 const ReviewList = loadable(() => import('../../components/map/reviewSection/newReviewSection/ReviewList'));
 const ReviewUpdate = loadable(() => import('../../components/map/reviewSection/newReviewSection/ReviewUpdate'));
 function ReviewPage(props) {
+  console.log(props.match.url);
   return (
     <>
       <Switch>

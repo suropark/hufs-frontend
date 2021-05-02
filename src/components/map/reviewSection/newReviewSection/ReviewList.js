@@ -7,6 +7,7 @@ import { postList } from '../../../../_actions/reviewPost_action';
 import { PageHeader, Button, Table, Pagination } from 'antd';
 const { Column } = Table;
 function ReviewList ({ match, history }) {
+  console.log(history.location.state.id);
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +16,7 @@ function ReviewList ({ match, history }) {
   const [loading, setloading] = useState(false);
   // console.log(match.path.substring(1)); // 게시판 이름
   useEffect(() => {
-    dispatch(postList(match))
+    dispatch(postList(history.location.state.id))
       .then((response) => {
         if (response.status === 200) {
           setPosts(response.payload.reverse());
@@ -70,7 +71,7 @@ function ReviewList ({ match, history }) {
           <Button
             onClick={(e) =>{
               history.push({
-                pathname: '/5/register',
+                pathname: '/3/register',
                 state: { detail: match.path,
                     name : history.location.state.name,
                   id : history.location.state.id },
@@ -115,14 +116,6 @@ function ReviewList ({ match, history }) {
 
 
 
-    <div className="bottom">
-       
-        <Pagination
-          defaultCurrent={1}
-          onChange={(event) => setCurrentPage(event.selected + 1)}
-          total={posts.length}
-        />
-      </div>
 
     </>
   );
@@ -140,7 +133,12 @@ export function TableBody({ currentList, match, loading }) {
             title="제목"
             key="title"
             render={(text, record) => (
-              <Link to={`${match.path}/${record.id}`}>
+              <Link to={{
+                pathname:`${match.path}/${record.id}`,
+                state:{
+                  id : record.id
+                }}
+                }>
                 {record.title.length > 20
                   ? record.title.slice(0, 20)
                   : record.title}
