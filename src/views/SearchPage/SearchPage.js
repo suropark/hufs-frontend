@@ -39,7 +39,7 @@ function PostList(props) {
             <div className="community-box">
               <TableBody
                 currentList={posts.slice(firstIndex, lastIndex)}
-                match={props.match}
+                match={{ path: 1 }} // 하드 코딩 수정 필요
                 loading={loading}
               />
             </div>
@@ -69,49 +69,3 @@ function PostList(props) {
 }
 
 export default withRouter(PostList);
-
-// export function TableBody({ currentList, match, loading }) {
-//   return (
-//     <>
-//       {loading ? (
-//         <Table pagination={false} dataSource={currentList}>
-//           <Column title="-" dataIndex="id" key="id" />
-//           <Column
-//             title="제목"
-//             key="title"
-//             render={(text, record) => (
-//               <Link to={`${match.path}/${record.id}`}>
-//                 {record.title.length > 20
-//                   ? record.title.slice(0, 20)
-//                   : record.title}
-//               </Link>
-//             )}
-//           />{' '}
-//           <Column
-//             title="작성자"
-//             render={(text, record) =>
-//               record.User === null ? (
-//                 <>탈퇴한 사용자</>
-//               ) : (
-//                 <>{record.User.nickname}</>
-//               )
-//             }
-//             key="User"
-//           />
-//           <Column
-//             title="작성일"
-//             render={(text, record) =>
-//               record.createdAt ? record.createdAt.slice(0, 10) : 'none'
-//             }
-//             key="createdAt"
-//           />
-//           <Column title="추천수" dataIndex="like" key="like" />
-//         </Table>
-//       ) : (
-//         <>
-//           <Skeleton />
-//         </>
-//       )}
-//     </>
-//   );
-// }
