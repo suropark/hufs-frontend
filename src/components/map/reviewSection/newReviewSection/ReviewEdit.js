@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import { useDispatch } from 'react-redux';
 import 'react-quill/dist/quill.snow.css';
-import { postSave } from '../../../../_actions/post_action';
+import { postSave } from '../../../../_actions/reviewPost_action';
 import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
@@ -33,6 +33,7 @@ function ReviewEdit(props) {
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
     let rstrnId = props.location.state.id;
     let boardId = props.location.state.detail;
+    console.log(boardId);
     let body = {
       title: value.title,
       content: value.content,

@@ -45,7 +45,7 @@ const MapContainer = ({match}) => {
           onClick={(e) => {setData(storeSeoul);
             setLat(37.59732049638715);
           setLng(127.0588283395548)}}>
-            <Button type="text" id="button-head" key="1">Seoul</Button>
+            <div type="text" id="button-head" key="1">Seoul</div>
             <Button type="text"  >맛집공간</Button>
 
           </div>
@@ -54,7 +54,7 @@ const MapContainer = ({match}) => {
             setLat(37.336538181222245);
             setLng(127.25253858610613);
             }}>
-            <Button type="text" id="button-head" key="2">Global</Button>
+            <div type="text" id="button-head" key="2">Global</div>
             <Button type="text" >맛집공간</Button>
 
           </div>

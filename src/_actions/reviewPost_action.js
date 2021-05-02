@@ -14,7 +14,7 @@ import {
 } from './types';
 // 완료
 
-export const reviewView = async (postId) => {
+export const postView = async (postId) => {
   const request = await axios.get(`${PUBLIC_IP}/store/review/${postId}`);
 
   if (request.status === 200) {
@@ -49,7 +49,7 @@ export const postList = async (match,rstrnId) => {
   }
 };
 //완료
-export const postSave = async (body, needDelete, rstrnId) => {
+export const postSave = async (body, needDelete, rstrnId, boardId) => {
   const request = await axios.post(`${PUBLIC_IP}/store/${rstrnId}/review`, body);
 
   if (needDelete.length !== 0) {

@@ -8,7 +8,7 @@ import {
   postRemove,
   postScrap,
   postView,
-} from '../../../../_actions/post_action';
+} from '../../../../_actions/reviewPost_action';
 import CommentEdit from '../../../comment/CommentEdit';
 import CommentList from '../../../comment/CommentList';
 import { Card, PageHeader, Skeleton } from 'antd';

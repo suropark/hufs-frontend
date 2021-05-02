@@ -3,7 +3,7 @@ import { Link, Switch, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import { message, Skeleton } from 'antd';
-import { postList } from '../../../../_actions/post_action';
+import { postList } from '../../../../_actions/reviewPost_action';
 import { PageHeader, Button, Table, Pagination } from 'antd';
 const { Column } = Table;
 function ReviewList ({ match, history }) {
@@ -115,14 +115,14 @@ function ReviewList ({ match, history }) {
 
 
 
-    /*  <div className="bottom">
+    <div className="bottom">
        
         <Pagination
           defaultCurrent={1}
           onChange={(event) => setCurrentPage(event.selected + 1)}
           total={posts.length}
         />
-      </div> */
+      </div>
 
     </>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import KakaoBtn from 'react-kakao-login';
+//import KakaoBtn from 'react-kakao-login';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../../config';
 import { message } from 'antd';
