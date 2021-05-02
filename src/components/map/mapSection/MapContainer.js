@@ -37,6 +37,7 @@ const MapContainer = ({ match }) => {
             }} >맛집 공간</Button>
 
           </div>
+          <hr className="line" />
           <div id="global" defaultSelectedKeys={['2']}>
             <Button type="text" id="button-head" key="2">Global</Button>
             <Button type="text" onClick={(e) => {

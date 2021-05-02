@@ -60,6 +60,7 @@ function CalendarComponent() {
           x.getDate() === selectedDay &&
           x.getMonth() + 1 === selectedMonth &&
           x.getFullYear() === selectedYear
+
         );
       }
     });
@@ -78,7 +79,13 @@ function CalendarComponent() {
 
       <div></div>
       <List
-        header={<div>교내 교외</div>}
+        header={
+          <div className="scholarhead">
+            <div className="s1">주관</div>
+            <div className="s2">캠퍼스</div>
+            <div className="s3">제목</div>
+            <div className="s4">링크</div>
+          </div>}
         bordered
         dataSource={dataList}
         renderItem={(item) => (
