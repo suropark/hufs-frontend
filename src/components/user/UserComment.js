@@ -16,7 +16,7 @@ function UserComment() {
           title="내가 쓴 댓글"
           key="content"
           render={(text, record) => (
-            <Link to={`1/${record.Post.id}`}>
+            <Link to={`1/${record?.Post?.id}`}>
               {record.content.length > 30
                 ? record.content.slice(0, 29)
                 : record.content}
@@ -24,30 +24,6 @@ function UserComment() {
           )}
         />{' '}
       </Table>
-      {/* <table>
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>댓글</th>
-            <th>게시글</th>
-          </tr>
-        </thead>
-        {Replies
-          ? Replies.map((comment, index) => {
-              return (
-                <tr key={index}>
-                  <td>{comment.id}</td>
-                  <td>{comment.content}</td>
-                  <td>
-                    <Link to={`1/${comment.Post.id}`}>
-                      {comment.Post.title}
-                    </Link>{' '}
-                  </td>
-                </tr>
-              );
-            })
-          : null}
-      </table> */}
     </div>
   );
 }
