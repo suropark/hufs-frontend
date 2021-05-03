@@ -31,7 +31,7 @@
   color: var(--navy-color);
   font-weight: bold;
 }
-.ant-picker-calendar-header {
+.community-main .ant-picker-calendar-header {
   /* 날짜 선택 */
   position: relative;
   width: 45%;
@@ -52,4 +52,22 @@
   font-size: 16px;
   font-weight: bold;
   margin-left: 10%;
+}
+.ant-picker-content > thead th {
+  /* 달력 요일  */
+  color: var(--navy-color);
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.ant-picker-content tbody tr td {
+  padding: 0px !important;
+  vertical-align: top;
+}
+.ant-picker-cell .ant-picker-cell-inner {
+  line-height: 26px;
+}
+.ant-picker-calendar-date-value {
+  font-weight: bold;
+  font-size: 14px;
 }
