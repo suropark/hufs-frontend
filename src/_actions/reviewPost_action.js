@@ -14,7 +14,7 @@ import {
 } from './types';
 // 완료
 
-export const reviewView = async (postId) => {
+export const postView = async (postId) => {
   const request = await axios.get(`${PUBLIC_IP}/store/review/${postId}`);
 
   if (request.status === 200) {
@@ -31,7 +31,7 @@ export const reviewView = async (postId) => {
   }
 };
 // 완료
-export const postList = async (match,rstrnId) => {
+export const postList = async (rstrnId) => {
   const request = await axios.get(`${PUBLIC_IP}/store/${rstrnId}/review`, {
     withCredentials: true,
   });

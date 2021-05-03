@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
 
 import { withRouter } from 'react-router-dom';
-import { postUpdate, postView } from '../../../../_actions/post_action';
+import { postUpdate, postView } from '../../../../_actions/reviewPost_action';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../../../config';
 import { Skeleton, Button, Rate } from 'antd';
