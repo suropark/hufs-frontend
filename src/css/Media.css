@@ -1,7 +1,8 @@
 @media (max-width: 1400px) {
   .Head,
   .Footer,
-  .community-main {
+  .community-main,
+  #community-main {
     left: 3%;
   }
   .Main {

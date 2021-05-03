@@ -29,6 +29,6 @@
 .ant-modal-footer {
   height: 50px;
 }
-.ant-btn.ant-btn-primary {
+.ant-modal-footer .ant-btn.ant-btn-primary {
   color: navy;
 }
