@@ -8,7 +8,7 @@
   color: var(--navy-color);
   font-weight: bold;
   display: flex;
-  font-size: 13px;
+  font-size: 14px;
 }
 .scholarhead * {
   text-align: center;
@@ -30,4 +30,26 @@
 .main-Calendar-head * {
   color: var(--navy-color);
   font-weight: bold;
+}
+.ant-picker-calendar-header {
+  /* 날짜 선택 */
+  position: relative;
+  width: 45%;
+  float: right;
+  padding-right: 5% !important;
+}
+.ant-alert.ant-alert-info.ant-alert-no-icon {
+  /* 장학금 달력 부모 태그 */
+  position: absolute;
+  width: 50%;
+  height: 49px;
+  background-color: white;
+  border: none;
+}
+.ant-alert-message {
+  /* 장학금 달력 */
+  color: var(--navy-color);
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10%;
 }
