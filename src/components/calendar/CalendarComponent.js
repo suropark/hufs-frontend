@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Calendar, Badge } from 'antd';
+import { Calendar, Badge, Alert } from 'antd';
 import { useSelector } from 'react-redux';
-import { List, Typography, Divider } from 'antd';
+import { List, Typography, PageHeader } from 'antd';
+
 function CalendarComponent() {
   const { scholar } = useSelector((state) => state.calendar);
   const [dataList, setDataList] = useState([]);
@@ -69,6 +70,11 @@ function CalendarComponent() {
 
   return (
     <div className="community-main" >
+      <PageHeader
+        title={`학교 해Boo`}
+        subTitle="설명"
+      />
+      <Alert message={`장학금 달력`} />
       <Calendar
         dateCellRender={scholar ? dateCellRender : null}
         // monthCellRender={monthCellRender}
