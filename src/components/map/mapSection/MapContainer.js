@@ -4,7 +4,7 @@ import storeSeoul from './mapData/store-seoul.json';
 import storeGlobal from './mapData/store-global.json'
 import Card from './Card.js';
 import SearchBar from './SearchBar.js';
-import mapboo from '../../../banner/mapboo.png';
+import mapboo from '../../../image/boo/mapboo.png';
 import { Button, Breadcrumb } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 
