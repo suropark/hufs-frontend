@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../banner/logo.png';
+import logo from '../../image/logo.png';
 // import mainboo from '../../banner/mainboo.png';
 import { Menu, Dropdown, Button, Space, Input, message } from 'antd';
 import { Redirect, withRouter } from 'react-router';

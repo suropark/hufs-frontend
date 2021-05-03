@@ -1,8 +1,8 @@
-import img1 from '../../banner/banner1.png';
-import img2 from '../../banner/banner2.png';
-import img3 from '../../banner/banner3.png';
-import img4 from '../../banner/banner4.png';
-import test from '../../banner/test1.png';
+import img1 from '../../image/banner/banner1.png';
+import img2 from '../../image/banner/banner2.png';
+import img3 from '../../image/banner/banner3.png';
+import img4 from '../../image/banner/banner4.png';
+import test from '../../image/test1.png';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
