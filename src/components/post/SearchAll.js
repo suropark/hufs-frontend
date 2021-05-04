@@ -38,6 +38,12 @@ function SearchAll(props) {
             break;
           case 404:
             message.info('검색 결과가 존재하지 않습니다.');
+          case 422:
+            if (error.response.data.message === 'QUERY_KEYWORD') {
+              message.error('두 글자 이상 입력해주세요');
+            } else {
+              message.error('query error');
+            }
           default:
             break;
         }

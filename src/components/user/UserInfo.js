@@ -105,12 +105,9 @@ function UserInfo(props) {
         <h3>로딩 중...</h3>
       ) : (
         <div className={styles.card}>
-          <div className={styles.image}>
-            이미지
-          </div>
+          <div className={styles.image}>이미지</div>
           <div className={styles.info}>
-            <div
-              className={styles.email}>
+            <div className={styles.email}>
               <label>이메일</label>
               <div>
                 <Input
@@ -120,11 +117,10 @@ function UserInfo(props) {
                 ></Input>
               </div>
             </div>
-            <div
-              className={styles.webMail}>
+            <div className={styles.webMail}>
               <label>웹메일</label>
               <div>
-                {Token.isEmailAuthenticated ? (
+                {Token?.isEmailAuthenticated ? (
                   <Input
                     disabled
                     value={webMail}
@@ -141,10 +137,10 @@ function UserInfo(props) {
                     ></Input>
                     <Button
                       onClick={onAuth}
-                    // style={{ marginLeft: '8px' }}
+                      // style={{ marginLeft: '8px' }}
                     >
                       인증하기
-                  </Button>
+                    </Button>
                   </>
                 )}
               </div>
@@ -166,7 +162,7 @@ function UserInfo(props) {
                 />
               </div>
             </div>
-            <div className={styles.mainMajor} >
+            <div className={styles.mainMajor}>
               <label>본전공</label>
               <MajorSelect
                 list={mainMajorList}
