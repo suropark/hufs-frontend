@@ -15,6 +15,7 @@ import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
 import { Card, message, PageHeader, Skeleton } from 'antd';
 import styles from '../../css/PostView.module.css'
+import like from '../../image/recommend.png'
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
@@ -180,6 +181,14 @@ function PostView({ match, history }) {
                 <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
                   {post.title}
                 </div>
+                <span className={styles.like}>
+                  <img src={like} />
+                  <span className={styles.recommend}
+                    onClick={onLike}
+                  >
+                    추천
+                  </span>
+                </span>
                 {post.User === null ? (
                   <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
                 ) : (
@@ -224,15 +233,7 @@ function PostView({ match, history }) {
                     스크랩
                   </span>
                 </div>
-                <div>
-                  <span onClick={onLike} style={{
-                    cursor: 'pointer',
-                    float: 'right',
-                    marginLeft: '12px'
-                  }}>
-                    추천
-                  </span>
-                </div>
+
                 <div>
                   <span
                     onClick={onDelete}

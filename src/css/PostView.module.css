@@ -14,3 +14,21 @@
   left: 5%;
   top: 3%;
 }
+.recommend {
+  cursor: pointer;
+  float: right;
+  font-size: 15px;
+  margin: auto 0;
+}
+.like {
+  float: right;
+}
+.like img {
+  width: 35%;
+}
+
+@media (max-width: 1400px) {
+  .communitymain {
+    left: 4%;
+  }
+}
