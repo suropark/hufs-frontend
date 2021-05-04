@@ -6,6 +6,7 @@ import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
 import { PageHeader, Button, Table, Pagination } from 'antd';
 import PostSearch from './PostSearch';
+
 const { Column } = Table;
 function PostList({ match, history }) {
   const [currentList, setCurrentList] = useState([]);
