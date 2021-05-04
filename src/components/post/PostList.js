@@ -176,6 +176,7 @@ export function TableBody({ currentList, match, loading }) {
             key="createdAt"
           />
           <Column title="추천수" dataIndex="like" key="like" />
+
         </Table>
       ) : (
         <>
