@@ -16,7 +16,7 @@ function UserComment() {
           title="내가 쓴 댓글"
           key="content"
           render={(text, record) => (
-            <Link to={`1/${record.Post.id}`}>
+            <Link to={`1/${record.Post?.id}`}>
               {record.content.length > 30
                 ? record.content.slice(0, 29)
                 : record.content}
