@@ -5,14 +5,12 @@ import axios from 'axios';
 import { PUBLIC_IP } from '../../../config';
 import { message } from 'antd';
 
-
 function GoogleSignIn({ setModalVisible, setLogin }) {
-
   const history = useHistory();
   const [modalState, setModalState] = useState(true);
 
-  console.log("Where are you", setModalVisible);
-  console.log("work?", modalState);
+  console.log('Where are you', setModalVisible);
+  console.log('work?', modalState);
 
   return (
     <>

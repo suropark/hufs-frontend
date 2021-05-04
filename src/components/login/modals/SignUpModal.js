@@ -1,12 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { message, Select, Button, Input, Form, Checkbox, Descriptions } from 'antd';
+import {
+  message,
+  Select,
+  Button,
+  Input,
+  Form,
+  Checkbox,
+  Descriptions,
+} from 'antd';
 import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
-import Cookies from 'js-cookie';
 import { PUBLIC_IP } from '../../../config';
-import { getDefaultNormalizer } from '@testing-library/dom';
 
 const SignUpModal = (props) => {
   const { Option } = Select;
@@ -27,13 +33,13 @@ const SignUpModal = (props) => {
     const request1 = await axios
       .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
-      .catch((e) => { });
+      .catch((e) => {});
     setMajor(request1);
     const request2 = await axios
       .get(`${PUBLIC_IP}/major/double-major`) //이중전공
       .then((response) => response.data.data)
 
-      .catch((e) => { }); // 배열 [id, name ]
+      .catch((e) => {}); // 배열 [id, name ]
     setDoubleMajor(request2);
   }, []);
   useEffect(() => console.log(submit), [submit]);
@@ -177,14 +183,12 @@ const SignUpModal = (props) => {
           >
             <Checkbox
               onChange={(event) => {
-                setSubmit({ ...submit, isAgreed: event.target.checked })
+                setSubmit({ ...submit, isAgreed: event.target.checked });
                 console.log(event.target.checked, submit.isAgreed);
               }}
             >
-
               동의합니다
             </Checkbox>
-            
           </Form.Item>
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit" onClick={onSubmit}>
@@ -192,9 +196,8 @@ const SignUpModal = (props) => {
             </Button>
           </Form.Item>
         </Form>
-        <Descriptions title="개인정보 이용약관">
-          blabla
-        </Descriptions>
+        <Descriptions title="개인정보 이용약관"></Descriptions>
+        {/* Descriptions 컴포넌트 사이에 blabla이런거 넣으시면 에러납니다. antd 사용법 다시 보시고 고쳐주시면 좋을 것 같아요! */}
       </div>
     </>
   );
