@@ -186,7 +186,7 @@ function PostView({ match, history }) {
                   <span className={styles.recommend}
                     onClick={onLike}
                   >
-                    추천
+                    추천 : {post.like}
                   </span>
                 </span>
                 {post.User === null ? (
