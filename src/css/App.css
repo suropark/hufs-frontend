@@ -162,6 +162,15 @@
 
   /* background: #cd7d7d; */
 }
+.Footer {
+  /* Footer */
+
+  position: relative;
+  left: 12%;
+  width: 1100px;
+  height: 150px;
+  top: 50px;
+}
 
 /* 푸터 변경 필요 x */
 
