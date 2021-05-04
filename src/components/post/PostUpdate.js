@@ -202,8 +202,9 @@ function imageHandler() {
     fileInput.classList.add('ql-image');
     fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
+      const formData = new FormData();
+      formData.append('img', files[0]);
       const range = this.quill.getSelection(true);
-
       if (!files || !files.length) {
         console.log('No files selected');
         return;
@@ -217,8 +218,6 @@ function imageHandler() {
       // };
       //
 
-      const formData = new FormData();
-      formData.append('file', files[0]);
       // this.quill.enable(false);
 
       await axios
@@ -241,7 +240,8 @@ function imageHandler() {
           fileInput.value = '';
         })
         .catch((error) => {
-          alert(error);
+          console.log(error);
+          fileInput.value = '';
           this.quill.enable(true);
         });
     });

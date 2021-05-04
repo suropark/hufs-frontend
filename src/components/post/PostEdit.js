@@ -15,7 +15,7 @@ function PostEdit(props) {
   useBeforeunload((e) => {
     e.preventDefault();
     window.onunload = function () {
-      axios.delete(`${PUBLIC_IP}/post/back`, uploadedImg);
+      axios.post(`${PUBLIC_IP}/post/back`, uploadedImg);
     };
   });
 
@@ -61,7 +61,7 @@ function PostEdit(props) {
     );
     if (answer) {
       axios
-        .delete(`${PUBLIC_IP}/post/back`, uploadedImg)
+        .post(`${PUBLIC_IP}/post/back`, uploadedImg)
         .then(props.history.goBack())
         .catch(props.history.goBack());
     }
@@ -105,7 +105,6 @@ function PostEdit(props) {
             style={{
               marginLeft: '10px',
             }}
-
           >
             취소
           </Button>
@@ -183,7 +182,6 @@ function imageHandler() {
         })
 
         .then((response) => {
-          console.log(response);
           this.quill.editor.insertEmbed(
             range.index,
             'image',
@@ -196,6 +194,7 @@ function imageHandler() {
         })
         .catch((error) => {
           console.log(error);
+          fileInput.value = '';
           this.quill.enable(true);
         });
     });
