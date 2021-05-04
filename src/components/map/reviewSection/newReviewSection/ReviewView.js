@@ -1,24 +1,26 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter,useLocation } from 'react-router-dom';
 import {
   postDellike,
   postLike,
   postRemove,
   postScrap,
   postView,
-} from '../../../../_actions/post_action';
+} from '../../../../_actions/reviewPost_action';
 import CommentEdit from '../../../comment/CommentEdit';
 import CommentList from '../../../comment/CommentList';
 import { Card, PageHeader, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
-function ReviewView({ match, history }) {
+function ReviewView({ match, history,location },props) {
+  var location = useLocation();
+  console.log(match.params.id)
   const [post, setPost] = useState();
   const dispatch = useDispatch();
   useEffect(async () => {
-    dispatch(postView(+match.params.id))
+    dispatch(postView(match.params.id))
       .then((response) => {
         if (response.status === 200) {
           setPost(response.payload);

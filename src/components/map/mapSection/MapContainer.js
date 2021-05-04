@@ -28,13 +28,12 @@ const MapContainer = ({ match }) => {
       <div className="Map-left">
         <div className="content" >
 
-          <div id="seoul" defaultSelectedKeys={['1']}>
-            <Button type="text" id="button-head" key="1">Seoul</Button>
-            <Button type="text" onClick={(e) => {
-              setData(storeSeoul);
-              setLat(37.59732049638715);
-              setLng(127.0588283395548)
-            }} >맛집 공간</Button>
+          <div id="seoul" defaultSelectedKeys={['1']}
+          onClick={(e) => {setData(storeSeoul);
+            setLat(37.59732049638715);
+          setLng(127.0588283395548)}}>
+            <div type="text" id="button-head" key="1">Seoul</div>
+            <Button type="text"  >맛집공간</Button>
 
           </div>
           <hr className="line" />

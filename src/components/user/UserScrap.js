@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PUBLIC_IP } from '../../config';
 import { deleteScrap } from '../../_actions/post_action';
 import { Table } from 'antd';
+
 import { Link } from 'react-router-dom';
 function UserScrap() {
   const { Column } = Table;
@@ -23,7 +24,7 @@ function UserScrap() {
           setScraps(response.data.data); // [스크랩 id, 포스트 Post.id, 포스트 Post.title]
         }
       })
-      .catch((error) => { });
+      .catch((error) => {});
     // }
   }, []);
   const onRemove = (e) => {
@@ -41,6 +42,7 @@ function UserScrap() {
   return (
     <div>
       <Table pagination={false} dataSource={scraps}>
+
         <Column title="글 번호" dataIndex="id" key="id" style={{ textAlign: 'center' }} />
         <Column
           style={{ textAlign: 'center' }}
