@@ -72,7 +72,7 @@ function CalendarComponent() {
     <div className="community-main" >
       <PageHeader
         title={`학교 해Boo`}
-        subTitle="설명"
+        subTitle={`편하게 장학금 확인 가능`}
       />
       <Alert message={`장학금 달력`} />
       <Calendar

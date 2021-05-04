@@ -11,7 +11,7 @@ function UserComment() {
   return (
     <div>
       <Table pagination={false} dataSource={Replies}>
-        <Column title="-" dataIndex="id" key="id" />
+        <Column title="글 번호" dataIndex="id" key="id" />
         <Column
           title="내가 쓴 댓글"
           key="content"
