@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PUBLIC_IP } from '../../config';
 import { deleteScrap } from '../../_actions/post_action';
-import { Button, message, Table } from 'antd';
+import { Table } from 'antd';
+
 import { Link } from 'react-router-dom';
 function UserScrap() {
   const { Column } = Table;
@@ -41,8 +42,10 @@ function UserScrap() {
   return (
     <div>
       <Table pagination={false} dataSource={scraps}>
-        <Column title="-" dataIndex="id" key="id" />
+
+        <Column title="글 번호" dataIndex="id" key="id" style={{ textAlign: 'center' }} />
         <Column
+          style={{ textAlign: 'center' }}
           title="스크랩한 글"
           key="content"
           render={(text, record) => (
@@ -66,5 +69,4 @@ function UserScrap() {
     </div>
   );
 }
-
 export default UserScrap;
