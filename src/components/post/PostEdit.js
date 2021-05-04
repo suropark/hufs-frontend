@@ -118,8 +118,13 @@ export default withRouter(PostEdit);
 
 const myToolbar = [
   [{ header: [1, 2, false] }],
-  ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+  ['bold',
+    'italic',
+    'underline',
+    'strike',
+    // 'blockquote'
+  ],
+  // [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
   ['image'],
 ];
 const modules = {
@@ -134,10 +139,10 @@ const formats = [
   'italic',
   'underline',
   'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'indent',
+  // 'blockquote',
+  // 'list',
+  // 'bullet',
+  // 'indent',
   'link',
   'image',
 ];
