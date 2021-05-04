@@ -131,8 +131,8 @@ export function TableBody({ currentList, match, loading }) {
             key="title"
             render={(text, record) => (
               <Link to={`${match.path}/${record.id}`}>
-                {record.title.length > 20
-                  ? record.title.slice(0, 20)
+                {record.title.length > 32
+                  ? record.title.slice(0, 32)
                   : record.title}
               </Link>
             )}
