@@ -35,7 +35,7 @@ const MapContainer = ({ match }) => {
               setLng(127.0588283395548)
             }}>
             <div type="text" id="button-head" key="1">Seoul</div>
-            <Button type="text"  >맛집공간</Button>
+            <Button type="text"  >맛집 공간</Button>
 
           </div>
           <hr className="line" />
