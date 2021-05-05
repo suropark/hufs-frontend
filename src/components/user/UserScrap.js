@@ -49,12 +49,7 @@ function UserScrap() {
           title="스크랩한 글"
           key="content"
           render={(text, record) => (
-            // <Link to={`1/${record?.Post?.id}`}>
-            //   {record.Post.title.length > 30
-            //     ? record.Post.title.slice(0, 29)
-            //     : record.Post.title}
-            // </Link>
-            <Link to={`1/${record.Post.id}`}>
+            <Link to={`1/${record?.Post?.id}`}>
               {record.Post.title.length > 30
                 ? record.Post.title.slice(0, 29)
                 : record.Post.title}
