@@ -1,0 +1,23 @@
+.ant-modal-confirm-body .ant-modal-confirm-title {
+  width: 100%;
+}
+.ant-modal-confirm-content {
+  margin: 0 auto !important;
+}
+.ant-modal-confirm-body > .anticon.anticon-exclamation-circle {
+  display: none;
+}
+.ant-modal-confirm-btns {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.withdraw {
+  display: inline-block;
+  margin-left: 40%;
+}
+.ant-modal-body .ant-modal-confirm-btns > button > span {
+  width: 100%;
+}
+.ant-modal-body .ant-modal-confirm-btns .ant-btn {
+  margin-left: 10px;
+}

@@ -8,6 +8,7 @@ import './css/Post.css';
 import './css/Media.css';
 import './css/Scholar.css';
 import './css/SignInModal.css';
+import './css/User.css'
 import './css/Slide.css';
 const Post = loadable(() => import('./views/PostPage/Post'));
 const LandingPage = loadable(() => import('./views/LandingPage/LandingPage'));
