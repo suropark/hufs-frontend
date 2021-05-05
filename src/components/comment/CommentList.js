@@ -5,14 +5,16 @@ import { withRouter } from 'react-router';
 import { commentLike, commentRemove } from '../../_actions/comment_action';
 import ReportModal from '../post/ReportModal';
 import { UserOutlined } from '@ant-design/icons';
-function CommentList({ comments, history }) {
+import { postView } from '../../_actions/post_action';
+function CommentList({ comments, history, setPost, match }) {
   const dispatch = useDispatch();
-
   const onLike = (event) => {
     dispatch(commentLike(+event.target.value))
-      .then((response) => {
+      .then(async (response) => {
         alert('추천 완료');
-        window.location.reload();
+        await postView(+match.params.id).then((response) =>
+          setPost(response.payload),
+        );
       })
       .catch((error) => {
         switch (error.response?.status) {
@@ -35,9 +37,11 @@ function CommentList({ comments, history }) {
     const answer = window.confirm('이 댓글을 삭제하시겠습니까?');
     if (answer) {
       dispatch(commentRemove(+event.target.value))
-        .then((response) => {
+        .then(async (response) => {
           alert('삭제 완료');
-          window.location.reload();
+          await postView(+match.params.id).then((response) =>
+            setPost(response.payload),
+          );
         })
         .catch((error) => {
           switch (error.response?.status) {
@@ -65,10 +69,7 @@ function CommentList({ comments, history }) {
   //   );
   // };
   return (
-    <div
-      className="comment-body"
-
-    >
+    <div className="comment-body">
       <List
         className="comment-list"
         header={`${comments.length} replies`}
@@ -77,7 +78,6 @@ function CommentList({ comments, history }) {
         renderItem={(item) => (
           <li>
             <Comment
-
               actions={item.actions}
               author={item.User === null ? '탈퇴한 사용자' : item.User.nickname}
               avatar={<Avatar icon={<UserOutlined />} />}

@@ -14,8 +14,8 @@ import CommentEdit from '../comment/CommentEdit';
 import CommentList from '../comment/CommentList';
 import ReportModal from './ReportModal';
 import { Card, message, PageHeader, Skeleton } from 'antd';
-import styles from '../../css/PostView.module.css'
-import like from '../../image/recommend.png'
+import styles from '../../css/PostView.module.css';
+import like from '../../image/recommend.png';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
@@ -183,9 +183,7 @@ function PostView({ match, history }) {
                 </div>
                 <span className={styles.like}>
                   <img src={like} />
-                  <span className={styles.recommend}
-                    onClick={onLike}
-                  >
+                  <span className={styles.recommend} onClick={onLike}>
                     추천 : {post.like}
                   </span>
                 </span>
@@ -200,20 +198,22 @@ function PostView({ match, history }) {
                 <span style={{ marginLeft: '24px', fontSize: '5px' }}>
                   {post.createdAt?.slice(0, 10)}
                 </span>
-                <span style={{ marginLeft: '24px', fontSize: '5px' }}> 글 번호 {post.id}</span>
+                <span style={{ marginLeft: '24px', fontSize: '5px' }}>
+                  {' '}
+                  글 번호 {post.id}
+                </span>
               </>
             }
-          // extra={<span>글 번호 {post.id}</span>}
+            // extra={<span>글 번호 {post.id}</span>}
           >
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
               className="board-content"
-            // style={{ display: 'inline-block', minHeight: '300px' }}
+              // style={{ display: 'inline-block', minHeight: '300px' }}
             />
             <div>
               {/* 추천 수: {post.like}
                 <div>신고 수: {post.report}</div> */}
-
               {/* <div>
                   <span onClick={onDellike} style={{ cursor: 'pointer' }}>
                     추천취소
@@ -227,13 +227,12 @@ function PostView({ match, history }) {
                     style={{
                       cursor: 'pointer',
                       float: 'right',
-                      marginLeft: '12px'
+                      marginLeft: '12px',
                     }}
                   >
                     스크랩
                   </span>
                 </div>
-
                 <div>
                   <span
                     onClick={onDelete}
@@ -255,14 +254,16 @@ function PostView({ match, history }) {
               <hr />
             </div>
             <CommentList
+              setPost={setPost}
               history={history}
               comments={post.Replies ? post.Replies : []}
+              match={match}
             />
-            <CommentEdit history={history} match={match} />
+            <CommentEdit setPost={setPost} history={history} match={match} />
           </Card>
         )}
       </div>
-    </div >
+    </div>
   );
 }
 
