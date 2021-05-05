@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../config';
 import { Button, Input } from 'antd';
-
+import imageCompression from 'browser-image-compression';
 let uploadedImg = [];
 function PostEdit(props) {
   const dispatch = useDispatch();
@@ -118,7 +118,8 @@ export default withRouter(PostEdit);
 
 const myToolbar = [
   [{ header: [1, 2, false] }],
-  ['bold',
+  [
+    'bold',
     'italic',
     'underline',
     'strike',
@@ -161,8 +162,24 @@ function imageHandler() {
     fileInput.classList.add('ql-image');
     fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
+      // console.log('originalFile instanceof Blob', files[0] instanceof Blob); // true
+      // console.log(`originalFile size ${files[0].size / 1024 / 1024} MB`);
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 400,
+        useWebWorker: true,
+      };
+      const compressedFile = await imageCompression(files[0], options);
+      // console.log(
+      //   'compressedFile instanceof Blob',
+      //   compressedFile instanceof Blob,
+      // ); // true
+      // console.log(
+      //   `compressedFile size ${compressedFile.size / 1024 / 1024} MB`,
+      // ); // smaller than maxSizeMB
+
       const formData = new FormData();
-      formData.append('img', files[0]);
+      formData.append('img', compressedFile);
       const range = this.quill.getSelection(true);
 
       if (!files || !files.length) {

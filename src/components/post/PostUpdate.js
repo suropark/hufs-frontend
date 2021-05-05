@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
-
+import imageCompression from 'browser-image-compression';
 import { withRouter } from 'react-router-dom';
 import { postUpdate, postView } from '../../_actions/post_action';
 import axios from 'axios';
@@ -102,7 +102,7 @@ function PostUpdate({ match, history }) {
     }
   };
 
-  useEffect(() => { }, [updated]);
+  useEffect(() => {}, [updated]);
 
   return (
     <>
@@ -202,8 +202,14 @@ function imageHandler() {
     fileInput.classList.add('ql-image');
     fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 400,
+        useWebWorker: true,
+      };
+      const compressedFile = await imageCompression(files[0], options);
       const formData = new FormData();
-      formData.append('img', files[0]);
+      formData.append('img', compressedFile);
       const range = this.quill.getSelection(true);
       if (!files || !files.length) {
         console.log('No files selected');
