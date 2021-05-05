@@ -33,6 +33,7 @@ function GoogleSignIn({ setModalVisible, setLogin }) {
                 message.success('로그인이 정상 완료 되었습니다.');
                 history.push('/');
                 setLogin(true);
+                setModalState(false);
                 setModalVisible(false);
                 //console.log("::",modalState)
                 //console.log(":::", setModalVisible(false))
