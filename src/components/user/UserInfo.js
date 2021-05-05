@@ -157,7 +157,7 @@ function UserInfo(props) {
                   placeholder={nickName}
                   value={change.nickname}
                   onChange={(e) =>
-                    setChange({ ...change, nickName: e.target.value })
+                    setChange({ ...change, nickname: e.target.value })
                   }
                 />
               </div>
