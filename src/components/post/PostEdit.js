@@ -7,7 +7,7 @@ import { useBeforeunload } from 'react-beforeunload';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../config';
-import { Button, Input } from 'antd';
+import { Button, Input, message } from 'antd';
 import imageCompression from 'browser-image-compression';
 let uploadedImg = [];
 function PostEdit(props) {
@@ -22,6 +22,11 @@ function PostEdit(props) {
   const [value, setvalue] = useState({ title: '', content: '' });
   const onSubmit = (e) => {
     e.preventDefault();
+    if (value.title.trim().length === 0) {
+      // 공백 제목 검사
+      message.info('제목을 적어주세요');
+      return;
+    }
 
     let submittedImg = Array.from(
       new DOMParser()

@@ -11,7 +11,7 @@ import { PUBLIC_IP } from '../../config';
 import Footer from '../../views/Footer/Footer';
 import Header from '../../views/Header/Header';
 import Quick from '../../views/Quick/Quick';
-import { Skeleton, Button } from 'antd';
+import { Skeleton, Button, message } from 'antd';
 
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
@@ -62,6 +62,11 @@ function PostUpdate({ match, history }) {
 
   const onUpdate = () => {
     // 처음 이미지 url과 최종 제출 url 비교해서 삭제해야 할 이미지 url 찾기
+    if (updated.title.trim().length === 0) {
+      // 공백 제목 검사
+      message.info('제목을 적어주세요');
+      return;
+    }
     let afterEdit = Array.from(
       new DOMParser()
         .parseFromString(updated.content, 'text/html')
