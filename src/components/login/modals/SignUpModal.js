@@ -20,8 +20,8 @@ const SignUpModal = (props) => {
   const [doubleMajor, setDoubleMajor] = useState(false);
   const [submit, setSubmit] = useState({
     // email: Cookies.get('email'),
-    //email: props.location.state.email,
-    //provider: props.location.state.provider,
+    email: props.location.state.email,
+    provider: props.location.state.provider,
     nickname: '',
     webMail: '',
     mainMajorId: 1,
@@ -197,7 +197,6 @@ const SignUpModal = (props) => {
           </Form.Item>
         </Form>
         <Descriptions title="개인정보 이용약관"></Descriptions>
-        {/* Descriptions 컴포넌트 사이에 blabla이런거 넣으시면 에러납니다. antd 사용법 다시 보시고 고쳐주시면 좋을 것 같아요! */}
       </div>
     </>
   );

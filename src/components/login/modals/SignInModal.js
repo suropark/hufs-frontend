@@ -27,7 +27,7 @@ function SignInModal({ setLogin }) {
         onOk={() => setModalVisible(false)}
         onCancel={() => setModalVisible(false)}
       >
-        <GoogleSignIn setLogin={setLogin} setModalVisible={setModalVisible} />
+        <GoogleSignIn setLogin={setLogin} setModalVisible={(modalState) => setModalVisible(modalState)} />
         <img
           style={{ cursor: 'pointer' }}
           onClick={KakaoSignIn}
