@@ -20,7 +20,10 @@ function PostList({ match, history }) {
     dispatch(postList(match))
       .then((response) => {
         if (response.status === 200) {
-          setPosts(response.payload.reverse());
+          const postKey = response.payload.map((post, key) => {
+            return { ...post, key: key + 1 };
+          });
+          setPosts(postKey.reverse());
           setloading(true);
         }
       })
@@ -145,7 +148,7 @@ export function TableBody({ currentList, match, loading }) {
     <>
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
-          <Column title="글 번호" dataIndex="id" key="id" />
+          <Column title="글 번호" dataIndex="key" key="key" />
           <Column
             title="제목"
             key="title"
