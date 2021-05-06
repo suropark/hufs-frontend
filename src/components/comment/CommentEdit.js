@@ -12,6 +12,11 @@ function CommentEdit({ history, match, setPost }) {
   const [content, onChange, setContent] = useInput('');
   const onSubmit = (e) => {
     e.preventDefault();
+    if (content.trim().length === 0) {
+      message.info('댓글을 입력하세요');
+      return;
+    }
+
     let body = {
       postId: +match.params.id,
       content: content,
