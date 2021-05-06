@@ -40,6 +40,7 @@ function UserWithdraw(props) {
         }
       });
   };
+
   return (
     <div
       className="withdraw"

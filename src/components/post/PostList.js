@@ -6,6 +6,7 @@ import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
 import { PageHeader, Button, Table, Pagination } from 'antd';
 import PostSearch from './PostSearch';
+import PostSub from "./PostSub";
 
 const { Column } = Table;
 function PostList({ match, history }) {
@@ -15,7 +16,7 @@ function PostList({ match, history }) {
   const dispatch = useDispatch();
   const [posts, setPosts] = useState([]);
   const [loading, setloading] = useState(false);
-  // console.log(match.path.substring(1)); // 게시판 이름
+  // console.log(match.url.substring(1)); // 게시판 이름
   useEffect(() => {
     dispatch(postList(match))
       .then((response) => {
@@ -49,51 +50,12 @@ function PostList({ match, history }) {
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
-  function findBoardName(boardId) {
-    switch (boardId) {
-      case 1:
-        return '떠들어Boo';
-      case 2:
-        return '학교 해Boo';
-      case 3:
-        return '학교 간 Boo';
-      case 4:
-        return '학교 떠난 Boo';
-      case 5:
-        return '정면승Boo';
-      case 6:
-        return '이거 모르면 바Boo';
-      default:
-        break;
-    }
-  }
-  function findBoardSub(boardId) {
-    switch (boardId) {
-      case 1:
-        return '자유롭게 떠드는 커뮤니티';
-      case 2:
-        return '편하게 장학금 확인가능';
-      case 3:
-        return '외대생만의 맛집과 리뷰!';
-      case 4:
-        return '졸업생들 여기서 헤쳐 모여~~!';
-      case 5:
-        return '캠O스픽, 스X업 말고 여기서 한 번에 모아보자!';
-      case 6:
-        return '외대생이라면 누릴 수 있는 제휴 혜택 정보&꿀팁 궁금한 사람?!';
-      default:
-        break;
-    }
-    // case 2 ,3 커뮤니티 아니라서 반환안되네
-  }
+
   return (
     <>
       {' '}
       <table className="community-main">
-        <PageHeader
-          title={findBoardName(+match.url.substring(1))}
-          subTitle={findBoardSub(+match.url.substring(1))}
-        />{' '}
+        <PostSub match={match} />{''}
         <div className="community-box">
           <PostSearch setPosts={setPosts} match={match} />
           <TableBody
@@ -154,13 +116,13 @@ export function TableBody({ currentList, match, loading }) {
             key="title"
             render={(text, record) => (
               <Link to={`${match.path}/${record.id}`}>
-                {record.title.length > 32
-                  ? record.title.slice(0, 32)
+                {record.title.length > 29
+                  ? record.title.slice(0, 29)
                   : record.title}
                 {/* {true ? record.Replies[0].count : null} */}
                 {record.Replies[0]?.count ? (
                   <span style={{ color: 'black' }}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;( {record.Replies[0]?.count} )
+                    &nbsp;&nbsp;&nbsp;&nbsp;({record.Replies[0]?.count})
                   </span>
                 ) : null}
               </Link>
