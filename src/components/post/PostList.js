@@ -69,11 +69,11 @@ function PostList({ match, history }) {
       case 1:
         return '자유롭게 떠드는 커뮤니티';
       case 2:
-        return '편하게 장학금 확인가능';
+        return '장학금 여기서 스~윽';
       case 3:
         return '외대생만의 맛집과 리뷰!';
       case 4:
-        return '졸업생들 여기서 헤쳐 모여~~!';
+        return '졸업생들 여기 모여~~!';
       case 5:
         return '캠O스픽, 스X업 말고 여기서 한 번에 모아보자!';
       case 6:
@@ -151,13 +151,13 @@ export function TableBody({ currentList, match, loading }) {
             key="title"
             render={(text, record) => (
               <Link to={`${match.path}/${record.id}`}>
-                {record.title.length > 32
-                  ? record.title.slice(0, 32)
+                {record.title.length > 29
+                  ? record.title.slice(0, 29)
                   : record.title}
                 {/* {true ? record.Replies[0].count : null} */}
                 {record.Replies[0]?.count ? (
                   <span style={{ color: 'black' }}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;( {record.Replies[0]?.count} )
+                    &nbsp;&nbsp;&nbsp;&nbsp;({record.Replies[0]?.count})
                   </span>
                 ) : null}
               </Link>
