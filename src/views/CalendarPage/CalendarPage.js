@@ -29,7 +29,7 @@ function CalendarPage(props) {
     <div>
       <Header />
 
-      <CalendarComponent />
+      <CalendarComponent match={props.match} />
     </div>
   );
 }

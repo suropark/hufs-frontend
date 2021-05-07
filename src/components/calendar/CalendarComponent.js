@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Calendar, Badge, Alert } from 'antd';
 import { useSelector } from 'react-redux';
 import { List, Typography, PageHeader } from 'antd';
+import PostSub from '../post/PostSub'
 
-function CalendarComponent() {
+function CalendarComponent({ match }) {
   const { scholar } = useSelector((state) => state.calendar);
   const [dataList, setDataList] = useState([]);
   useEffect(() => {
@@ -70,10 +71,7 @@ function CalendarComponent() {
 
   return (
     <div className="community-main" >
-      <PageHeader
-        title={`학교 해Boo`}
-        subTitle={`장학금 여기서 스~윽`}
-      />
+      <PostSub match={match} />
       <Alert message={`장학금 달력`} />
       <Calendar
         dateCellRender={scholar ? dateCellRender : null}
