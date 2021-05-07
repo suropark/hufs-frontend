@@ -301,7 +301,7 @@ return (
     renderItem={item => (
       <List.Item>
         <List.Item.Meta
-          avatar={<Avatar src={item.img} />}
+          avatar={<Avatar size = {80} src={item.img} />}
           title={item.title}
           description={item.description}
         />

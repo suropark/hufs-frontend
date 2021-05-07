@@ -14,12 +14,12 @@ import CommentList from '../../../comment/CommentList';
 import { Card, PageHeader, Skeleton } from 'antd';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
-function ReviewView({ match, history,location },props) {
+function ReviewView({ match, history}) {
   var location = useLocation();
   console.log(match.params.id)
   const [post, setPost] = useState();
   const dispatch = useDispatch();
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(postView(match.params.id))
       .then((response) => {
         if (response.status === 200) {
@@ -160,8 +160,8 @@ function ReviewView({ match, history,location },props) {
   //   }
   // }
   return (
-    <div className="community-main">
-      <div className="community-box">
+    <div className="community-mai">
+      <div className="community-bo">
         <Card
           title={
             <>

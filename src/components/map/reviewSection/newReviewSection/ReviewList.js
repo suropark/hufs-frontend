@@ -19,7 +19,10 @@ function ReviewList ({ match, history }) {
     dispatch(postList(history.location.state.id))
       .then((response) => {
         if (response.status === 200) {
-          setPosts(response.payload.reverse());
+          const postKey = response.payload.map((post, key) => {
+            return { ...post, key: key + 1 };
+          });
+          setPosts(postKey.reverse());
           setloading(true);
         }
       })
@@ -42,27 +45,9 @@ function ReviewList ({ match, history }) {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
   }, [posts, currentPage]);
-
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
-  function findBoardName(boardId) {
-    switch (boardId) {
-      case 1:
-        return '떠들 어 boo';
-      case 2:
-        return '학교 해 boo';
-      case 3:
-        return '학교 간 boo';
-      case 4:
-        return '학교 떠난 boo';
-      case 5:
-        return '정면 승 boo';
-      case 6:
-        return '이거 모르면 바 boo';
-      default:
-        break;
-    }
-  }
+
   return (
     <>
       {' '}
@@ -91,6 +76,7 @@ function ReviewList ({ match, history }) {
           >
             글 작성
           </Button>
+
           <TableBody
             currentList={posts.slice(firstIndex, lastIndex)}
             match={match}
@@ -163,7 +149,13 @@ export function TableBody({ currentList, match, loading }) {
             }
             key="createdAt"
           />
-          <Column title="추천수" dataIndex="like" key="like" />
+          <Column
+            title="평점"
+            render={(text, record) =>
+              record.score ? record.score : 'none'
+            }
+            key="score"
+          />
         </Table>
       ) : (
         <>

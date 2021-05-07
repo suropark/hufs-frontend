@@ -221,18 +221,7 @@ function PostView({ match, history }) {
                 </div> */}
               <div style={{ fontSize: '12px' }}>
                 <ReportModal type="post" id={post.id} history={history} />{' '}
-                <div>
-                  <span
-                    onClick={onScrap}
-                    style={{
-                      cursor: 'pointer',
-                      float: 'right',
-                      marginLeft: '12px',
-                    }}
-                  >
-                    스크랩
-                  </span>
-                </div>
+
                 <div>
                   <span
                     onClick={onDelete}

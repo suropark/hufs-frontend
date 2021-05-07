@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
-
+import imageCompression from 'browser-image-compression';
 import { withRouter } from 'react-router-dom';
 import { postUpdate, postView } from '../../../../_actions/reviewPost_action';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../../../config';
-import { Skeleton, Button, Rate } from 'antd';
+import { Skeleton, Button, Rate, message } from 'antd';
 
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
@@ -23,7 +23,7 @@ function ReviewUpdate({ match, history }) {
       axios.post(`${PUBLIC_IP}/post/back`, { url: uploadedImg });
     };
   });
-  useEffect(async () => {
+  useEffect(() => {
     dispatch(postView(+match.params.id))
       .then((response) => {
         if (response.status === 200) {
@@ -60,6 +60,11 @@ function ReviewUpdate({ match, history }) {
 
   const onUpdate = () => {
     // 처음 이미지 url과 최종 제출 url 비교해서 삭제해야 할 이미지 url 찾기
+    if (updated.title.trim().length === 0) {
+      // 공백 제목 검사
+      message.info('제목을 적어주세요');
+      return;
+    }
     let afterEdit = Array.from(
       new DOMParser()
         .parseFromString(updated.content, 'text/html')
@@ -100,7 +105,7 @@ function ReviewUpdate({ match, history }) {
     }
   };
 
-  useEffect(() => { }, [updated]);
+  useEffect(() => {}, [updated]);
 
   return (
     <>
@@ -167,8 +172,8 @@ export default withRouter(ReviewUpdate);
 
 const myToolbar = [
   [{ header: [1, 2, false] }],
-  ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+  ['bold', 'italic', 'underline', 'strike'],
+  // [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
   ['image'],
 ];
 const modules = {
@@ -183,11 +188,11 @@ const formats = [
   'italic',
   'underline',
   'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'indent',
-  'link',
+  // 'blockquote',
+  // 'list',
+  // 'bullet',
+  // 'indent',
+  // 'link',
   'image',
 ];
 
@@ -197,15 +202,23 @@ function imageHandler() {
   if (fileInput == null) {
     fileInput = document.createElement('input');
     fileInput.setAttribute('type', 'file');
+    fileInput.setAttribute('name', 'img');
     fileInput.setAttribute(
       'accept',
       'image/png, image/gif, image/jpeg, image/bmp, image/x-icon',
     );
     fileInput.classList.add('ql-image');
-    fileInput.addEventListener('change', () => {
+    fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 400,
+        useWebWorker: true,
+      };
+      const compressedFile = await imageCompression(files[0], options);
+      const formData = new FormData();
+      formData.append('img', compressedFile);
       const range = this.quill.getSelection(true);
-
       if (!files || !files.length) {
         console.log('No files selected');
         return;
@@ -219,24 +232,30 @@ function imageHandler() {
       // };
       //
 
-      const formData = new FormData();
-      formData.append('file', files[0]);
-      console.log(formData);
       // this.quill.enable(false);
 
-      axios
-        .post(`${PUBLIC_IP}/post/img`, { img: formData })
+      await axios
+        .post(`${PUBLIC_IP}/post/img`, formData, {
+          header: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
         .then((response) => {
           this.quill.enable(true);
-          this.quill.editor.insertEmbed(range.index, 'image', response.data);
-          wholeImg = wholeImg.concat(response.data);
-          uploadedImg = uploadedImg.concat(response.data);
+          this.quill.editor.insertEmbed(
+            range.index,
+            'image',
+            response.data.data[0],
+          );
+          wholeImg = wholeImg.concat(response.data.data[0]);
+          uploadedImg = uploadedImg.concat(response.data.data[0]);
 
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
         })
         .catch((error) => {
-          alert(error);
+          console.log(error);
+          fileInput.value = '';
           this.quill.enable(true);
         });
     });
@@ -253,3 +272,4 @@ function getUnused(wholeImg, submittedImg) {
   console.log(`need to delete: ${unused}`);
   return unused;
 }
+
