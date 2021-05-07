@@ -60,10 +60,15 @@ const SignUpModal = (props) => {
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
-            alert('개인 정보 수집 동의를 하지 않으셨습니다');
+            message.info('개인 정보 수집 동의를 하지 않으셨습니다');
             break;
           case 409:
-            alert('이미 존재하는 닉네임입니다');
+            if (error.response.data.message === 'CONFLICT_NICKNAME') {
+              message.info('이미 존재하는 닉네임입니다');
+            } else {
+              message.info('이미 가입된 사용자입니다.');
+            }
+          default:
             break;
         }
       });
