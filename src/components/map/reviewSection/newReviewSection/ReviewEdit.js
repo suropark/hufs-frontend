@@ -11,7 +11,7 @@ import imageCompression from 'browser-image-compression';
 import { Button, Rate, message,Input } from 'antd';
 
 let uploadedImg = [];
-function PostEdit(props) {
+function ReviewEdit(props) {
   const dispatch = useDispatch();
   useBeforeunload((e) => {
     e.preventDefault();
@@ -128,7 +128,7 @@ function PostEdit(props) {
   );
 }
 
-export default withRouter(PostEdit);
+export default withRouter(ReviewEdit);
 
 const myToolbar = [
   [{ header: [1, 2, false] }],

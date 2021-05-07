@@ -10,7 +10,7 @@ import './Card.css';
 import icon_rstrn from './mapData/icon_rstrn.png';
 import numIcon from './mapData/icon1.png';
 import roadIcon from './mapData/icon2.png';
-import cateIcon from './mapData/icon3.png';
+import cateIcon2 from './mapData/icon4.png';
 
 
 const { kakao } = window;
@@ -31,7 +31,7 @@ const Rstrn = ({ id, name, numAddress, StoreSubCategory, roadAddress, lat, long,
     {
       title: "카테고리",
       description : StoreSubCategory.name,
-      img: cateIcon,
+      img: cateIcon2,
     },
     {
       title: "지번주소",
@@ -301,7 +301,7 @@ return (
     renderItem={item => (
       <List.Item>
         <List.Item.Meta
-          avatar={<Avatar size = {80} src={item.img} />}
+          avatar={<Avatar size = {83} src={item.img} />}
           title={item.title}
           description={item.description}
         />
