@@ -19,11 +19,11 @@ a:hover {
   /* 커뮤니티 이름색 */
   color: var(--navy-color);
 }
-.pagination-ul {
+.ant-pagination {
   display: flex;
-  justify-content: center;
-  width: 600px;
-  margin: 0 0;
+
+  width: 350px;
+  margin: 20px auto !important;
   justify-content: space-around;
 }
 .community {
