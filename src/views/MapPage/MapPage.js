@@ -14,7 +14,7 @@ function MapPage({ match }) {
   return (
     <>
       <Header />
-
+      <Quick />
       <BrowserRouter>
         <Switch>
           <Route exact path={`${match.path}`} component={MapContainer} />
@@ -25,7 +25,7 @@ function MapPage({ match }) {
             component={ReviewPage}
           />
           <Route path={`${match.path}/register`} component={ReviewEdit} />
-          
+
           {/*<Route
             exact
             path={`${match.path}/info/:name/:id`}

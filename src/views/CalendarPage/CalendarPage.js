@@ -28,6 +28,7 @@ function CalendarPage(props) {
   return (
     <div>
       <Header />
+      <Quick />
 
       <CalendarComponent match={props.match} />
     </div>

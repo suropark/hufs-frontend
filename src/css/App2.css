@@ -25,9 +25,9 @@
   /* Content */
 
   position: relative;
-  width: 1050px;
+  width: 1000px;
   height: 920px;
-  left: 12.5%;
+  left: 13%;
   top: 2.5%;
   border: solid 1px black;
   /* background: #afa1a1; */
@@ -35,9 +35,9 @@
 
 .community-main > .community-box {
   position: absolute;
-  width: 90%;
+  width: 94%;
   height: 90%;
-  left: 5%;
+  left: 3%;
   top: 7%;
 }
 
