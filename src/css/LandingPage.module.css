@@ -1,9 +1,24 @@
-.quick > ul {
+#quick > ul {
   /* 메인화면 전용 */
-  position: absolute !important;
-  text-align: left !important;
-  width: 160px !important ;
-  height: 206px !important;
-  top: 120px !important;
-  left: 99%;
+  position: absolute;
+  text-align: left;
+  width: 160px;
+  height: 206px;
+  top: 120px;
+  left: 102% !important;
+}
+@media (max-width: 1600px) {
+  #quick > ul {
+    left: 100% !important;
+  }
+}
+@media (max-width: 1400px) {
+  #quick > ul {
+    left: 101% !important;
+  }
+}
+@media (max-width: 1280px) {
+  #quick > ul {
+    left: 101% !important;
+  }
 }

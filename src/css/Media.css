@@ -68,9 +68,6 @@
   } */
   /* 퀵메뉴 */
   .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
-    position: absolute;
-    text-align: left;
-    height: 206px;
     left: 94.5%;
   }
   #Searchbar {
