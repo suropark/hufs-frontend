@@ -1,0 +1,9 @@
+.quick > ul {
+  /* 메인화면 전용 */
+  position: absolute !important;
+  text-align: left !important;
+  width: 160px !important ;
+  height: 206px !important;
+  top: 120px !important;
+  left: 99%;
+}
