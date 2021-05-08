@@ -7,7 +7,7 @@ function UserPost({ match }) {
   const { Posts } = useSelector((state) => state.user);
   return (
     <div>
-      <Table pagination={false} dataSource={Posts}>
+      <Table pagination={true} dataSource={Posts}>
         <Column title="글 번호" dataIndex="id" key="id" />
         <Column
           title="내가 쓴 글"

@@ -41,7 +41,7 @@ function UserScrap() {
   };
   return (
     <div>
-      <Table pagination={false} dataSource={scraps}>
+      <Table pagination={true} dataSource={scraps}>
         <Column
           title="글 번호"
           dataIndex="id"
@@ -66,7 +66,7 @@ function UserScrap() {
           )}
         />{' '}
         <Column
-          title="내가 쓴 댓글"
+          title="삭제하기"
           key="content"
           render={(text, record) => (
             <button value={record.id} onClick={onRemove}>

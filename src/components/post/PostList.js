@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, Switch, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
-import { message, Skeleton } from 'antd';
+import { message, Skeleton, Pagination } from 'antd';
 import { postList } from '../../_actions/post_action';
-import { PageHeader, Button, Table, Pagination } from 'antd';
+import { Button, Table } from 'antd';
 import PostSearch from './PostSearch';
 import PostSub from './PostSub';
 
@@ -43,6 +43,7 @@ function PostList({ match, history }) {
         }
       });
   }, [match.path]);
+
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
@@ -76,30 +77,20 @@ function PostList({ match, history }) {
             글 작성
           </Button>
           <div className="bottom">
-            <ReactPaginate
-              pageCount={Math.ceil(posts.length / 10)}
-              pageRangeDisplayed={5}
-              marginPagesDisplayed={0}
-              breakLabel={''}
-              previousLabel={'이전'}
-              nextLabel={'다음'}
-              onPageChange={(event) => setCurrentPage(event.selected + 1)}
-              containerClassName={'pagination-ul'}
-              activeClassName={'currentPage'}
-              previousClassName={'pageLabel-btn'}
-              nextClassName={'pageLabel-btn'}
+
+            <Pagination
+              className="postpagination"
+              defaultCurrent={1}
+              total={posts.length} //전체 게시물 개수 받음
+              onChange={e => setCurrentPage(e)}
+              pageSize={10} //페이지당 10개 
+              showSizeChanger={false}
+
             />
           </div>
         </div>
       </table>
-      {/* <div className="bottom">
 
-        <Pagination
-          defaultCurrent={1}
-          onChange={(event) => setCurrentPage(event.selected + 1)}
-          total={posts.length}
-        />
-      </div> */}
     </>
   );
 }

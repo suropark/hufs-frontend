@@ -20,6 +20,7 @@ function PostSub({ match }) {
                 break;
         }
     }
+
     function findBoardSub(boardId) {
         switch (boardId) {
             case 1:
