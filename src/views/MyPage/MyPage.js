@@ -11,7 +11,6 @@ import { getUserInfo } from '../../_actions/user_action';
 import { withRouter } from 'react-router';
 import Page404 from '../Page404/Page404';
 import Header1 from '../Header/Header';
-import Quick from '..//Quick/Quick';
 import styles from '../../css/MyPage.module.css';
 function MyPage(props) {
   const { Header, Content, Footer } = Layout;

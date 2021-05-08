@@ -19,7 +19,7 @@ function LandingPage(props) {
         <SearchAll />
         {/* {now_url === 'https://hufspace.com/' ? <Quick /> : null} */}
         <div
-          className={styles.quick}>
+          id={styles.quick}>
           <Quick />
         </div>
         <div className="Mainbanner">
