@@ -10,6 +10,7 @@ import './css/Scholar.css';
 import './css/SignInModal.css';
 import './css/User.css'
 import './css/Slide.css';
+import './css/Quick.css';
 const Post = loadable(() => import('./views/PostPage/Post'));
 const LandingPage = loadable(() => import('./views/LandingPage/LandingPage'));
 const MyPage = loadable(() => import('./views/MyPage/MyPage'));

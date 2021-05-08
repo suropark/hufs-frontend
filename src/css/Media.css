@@ -1,3 +1,8 @@
+@media (max-width: 1600px) {
+  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+    left: 85% !important;
+  }
+}
 @media (max-width: 1400px) {
   .Head,
   .Footer,
@@ -12,9 +17,6 @@
     left: 2%;
     right: inherit;
   } */
-  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
-    left: 99%;
-  }
 }
 @media (max-width: 1280px) {
   .Head {
@@ -89,6 +91,11 @@
 
   .Footer {
     left: 2%;
+  }
+}
+@media (max-width: 1150px) {
+  .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+    display: none;
   }
 }
 @media (max-width: 768px) {

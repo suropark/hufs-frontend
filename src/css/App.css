@@ -171,29 +171,6 @@
   height: 150px;
   top: 50px;
 }
-
-/* 푸터 변경 필요 x */
-
-/* 오른쪽 퀵메뉴*/
-.ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
-  position: absolute;
-  text-align: left;
-  width: 160px;
-  height: 206px;
-  top: 120px;
-  left: 99%;
-}
-.ant-menu-submenu-title > * {
-  color: var(--navy-color);
-}
-.ant-menu-submenu.ant-menu-submenu-inline {
-  border: 1px solid var(--navy-color);
-}
-.ant-menu-inline,
-.ant-menu-vertical,
-.ant-menu-vertical-left {
-  border-right: none;
-}
 /* 작은 캘린더 */
 .site-calendar-demo-card {
   float: left;
