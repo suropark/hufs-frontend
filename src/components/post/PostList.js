@@ -6,7 +6,7 @@ import { message, Skeleton } from 'antd';
 import { postList } from '../../_actions/post_action';
 import { PageHeader, Button, Table, Pagination } from 'antd';
 import PostSearch from './PostSearch';
-import PostSub from "./PostSub";
+import PostSub from './PostSub';
 
 const { Column } = Table;
 function PostList({ match, history }) {
@@ -55,7 +55,8 @@ function PostList({ match, history }) {
     <>
       {' '}
       <table className="community-main">
-        <PostSub match={match} />{''}
+        <PostSub match={match} />
+        {''}
         <div className="community-box">
           <PostSearch setPosts={setPosts} match={match} />
           <TableBody
@@ -120,9 +121,9 @@ export function TableBody({ currentList, match, loading }) {
                   ? record.title.slice(0, 29)
                   : record.title}
                 {/* {true ? record.Replies[0].count : null} */}
-                {record.Replies[0]?.count ? (
+                {record.repliesCount ? (
                   <span style={{ color: 'black' }}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;({record.Replies[0]?.count})
+                    &nbsp;&nbsp;&nbsp;&nbsp;({record.repliesCount})
                   </span>
                 ) : null}
               </Link>
@@ -131,10 +132,10 @@ export function TableBody({ currentList, match, loading }) {
           <Column
             title="작성자"
             render={(text, record) =>
-              record.User === null ? (
+              record.userNickname === null ? (
                 <>탈퇴한 사용자</>
               ) : (
-                <>{record.User.nickname}</>
+                <>{record.userNickname}</>
               )
             }
             key="User"
