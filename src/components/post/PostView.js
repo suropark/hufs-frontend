@@ -170,21 +170,23 @@ function PostView({ match, history }) {
                     : {post.like}
                   </span>
                 </span>
-                {post.User === null ? (
-                  <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
-                ) : (
-                  <span style={{ fontSize: '8px' }}>
-                    {' '}
-                    {post.User.nickname}{' '}
+                <div className={styles.postinfo}>
+                  {post.User === null ? (
+                    <span style={{ fontSize: '8px' }}> 탈퇴한 사용자 </span>
+                  ) : (
+                    <span style={{ fontSize: '13px' }}>
+                      {' '}
+                      {post.User.nickname}{' '}
+                    </span>
+                  )}
+                  <span style={{ marginLeft: '24px', fontSize: '12px' }}>
+                    {post.createdAt?.slice(0, 10)}
                   </span>
-                )}
-                <span style={{ marginLeft: '24px', fontSize: '5px' }}>
-                  {post.createdAt?.slice(0, 10)}
-                </span>
-                <span style={{ marginLeft: '24px', fontSize: '5px' }}>
-                  {' '}
+                  <span style={{ marginLeft: '24px', fontSize: '12px' }}>
+                    {' '}
                   글 번호 {post.id}
-                </span>
+                  </span>
+                </div>
               </>
             }
           // extra={<span>글 번호 {post.id}</span>}
