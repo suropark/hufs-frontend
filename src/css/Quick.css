@@ -19,3 +19,7 @@
 .ant-menu-vertical-left {
   border-right: none;
 }
+.ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline
+  .ant-menu-item.ant-menu-item-only-child {
+  padding-left: 30px !important;
+}
