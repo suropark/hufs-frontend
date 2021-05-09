@@ -77,25 +77,31 @@ function CommentList({ comments, history, setPost, match }) {
         dataSource={comments ? comments : null}
         renderItem={(item) => (
           <li>
+            {/* single comment and reply comment? */}
             <Comment
               actions={item.actions}
               author={item.User === null ? '탈퇴한 사용자' : item.User.nickname}
               avatar={<Avatar icon={<UserOutlined />} />}
-              content={item.content}
+              content={
+                <>
+                  {item.content}
+                  <span> 추천 수: {item.like} </span>
+                  <span> 신고 수: {item.report} </span>
+                  <button value={item.id} onClick={onLike}>
+                    추천하기
+                  </button>
+                  <button value={item.id} onClick={onDelete}>
+                    삭제하기
+                  </button>
+
+                  <ReportModal type="comment" id={item.id} history={history} />
+                </>
+              }
               datetime={item.createAt ? item.createAt.slice(0, 10) : null}
             />
           </li>
         )}
       />
-      {/* <span> 추천 수: {comment.like} </span>
-      <span> 신고 수: {comment.report} </span>
-      <button value={comment.id} onClick={onLike}>
-        추천하기
-      </button>
-      <button value={comment.id} onClick={onDelete}>
-        삭제하기
-      </button>
-      <ReportModal type="comment" id={comment.id} history={history} /> */}
     </div>
   );
 }

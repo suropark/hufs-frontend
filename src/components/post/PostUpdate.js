@@ -132,6 +132,9 @@ function PostUpdate({ match, history }) {
               onChange={(content, delta, source, editor) => {
                 setUpdated({ ...updated, content: editor.getHTML() });
               }}
+              onChangeSelection={(range, source, editor) => {
+                setUpdated({ ...updated, content: editor.getHTML() });
+              }}
               modules={modules}
               formats={formats}
             ></ReactQuill>
