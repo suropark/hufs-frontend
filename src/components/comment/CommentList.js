@@ -6,6 +6,8 @@ import { commentLike, commentRemove } from '../../_actions/comment_action';
 import ReportModal from '../post/ReportModal';
 import { UserOutlined } from '@ant-design/icons';
 import { postView } from '../../_actions/post_action';
+import styles from '../../css/Comment.module.css'
+import like from '../../image/recommend.png';
 function CommentList({ comments, history, setPost, match }) {
   const dispatch = useDispatch();
   const onLike = (event) => {
@@ -85,19 +87,29 @@ function CommentList({ comments, history, setPost, match }) {
               content={
                 <>
                   {item.content}
-                  <span> 추천 수: {item.like} </span>
-                  <span> 신고 수: {item.report} </span>
-                  <button value={item.id} onClick={onLike}>
-                    추천하기
-                  </button>
-                  <button value={item.id} onClick={onDelete}>
-                    삭제하기
-                  </button>
+                  {/* <span> 추천: {item.like} </span> */}
+                  {/* <span> 신고 수: {item.report} </span> */}
+                  <div className={styles.commentset}>
+                    <img src={like} />
+                    <button
+                      className={styles.like}
+                      value={item.id}
+                      onClick={onLike}>
+                      : {item.like}
+                    </button>
+                    <button
+                      className={styles.delete}
+                      value={item.id}
+                      onClick={onDelete}>
+                      삭제
+                    </button>
 
-                  <ReportModal type="comment" id={item.id} history={history} />
+                    <ReportModal type="comment" id={item.id} history={history} />
+                  </div>
                 </>
               }
               datetime={item.createAt ? item.createAt.slice(0, 10) : null}
+            // 현재 안나타남
             />
           </li>
         )}

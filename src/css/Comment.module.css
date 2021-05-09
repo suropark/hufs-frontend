@@ -1,0 +1,25 @@
+.commentset {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  /* border: 1px solid black; */
+  display: flex;
+}
+.commentset > img {
+  width: 15%;
+  height: 15%;
+  margin: auto 0;
+}
+.like {
+  background-color: white;
+  border-color: white;
+  cursor: pointer;
+
+  border-style: none;
+}
+.delete {
+  background-color: white;
+  border-color: white;
+  cursor: pointer;
+  border-style: none;
+}

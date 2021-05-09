@@ -71,7 +71,7 @@ function ReportModal({ type, id, history }) {
       <div>
         <span
           onClick={showModal}
-          style={{ cursor: 'pointer', float: 'right', marginLeft: '12px' }}
+          style={{ cursor: 'pointer', float: 'right', marginLeft: '10px' }}
         >
           신고
         </span>
