@@ -109,8 +109,10 @@ table tr td:nth-child(5) {
   top: 90%;
 }
 .board-content {
+  /* 안에 컨텐츠 사이즈 */
   display: inline-block;
   min-height: 50%;
+  max-height: 55%;
   width: 100%;
   overflow-y: scroll;
 }
@@ -120,7 +122,7 @@ table tr td:nth-child(5) {
 
 /* 글부분 + 댓글 부분 파트 분할 */
 .ant-card.ant-card-bordered {
-  height: 98%;
+  height: 100%;
 }
 .ant-card.ant-card-bordered > .ant-card-head {
   height: 8%;
@@ -132,7 +134,7 @@ table tr td:nth-child(5) {
 /* 댓글 전체부분 */
 .comment-body {
   overflow-y: scroll;
-  height: 38%;
+  height: 35%;
 }
 
 /* 댓글  */
