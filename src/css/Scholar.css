@@ -13,8 +13,11 @@
 .scholarhead * {
   text-align: center;
 }
+.ant-list.ant-list-split.ant-list-bordered .ant-list-header {
+  padding-left: 18px;
+}
 .scholarhead .s1 {
-  width: 3%;
+  width: 4%;
 }
 .scholarhead .s2 {
   width: 8%;
