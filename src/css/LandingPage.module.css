@@ -7,6 +7,7 @@
   top: 120px;
   left: 102% !important;
 }
+
 @media (max-width: 1600px) {
   #quick > ul {
     left: 100% !important;

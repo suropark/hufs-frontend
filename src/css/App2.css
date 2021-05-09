@@ -73,10 +73,11 @@
   height: 10%;
 }
 #community-main .quill {
-  height: 83%;
+  height: 80%;
 }
 #community-main .quill .ql-container {
   border-style: none;
+  height: 93%;
 }
 #button-bar {
   top: 5%;
