@@ -99,7 +99,7 @@ function PostView({ match, history }) {
             break;
         }
       });
-    // 새로고침 필요한지
+    // 새로고침 필요한지 -> 아니요
   };
   const onDellike = () => {
     dispatch(postDellike(post.id))
@@ -147,24 +147,7 @@ function PostView({ match, history }) {
         }
       });
   };
-  function findBoardName(boardId) {
-    switch (boardId) {
-      case 1:
-        return '1 게시판';
-      case 2:
-        return '2 게시판';
-      case 3:
-        return '3 게시판';
-      case 4:
-        return '4 게시판';
-      case 5:
-        return '5 게시판';
-      case 6:
-        return '6 게시판';
-      default:
-        break;
-    }
-  }
+
   return (
     <div className={styles.communitymain}>
       {/* <PageHeader
@@ -184,7 +167,7 @@ function PostView({ match, history }) {
                 <span className={styles.like}>
                   <img src={like} />
                   <span className={styles.recommend} onClick={onLike}>
-                    추천 : {post.like}
+                    : {post.like}
                   </span>
                 </span>
                 {post.User === null ? (
@@ -204,12 +187,12 @@ function PostView({ match, history }) {
                 </span>
               </>
             }
-            // extra={<span>글 번호 {post.id}</span>}
+          // extra={<span>글 번호 {post.id}</span>}
           >
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
               className="board-content"
-              // style={{ display: 'inline-block', minHeight: '300px' }}
+            // style={{ display: 'inline-block', minHeight: '300px' }}
             />
             <div>
               {/* 추천 수: {post.like}

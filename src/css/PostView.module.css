@@ -24,9 +24,12 @@
   float: right;
 }
 .like img {
-  width: 35%;
+  vertical-align: sub;
+  width: 45%;
 }
-
+.ant-comment-content .ant-comment-content-detail {
+  width: 80%;
+}
 @media (max-width: 1400px) {
   .communitymain {
     left: 4%;
