@@ -95,8 +95,10 @@ function CommentList({ comments, history, setPost, match }) {
                       className={styles.like}
                       value={item.id}
                       onClick={onLike}>
-                      : {item.like}
+
+                      {item.like}
                     </button>
+
                     <button
                       className={styles.delete}
                       value={item.id}

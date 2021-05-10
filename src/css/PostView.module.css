@@ -1,8 +1,8 @@
 .communitymain {
   position: relative;
-  width: 1050px;
+  width: 1000px;
 
-  left: 12.5%;
+  left: 13.5%;
   top: 2.5%;
   border: solid 1px black;
   height: 1300px;
@@ -28,7 +28,7 @@
 }
 .like img {
   vertical-align: sub;
-  width: 45%;
+  width: 50%;
 }
 .ant-comment-content .ant-comment-content-detail {
   width: 80%;
@@ -36,5 +36,10 @@
 @media (max-width: 1400px) {
   .communitymain {
     left: 4%;
+  }
+}
+@media (max-width: 1280px) {
+  .communitymain {
+    left: 2%;
   }
 }
