@@ -9,7 +9,7 @@ import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
 const { Column } = Table;
-function ReviewList ({ match, history }) {
+function ReviewList({ match, history }) {
   console.log(history.location.state.id);
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
@@ -68,67 +68,71 @@ function ReviewList ({ match, history }) {
     }
 
   }
-  
+
   return (
     <>
-    <Content style={{ padding: '0 100px'}}>
-    <h1>Review</h1>
-    <Button onClick={(e) =>{
-              history.push({
-                pathname: '/3/register',
-                state: { detail: match.path,
-                    name : history.location.state.name,
-                  id : history.location.state.id },
-                  }   
-                        
-                  )
-
-            //   history.push({
-            //     pathname: "map/register",
-            //     state: { detail: match.path,
-            //     name : history.location.state.name,
-            //   id : history.location.state.id },
-            //   }
-            // )
+      <Content style={{ padding: '0 100px' }}>
+        <h1>Review</h1>
+        <Button onClick={(e) => {
+          history.push({
+            pathname: '/3/register',
+            state: {
+              detail: match.path,
+              name: history.location.state.name,
+              id: history.location.state.id
+            },
           }
-            }
-          >
-            Write Review</Button>
-            <hr ></hr>
-            <p></p>
-     <List
-    itemLayout="vertical"
-    size="small"
-    pagination={{
-      onChange: page => {
-        console.log(page);
-      },
-      pageSize: 3,
-    }}
-    dataSource={posts}
-    
-    renderItem={item=> (
-      <List.Item
-        key={item.title}
-      >
-        <List.Item.Meta
-          avatar={<Avatar src={item.avatar} />}
-          title={checkNull(item.User)}
-          description={
-            <div>
-          <div>
-          <div><p>{item.createdAt.slice(0, 10)}</p></div>
-            <Rate disabled defaultValue = {item.score}></Rate>
-            
-            </div>
-            
-            </div>}
-        />
-        <div dangerouslySetInnerHTML={{ __html: item.content }}>
-        </div>
-      </List.Item>
-    )}
-  />{/* ,
+
+          )
+
+          //   history.push({
+          //     pathname: "map/register",
+          //     state: { detail: match.path,
+          //     name : history.location.state.name,
+          //   id : history.location.state.id },
+          //   }
+          // )
+        }
+        }
+        >
+          Write Review</Button>
+        <hr ></hr>
+        <p></p>
+        <List
+          itemLayout="vertical"
+          size="small"
+          pagination={{
+            onChange: page => {
+              console.log(page);
+            },
+            pageSize: 3
+          }}
+
+
+          dataSource={posts}
+
+          renderItem={item => (
+            <List.Item
+              key={item.title}
+            >
+              <List.Item.Meta
+                avatar={<Avatar src={item.avatar} />}
+                title={checkNull(item.User)}
+                description={
+                  <div>
+                    <div>
+                      <div><p>{item.createdAt.slice(0, 10)}</p></div>
+                      <Rate disabled defaultValue={item.score}></Rate>
+
+                    </div>
+
+                  </div>}
+              />
+              <div dangerouslySetInnerHTML={{ __html: item.content }}>
+              </div>
+            </List.Item>
+          )}
+        />{/* ,
       {' '}
       <table className="community-main">
         <div className="community-box">
@@ -179,10 +183,10 @@ function ReviewList ({ match, history }) {
       </table>
           */}
 
-</Content>
+      </Content>
 
     </>
-    
+
   );
 }
 

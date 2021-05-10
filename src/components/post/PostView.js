@@ -167,7 +167,7 @@ function PostView({ match, history }) {
                 <span className={styles.like}>
                   <img src={like} />
                   <span className={styles.recommend} onClick={onLike}>
-                    : {post.like}
+                    {post.like}
                   </span>
                 </span>
                 <div className={styles.postinfo}>
