@@ -19,8 +19,7 @@ function ReviewEdit(props) {
       axios.post(`${PUBLIC_IP}/post/back`, uploadedImg);
     };
   });
-
-  const [value, setvalue] = useState({ title: '', content: '', score: 0  });
+  const [value, setvalue] = useState({ title: '', content: '', score: 0 });
   const onSubmit = (e) => {
     e.preventDefault();
     if (value.title.trim().length === 0) {
@@ -37,7 +36,6 @@ function ReviewEdit(props) {
 
     const needDelete = getUnused(uploadedImg, submittedImg); // return : 삭제해야 할 이미지 url
     let rstrnId = props.location.state.id;
-    console.log(rstrnId);
     let body = {
       title: value.title,
       content: value.content,
@@ -94,9 +92,13 @@ function ReviewEdit(props) {
           }} />
         <hr></hr>
         <ReactQuill
+          id="quill-editor"
           placeholder="하이"
           theme="snow"
           onChange={(content, delta, source, editor) => {
+            setvalue({ ...value, content: editor.getHTML() });
+          }}
+          onChangeSelection={(range, source, editor) => {
             setvalue({ ...value, content: editor.getHTML() });
           }}
           modules={modules}
@@ -176,22 +178,13 @@ function imageHandler() {
     fileInput.classList.add('ql-image');
     fileInput.addEventListener('change', async () => {
       const files = fileInput.files;
-      // console.log('originalFile instanceof Blob', files[0] instanceof Blob); // true
-      // console.log(`originalFile size ${files[0].size / 1024 / 1024} MB`);
+
       const options = {
         maxSizeMB: 1,
         maxWidthOrHeight: 400,
         useWebWorker: true,
       };
       const compressedFile = await imageCompression(files[0], options);
-      // console.log(
-      //   'compressedFile instanceof Blob',
-      //   compressedFile instanceof Blob,
-      // ); // true
-      // console.log(
-      //   `compressedFile size ${compressedFile.size / 1024 / 1024} MB`,
-      // ); // smaller than maxSizeMB
-
       const formData = new FormData();
       formData.append('img', compressedFile);
       const range = this.quill.getSelection(true);
@@ -201,15 +194,6 @@ function imageHandler() {
         return;
       }
 
-      // // 테스트 공간 base64로 출력
-      // let reader = new FileReader();
-      // reader.readAsDataURL(files[0]);
-      // reader.onload = () => {
-      //   this.quill.insertEmbed(range.index, 'image', reader.result);
-      // }; `
-      //
-
-      // this.quill.enable(false);
       await axios
         .post(`${PUBLIC_IP}/post/img`, formData, {
           header: {
@@ -224,7 +208,6 @@ function imageHandler() {
             response.data.data[0],
           );
           uploadedImg = uploadedImg.concat(response.data.data[0]);
-
           this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
           fileInput.value = '';
         })
@@ -246,4 +229,3 @@ function getUnused(uploadedImg, submittedImg) {
   }
   return unused;
 }
-

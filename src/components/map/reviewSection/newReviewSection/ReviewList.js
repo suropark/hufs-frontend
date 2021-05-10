@@ -4,7 +4,10 @@ import { useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import { message, Skeleton } from 'antd';
 import { postList } from '../../../../_actions/reviewPost_action';
-import { PageHeader, Button, Table, Pagination } from 'antd';
+import { PageHeader, Button, Table, Pagination, List, Avatar, Space, Rate, Layout } from 'antd';
+import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
+
+const { Header, Content, Footer } = Layout;
 const { Column } = Table;
 function ReviewList ({ match, history }) {
   console.log(history.location.state.id);
@@ -19,10 +22,7 @@ function ReviewList ({ match, history }) {
     dispatch(postList(history.location.state.id))
       .then((response) => {
         if (response.status === 200) {
-          const postKey = response.payload.map((post, key) => {
-            return { ...post, key: key + 1 };
-          });
-          setPosts(postKey.reverse());
+          setPosts(response.payload.reverse());
           setloading(true);
         }
       })
@@ -41,15 +41,94 @@ function ReviewList ({ match, history }) {
         }
       });
   }, [match.path]);
+
+  const IconText = ({ icon, text }) => (
+    <Space>
+      {React.createElement(icon)}
+      {text}
+    </Space>
+  );
+  /* 
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
   }, [posts, currentPage]);
-  const lastIndex = currentPage * listPerPage; // 10, 20, 30
-  const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
 
+  const lastIndex = currentPage * listPerPage; // 10, 20, 30
+  const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21.. */
+
+  const checkNull = (nickname) => {
+    if (nickname === null) {
+      return (
+        <><a>탈퇴한 사용자</a></>
+      )
+    }
+    else {
+      return nickname.nickname;
+    }
+
+  }
+  
   return (
     <>
+    <Content style={{ padding: '0 100px'}}>
+    <h1>Review</h1>
+    <Button onClick={(e) =>{
+              history.push({
+                pathname: '/3/register',
+                state: { detail: match.path,
+                    name : history.location.state.name,
+                  id : history.location.state.id },
+                  }   
+                        
+                  )
+
+            //   history.push({
+            //     pathname: "map/register",
+            //     state: { detail: match.path,
+            //     name : history.location.state.name,
+            //   id : history.location.state.id },
+            //   }
+            // )
+          }
+            }
+          >
+            Write Review</Button>
+            <hr ></hr>
+            <p></p>
+     <List
+    itemLayout="vertical"
+    size="small"
+    pagination={{
+      onChange: page => {
+        console.log(page);
+      },
+      pageSize: 3,
+    }}
+    dataSource={posts}
+    
+    renderItem={item=> (
+      <List.Item
+        key={item.title}
+      >
+        <List.Item.Meta
+          avatar={<Avatar src={item.avatar} />}
+          title={checkNull(item.User)}
+          description={
+            <div>
+          <div>
+          <div><p>{item.createdAt.slice(0, 10)}</p></div>
+            <Rate disabled defaultValue = {item.score}></Rate>
+            
+            </div>
+            
+            </div>}
+        />
+        <div dangerouslySetInnerHTML={{ __html: item.content }}>
+        </div>
+      </List.Item>
+    )}
+  />{/* ,
       {' '}
       <table className="community-main">
         <div className="community-box">
@@ -76,7 +155,6 @@ function ReviewList ({ match, history }) {
           >
             글 작성
           </Button>
-
           <TableBody
             currentList={posts.slice(firstIndex, lastIndex)}
             match={match}
@@ -99,17 +177,18 @@ function ReviewList ({ match, history }) {
           </div>
         </div>
       </table>
+          */}
 
-
-
+</Content>
 
     </>
+    
   );
 }
 
 export default withRouter(ReviewList);
 
-export function TableBody({ currentList, match, loading }) {
+/* export function TableBody({ currentList, match, loading }) {
   return (
     <>
       {loading ? (
@@ -149,13 +228,7 @@ export function TableBody({ currentList, match, loading }) {
             }
             key="createdAt"
           />
-          <Column
-            title="평점"
-            render={(text, record) =>
-              record.score ? record.score : 'none'
-            }
-            key="score"
-          />
+          <Column title="추천수" dataIndex="like" key="like" />
         </Table>
       ) : (
         <>
@@ -165,3 +238,4 @@ export function TableBody({ currentList, match, loading }) {
     </>
   );
 }
+ */
