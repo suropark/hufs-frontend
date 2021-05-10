@@ -90,6 +90,18 @@ function CommentList({ comments, history, setPost, match }) {
                   {/* <span> 추천: {item.like} </span> */}
                   {/* <span> 신고 수: {item.report} </span> */}
                   <div className={styles.commentset}>
+                    <button
+                      className={styles.delete}
+                      value={item.id}
+                      onClick={onDelete}>
+                      삭제
+                    </button>
+
+                    <ReportModal
+
+                      type="comment"
+                      id={item.id}
+                      history={history} />
                     <img src={like} />
                     <button
                       className={styles.like}
@@ -99,14 +111,7 @@ function CommentList({ comments, history, setPost, match }) {
                       {item.like}
                     </button>
 
-                    <button
-                      className={styles.delete}
-                      value={item.id}
-                      onClick={onDelete}>
-                      삭제
-                    </button>
 
-                    <ReportModal type="comment" id={item.id} history={history} />
                   </div>
                 </>
               }

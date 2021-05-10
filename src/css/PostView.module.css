@@ -33,6 +33,7 @@
 .ant-comment-content .ant-comment-content-detail {
   width: 80%;
 }
+
 @media (max-width: 1400px) {
   .communitymain {
     left: 4%;

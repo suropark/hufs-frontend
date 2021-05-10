@@ -171,6 +171,7 @@ table tr td:nth-child(5) {
 hr {
   border: 1px solid var(--navy-color);
 }
+
 /* .ant-list-split .ant-list-header {
   border-bottom: 1px solid var(--navy-color);
 } */
@@ -181,4 +182,7 @@ hr {
 #button-bar button {
   background: var(--navy-color);
   border-color: var(--navy-color);
+}
+.ant-comment-content .report {
+  opacity: 0.6;
 }
