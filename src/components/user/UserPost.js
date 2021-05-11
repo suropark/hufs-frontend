@@ -14,6 +14,7 @@ function UserPost({ match }) {
           key="title"
           render={(text, record) => (
             <Link to={`1/${record.id}`}>
+
               {record.title.length > 30
                 ? record.title.slice(0, 29)
                 : record.title}

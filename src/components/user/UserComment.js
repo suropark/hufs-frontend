@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import ReactPaginate from 'react-paginate';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Table } from 'antd';

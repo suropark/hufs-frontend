@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Switch, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import ReactPaginate from 'react-paginate';
 import { message, Skeleton } from 'antd';
 import { postList } from '../../../../_actions/reviewPost_action';
 import { PageHeader, Button, Table, Pagination, List, Avatar, Space, Rate, Layout } from 'antd';
