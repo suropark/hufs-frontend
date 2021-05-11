@@ -33,13 +33,13 @@ const SignUpModal = (props) => {
     const request1 = await axios
       .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
-      .catch((e) => {});
+      .catch((e) => { });
     setMajor(request1);
     const request2 = await axios
       .get(`${PUBLIC_IP}/major/double-major`) //이중전공
       .then((response) => response.data.data)
 
-      .catch((e) => {}); // 배열 [id, name ]
+      .catch((e) => { }); // 배열 [id, name ]
     setDoubleMajor(request2);
   }, []);
   useEffect(() => console.log(submit), [submit]);
@@ -133,7 +133,7 @@ const SignUpModal = (props) => {
             <Input style={{ textAlign: 'center' }} suffix="@hufs.ac.kr"></Input>
           </Form.Item>
 
-          <Form.Item label="1전공" name="majorId">
+          <Form.Item label="주전공" name="majorId">
             <Select
               style={{ width: '90%' }}
               onChange={(event) =>
@@ -153,7 +153,7 @@ const SignUpModal = (props) => {
               )}
             </Select>
           </Form.Item>
-          <Form.Item label="이중전공 / 부전공" name="doubleMajorId">
+          <Form.Item label="이중/부전공" name="doubleMajorId">
             <Select
               style={{ width: '89%' }}
               onChange={(event) =>

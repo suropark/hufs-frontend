@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Switch, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import ReactPaginate from 'react-paginate';
-import { PageHeader, Button, Table } from 'antd';
-import { TableBody } from '../../components/post/PostList';
+import { PageHeader, Pagination, Table } from 'antd';
+import { TableBody2 } from '../../components/post/PostList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 const { Column } = Table;
@@ -37,25 +36,22 @@ function PostList(props) {
               subTitle={`${props.location.state.detail.length} 건의 검색결과`}
             />{' '}
             <div className="community-box">
-              <TableBody
+              <TableBody2
                 currentList={posts.slice(firstIndex, lastIndex)}
                 match={{ path: 1 }} // 하드 코딩 수정 필요
                 loading={loading}
               />
             </div>
             <div className="bottom">
-              <ReactPaginate
-                pageCount={Math.ceil(posts.length / 10)}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={0}
-                breakLabel={''}
-                previousLabel={'이전'}
-                nextLabel={'다음'}
-                onPageChange={(event) => setCurrentPage(event.selected + 1)}
-                containerClassName={'pagination-ul'}
-                activeClassName={'currentPage'}
-                previousClassName={'pageLabel-btn'}
-                nextClassName={'pageLabel-btn'}
+
+              <Pagination
+                className="postpagination"
+                defaultCurrent={1}
+                total={posts.length} //전체 게시물 개수 받음
+                onChange={e => setCurrentPage(e)}
+                pageSize={10} //페이지당 10개 
+                showSizeChanger={false}
+
               />
             </div>{' '}
           </table>

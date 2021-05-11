@@ -137,7 +137,7 @@ function UserInfo(props) {
                     ></Input>
                     <Button
                       onClick={onAuth}
-                      // style={{ marginLeft: '8px' }}
+                    // style={{ marginLeft: '8px' }}
                     >
                       인증하기
                     </Button>
@@ -163,7 +163,7 @@ function UserInfo(props) {
               </div>
             </div>
             <div className={styles.mainMajor}>
-              <label>본전공</label>
+              <label>주전공</label>
               <MajorSelect
                 list={mainMajorList}
                 defaultMajor={MainMajor.name}
