@@ -7,10 +7,7 @@ function Rule() {
     return (
         <div
             className="rule"
-            style={{
-                opacity: '0.5',
-                cursor: 'pointer'
-            }}>
+        >
             <InformationModal />
             <UseModal />
 
