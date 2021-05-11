@@ -18,6 +18,7 @@ function PostList(props) {
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);
+
     setloading(true);
   }, [currentPage]);
 
@@ -25,6 +26,8 @@ function PostList(props) {
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
   console.log(props.location);
   console.log(posts);
+
+
   return (
     <>
       <Header />
@@ -40,6 +43,7 @@ function PostList(props) {
             <div className="community-box">
               <span style={{ float: 'right', height: '35px' }} />
               <TableBody2
+
                 currentList={posts.slice(firstIndex, lastIndex)}
                 match={{ path: 1 }} // 하드 코딩 수정 필요
                 loading={loading}
