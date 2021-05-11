@@ -18,8 +18,8 @@ function UserComment() {
 
             <Link to={`1/${record?.Post?.id}`}>
 
-              {record.content.length > 30
-                ? record.content.slice(0, 29)
+              {record.content.length > 25
+                ? record.content.slice(0, 25)
                 : record.content}
             </Link>
           )}

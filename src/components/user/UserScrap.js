@@ -59,7 +59,7 @@ function UserScrap() {
                 ? record.Post?.title.slice(0, 29)
                 : record.Post.title} */}
               {record.Post ? (
-                record.Post?.title.slice(0, 29)
+                record.Post?.title.slice(0, 25)
               ) : (
                 <> 삭제된 게시글입니다</>
               )}
