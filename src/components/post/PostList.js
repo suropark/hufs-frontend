@@ -147,8 +147,10 @@ export function TableBody({ currentList, match, loading }) {
     </>
   );
 }
+
+// 검색 결과용 , 게시판 명 , 유저 이름 받아오도록 변경 .
 export function TableBody2({ currentList, match, loading }) {
-  // 검색 결과용
+
   return (
     <>
       {loading ? (
