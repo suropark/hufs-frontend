@@ -34,8 +34,11 @@ function PostList(props) {
             <PageHeader
               title="검색 결과"
               subTitle={`${props.location.state.detail.length} 건의 검색결과`}
+
             />{' '}
+
             <div className="community-box">
+              <span style={{ float: 'right', height: '35px' }} />
               <TableBody2
                 currentList={posts.slice(firstIndex, lastIndex)}
                 match={{ path: 1 }} // 하드 코딩 수정 필요

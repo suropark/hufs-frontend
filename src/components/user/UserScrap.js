@@ -39,6 +39,7 @@ function UserScrap() {
       }
     });
   };
+
   return (
     <div>
       <Table pagination={true} dataSource={scraps}>
