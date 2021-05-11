@@ -67,8 +67,7 @@ export function Slide2() {
 
   return (
     <Slider {...footerSetting}>
-      {/* <ul class="hufs_link">
-        <li> */}
+
       <div >
         <a href="https://www.instagram.com/hufspace_official/" target="_blank"><img src={foo1} alt="error" /></a>
         <div class="info">
@@ -111,8 +110,6 @@ export function Slide2() {
           <span class="info2">제42대 총학생회 'ON'</span>
         </div>
       </div>
-
-      {/* </ul > */}
     </Slider >
   );
 }
