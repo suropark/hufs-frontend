@@ -6,7 +6,7 @@ import Card from './Card.js';
 import SearchBar from './SearchBar.js';
 import mapboo from '../../../image/boo/mapboo.png';
 import { Button, Breadcrumb } from 'antd';
-import { HomeOutlined } from '@ant-design/icons';
+
 
 
 const MapContainer = ({ match }) => {
@@ -20,6 +20,23 @@ const MapContainer = ({ match }) => {
       return;
     }
   }
+
+  const fold = (e) => {
+    if (document.getElementById('itemContainer').style.display === 'block') {
+      document.getElementById('itemContainer').style.display = 'none';
+      document.getElementById('itemContainer').style.backgroundColor = 'none';
+      document.getElementById('Food-list').style.overflowY = 'hidden';
+      document.getElementById('itemState').textContent = '보기';
+      console.log('접기', e)
+    } else {
+      document.getElementById('itemContainer').style.display = 'block';
+      document.getElementById('itemContainer').style.backgroundColor = 'white';
+      document.getElementById('Food-list').style.overflowY = 'scroll'
+      document.getElementById('itemState').textContent = '접기';
+      console.log('펴기', e)
+    }
+  }
+  console.log(document.getElementsByClassName('itemContainer'))
 
 
 
@@ -60,14 +77,23 @@ const MapContainer = ({ match }) => {
           <KaKaoMap lat={lat} lng={lng} />
         </div>
         <div id="Food-list">
-          <SearchBar
-            placeholder="Search"
+          <div className="Food-head">
+            <SearchBar
+              placeholder="Search"
 
-            onChange={(e) => searchData(e.target.value)}
-            style={{ width: '100 %' }}
+              onChange={(e) => searchData(e.target.value)}
+              style={{ width: '100 %' }}
 
-          />
-          <div className="itemContainer">
+            />
+            <span
+              id="itemState"
+              onClick={fold}
+            >접기</span>
+          </div>
+          <div
+            id="itemContainer"
+
+          >
 
             {data.mydata ? data.mydata.map((d, index) => (
               <Card id="aa" {...d} key={index} match={match} />

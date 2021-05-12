@@ -117,12 +117,36 @@
   height: 90%;
   z-index: 999;
   width: 31%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#Food-list
+  .ant-card.ant-card-bordered.ant-card-small
+  > .ant-card-body
+  > button {
+  float: left;
+}
+#itemContainer {
+  display: block;
   background-color: white;
 }
-.SearchInput {
-  width: 95%;
+#itemState {
+  position: relative;
+  padding-left: 10px;
+  padding-top: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 20%;
+  cursor: pointer;
+  color: var(--navy-color);
 }
-/* .Calendar-main {
-
-} */
+.Food-head {
+  background-color: white;
+  display: flex;
+}
+.Food-head > .Search {
+  width: 80%;
+}
+.SearchInput {
+  width: 100%;
+}

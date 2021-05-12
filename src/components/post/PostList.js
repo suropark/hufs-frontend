@@ -101,14 +101,17 @@ export function TableBody({ currentList, match, loading }) {
     <>
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
-          <Column title="글 번호" dataIndex="key" key="key" />
+          <Column
+            title="글 번호"
+            dataIndex="key"
+            key="key" />
           <Column
             title="제목"
             key="title"
             render={(text, record) => (
               <Link to={`${match.path}/${record.id}`}>
-                {record.title.length > 27
-                  ? record.title.slice(0, 27)
+                {record.title.length > 25
+                  ? record.title.slice(0, 25)
                   : record.title}
                 {/* {true ? record.Replies[0].count : null} */}
                 {record.repliesCount ? (
@@ -156,7 +159,7 @@ export function TableBody2({ currentList, match, loading }) {
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
           <Column
-            title="게시판"
+            title="카테고리"
             dataIndex="key"
             key="key"
             render={(text, record) => (

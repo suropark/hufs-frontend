@@ -44,14 +44,17 @@ function UserScrap() {
     <div>
       <Table pagination={true} dataSource={scraps}>
         <Column
-          title="글 번호"
+          title="카테고리"
           dataIndex="id"
           key="id"
           style={{ textAlign: 'center' }}
+          render={(text, record) => (
+            record.Post.Board.title
+          )}
         />
         <Column
           style={{ textAlign: 'center' }}
-          title="스크랩한 글"
+          title="제목"
           key="content"
           render={(text, record) => (
             <Link to={`1/${record?.Post?.id}`}>
@@ -59,7 +62,7 @@ function UserScrap() {
                 ? record.Post?.title.slice(0, 29)
                 : record.Post.title} */}
               {record.Post ? (
-                record.Post?.title.slice(0, 29)
+                record.Post?.title.slice(0, 25)
               ) : (
                 <> 삭제된 게시글입니다</>
               )}
