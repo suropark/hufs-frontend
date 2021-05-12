@@ -9,9 +9,17 @@ function UserPost({ match }) {
   return (
     <div>
       <Table pagination={true} dataSource={Posts}>
-        <Column title="글 번호" dataIndex="id" key="id" />
         <Column
-          title="내가 쓴 글"
+          title="카테고리"
+          dataIndex="id"
+          key="id"
+          style={{ textAlign: 'center' }}
+          render={(text, record) => (
+            record.Board.title
+          )}
+        />
+        <Column
+          title="제목"
           key="title"
           render={(text, record) => (
             <Link to={`1/${record.id}`}>

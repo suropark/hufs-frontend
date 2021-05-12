@@ -101,7 +101,10 @@ export function TableBody({ currentList, match, loading }) {
     <>
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
-          <Column title="글 번호" dataIndex="key" key="key" />
+          <Column
+            title="글 번호"
+            dataIndex="key"
+            key="key" />
           <Column
             title="제목"
             key="title"
@@ -156,7 +159,7 @@ export function TableBody2({ currentList, match, loading }) {
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
           <Column
-            title="게시판"
+            title="카테고리"
             dataIndex="key"
             key="key"
             render={(text, record) => (
