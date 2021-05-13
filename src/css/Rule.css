@@ -46,3 +46,25 @@
 .info-rule .ant-btn.ant-btn-primary {
   display: none;
 }
+#info2 {
+  margin: 0 auto;
+  height: 130px;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+#info2 .head {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+#use2 {
+  margin: 0 auto;
+  height: 130px;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+#use2 .head {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
