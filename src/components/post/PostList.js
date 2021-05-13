@@ -76,20 +76,17 @@ function PostList({ match, history }) {
             글 작성
           </Button>
           <div className="bottom">
-
             <Pagination
               className="postpagination"
               defaultCurrent={1}
               total={posts.length} //전체 게시물 개수 받음
-              onChange={e => setCurrentPage(e)}
-              pageSize={10} //페이지당 10개 
+              onChange={(e) => setCurrentPage(e)}
+              pageSize={10} //페이지당 10개
               showSizeChanger={false}
-
             />
           </div>
         </div>
       </table>
-
     </>
   );
 }
@@ -101,10 +98,7 @@ export function TableBody({ currentList, match, loading }) {
     <>
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
-          <Column
-            title="글 번호"
-            dataIndex="key"
-            key="key" />
+          <Column title="글 번호" dataIndex="key" key="key" />
           <Column
             title="제목"
             key="title"
@@ -125,10 +119,10 @@ export function TableBody({ currentList, match, loading }) {
           <Column
             title="작성자"
             render={(text, record) =>
-              record.userNickname === null ? (
+              record.nickname === null ? (
                 <>탈퇴한 사용자</>
               ) : (
-                <>{record.userNickname}</>
+                <>{record.nickname}</>
               )
             }
             key="User"
@@ -153,7 +147,6 @@ export function TableBody({ currentList, match, loading }) {
 
 // 검색 결과용 , 게시판 명 , 유저 이름 받아오도록 변경 .
 export function TableBody2({ currentList, match, loading }) {
-
   return (
     <>
       {loading ? (
@@ -162,9 +155,10 @@ export function TableBody2({ currentList, match, loading }) {
             title="카테고리"
             dataIndex="key"
             key="key"
-            render={(text, record) => (
-              record.Board.title
-            )} />
+            render={(text, record) =>
+              record.Board?.title ? record.Board.title : null
+            }
+          />
           <Column
             title="제목"
             key="title"

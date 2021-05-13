@@ -11,6 +11,8 @@ import {
   POST_UPDATE_FAIL,
   POST_VIEW_FAIL,
   POST_VIEW,
+  REVIEW_DETAIL,
+  REVIEW_DETAIL_FAIL
 } from './types';
 // 완료
 
@@ -88,7 +90,7 @@ export const postUpdate = async (updated, needDelete, postId) => {
 };
 // 완료
 export const postRemove = async (postId) => {
-  const request = await axios.delete(`${PUBLIC_IP}/review/${postId}`);
+  const request = await axios.delete(`${PUBLIC_IP}/store/review/${postId}`);
   if (request.status === 200) {
     return {
       type: POST_REMOVE,
@@ -102,3 +104,20 @@ export const postRemove = async (postId) => {
   }
 };
 // 완료
+
+export const reviewDetail = async (rstrnId) => {
+  const request = await axios.get(`${PUBLIC_IP}/store/${rstrnId}/detail`);
+  if (request.status === 200) {
+    return {
+      type: REVIEW_DETAIL,
+      payload: request.data.data[0],
+      status: request.status,
+    };
+  } else {
+    return {
+      type: REVIEW_DETAIL_FAIL,
+      status: request.status,
+    };
+  }
+};
+

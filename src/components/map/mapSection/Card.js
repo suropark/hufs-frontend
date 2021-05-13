@@ -3,20 +3,20 @@ import { useDispatch } from 'react-redux';
 
 import { Card, Button, Typography, Col, Row, Modal, List, Avatar } from 'antd';
 import { useHistory, withRouter, useLocation } from 'react-router-dom';
-import Quick from '../../../views/Quick/Quick';
-import Header from '../../../views/Header/Header';
-import Footer from '../../../views/Footer/Footer';
 import './Card.css';
 import icon_rstrn from './mapData/icon_rstrn.png';
 import numIcon from './mapData/icon1.png';
 import roadIcon from './mapData/icon2.png';
 import cateIcon2 from './mapData/icon4.png';
-
+import star from './mapData/star.png';
+import {reviewDetail} from '../../../_actions/reviewPost_action';
 
 const { kakao } = window;
 const { Text, Title } = Typography;
 
+
 const Rstrn = ({ id, name, numAddress, StoreSubCategory, roadAddress, lat, long, match }) => {
+
   //const history = useHistory();
 
   //const [markerPositions, setMarkerPositions] = useState();
@@ -27,6 +27,35 @@ const Rstrn = ({ id, name, numAddress, StoreSubCategory, roadAddress, lat, long,
   const location = useLocation();
   const [marker, setMarkers] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const [detail, setDetail] = useState([]);
+    useEffect(()=>{
+      dispatch(reviewDetail(id))
+  .then((response) => {
+    if (response.status === 200) {
+      console.log(response.payload)
+      setDetail({average : response.payload.average,
+        count : response.payload.count
+
+      })
+    }
+  })
+  .catch((error) => {
+    switch (error.response?.status) {
+      case 401:
+        history.push('/');
+        break;
+      case 403:
+        history.push('/');
+        break;
+      default:
+        break;
+    }
+  });
+
+    }, [])
+   
+
   const data = [
     {
       title: "카테고리",
@@ -57,6 +86,8 @@ const Rstrn = ({ id, name, numAddress, StoreSubCategory, roadAddress, lat, long,
 
   function displayMarker() {
     //hideMarkers(markers);
+  
+      
 
     const container = document.getElementById('map');
     const options = {
@@ -160,6 +191,15 @@ const Rstrn = ({ id, name, numAddress, StoreSubCategory, roadAddress, lat, long,
     content10.onclick = function () {
       setIsModalVisible(true);
     }
+    var content12 = document.createElement('img');
+    content12.src = star;
+    content12.width = '15';
+    content12.height = '15';
+
+    var content13 = document.createTextNode(' ' +detail.average + ' ('+detail.count + ') ');
+
+    content9.appendChild(content12);
+    content9.appendChild(content13);
 
     content9.appendChild(content10);
 

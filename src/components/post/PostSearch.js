@@ -3,7 +3,7 @@ import { message, Select, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { postSearch } from '../../_actions/post_action';
-import { useHistory } from 'react-router';
+import { useHistory, withRouter } from 'react-router';
 const { Option } = Select;
 const { Search } = Input;
 function PostSearch({ setPosts, match }) {
@@ -18,7 +18,11 @@ function PostSearch({ setPosts, match }) {
     dispatch(postSearch(match.path.substring(1), toSearch, searchType))
       .then((response) => {
         if (response.status === 200) {
-          setPosts(response.payload.reverse());
+          // setPosts(response.payload.reverse());
+          history.push({
+            pathname: `/search`,
+            state: { detail: response.payload.reverse() },
+          });
         }
       })
       .catch((error) => {
@@ -71,4 +75,4 @@ function PostSearch({ setPosts, match }) {
   );
 }
 
-export default PostSearch;
+export default withRouter(PostSearch);

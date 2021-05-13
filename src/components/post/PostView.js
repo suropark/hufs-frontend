@@ -80,8 +80,11 @@ function PostView({ match, history }) {
   };
   const onLike = () => {
     dispatch(postLike(post.id))
-      .then((response) => {
-        window.location.reload();
+      .then(async (response) => {
+        await postView(+match.params.id).then((response) => {
+          message.success('성공');
+          setPost(response.payload);
+        });
       })
       .catch((error) => {
         switch (error.response?.status) {
@@ -101,28 +104,28 @@ function PostView({ match, history }) {
       });
     // 새로고침 필요한지 -> 아니요
   };
-  const onDellike = () => {
-    dispatch(postDellike(post.id))
-      .then((response) => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        switch (error.response.status) {
-          case 401:
-            alert('로그인이 필요합니다.');
-            history.push('/');
-            break;
-          case 403:
-            alert('접근 권한이 없습니다');
-            break;
-          case 409:
-            alert('좋아요한 기록이 없습니다.');
-            break;
-          default:
-            break;
-        }
-      });
-  };
+  // const onDellike = () => {
+  //   dispatch(postDellike(post.id))
+  //     .then((response) => {
+  //       window.location.reload();
+  //     })
+  //     .catch((error) => {
+  //       switch (error.response.status) {
+  //         case 401:
+  //           alert('로그인이 필요합니다.');
+  //           history.push('/');
+  //           break;
+  //         case 403:
+  //           alert('접근 권한이 없습니다');
+  //           break;
+  //         case 409:
+  //           alert('좋아요한 기록이 없습니다.');
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //     });
+  // };
   const onScrap = () => {
     dispatch(postScrap(post.id))
       .then((response) => {
@@ -184,17 +187,17 @@ function PostView({ match, history }) {
                   </span>
                   <span style={{ marginLeft: '24px', fontSize: '12px' }}>
                     {' '}
-                  글 번호 {post.id}
+                    글 번호 {post.id}
                   </span>
                 </div>
               </>
             }
-          // extra={<span>글 번호 {post.id}</span>}
+            // extra={<span>글 번호 {post.id}</span>}
           >
             <div
               dangerouslySetInnerHTML={{ __html: post.content }}
               className="board-content"
-            // style={{ display: 'inline-block', minHeight: '300px' }}
+              // style={{ display: 'inline-block', minHeight: '300px' }}
             />
             <div>
               {/* 추천 수: {post.like}
@@ -206,17 +209,26 @@ function PostView({ match, history }) {
                 </div> */}
               <div style={{ fontSize: '12px' }}>
                 <ReportModal type="post" id={post.id} history={history} />{' '}
-
                 <div>
                   <span
                     onClick={onDelete}
+                    style={{
+                      cursor: 'pointer',
+                      float: 'left',
+                      marginRight: '12px',
+                    }}
+                  >
+                    삭제
+                  </span>
+                  <span
+                    onClick={onScrap}
                     style={{
                       cursor: 'pointer',
                       float: 'right',
                       marginLeft: '12px',
                     }}
                   >
-                    삭제
+                    스크랩
                   </span>
                 </div>{' '}
                 <Link to={`${post.id}/update`}>

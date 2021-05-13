@@ -198,8 +198,8 @@ export const deleteScrap = async (postId) => {
 };
 
 export const postSearch = async (boardId, keyword, option) => {
-  const request = await axios.get(`${PUBLIC_IP}/board/${boardId}/search`, {
-    params: { keyword: keyword, option: option }, // option = titleAndContent, title, content, nick
+  const request = await axios.get(`${PUBLIC_IP}/search`, {
+    params: { keyword: keyword, option: option, board: boardId }, // option = titleAndContent, title, content, nick
   });
 
   if (request.data) {

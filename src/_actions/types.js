@@ -50,3 +50,6 @@ export const AUTH_EMAIL_FAIL = 'auth_eamil_fail';
 
 export const SEARCH_ALL = 'search_all';
 export const SEARCH_ALL_FAIL = 'search_all_fail';
+
+export const REVIEW_DETAIL = 'review_detail';
+export const REVIEW_DETAIL_FAIL = 'review_detail_fail';
