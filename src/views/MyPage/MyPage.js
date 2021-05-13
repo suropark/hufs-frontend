@@ -14,23 +14,32 @@ import Header1 from '../Header/Header';
 import styles from '../../css/MyPage.module.css';
 function MyPage(props) {
   const { Header, Content, Footer } = Layout;
+  const [userInfo, setUserInfo] = useState({});
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserInfo()).then((response) => {
-      switch (response.status) {
-        case 401:
-          alert('로그인하지 않은 사용자');
-          props.history.push('/');
-          break;
-        case 403:
-          alert('접근 권한 오류');
-          props.history.push('/');
-          break;
-        case 200:
-        default:
-          break;
-      }
-    });
+    dispatch(getUserInfo())
+      .then((response) => {
+        console.log(response.payload);
+        setUserInfo({
+          nickname: response.payload.nickName,
+          mainMajorId: response.payload.MainMajor.id,
+          doubleMajorId: response.payload.DoubleMajor.id,
+        });
+      })
+      .catch((error) => {
+        switch (error.status) {
+          case 401:
+            alert('로그인하지 않은 사용자');
+            props.history.push('/');
+            break;
+          case 403:
+            alert('접근 권한 오류');
+            props.history.push('/');
+            break;
+          default:
+            break;
+        }
+      });
   }, []);
   const [click, setClick] = useState('1');
 
@@ -60,30 +69,29 @@ function MyPage(props) {
       <div className={styles.main}>
         <div className={styles.communitymain}>
           {/* <Card title="마이 페이지" /> */}
-          <Layout
-            className={styles.layout}
-          >
-            <UserInfo />
+          <Layout className={styles.layout}>
+            <UserInfo userInfo={userInfo} />
             <Header>
               <Menu
-
                 theme="dark"
-                mode="horizontal" defaultSelectedKeys={[click]}>
+                mode="horizontal"
+                defaultSelectedKeys={[click]}
+              >
                 {/* <Menu.Item key="1" onClick={onClick}>
                   회원정보관리
               </Menu.Item> */}
                 <Menu.Item key="2" onClick={onClick}>
                   나의 스크랩
-              </Menu.Item>
+                </Menu.Item>
                 <Menu.Item key="3" onClick={onClick}>
                   내가 쓴 글{' '}
                 </Menu.Item>
                 <Menu.Item key="4" onClick={onClick}>
                   내가 쓴 댓글
-              </Menu.Item>
+                </Menu.Item>
                 <Menu.Item key="5" onClick={onClick}>
                   회원 탈퇴
-              </Menu.Item>
+                </Menu.Item>
               </Menu>
             </Header>
             <Content style={{ padding: '0 50px', margin: '16px 0' }}>
@@ -97,7 +105,7 @@ function MyPage(props) {
               }}
             >
               HUFSpace_
-          </Footer>
+            </Footer>
           </Layout>
         </div>
       </div>

@@ -10,36 +10,28 @@ import SecondMajorSelect from './SecondMajorSelect';
 import styles from '../../css/UserInfo.module.css';
 function UserInfo(props) {
   const dispatch = useDispatch();
-  // 인증 여부 받아서 disabled
-  const {
-    Providers,
-    webMail,
-    nickName,
-    MainMajor,
-    DoubleMajor,
-    Token,
-  } = useSelector((state) => state.user);
+  const { Providers, webMail, nickName, MainMajor, DoubleMajor, Token } =
+    useSelector((state) => state.user);
   const [mainMajorList, setMainMajorList] = useState([]);
   const [doubleMajorList, setDoubleMajorList] = useState([]);
   const [change, setChange] = useState({});
   const [webMailInput, setWebMailInput] = useState(webMail);
-
   useEffect(async () => {
     await axios
       .all([
-        axios.get(`${PUBLIC_IP}/major/main-major`),
+        axios.get(`${PUBLIC_IP}/major/main-major`, {
+          params: { campusId: 12 },
+        }),
         axios.get(`${PUBLIC_IP}/major/double-major`),
       ])
       .then((response) => {
         setMainMajorList(response[0].data.data);
         setDoubleMajorList(response[1].data.data);
       });
-    // setChange({
-    //   nickname: nickName,
-    //   mainMajorId: MainMajor.id,
-    //   doubleMajorId: DoubleMajor.id,
-    // });
   }, []);
+  useEffect(() => {
+    setChange(props.userInfo);
+  }, [props.userInfo]);
   const onSubmit = () => {
     const answer = window.confirm('변경은 한 번입니다.');
 
@@ -75,9 +67,7 @@ function UserInfo(props) {
   function DoubleMajorChange(value) {
     setChange({ ...change, doubleMajorId: value });
   }
-  useEffect(() => {
-    console.log(change);
-  }, [change]);
+
   const onAuth = async () => {
     await axios
       .post(`${PUBLIC_IP}/user/email`, webMailInput)
@@ -137,7 +127,7 @@ function UserInfo(props) {
                     ></Input>
                     <Button
                       onClick={onAuth}
-                    // style={{ marginLeft: '8px' }}
+                      // style={{ marginLeft: '8px' }}
                     >
                       인증하기
                     </Button>
@@ -154,11 +144,12 @@ function UserInfo(props) {
                 <Input
                   style={{ width: '200px' }}
                   type="nickName"
-                  placeholder={nickName}
+                  placeholder={change.nickname}
                   value={change.nickname}
-                  onChange={(e) =>
-                    setChange({ ...change, nickname: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setChange({ ...change, nickname: e.target.value });
+                    console.log(change);
+                  }}
                 />
               </div>
             </div>

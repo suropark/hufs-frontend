@@ -18,8 +18,6 @@ function SearchAll(props) {
     dispatch(searchAll(keyword, 'titleAndContent'))
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
-          console.log('success');
           props.history.push({
             pathname: `/search`,
             state: { detail: response.payload.reverse() },

@@ -91,7 +91,6 @@ function CalendarMainPage(props) {
   return (
     <div>
       <div className="site-calendar-demo-card">
-
         <Calendar
           dateCellRender={scholar ? dateCellRender : null}
           // monthCellRender={monthCellRender}
@@ -118,10 +117,8 @@ function CalendarMainPage(props) {
           dataSource={dataList}
           renderItem={(item) => (
             <List.Item>
+              <Typography.Text>[{item.Campus.name}]</Typography.Text>{' '}
               <Typography.Text>[{item.ScholarshipOption.name}]</Typography.Text>{' '}
-              <Typography.Text>
-                [{item.ScholarshipSchoolOption.name}]
-              </Typography.Text>{' '}
               <span
                 style={{ cursor: 'pointer' }}
                 onClick={(e) => window.open(item.link)}
