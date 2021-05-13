@@ -13,6 +13,8 @@ import {
 import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
 import { PUBLIC_IP } from '../../../config';
+import { InformationModal2 } from '../../rule/InformationModal'
+import { UseModal2 } from '../../rule/UseModal'
 
 const SignUpModal = (props) => {
   const { Option } = Select;
@@ -173,6 +175,8 @@ const SignUpModal = (props) => {
               )}
             </Select>
           </Form.Item>
+          {/* 개인정보 */}
+          <InformationModal2 />
           <Form.Item
             {...tailLayout}
             name="isAgreed"
@@ -186,6 +190,33 @@ const SignUpModal = (props) => {
               },
             ]}
           >
+
+            <Checkbox
+              onChange={(event) => {
+                setSubmit({ ...submit, isAgreed: event.target.checked });
+                console.log(event.target.checked, submit.isAgreed);
+              }}
+            >
+              동의합니다
+            </Checkbox>
+
+          </Form.Item>
+          {/* 이용약관 */}
+          <UseModal2 />
+          <Form.Item
+            {...tailLayout}
+            name="isAgreed"
+            valuePropName="checked"
+            rules={[
+              {
+                validator: (_, value) =>
+                  value
+                    ? Promise.resolve()
+                    : Promise.reject(new Error('필수 항목입니다.')),
+              },
+            ]}
+          >
+
             <Checkbox
               onChange={(event) => {
                 setSubmit({ ...submit, isAgreed: event.target.checked });

@@ -8,3 +8,63 @@
 .rule > span {
   padding: 10px;
 }
+.info-rule {
+  width: 950px !important;
+}
+.info-rule .ant-modal-body .head {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+.info-detail2 {
+  text-align: left;
+}
+.info-detail2 .title {
+  font-weight: bolder;
+  font-size: 20px;
+}
+.info-detail2 .subtitle {
+  font-weight: bold;
+  font-size: 17px;
+}
+.info-rule .ant-modal-body > p {
+  font-weight: bold;
+  text-align: left;
+  padding-left: 40px;
+}
+.info-detail {
+  text-align: left;
+}
+.info-detail .subtitle > .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.info-detail .sub {
+  font-weight: bold;
+}
+
+.info-rule .ant-btn.ant-btn-primary {
+  display: none;
+}
+#info2 {
+  margin: 0 auto;
+  height: 130px;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+#info2 .head {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+#use2 {
+  margin: 0 auto;
+  height: 130px;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+#use2 .head {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
