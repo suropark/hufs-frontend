@@ -16,7 +16,7 @@ function InformationModal() {
 
     return (
         <>
-            <span onClick={show}>Hufspace 개인정보 취급방침 </span>
+            <span onClick={show}>개인정보 취급방침 </span>
             <Modal
                 className="info-rule"
                 title="개인정보 처리방침"

@@ -11,6 +11,22 @@
 .info-rule {
   width: 950px !important;
 }
+.info-rule .ant-modal-body .head {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+.info-detail2 {
+  text-align: left;
+}
+.info-detail2 .title {
+  font-weight: bolder;
+  font-size: 20px;
+}
+.info-detail2 .subtitle {
+  font-weight: bold;
+  font-size: 17px;
+}
 .info-rule .ant-modal-body > p {
   font-weight: bold;
   text-align: left;
@@ -25,4 +41,8 @@
 }
 .info-detail .sub {
   font-weight: bold;
+}
+
+.info-rule .ant-btn.ant-btn-primary {
+  display: none;
 }
