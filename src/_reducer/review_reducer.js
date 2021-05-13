@@ -22,6 +22,8 @@ import {
     POST_SEARCH,
     SEARCH_ALL_FAIL,
     SEARCH_ALL,
+    REVIEW_DETAIL,
+    REVIEW_DETAIL_FAIL
   } from '../_actions/types';
   
   export default function review(state = {}, action) {
@@ -51,6 +53,8 @@ import {
       case POST_SEARCH_FAIL:
       case SEARCH_ALL:
       case SEARCH_ALL_FAIL:
+      case REVIEW_DETAIL:
+      case REVIEW_DETAIL_FAIL :
         return {
           ...state,
         };

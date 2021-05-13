@@ -14,7 +14,7 @@ function ReviewPage(props) {
         <Route exact path={`${props.match.url}/:id`} component={ReviewView} />
      
       <Route exact path={props.match.url}component={ReviewList} />
-      <Route exact path={`${props.match.url}/:id/update`} component={ReviewUpdate} />
+      {/* <Route exact path={`${props.match.url}/:id/update`} component={ReviewUpdate} /> */}
       </Switch>
     </>
   );
