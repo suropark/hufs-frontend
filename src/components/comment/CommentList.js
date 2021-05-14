@@ -98,7 +98,17 @@ function CommentList({ comments, history, setPost, match }) {
         }
       });
     });
+
   };
+  const typeReply = (event) => {
+    console.log(reply);
+    setReply({
+      ...reply,
+      content: event.target.value,
+      parentId: +event.target.id,
+    });
+  };
+      console.log(reply);
   return (
     <div className="comment-body">
       {/* <List
@@ -201,17 +211,10 @@ function CommentList({ comments, history, setPost, match }) {
                 maxLength={100}
                 type="text"
                 id={item.id}
-                onClick={(e) => console.log(e.target.value)}
+                onClick={(e) => setReply({ ...reply, parentId: +e.target.id })}
                 placeholder="댓글을 입력하세요"
                 // value={reply.content}
-                onChange={(e) => {
-                  console.log(reply);
-                  setReply({
-                    ...reply,
-                    content: e.target.value,
-                    parentId: +e.target.id,
-                  });
-                }}
+                onChange={typeReply}
               />
 
               <Button
