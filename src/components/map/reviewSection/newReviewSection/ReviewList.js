@@ -49,8 +49,21 @@ function ReviewList({ match, history }) {
       .then((response) => {
         if (response.status === 200) {
           console.log(response.payload)
-          setDetail(response.payload)
-          console.log(detail)
+          if (response.payload.average === null) {
+
+            setDetail({
+                   average: parseFloat(0).toFixed(1),
+                   count: response.payload.count,
+                 })
+          }
+          else {
+
+            setDetail({
+              average: response.payload.average,
+              count: response.payload.count,
+            })
+
+          }
         }
       })
       .catch((error) => {

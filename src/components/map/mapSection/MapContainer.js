@@ -13,12 +13,26 @@ const MapContainer = ({ match }) => {
   const [data, setData] = useState(storeSeoul);
   const [lat, setLat] = useState(37.59732049638715); // default 서울캠
   const [lng, setLng] = useState(127.0588283395548);
+  const [keyword, setKeyword] = useState('');
 
-  const searchData = (pattern) => {
-    if (!pattern) {
-      setData(storeSeoul);
-      return;
+  
+  const handleValueChange = (e) =>{
+    setKeyword(e.target.value);
+  }
+
+  const searchData = (data) =>{
+    data = data.mydata.filter((c)=> {
+      return c.name.toLowerCase().indexOf(keyword) > -1;
+    });
+    return data.map((d, index) => {
+      return <Card id="aa" {...d} key={index} match={match} />
     }
+    );
+   
+  }
+
+  if (keyword == '') {
+    searchData(data);
   }
 
   const fold = (e) => {
@@ -78,10 +92,10 @@ const MapContainer = ({ match }) => {
         </div>
         <div id="Food-list">
           <div className="Food-head">
-            <SearchBar
-              placeholder="Search"
-
-              onChange={(e) => searchData(e.target.value)}
+          <SearchBar
+              placeholder="Search (영어는 소문자로)"
+              value = {keyword}
+              onChange={handleValueChange}
               style={{ width: '100 %' }}
 
             />
@@ -94,10 +108,10 @@ const MapContainer = ({ match }) => {
             id="itemContainer"
 
           >
-
-            {data.mydata ? data.mydata.map((d, index) => (
+            {data.mydata ? searchData(data) : 
+            data.mydata.map((d, index) => (
               <Card id="aa" {...d} key={index} match={match} />
-            )) : <h1>null</h1>}
+            ))}
           </div>
         </div>
       </div>

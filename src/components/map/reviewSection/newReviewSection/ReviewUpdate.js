@@ -15,7 +15,7 @@ import { Skeleton, Button, Rate, message } from 'antd';
 let wholeImg = []; // 처음 이미지 + 업로드 되는 이미지 모두
 let uploadedImg = [];
 function ReviewUpdate({ match, history }) {
-  console.log(history.state)
+  console.log(history.location.state.id)
   const dispatch = useDispatch();
   const [updated, setUpdated] = useState(false);
   useBeforeunload((e) => {
@@ -25,7 +25,7 @@ function ReviewUpdate({ match, history }) {
     };
   });
   useEffect(() => {
-    dispatch(postView(+match.params.id))
+    dispatch(postView(history.location.state.id))
       .then((response) => {
         if (response.status === 200) {
           const firstImg = Array.from(
@@ -36,6 +36,7 @@ function ReviewUpdate({ match, history }) {
           setUpdated({
             title: response.payload.title,
             content: response.payload.content,
+            score: response.payload.score,
           });
           wholeImg = wholeImg.concat(firstImg);
         }
@@ -73,7 +74,7 @@ function ReviewUpdate({ match, history }) {
 
     const needDelete = getUnused(wholeImg, afterEdit); // return : 삭제해야 할 이미지 url
 
-    dispatch(postUpdate(updated, needDelete, history.state.id))
+    dispatch(postUpdate(updated, needDelete, history.location.state.id))
       .then((response) => {
         if (response.status === 200) {
           history.goBack();
@@ -112,7 +113,6 @@ function ReviewUpdate({ match, history }) {
       <div id="community-main">
         {updated ? (
           <div>
-            <p>글 번호: {updated.id}</p>
             <input
               className="title-bar"
               type="text"
@@ -124,7 +124,7 @@ function ReviewUpdate({ match, history }) {
             />
                         <label>평점 </label>
         <Rate allowHalf value={updated.score} onChange={(e) => {
-            setUpdated({ ...updated, score: e.target.value });
+            setUpdated({ ...updated, score: e });
           }} />
         <hr></hr>
             <ReactQuill

@@ -50,7 +50,13 @@ const Rstrn = ({
         //     count: response.payload.count,
         //   });
         // }
-        displayMarker(response.payload.average, response.payload.count);
+        if (response.payload.average === null) {
+          displayMarker(parseFloat(0).toFixed(1), response.payload.count);
+        }
+        else {
+          displayMarker(response.payload.average, response.payload.count);
+
+        }
       })
       .catch((e) => console.log(e));
   };
