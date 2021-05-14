@@ -78,16 +78,23 @@ function CommentList({ comments, history, setPost, match }) {
   //     </>
   //   );
   // };
-  const [reply, setReply] = useState({
-    content: '',
-    parentId: null,
-    postId: +match.params.id,
-  });
-  const onReply = async (e) => {
-    if (reply.content.trim().length === 0) {
+
+  // const [reply, setReply] = useState({
+  //   content: '',
+  //   parentId: null,
+  //   postId: +match.params.id,
+  // });
+  const onReply = async (content, parentId) => {
+    if (content.trim().length === 0) {
       message.info('댓글을 입력하세요');
       return;
     }
+    const reply = {
+      content: content,
+      parentId: parentId,
+      postId: +match.params.id,
+    };
+    console.log(reply);
     dispatch(commentReply(reply)).then((response) => {
       dispatch(postView(+match.params.id)).then((response) => {
         setPost(response.payload);
@@ -98,17 +105,15 @@ function CommentList({ comments, history, setPost, match }) {
         }
       });
     });
-
   };
-  const typeReply = (event) => {
-    console.log(reply);
-    setReply({
-      ...reply,
-      content: event.target.value,
-      parentId: +event.target.id,
-    });
-  };
-      console.log(reply);
+  // const typeReply = (event) => {
+  //   console.log(reply);
+  //   setReply({
+  //     ...reply,
+  //     content: event.target.value,
+  //     parentId: +event.target.id,
+  //   });
+  // };
   return (
     <div className="comment-body">
       {/* <List
@@ -202,31 +207,27 @@ function CommentList({ comments, history, setPost, match }) {
                   )
                 );
               })}
-              <TextArea
-                className="comment-textarea"
-                size={'small'}
-                rows={4}
-                autoSize={{ minRows: 4, maxRows: 4 }}
-                showCount
-                maxLength={100}
-                type="text"
-                id={item.id}
-                onClick={(e) => setReply({ ...reply, parentId: +e.target.id })}
-                placeholder="댓글을 입력하세요"
-                // value={reply.content}
-                onChange={typeReply}
-              />
-
-              <Button
-                style={{
-                  width: '120px',
-                  height: '113px',
-                  position: 'absolute',
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  console.log('text', e.target[0].value);
+                  console.log('parentid', item.id);
+                  onReply(e.target[0].value, item.id);
                 }}
-                onClick={onReply}
               >
-                댓글 입력
-              </Button>
+                <TextArea
+                  className="comment-textarea"
+                  size={'small'}
+                  rows={4}
+                  autoSize={{ minRows: 4, maxRows: 4 }}
+                  showCount
+                  maxLength={100}
+                  type="text"
+                  id={item.id}
+                  placeholder="댓글을 입력하세요"
+                />
+                <input type="submit" value="댓글 입력" />
+              </form>
             </Comment>
           )
         );
