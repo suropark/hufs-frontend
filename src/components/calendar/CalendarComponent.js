@@ -5,37 +5,39 @@ import { List, Typography, PageHeader, Tag } from 'antd';
 import PostSub from '../post/PostSub';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../config';
-
+import { getScholar } from '../../_actions/calender_action';
 function CalendarComponent({ match }) {
   const { CheckableTag } = Tag;
   const dispatch = useDispatch();
   const { scholar } = useSelector((state) => state.calendar);
   const [selectedTag, setSelectedTag] = useState({
     optionId: [],
-    dateId: [],
+    // dateId: [],
     campusId: [],
   });
   const [dataList, setDataList] = useState([]);
   const [optionTagDatas, setOptionTagDatas] = useState([]);
   const [campusTagDatas, setCampusTagDatas] = useState([]);
+  // useEffect(() => {
+  //   setDataList(scholar);
+  // }, [scholar]);
   useEffect(() => {
-    setDataList(scholar);
-  }, [scholar]);
-  useEffect(async () => {
     // await axios
-    //   .get(`${PUBLIC_IP}/scholarship`, { params: selectedTag })
-    //   .then((response) => console.log(response.data));
+    //   .post(`${PUBLIC_IP}/scholarship`, selectedTag)
+    dispatch(getScholar(selectedTag)).then((response) => {
+      setDataList(response.payload.data);
+    });
     console.log(selectedTag);
   }, [selectedTag]);
   useEffect(async () => {
     await axios.get(`${PUBLIC_IP}/scholarship/option`).then((response) => {
       setOptionTagDatas(response.data.data);
     });
-    // await axios
-    //   .get(`${PUBLIC_IP}/scholarship/date`)
-    //   .then((response) => console.log(response.data));
-    axios.get(`${PUBLIC_IP}/scholarship/campus`).then((response) => {
+    await axios.get(`${PUBLIC_IP}/scholarship/campus`).then((response) => {
       setCampusTagDatas(response.data.data);
+      // await axios
+      //   .get(`${PUBLIC_IP}/scholarship/date`)
+      //   .then((response) => console.log(response.data));
     });
   }, []);
   function getListData(value) {
@@ -145,7 +147,7 @@ function CalendarComponent({ match }) {
         ))}
       </div>
       <div>
-        우형 :
+        유형 :
         {optionTagDatas.map((tag) => (
           <CheckableTag
             key={tag.id}
