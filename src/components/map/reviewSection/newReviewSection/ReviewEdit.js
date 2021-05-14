@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { PUBLIC_IP } from '../../../../config';
 import imageCompression from 'browser-image-compression';
-import { Button, Rate, message,Input } from 'antd';
+import { Button, Rate, message, Input } from 'antd';
 
 let uploadedImg = [];
 function ReviewEdit(props) {
@@ -85,16 +85,21 @@ function ReviewEdit(props) {
             setvalue({ ...value, title: e.target.value });
           }}
         />
-        <label>평점 </label>
-        <Rate allowHalf value={value.score} onChange={(e) => {
-          console.log(e);
+        <div style={{ padding: '5px 5px' }}>
+          <label style={{ fontWeight: 'bold' }}>평점 </label>
+          <Rate allowHalf value={value.score} onChange={(e) => {
+            console.log(e);
             setvalue({ ...value, score: e });
           }} />
-        <hr></hr>
+        </div>
+
         <ReactQuill
           id="quill-editor"
           placeholder="하이"
           theme="snow"
+          style={{
+            height: '77%'
+          }}
           onChange={(content, delta, source, editor) => {
             setvalue({ ...value, content: editor.getHTML() });
           }}
@@ -105,13 +110,14 @@ function ReviewEdit(props) {
           formats={formats}
         ></ReactQuill>
         <hr />
-        <div id="button-bar">
+        <div
+          id="button-bar"
+          style={{
+            top: '-5%'
+          }}>
           <Button
             type="primary"
             onClick={onSubmit}
-            style={{
-              marginLeft: '10px',
-            }}
           >
             등록
           </Button>

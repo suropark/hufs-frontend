@@ -232,7 +232,7 @@ const SignUpModal = (props) => {
             </Button>
           </Form.Item>
         </Form>
-        <Descriptions title="개인정보 이용약관"></Descriptions>
+
       </div>
     </>
   );

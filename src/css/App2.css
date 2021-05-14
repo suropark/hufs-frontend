@@ -27,7 +27,7 @@
   position: relative;
   width: 1000px;
   height: 920px;
-  left: 13.5%;
+  left: 13%;
   top: 2.5%;
   border: solid 1px black;
   /* background: #afa1a1; */
@@ -61,9 +61,9 @@
   /* Content */
 
   position: relative;
-  width: 1100px;
+  width: 1000px;
   height: 700px;
-  left: 12.5%;
+  left: 13%;
   top: 2.5%;
   border: solid 1px black;
   /* background: #afa1a1; */
@@ -73,14 +73,14 @@
   height: 10%;
 }
 #community-main .quill {
-  height: 80%;
+  height: 83%;
 }
 #community-main .quill .ql-container {
   border-style: none;
   height: 93%;
 }
 #button-bar {
-  top: 5%;
+  /* bottom: 5%; */
   float: right;
   justify-content: space-between;
 }

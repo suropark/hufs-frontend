@@ -150,3 +150,6 @@
 .SearchInput {
   width: 100%;
 }
+.temp .ant-btn.ant-btn-primary {
+  display: none;
+}

@@ -7,6 +7,7 @@ import Slide from '../../components/slide/Slide';
 import SearchAll from '../../components/post/SearchAll';
 import CalendarMainPage from '../../components/calendar/CalendarMainPage';
 import styles from '../../css/LandingPage.module.css';
+import Popup from '../../components/Popup/Popup'
 function LandingPage(props) {
   // const now_url = window.location.href;
   // console.log(now_url);
@@ -14,6 +15,7 @@ function LandingPage(props) {
   return (
     <div>
       <Header />
+      <Popup />
 
       <div className="Main">
         <SearchAll />

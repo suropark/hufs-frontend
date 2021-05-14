@@ -94,6 +94,9 @@
   .ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
     display: none;
   }
+  .Head .loginbar {
+    width: 200px;
+  }
 }
 @media (max-width: 768px) {
   /* 반응형 최대 768 테스트 */

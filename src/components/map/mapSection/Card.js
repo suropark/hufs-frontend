@@ -10,8 +10,10 @@ import roadIcon from './mapData/icon2.png';
 import cateIcon2 from './mapData/icon4.png';
 import star from './mapData/star.png';
 import { reviewDetail } from '../../../_actions/reviewPost_action';
+
 import axios from 'axios';
 import { PUBLIC_IP } from '../../../config';
+
 
 const { kakao } = window;
 const { Text, Title } = Typography;
@@ -38,6 +40,7 @@ const Rstrn = ({
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [detail, setDetail] = useState([]);
+
   const getMarker = async () => {
     dispatch(reviewDetail(id))
       .then((response) => {
@@ -79,6 +82,7 @@ const Rstrn = ({
   // });
 
   //   }, [])
+
 
   const data = [
     {
@@ -217,9 +221,11 @@ const Rstrn = ({
     content12.width = '15';
     content12.height = '15';
 
+
     var content13 = document.createTextNode(
       ' ' + average + ' (' + count + ') ',
     );
+
 
     content9.appendChild(content12);
     content9.appendChild(content13);

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, Switch, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { message, Skeleton } from 'antd';
-import { postList,postRemove, reviewDetail } from '../../../../_actions/reviewPost_action';
+import { postList, postRemove, reviewDetail } from '../../../../_actions/reviewPost_action';
 import { PageHeader, Button, Table, Pagination, List, Avatar, Space, Rate, Layout } from 'antd';
-import { StarFilled} from '@ant-design/icons';
+import { StarFilled } from '@ant-design/icons';
 import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
@@ -19,8 +19,8 @@ function ReviewList({ match, history }) {
   const [loading, setloading] = useState(false);
   const [detail, setDetail] = useState([]);
 
-  
- 
+
+
   useEffect(() => {
     dispatch(postList(history.location.state.id))
       .then((response) => {
@@ -45,7 +45,7 @@ function ReviewList({ match, history }) {
         }
       });
 
-      dispatch(reviewDetail(history.location.state.id))
+    dispatch(reviewDetail(history.location.state.id))
       .then((response) => {
         if (response.status === 200) {
           console.log(response.payload)
@@ -58,7 +58,7 @@ function ReviewList({ match, history }) {
           case 401:
             message.error('로그인하지 않은 사용자');
             history.push('/');
-            
+
             //
             break;
           case 403:
@@ -71,18 +71,18 @@ function ReviewList({ match, history }) {
       });
 
 
- 
+
   }, [match.path]);
 
   const onDelete = (postId) => {
     const answer = window.confirm('게시글을 삭제하시겠습니까?');
-    
+
     if (answer) {
       dispatch(postRemove(postId))
         .then((response) => {
           if (response.status === 200) {
             alert('게시글 삭제가 완료되었습니다.');
-            window.location.reload();  
+            window.location.reload();
             //history.goBack();
           }
         })
@@ -134,30 +134,39 @@ function ReviewList({ match, history }) {
   }
 
   return (
-    <>  
-    <Content style={{ padding: '0 100px'}}>
-    <h1>Review</h1>
-    <div >
+    <>
+      <Content style={{
+        width: '1000px',
+        margin: '0 15%'
+      }}>
+        <h1>Review</h1>
+        <div >
 
-      <div style = {{paddingTop : '10px'}}>
+          <div
+          // style={{ paddingTop: '10px' }}
+          >
 
-    <StarFilled style={{color : '#fadb14', fontSize : '20px', float:'left'}}/> <h2 style = {{float:'left'}}>{detail.average} </h2>
-    </div>
-    <div style = {{paddingtBottom : '10px'}}>
-    <font color = 'gray' size = '5' style = {{paddingLeft : '5px'}}>({detail.count})</font>
-    </div>
-      
-    </div>
-    <div aling = "left" style = {{padding : '5px'}}>
-    <Button onClick={(e) =>{
-              history.push({
-                pathname: '/3/register',
-                state: { detail: match.path,
-                    name : history.location.state.name,
-                  id : history.location.state.id },
-                  }   
-                        
-                  )
+            <StarFilled
+              style={{ color: '#fadb14', fontSize: '20px', float: 'left' }}
+            /> <h2 style={{ float: 'left' }}>{detail.average} </h2>
+          </div>
+          <div style={{ paddingtBottom: '10px' }}>
+            <font color='gray' size='5' style={{ paddingLeft: '5px' }}>({detail.count})</font>
+          </div>
+
+        </div>
+        <div aling="left" style={{ padding: '5px' }}>
+          <Button onClick={(e) => {
+            history.push({
+              pathname: '/3/register',
+              state: {
+                detail: match.path,
+                name: history.location.state.name,
+                id: history.location.state.id
+              },
+            }
+
+            )
 
             //   history.push({
             //     pathname: "map/register",
@@ -167,71 +176,72 @@ function ReviewList({ match, history }) {
             //   }
             // )
           }
-            }
+          }
           >
             Write Review</Button>
-            
-            </div>
-            <hr ></hr>
-            <p></p>
-     <List
-    itemLayout="vertical"
-    size="small"
-    pagination={{
-      onChange: page => {
-        console.log(page);
-      },
-      pageSize: 3
-    }}
-    dataSource={posts}
-    
-    renderItem={item=> (
-      item?
-      <List.Item
-        actions={[<Button onClick={()=>{onDelete(item.id)}}>delete </Button>, <Button onClick={(e) =>{
-          history.push({
-            pathname: '/3/edit',
-            state: { 
-                name : item.name,
-              id : item.id },
-              }   
-                    
-              )
 
-        //   history.push({
-        //     pathname: "map/register",
-        //     state: { detail: match.path,
-        //     name : history.location.state.name,
-        //   id : history.location.state.id },
-        //   }
-        // )
-      }
-        }
-      >
-        Edit</Button>]}
-        key={item.title}
-      >
-        <List.Item.Meta
-          avatar={<Avatar src={item.avatar} />}
-          title={checkNull(item.User)}
-          description={
-            <div>
-          <div>
-          <div><p>{item.createdAt ? item.createdAt.slice(0, 10) : 'none'}</p></div>
-            <Rate disabled allowHalf value = {item.score}
-          /> {item.score}
-            
-            </div>
-            
-            </div>}
-        />
-        <div style={{marginLeft : '50px'}}><strong>{item.title}</strong></div>
-        <div style={{marginLeft:'50px', marginTop:'20px'}} dangerouslySetInnerHTML={{ __html: item.content }}>
         </div>
-      </List.Item>
-      : 'none'
-    )}
-  />{/* ,
+        {/* <hr ></hr> */}
+        <p></p>
+        <List
+          itemLayout="vertical"
+          size="small"
+          pagination={{
+            onChange: page => {
+              console.log(page);
+            },
+            pageSize: 3
+          }}
+          dataSource={posts}
+
+          renderItem={item => (
+            item ?
+              <List.Item
+                actions={[<Button onClick={() => { onDelete(item.id) }}>delete </Button>, <Button onClick={(e) => {
+                  history.push({
+                    pathname: '/3/edit',
+                    state: {
+                      name: item.name,
+                      id: item.id
+                    },
+                  }
+
+                  )
+
+                  //   history.push({
+                  //     pathname: "map/register",
+                  //     state: { detail: match.path,
+                  //     name : history.location.state.name,
+                  //   id : history.location.state.id },
+                  //   }
+                  // )
+                }
+                }
+                >
+                  Edit</Button>]}
+                key={item.title}
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src={item.avatar} />}
+                  title={checkNull(item.User)}
+                  description={
+                    <div>
+                      <div>
+                        <div><p>{item.createdAt ? item.createdAt.slice(0, 10) : 'none'}</p></div>
+                        <Rate disabled allowHalf value={item.score}
+                        /> {item.score}
+
+                      </div>
+
+                    </div>}
+                />
+                <div style={{ marginLeft: '50px' }}><strong>{item.title}</strong></div>
+                <div style={{ marginLeft: '50px', marginTop: '20px' }} dangerouslySetInnerHTML={{ __html: item.content }}>
+                </div>
+              </List.Item>
+              : 'none'
+          )}
+        />{/* ,
       {' '}
       <table className="community-main">
         <div className="community-box">
