@@ -102,11 +102,13 @@ export const authEmail = async (token) => {
   }
 };
 
-// export function auth() {
-//   const request = axios.get('user/auth').then((response) => response.data);
+export const auth = async () => {
+  const request = await axios
+    .get(`${PUBLIC_IP}/auth/signed-in`)
+    .then((response) => response.data);
 
-//   return {
-//     type: AUTH_USER,
-//     payload: request,
-//   };
-// }
+  return {
+    type: AUTH_USER,
+    payload: request,
+  };
+};

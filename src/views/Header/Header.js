@@ -42,15 +42,27 @@ function Header(props) {
   );
 
   const [login, setLogin] = useState(false);
+  const [isEmailAuthenticated, setIsEmailAuthenticated] = useState(false);
   useEffect(async () => {
     await axios
       .get(`${PUBLIC_IP}/user`)
-      .then((response) => setLogin(true))
+      .then((response) => {
+        setLogin(true);
+        if (response.data.data.Token.isEmailAuthenticated) {
+          setIsEmailAuthenticated(true); // 차후 이메일 인증 확인을 위함.
+        }
+      })
       .catch((error) => {
         setLogin(false);
       });
   }, []);
-
+  // function statusCheck() { // 차후 로그인확인을 위함
+  //   if (!login) {
+  //     return <Link onClick={(e) => alert('로그인필요')}>떠들어Boo</Link>;
+  //   } else {
+  //     return <Link to="/1">떠들어Boo</Link>;
+  //   }
+  // }
   return (
     <div className="Head">
       <div className="Pagename">
@@ -79,6 +91,7 @@ function Header(props) {
             <Menu.Item key="mail">
               <Dropdown overlay={menu1}>
                 <Link to="/1">떠들어Boo</Link>
+                {/* {statusCheck()} */}
               </Dropdown>
             </Menu.Item>
             <Menu.Item key="app">

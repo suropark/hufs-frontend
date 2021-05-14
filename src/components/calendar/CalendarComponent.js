@@ -10,28 +10,34 @@ function CalendarComponent({ match }) {
   const { CheckableTag } = Tag;
   const dispatch = useDispatch();
   const { scholar } = useSelector((state) => state.calendar);
-  const [selectedTag, setSelectedTag] = useState([]);
+  const [selectedTag, setSelectedTag] = useState({
+    optionId: [],
+    dateId: [],
+    campusId: [],
+  });
   const [dataList, setDataList] = useState([]);
-  const [tagsData, setTagsData] = useState(['1']);
-  // const tagsData = ['기금', '대출', '공통', 'Sports'];
+  const [optionTagDatas, setOptionTagDatas] = useState([]);
+  const [campusTagDatas, setCampusTagDatas] = useState([]);
   useEffect(() => {
     setDataList(scholar);
   }, [scholar]);
-  useEffect(() => {
-    axios.get(`${PUBLIC_IP}/scholarship/option`).then((response) => {
-      const optionArray = new Set(
-        response.data.data.map((options) => options.name),
-      );
-      setTagsData(Array.from(optionArray));
-    });
-    axios
-      .get(`${PUBLIC_IP}/scholarship/date`)
-      .then((response) => console.log(response.data));
-    axios
-      .get(`${PUBLIC_IP}/scholarship/campus`)
-      .then((response) => console.log(response.data));
+  useEffect(async () => {
+    // await axios
+    //   .get(`${PUBLIC_IP}/scholarship`, { params: selectedTag })
+    //   .then((response) => console.log(response.data));
     console.log(selectedTag);
   }, [selectedTag]);
+  useEffect(async () => {
+    await axios.get(`${PUBLIC_IP}/scholarship/option`).then((response) => {
+      setOptionTagDatas(response.data.data);
+    });
+    // await axios
+    //   .get(`${PUBLIC_IP}/scholarship/date`)
+    //   .then((response) => console.log(response.data));
+    axios.get(`${PUBLIC_IP}/scholarship/campus`).then((response) => {
+      setCampusTagDatas(response.data.data);
+    });
+  }, []);
   function getListData(value) {
     let day = value._d.getUTCDate();
     let month = value._d.getUTCMonth() + 1; //months from 1-12
@@ -89,11 +95,30 @@ function CalendarComponent({ match }) {
     });
     setDataList(selectedMatchedData);
   };
-  const onTag = (event, tag) => {
+  const onOptionTag = (event, tag) => {
     if (event) {
-      setSelectedTag([...selectedTag, tag]);
+      setSelectedTag({
+        ...selectedTag,
+        optionId: [...selectedTag.optionId, tag],
+      });
     } else {
-      setSelectedTag(selectedTag.filter((t) => t !== tag));
+      setSelectedTag({
+        ...selectedTag,
+        optionId: [...selectedTag.optionId.filter((t) => t !== tag)],
+      });
+    }
+  };
+  const onCampusTag = (event, tag) => {
+    if (event) {
+      setSelectedTag({
+        ...selectedTag,
+        campusId: [...selectedTag.campusId, tag],
+      });
+    } else {
+      setSelectedTag({
+        ...selectedTag,
+        campusId: [...selectedTag.campusId.filter((t) => t !== tag)],
+      });
     }
   };
   return (
@@ -106,15 +131,32 @@ function CalendarComponent({ match }) {
         fullscreen={false}
         onSelect={scholar ? onSelect : null}
       />
-      {tagsData.map((tag) => (
-        <CheckableTag
-          key={tag}
-          checked={selectedTag.indexOf(tag) > -1}
-          onChange={(event) => onTag(event, tag)}
-        >
-          {tag}
-        </CheckableTag>
-      ))}
+      <div>
+        캠퍼스 :
+        {campusTagDatas.map((tag) => (
+          <CheckableTag
+            key={tag.id}
+            checked={selectedTag.campusId.indexOf(tag.id) > -1}
+            // onChange={(event) => onOptionTag(event, tag)}
+            onChange={(event) => onCampusTag(event, tag.id)}
+          >
+            {tag.name}
+          </CheckableTag>
+        ))}
+      </div>
+      <div>
+        우형 :
+        {optionTagDatas.map((tag) => (
+          <CheckableTag
+            key={tag.id}
+            checked={selectedTag.optionId.indexOf(tag.id) > -1}
+            // onChange={(event) => onOptionTag(event, tag)}
+            onChange={(event) => onOptionTag(event, tag.id)}
+          >
+            {tag.name}
+          </CheckableTag>
+        ))}
+      </div>
       <List
         header={
           <div className="scholarhead">
