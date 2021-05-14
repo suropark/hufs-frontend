@@ -9,6 +9,7 @@ import {
   COMMENT_LIKE_FAIL,
   COMMENT_REMOVE_FAIL,
   COMMENT_REPORT_FAIL,
+  COMMENT_REPLY,
 } from './types';
 //  완료
 export const commentSave = async (body) => {
@@ -72,4 +73,11 @@ export const commentReport = async (commentId, body) => {
       status: request.status,
     };
   }
+};
+export const commentReply = async (reply) => {
+  const request = await axios.post(`${PUBLIC_IP}/reply/add/re`, reply);
+
+  return {
+    type: COMMENT_REPLY,
+  };
 };

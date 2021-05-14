@@ -8,6 +8,7 @@ import {
   COMMENT_REPORT,
   COMMENT_REPORT_FAIL,
   COMMENT_REMOVE_FAIL,
+  COMMENT_REPLY,
 } from '../_actions/types';
 
 export default function comment(state = {}, action) {
@@ -20,6 +21,7 @@ export default function comment(state = {}, action) {
     case COMMENT_LIKE_FAIL:
     case COMMENT_REPORT_FAIL:
     case COMMENT_REMOVE_FAIL:
+    case COMMENT_REPLY:
       return {
         ...state,
       };

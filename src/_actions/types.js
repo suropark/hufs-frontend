@@ -27,7 +27,7 @@ export const COMMENT_SAVE = 'comment_save';
 export const COMMENT_LIKE = 'comment_like';
 export const COMMENT_REMOVE = 'comment_remove';
 export const COMMENT_REPORT = 'comment_report';
-
+export const COMMENT_REPLY = 'comment_reply';
 export const COMMENT_SAVE_FAIL = 'comment_save_fail';
 export const COMMENT_LIKE_FAIL = 'comment_like_fail';
 export const COMMENT_REMOVE_FAIL = 'comment_remove_fail';

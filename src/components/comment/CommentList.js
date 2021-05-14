@@ -2,7 +2,11 @@ import { Avatar, Button, Comment, List, message } from 'antd';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
-import { commentLike, commentRemove } from '../../_actions/comment_action';
+import {
+  commentLike,
+  commentRemove,
+  commentReply,
+} from '../../_actions/comment_action';
 import ReportModal from '../post/ReportModal';
 import { UserOutlined } from '@ant-design/icons';
 import { postView } from '../../_actions/post_action';
@@ -43,9 +47,9 @@ function CommentList({ comments, history, setPost, match }) {
     const answer = window.confirm('이 댓글을 삭제하시겠습니까?');
     if (answer) {
       dispatch(commentRemove(+event.target.value))
-        .then(async (response) => {
+        .then((response) => {
           alert('삭제 완료');
-          await postView(+match.params.id).then((response) =>
+          dispatch(postView(+match.params.id)).then((response) =>
             setPost(response.payload),
           );
         })
@@ -84,18 +88,16 @@ function CommentList({ comments, history, setPost, match }) {
       message.info('댓글을 입력하세요');
       return;
     }
-    await axios
-      .post(`${PUBLIC_IP}/reply/add/re`, reply)
-      .then(async (response) => {
-        await postView(+match.params.id).then((response) => {
-          setPost(response.payload);
-          let textArray = document.getElementsByTagName('textarea');
-          for (let i = 0; i < textArray.length - 1; i++) {
-            console.log(textArray[i].value);
-            textArray[i].value = ''; // 수정 필요... 한번 대댓글 사용한 textarea는 초기화 후 다시 원래 value가 생성됨
-          }
-        });
+    dispatch(commentReply(reply)).then((response) => {
+      dispatch(postView(+match.params.id)).then((response) => {
+        setPost(response.payload);
+        let textArray = document.getElementsByTagName('textarea');
+        for (let i = 0; i < textArray.length - 1; i++) {
+          console.log(textArray[i].value);
+          textArray[i].value = ''; // 수정 필요... 한번 대댓글 사용한 textarea는 초기화 후 다시 원래 value가 생성됨
+        }
       });
+    });
   };
   return (
     <div className="comment-body">
@@ -203,6 +205,7 @@ function CommentList({ comments, history, setPost, match }) {
                 placeholder="댓글을 입력하세요"
                 // value={reply.content}
                 onChange={(e) => {
+                  console.log(reply);
                   setReply({
                     ...reply,
                     content: e.target.value,
