@@ -16,13 +16,7 @@ export default function user(state = {}, action) {
   switch (action.type) {
     case INFO_USER:
       return action.payload;
-    case UPDATE_USER:
-      return {
-        ...state,
-        nickName: action.payload.nickname,
-        MainMajor: action.payload.mainMajor,
-        DoubleMajor: action.payload.doubleMajor,
-      };
+
     case LOGOUT_USER:
     case WITHDRAW_USER:
       return {};
@@ -32,6 +26,7 @@ export default function user(state = {}, action) {
     case AUTH_EMAIL_FAIL:
     case INFO_USER_FAIL:
     case UPDATE_USER_FAIL:
+    case UPDATE_USER:
     default:
       return {
         ...state,
