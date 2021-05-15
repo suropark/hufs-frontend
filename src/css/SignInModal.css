@@ -32,3 +32,19 @@
 .ant-modal-footer .ant-btn.ant-btn-primary {
   color: navy;
 }
+
+@media (max-width: 1600px) {
+  .ant-modal-body-revise {
+    left: 15%,
+  }
+}
+@media (max-width: 1400px) {
+  .ant-modal-body-revise {
+    left: 5%,
+  }
+}
+@media (max-width: 1280px) {
+  .ant-modal-body-revise {
+    left: 0%,
+  }
+}
