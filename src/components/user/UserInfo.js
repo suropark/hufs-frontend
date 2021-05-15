@@ -8,7 +8,7 @@ import { updateUser } from '../../_actions/user_action';
 import MajorSelect from './MajorSelect';
 import SecondMajorSelect from './SecondMajorSelect';
 import styles from '../../css/UserInfo.module.css';
-import profile from '../../image/profile.png'
+import profile from '../../image/profile.png';
 function UserInfo(props) {
   const dispatch = useDispatch();
   const { Providers, webMail, nickName, MainMajor, DoubleMajor, Token } =
@@ -98,8 +98,9 @@ function UserInfo(props) {
     return toBeSubmitted;
   };
   const onAuth = async () => {
+    const body = webMailInput == undefined ? webMail : webMailInput;
     await axios
-      .post(`${PUBLIC_IP}/user/email`, webMailInput)
+      .post(`${PUBLIC_IP}/user/email`, { webMail: body })
       .then((response) => {
         message.success(
           '이메일이 성공적으로 전송되었습니다. 웹메일을 확인해주세요',
@@ -120,7 +121,6 @@ function UserInfo(props) {
   return (
     // google, kakao 연동 필요.
     <div>
-      <button onClick={getChangedInfo}>123123</button>
       {!nickName ? (
         <h3>로딩 중...</h3>
       ) : (
@@ -160,7 +160,7 @@ function UserInfo(props) {
                     ></Input>
                     <Button
                       onClick={onAuth}
-                    // style={{ marginLeft: '8px' }}
+                      // style={{ marginLeft: '8px' }}
                     >
                       인증하기
                     </Button>
@@ -181,7 +181,6 @@ function UserInfo(props) {
                   placeholder={nickName}
                   onChange={(e) => {
                     setChange({ ...change, nickname: e.target.value });
-
                   }}
                 />
               </div>
@@ -202,7 +201,9 @@ function UserInfo(props) {
                 onChange={DoubleMajorChange}
               />
             </div>
-            <button onClick={onSubmit}> 수정하기 </button>{' '}
+            <Button style={{ height: '28px' }} onClick={onSubmit}>
+              수정하기
+            </Button>
           </div>
         </div>
       )}
