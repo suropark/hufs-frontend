@@ -153,7 +153,7 @@ function UserInfo(props) {
                     ></Input>
                     <Button
                       onClick={onAuth}
-                      // style={{ marginLeft: '8px' }}
+                    // style={{ marginLeft: '8px' }}
                     >
                       인증하기
                     </Button>
@@ -174,6 +174,7 @@ function UserInfo(props) {
                   placeholder={nickName}
                   onChange={(e) => {
                     setChange({ ...change, nickname: e.target.value });
+
                   }}
                 />
               </div>

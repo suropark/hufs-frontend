@@ -1,10 +1,8 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Modal, Button, Space, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
 import { withdrawUser } from '../../_actions/user_action';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
 function UserWithdraw(props) {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();

@@ -5,6 +5,7 @@ import { Table } from 'antd';
 function UserPost({ match }) {
   const { Column } = Table;
   const { Posts } = useSelector((state) => state.user);
+
   return (
     <div>
       <Table pagination={true} dataSource={Posts}>

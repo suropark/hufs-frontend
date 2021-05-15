@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -6,6 +5,7 @@ import { Table } from 'antd';
 function UserComment() {
   const { Column } = Table;
   const { Replies } = useSelector((state) => state.user); //  유저 리듀서에 있는 유저 정보 가져오기?
+
 
   return (
     <div>

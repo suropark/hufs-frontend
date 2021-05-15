@@ -17,15 +17,18 @@
   padding-left: 18px;
 }
 .scholarhead .s1 {
-  width: 4%;
+  width: 7%;
 }
 .scholarhead .s2 {
-  width: 8%;
+  width: 5%;
 }
 .scholarhead .s3 {
-  width: 70%;
+  width: 7%;
 }
 .scholarhead .s4 {
+  width: 80%;
+}
+.scholarhead .s5 {
   width: 19%;
   text-align: end;
 }
@@ -73,4 +76,26 @@
 .ant-picker-calendar-date-value {
   font-weight: bold;
   font-size: 14px;
+}
+.scholar-search {
+  display: flex;
+  position: relative;
+  top: 5%;
+}
+.scholar-search-type {
+  width: 45%;
+}
+.scholar-search-head {
+  color: var(--navy-color);
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0;
+  margin-left: 3%;
+}
+.scholar-search-all {
+  color: var(--navy-color);
+  font-weight: bold;
+  margin-top: 4%;
+  margin-left: 46%;
+  cursor: pointer;
 }

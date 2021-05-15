@@ -59,17 +59,17 @@ const Rstrn = ({
         }
       })
       .catch(((error) => {
-           switch (error.response?.status) {
-             case 401:
-               alert('로그인을 하시면 서비스 이용이 가능합니다.')
-               break;
-             case 403:
-               alert('접근 권한 오류')
-               break;
-             default:
-               break;
-           }
-          }));
+        switch (error.response?.status) {
+          case 401:
+            alert('로그인을 하시면 서비스 이용이 가능합니다.')
+            break;
+          case 403:
+            alert('접근 권한 오류')
+            break;
+          default:
+            break;
+        }
+      }));
   };
   // useEffect(() => {
   //   displayMarker();
@@ -398,6 +398,7 @@ const Rstrn = ({
         />
         <div>
           <Button
+            style={{ width: '30%' }}
             onClick={(e) => {
               // map/info -> map/info/:name 24시해장국
               history.push({

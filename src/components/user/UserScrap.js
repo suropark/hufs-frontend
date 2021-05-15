@@ -87,17 +87,20 @@ function UserScrap() {
           title="삭제하기"
           key="content"
           render={(text, record) => (
+
             <Popconfirm
+              
               title="스크랩을 삭제하시겠습니까?"
               onConfirm={(e) => onRemove(record.id)}
               okText="Yes"
               cancelText="No"
               value={record.id}
             >
-              <Button type="link" value={record.id}>
+              <Button style={{ marginRight: '35%;' }} type="link" value={record.id}>
                 삭제하기
               </Button>
             </Popconfirm>
+
           )}
         />
       </Table>

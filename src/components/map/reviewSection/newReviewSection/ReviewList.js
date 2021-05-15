@@ -47,7 +47,7 @@ function ReviewList({ match, history }) {
             history.push('/');
             break;
           case 403:
-            
+
             message.error('접근 권한 오류');
             history.push('/');
             break;
@@ -63,8 +63,12 @@ function ReviewList({ match, history }) {
             setDetail({
               average: parseFloat(0).toFixed(1),
               count: response.payload.count,
-            });
-          } else {
+
+            })
+          }
+          else {
+
+
             setDetail({
               average: response.payload.average,
               count: response.payload.count,
@@ -81,7 +85,7 @@ function ReviewList({ match, history }) {
             //
             break;
           case 403:
-            
+
             message.error('접근 권한 오류');
             history.push('/');
             break;
@@ -152,14 +156,14 @@ function ReviewList({ match, history }) {
 
   return (
     <>
-      <Content
-        style={{
-          width: '1000px',
-          margin: '0 15%',
-        }}
-      >
-        <h1>Review</h1>
-        <div>
+
+      <Content style={{
+        width: '1000px',
+        margin: '0 15%'
+      }}>
+        <h1>맛집 리뷰</h1>
+        <div >
+
           <div
           // style={{ paddingTop: '10px' }}
           >
@@ -174,32 +178,36 @@ function ReviewList({ match, history }) {
             </font>
           </div>
         </div>
-        <div aling="left" style={{ padding: '5px' }}>
+
+        <div aling="left" style={{
+          padding: '10px'
+        }}>
           <Button
+            style={{ border: '1px solid navy' }}
+
             onClick={(e) => {
               history.push({
                 pathname: '/3/register',
                 state: {
                   detail: match.path,
                   name: history.location.state.name,
-                  id: history.location.state.id,
-                },
-              });
 
-              //   history.push({
-              //     pathname: "map/register",
-              //     state: { detail: match.path,
-              //     name : history.location.state.name,
-              //   id : history.location.state.id },
-              //   }
-              // )
-            }}
+                  id: history.location.state.id
+                },
+              }
+
+              )
+
+
+            }
+            }
           >
-            Write Review
-          </Button>
+            리뷰 작성하기</Button>
+
+
         </div>
-        {/* <hr ></hr> */}
-        <p></p>
+        <hr ></hr>
+
         <List
           itemLayout="vertical"
           size="small"
@@ -209,36 +217,43 @@ function ReviewList({ match, history }) {
           renderItem={(item) =>
             item ? (
               <List.Item
+
                 actions={[
                   <Button
-                    onClick={() => {
-                      onDelete(item.id);
+                    style={{
+
+                      left: '40px',
+                      borderColor: 'none',
+                      border: 'none',
+                      fontSize: '12px',
+                      boxShadow: 'none',
+                      fontWeight: 'bold',
+                      color: 'navy'
                     }}
-                  >
-                    delete{' '}
-                  </Button>,
-                  <Button
+
                     onClick={(e) => {
                       history.push({
                         pathname: '/3/edit',
                         state: {
                           name: item.name,
-                          id: item.id,
-                        },
-                      });
 
-                      //   history.push({
-                      //     pathname: "map/register",
-                      //     state: { detail: match.path,
-                      //     name : history.location.state.name,
-                      //   id : history.location.state.id },
-                      //   }
-                      // )
+                          id: item.id
+                        },
+                      })
+                    }}>
+                    수정</Button>,
+                  <Button
+                    style={{
+                      left: '10px',
+                      borderColor: 'none',
+                      border: 'none',
+                      fontSize: '12px',
+                      boxShadow: 'none',
+                      fontWeight: 'bold',
+                      color: 'navy'
                     }}
-                  >
-                    Edit
-                  </Button>,
-                ]}
+                    onClick={() => { onDelete(item.id) }}>삭제 </Button>]}
+
                 key={item.title}
               >
                 <List.Item.Meta

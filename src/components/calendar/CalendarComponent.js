@@ -151,64 +151,74 @@ function CalendarComponent({ match }) {
         fullscreen={false}
         onSelect={scholar ? onSelect : null}
       />
-      <span
-        style={{
-          display: 'inline-block',
-          marginBottom: '2em',
-          cursor: 'pointer',
-        }}
-        onClick={onViewAll}
-      >
-        전체 보기
+      <div className="scholar-search">
+        <div className="scholar-search-type">
+
+          <div
+            className="scholar-search-head">
+            캠퍼스
+            {campusTagDatas.map((tag) => (
+              <CheckableTag
+                key={tag.id}
+                checked={selectedCampusTag.campusId.indexOf(tag.id) > -1}
+                // onChange={(event) => onOptionTag(event, tag)}
+                onChange={(event) => onCampusTag(event, tag.id)}
+              >
+                {tag.name}
+              </CheckableTag>
+            ))}
+          </div>
+          <div
+            className="scholar-search-head">
+            유형
+            {optionTagDatas.map((tag) => (
+              <CheckableTag
+                style={{
+                  marginLeft: '12px',
+                  marginRight: '0px'
+                }}
+                key={tag.id}
+                checked={selectedOptionTag.optionId.indexOf(tag.id) > -1}
+                // onChange={(event) => onOptionTag(event, tag)}
+                onChange={(event) => onOptionTag(event, tag.id)}
+              >
+                {tag.name}
+              </CheckableTag>
+            ))}
+          </div>
+        </div>
+        <span
+          className="scholar-search-all"
+
+          onClick={onViewAll}
+        >
+          전체 보기
       </span>
-      <div>
-        캠퍼스 :
-        {campusTagDatas.map((tag) => (
-          <CheckableTag
-            key={tag.id}
-            checked={selectedCampusTag.campusId.indexOf(tag.id) > -1}
-            // onChange={(event) => onOptionTag(event, tag)}
-            onChange={(event) => onCampusTag(event, tag.id)}
-          >
-            {tag.name}
-          </CheckableTag>
-        ))}
-      </div>
-      <div>
-        유형 :
-        {optionTagDatas.map((tag) => (
-          <CheckableTag
-            key={tag.id}
-            checked={selectedOptionTag.optionId.indexOf(tag.id) > -1}
-            // onChange={(event) => onOptionTag(event, tag)}
-            onChange={(event) => onOptionTag(event, tag.id)}
-          >
-            {tag.name}
-          </CheckableTag>
-        ))}
       </div>
 
       <List
         header={
           <div className="scholarhead">
-            <div className="s1">주관</div>
-            <div className="s2">캠퍼스</div>
-            <div className="s3">제목</div>
-            <div className="s4">링크</div>
+            <div className="s1">디데이</div>
+            <div className="s2">주관</div>
+            <div className="s3">캠퍼스</div>
+            <div className="s4">제목</div>
+            <div className="s5">링크</div>
           </div>
         }
         bordered
         dataSource={dataList}
         renderItem={(item) => (
           <List.Item>
-            <Typography.Text>[{item.Campus.name}]</Typography.Text>{' '}
-            <Typography.Text>[{item.ScholarshipOption.name}]</Typography.Text>{' '}
-            {item.title}{' '}
             <span style={{ display: 'inline-block', fontWeight: 'bold' }}>
               {item.ScholarshipDate === null
                 ? null
-                : `D ${dDayCheck(item.ScholarshipDate.date)}`}
-            </span>
+                : `D ${dDayCheck(item.ScholarshipDate.date)} `}
+            </span>{' '}
+            <Typography.Text>[{item.Campus.name}]</Typography.Text>{' '}
+            <Typography.Text>[{item.ScholarshipOption.name}]</Typography.Text>{' '}
+            {item.title}{' '}
+
             <h4
               onClick={(e) => window.open(item.link)}
               style={{
