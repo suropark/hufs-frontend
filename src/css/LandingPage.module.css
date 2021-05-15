@@ -10,16 +10,16 @@
 
 @media (max-width: 1600px) {
   #quick > ul {
-    left: 100% !important;
+    left: 98% !important;
   }
 }
 @media (max-width: 1400px) {
   #quick > ul {
-    left: 101% !important;
+    left: 99% !important;
   }
 }
 @media (max-width: 1280px) {
   #quick > ul {
-    left: 101% !important;
+    left: 97% !important;
   }
 }
