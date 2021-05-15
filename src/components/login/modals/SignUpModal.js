@@ -38,9 +38,6 @@ const SignUpModal = (props) => {
   }, []);
 
   const argCheck = { a: false, b: false };
-
-  const argCheck = { a: false, b: false };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     const request = await axios
