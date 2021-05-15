@@ -33,29 +33,41 @@ function UserInfo(props) {
     setChange(props.userInfo);
   }, [props.userInfo]);
   const onSubmit = () => {
-    const answer = window.confirm('변경은 한 번입니다.');
+    const answer = window.confirm(
+      '다음 변경은 30일 이후에 가능합니다. 변경하시겠습니까?',
+    );
 
     if (answer) {
-      dispatch(updateUser(change))
+      const body = getChangedInfo();
+      console.log(body);
+      dispatch(updateUser(body))
         .then((response) => {
-          message.success('수정이 완료되었습니다.');
+          message.success('정보 변경이 완료되었습니다.');
         })
         .catch((error) => {
-          switch (error.response?.status) {
-            case 400:
+          switch (error.response?.message) {
+            case 'INVALID_NICKNAME_TIME':
               message.error('닉네임을 변경한지 30일이 지나지 않았을 경우');
               break;
-            case 401:
+            case 'UNAUTHORIZED':
               message.error('로그인하지 않은 사용자');
               props.history.push('/');
               break;
-            case 403:
-              message.error('접근 권한 오류');
+            case 'FORBIDDEN_SUSPENSION':
+              message.error('정지된 사용자');
+            case 'FORBIDDEN_BEFORE':
+              message.error('이메일 인증이 필요합니다');
               break;
-            case 409:
+            case 'CONFLICT_NICKNAME':
               message.error('이미 존재하는 닉네임입니다.');
+            case 'CONFLICT_MAIN_MAJOR':
+              message.error('주 전공을 이미 수정하셨습니다.');
+            case 'CONFLICT_DOBULE_MAJOR':
+              message.error('이중 전공을 이미 수정하셨습니다.');
               break;
             default:
+              message.error('알 수 없는 에러');
+              props.history.push('/');
               break;
           }
         });
@@ -68,6 +80,19 @@ function UserInfo(props) {
     setChange({ ...change, doubleMajorId: value });
   }
 
+  const getChangedInfo = () => {
+    let toBeSubmitted;
+    if (nickName !== change.nickname) {
+      toBeSubmitted = { ...toBeSubmitted, nickname: change.nickname };
+    }
+    if (change.mainMajorId !== MainMajor.id) {
+      toBeSubmitted = { ...toBeSubmitted, mainMajorId: change.mainMajorId };
+    }
+    if (change.doubleMajorId !== DoubleMajor.id) {
+      toBeSubmitted = { ...toBeSubmitted, doubleMajorId: change.doubleMajorId };
+    }
+    return toBeSubmitted;
+  };
   const onAuth = async () => {
     await axios
       .post(`${PUBLIC_IP}/user/email`, webMailInput)
@@ -91,6 +116,7 @@ function UserInfo(props) {
   return (
     // google, kakao 연동 필요.
     <div>
+      <button onClick={getChangedInfo}>123123</button>
       {!nickName ? (
         <h3>로딩 중...</h3>
       ) : (
@@ -144,8 +170,8 @@ function UserInfo(props) {
                 <Input
                   style={{ width: '200px' }}
                   type="nickName"
-                  placeholder={change.nickname}
-                  value={change.nickname}
+                  defaultValue={nickName}
+                  placeholder={nickName}
                   onChange={(e) => {
                     setChange({ ...change, nickname: e.target.value });
                   }}
