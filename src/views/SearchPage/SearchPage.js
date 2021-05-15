@@ -43,6 +43,7 @@ function PostList(props) {
                 currentList={posts.slice(firstIndex, lastIndex)}
                 match={{ path: 1 }} // 하드 코딩 수정 필요
                 loading={loading}
+                BoardId={props.location?.BoardId}
               />
             </div>
             <div className="bottom">

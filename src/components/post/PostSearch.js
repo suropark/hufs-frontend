@@ -19,9 +19,11 @@ function PostSearch({ setPosts, match }) {
       .then((response) => {
         if (response.status === 200) {
           // setPosts(response.payload.reverse());
+
           history.push({
             pathname: `/search`,
             state: { detail: response.payload.reverse() },
+            BoardId: match.path.substring(1)
           });
         }
       })
@@ -51,8 +53,8 @@ function PostSearch({ setPosts, match }) {
   return (
     <span style={{ float: 'right' }}>
       <Select
-        defaultValue="제목"
-        style={{ width: 100 }}
+        defaultValue="제목&내용"
+        style={{ width: 110 }}
         onChange={(e) => setSearchType(e)}
       >
         <Option value="titleAndContent">제목&내용</Option>

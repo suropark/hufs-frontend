@@ -6,6 +6,7 @@ import { postList } from '../../_actions/post_action';
 import { Button, Table } from 'antd';
 import PostSearch from './PostSearch';
 import PostSub from './PostSub';
+import { findBoardName } from './PostSub'
 
 const { Column } = Table;
 function PostList({ match, history }) {
@@ -146,19 +147,32 @@ export function TableBody({ currentList, match, loading }) {
 }
 
 // 검색 결과용 , 게시판 명 , 유저 이름 받아오도록 변경 .
-export function TableBody2({ currentList, match, loading }) {
+export function TableBody2({ currentList, match, loading, BoardId }) {
+
   return (
     <>
       {loading ? (
         <Table pagination={false} dataSource={currentList}>
-          <Column
-            title="카테고리"
-            dataIndex="key"
-            key="key"
-            render={(text, record) =>
-              record.Board?.title ? record.Board.title : null
-            }
-          />
+          {BoardId === undefined ?
+            // 게시판 이름 숫자로 넘어올떄
+            (<Column
+              title="카테고리"
+              dataIndex="key"
+              key="key"
+              render={(text, record) =>
+                record.Board?.title ? record.Board.title : null
+
+              }
+            />) : (<Column
+              title="카테고리"
+              dataIndex="key"
+              key="key"
+              render={(text, record) =>
+                findBoardName(record.boardId)
+              }
+
+            />)
+          }
           <Column
             title="제목"
             key="title"
