@@ -1,35 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
+import note from '../../image/note.png'
+import Cookies from 'js-cookie'
 
 
 function Popup() {
     const [yes, setYes] = useState(true);
 
+    // time 값 받아와서 저장
 
-    const handleButton = () => {
+
+
+    const handleCancelButton = () => {
         setYes(false)
 
+
+    }
+    const handleOKButton = () => {
+        setYes(false)
+        Cookies.set('taehun', 'Hi', { expires: 7 })
     }
 
     return (
         <div>
+            {Cookies.expires <= 0 ?
+                (<Modal
+                    id="temp"
+                    title="공지"
+                    visible={yes}
+                    onOk={handleOKButton}
+                    okText="일주일 동안 보지 않기 "
+                    onCancel={handleCancelButton}
+                    maskClosable="false"
+                >
+                    <img style={{
+                        width: '480px',
+                        height: '700px'
+                    }}
+                        src={note} />
 
-            <Modal
-                className="temp"
-                style={{
-                    width: '500px',
-                    height: '800px'
-                }}
-                title="공지"
-                visible={yes}
-                onCancel={handleButton}
-                maskClosable="true"
-            >
-                <img src="" />
-                안녕
 
 
-            </Modal>
+                </Modal>)
+                : null}
 
         </div>
     )

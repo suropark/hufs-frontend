@@ -55,9 +55,9 @@
 }
 .ant-space.ant-space-vertical {
   /* MenuBar */
-  left: 24%;
+  left: 23%;
   position: relative;
-  width: 850px;
+  width: 770px;
   height: 50%;
   top: 50px;
 
@@ -120,7 +120,7 @@
 
   width: 20%;
   height: 25%;
-  right: 0%;
+  right: 5%;
 }
 
 .Main {
