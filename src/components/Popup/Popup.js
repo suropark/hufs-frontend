@@ -41,7 +41,7 @@ function Popup() {
                         width: '480px',
                         height: '700px'
                     }}
-                        src={note} />)
+                        src={note} />
 
 
 
