@@ -48,9 +48,6 @@ function Header(props) {
       .get(`${PUBLIC_IP}/user`)
       .then((response) => {
         setLogin(true);
-        if (response.data.data.Token.isEmailAuthenticated) {
-          setIsEmailAuthenticated(true); // 차후 이메일 인증 확인을 위함.
-        }
       })
       .catch((error) => {
         setLogin(false);
