@@ -1,19 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import {
-  message,
-  Select,
-  Button,
-  Input,
-  Form,
-  Checkbox,
-} from 'antd';
+import { message, Select, Button, Input, Form, Checkbox } from 'antd';
 import { withRouter } from 'react-router';
 import Header from '../../../views/Header/Header';
 import { PUBLIC_IP } from '../../../config';
-import { InformationModal2 } from '../../rule/InformationModal'
-import { UseModal2 } from '../../rule/UseModal'
+import { InformationModal2 } from '../../rule/InformationModal';
+import { UseModal2 } from '../../rule/UseModal';
 
 const SignUpModal = (props) => {
   const { Option } = Select;
@@ -33,21 +26,19 @@ const SignUpModal = (props) => {
     const request1 = await axios
       .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
-      .catch((e) => { });
+      .catch((e) => {});
     setMajor(request1);
     const request2 = await axios
       .get(`${PUBLIC_IP}/major/double-major`) //이중전공
       .then((response) => response.data.data)
 
-      .catch((e) => { }); // 배열 [id, name ]
+      .catch((e) => {}); // 배열 [id, name ]
     setDoubleMajor(request2);
   }, []);
-  useEffect(() => console.log(submit), [submit]);
 
   const argCheck = { a: false, b: false };
 
   const onSubmit = async (e) => {
-    console.log(submit);
     e.preventDefault();
     const request = await axios
       .post(`${PUBLIC_IP}/user/sign-up`, submit)
@@ -72,11 +63,13 @@ const SignUpModal = (props) => {
             break;
           case 422:
             if (error.response.data.message === 'BODY_MAIN_MAJOR') {
-              message.info('주전공을 선택하지 않으셨습니다')
+              message.info('주전공을 선택하지 않으셨습니다');
             } else {
-              message.info('이중전공을 선택하지 않으셨습니다. 없으면 가장 아래의 "미정"을 선택하세요.')
+              message.info(
+                '이중전공을 선택하지 않으셨습니다. 없으면 가장 아래의 "미정"을 선택하세요.',
+              );
             }
-            break; 
+            break;
           default:
             break;
         }
@@ -119,10 +112,13 @@ const SignUpModal = (props) => {
             name="nickname"
             rules={[{ required: true, message: '닉네임을 입력하세요!' }]}
             onChange={(event) => {
-              setSubmit({ ...submit, nickname: event.target.value })
+              setSubmit({ ...submit, nickname: event.target.value });
             }}
           >
-            <Input style={{ width: '100%', textAlign: 'center' }} placeholder='닉네임을 입력하세요'></Input>
+            <Input
+              style={{ width: '100%', textAlign: 'center' }}
+              placeholder="닉네임을 입력하세요"
+            ></Input>
           </Form.Item>
 
           <Form.Item
@@ -131,18 +127,21 @@ const SignUpModal = (props) => {
             위 웹메일로 학생 확인 인증 메일이 발송되며, 인증은 24시간이 지나면 만료됩니다."
             name="webMail"
             onChange={(event) => {
-              console.log(submit);
-              setSubmit({ ...submit, webMail: event.target.value })
+              setSubmit({ ...submit, webMail: event.target.value });
             }}
             style={{ width: '100%' }}
           >
             <Input style={{ textAlign: 'center' }} suffix="@hufs.ac.kr"></Input>
           </Form.Item>
 
-          <Form.Item label="주전공" name="majorId" rules={[{ required: true, message: '' }]}>
+          <Form.Item
+            label="주전공"
+            name="majorId"
+            rules={[{ required: true, message: '' }]}
+          >
             <Select
               style={{ width: '100%' }}
-              onChange={(event) => 
+              onChange={(event) =>
                 setSubmit({ ...submit, mainMajorId: +event })
               }
               placeholder='주전공을 선택하세요. 없으면 "미정"을 눌러주세요'
@@ -160,11 +159,15 @@ const SignUpModal = (props) => {
               )}
             </Select>
           </Form.Item>
-          <Form.Item label="이중/부전공" name="doubleMajorId" rules={[{ required: true, message: '' }]}>
+          <Form.Item
+            label="이중/부전공"
+            name="doubleMajorId"
+            rules={[{ required: true, message: '' }]}
+          >
             <Select
               style={{ width: '100%' }}
               onChange={(event) => {
-                setSubmit({ ...submit, doubleMajorId: +event })
+                setSubmit({ ...submit, doubleMajorId: +event });
               }}
               placeholder='이중/부전공을 선택하세요. 없으면 "미정"을 눌러주세요'
             >
@@ -196,17 +199,16 @@ const SignUpModal = (props) => {
               },
             ]}
           >
-
             <Checkbox
               onChange={(event) => {
-                  argCheck.a = !(argCheck.a);
-                  if((argCheck.a == true) && (argCheck.b === true)) { 
-                    setSubmit({ ...submit, isAgreed: event.target.checked }); }
+                argCheck.a = !argCheck.a;
+                if (argCheck.a == true && argCheck.b === true) {
+                  setSubmit({ ...submit, isAgreed: event.target.checked });
+                }
               }}
             >
               동의합니다 (필수)
             </Checkbox>
-
           </Form.Item>
           {/* 이용약관 */}
           <UseModal2 />
@@ -223,11 +225,12 @@ const SignUpModal = (props) => {
               },
             ]}
           >
-
             <Checkbox
               onChange={(event) => {
-                argCheck.b = !(argCheck.b);
-                if ( (argCheck.a == true)&&(argCheck.b) ) { setSubmit({ ...submit, isAgreed: event.target.checked }); }
+                argCheck.b = !argCheck.b;
+                if (argCheck.a == true && argCheck.b) {
+                  setSubmit({ ...submit, isAgreed: event.target.checked });
+                }
               }}
             >
               동의합니다 (필수)

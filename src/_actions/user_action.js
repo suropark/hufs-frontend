@@ -33,7 +33,6 @@ export const withdrawUser = async () => {
 //완료
 
 export const updateUser = async (updatedData) => {
-  console.log(updatedData);
   const request = await axios.put(`${PUBLIC_IP}/user`, updatedData);
   if (request.status === 200) {
     return {

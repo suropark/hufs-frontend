@@ -45,14 +45,14 @@ function PostUpdate({ match, history }) {
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
-            alert('로그인하지 않은 사용자');
+            message.error('로그인하지 않은 사용자');
             history.push('/');
             break;
           case 403:
-            alert('접근 권한 오류');
+            message.error('접근 권한 오류');
             break;
           case 404:
-            alert('존재하지 않는 게시글입니다');
+            message.error('존재하지 않는 게시글입니다');
             break;
           default:
             break;
@@ -78,19 +78,18 @@ function PostUpdate({ match, history }) {
     dispatch(postUpdate(updated, needDelete, +match.params.id))
       .then((response) => {
         if (response.status === 200) {
+          message.success('게시글 수정 완료');
           history.goBack();
         }
       })
       .catch((error) => {
         switch (error.response?.status) {
-          case 200:
-            break;
           case 401:
-            alert('로그인하지 않은 사용자');
+            message.error('로그인하지 않은 사용자');
             history.push('/');
             break;
           case 403:
-            alert('접근 권한 오류');
+            message.error('접근 권한 오류');
             break;
           default:
             break;
@@ -128,7 +127,7 @@ function PostUpdate({ match, history }) {
               className="1"
               placeholder="하이"
               theme="snow"
-              value={updated.content}
+              defaultValue={updated.content}
               onChange={(content, delta, source, editor) => {
                 setUpdated({ ...updated, content: editor.getHTML() });
               }}
@@ -220,7 +219,7 @@ function imageHandler() {
       formData.append('img', compressedFile);
       const range = this.quill.getSelection(true);
       if (!files || !files.length) {
-        console.log('No files selected');
+        message.info('No files selected');
         return;
       }
 
@@ -254,7 +253,6 @@ function imageHandler() {
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log(error);
           fileInput.value = '';
           this.quill.enable(true);
         });
@@ -269,6 +267,5 @@ function getUnused(wholeImg, submittedImg) {
   for (let i = 0; i < submittedImg.length; i++) {
     unused.splice(unused.indexOf(submittedImg[i]), 1);
   }
-  console.log(`need to delete: ${unused}`);
   return unused;
 }

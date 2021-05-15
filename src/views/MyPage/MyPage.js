@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, Layout, Menu } from 'antd';
+import { Card, Layout, Menu, message } from 'antd';
 import UserScrap from '../../components/user/UserScrap';
 import UserComment from '../../components/user/UserComment';
 import UserInfo from '../../components/user/UserInfo';
@@ -19,7 +19,6 @@ function MyPage(props) {
   useEffect(() => {
     dispatch(getUserInfo())
       .then((response) => {
-        console.log(response.payload);
         setUserInfo({
           nickname: response.payload.nickName,
           mainMajorId: response.payload.MainMajor.id,
@@ -27,13 +26,13 @@ function MyPage(props) {
         });
       })
       .catch((error) => {
-        switch (error.status) {
+        switch (error?.response.status) {
           case 401:
-            alert('로그인하지 않은 사용자');
+            message.error('로그인하지 않은 사용자');
             props.history.push('/');
             break;
           case 403:
-            alert('접근 권한 오류');
+            message.error('접근 권한 오류');
             props.history.push('/');
             break;
           default:

@@ -43,15 +43,16 @@ function PostEdit(props) {
       .then((response) => {
         if (response.status === 200) {
           props.history.goBack();
+          message.success('작성 완료');
         }
       })
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
-            alert('로그인이 필요합니다.');
+            message.error('로그인이 필요합니다.');
             props.history.push('/');
           case 403:
-            alert('접근 권한 오류');
+            message.error('접근 권한 오류');
             props.history.push('/');
             break;
           default:
@@ -182,7 +183,7 @@ function imageHandler() {
       const range = this.quill.getSelection(true);
 
       if (!files || !files.length) {
-        console.log('No files selected');
+        message.warn('No files selected');
         return;
       }
 
@@ -204,7 +205,6 @@ function imageHandler() {
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log(error);
           fileInput.value = '';
           this.quill.enable(true);
         });

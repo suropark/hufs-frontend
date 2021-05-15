@@ -27,7 +27,6 @@ function CalendarComponent({ match }) {
     const selectedTags = { ...a, ...b };
     dispatch(getScholar(selectedTags)).then((response) => {
       setDataList(response.payload.data);
-
       if (Object.keys(selectedTags).length === 0) {
         const selectedMatchedData = response.payload.data.filter((e) => {
           if (e.ScholarshipDate === null) {
@@ -42,6 +41,7 @@ function CalendarComponent({ match }) {
             );
           }
         });
+
         setDataList(selectedMatchedData);
       }
     });
@@ -52,9 +52,7 @@ function CalendarComponent({ match }) {
     });
     await axios.get(`${PUBLIC_IP}/scholarship/campus`).then((response) => {
       setCampusTagDatas(response.data.data);
-    }); // await axios
-    //   .get(`${PUBLIC_IP}/scholarship/date`)
-    //   .then((response) => console.log(response.data));
+    });
   }, []);
   function getListData(value) {
     let day = value._d.getUTCDate();

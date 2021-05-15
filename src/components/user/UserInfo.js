@@ -148,7 +148,6 @@ function UserInfo(props) {
                   value={change.nickname}
                   onChange={(e) => {
                     setChange({ ...change, nickname: e.target.value });
-                    console.log(change);
                   }}
                 />
               </div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PUBLIC_IP } from '../../config';
 import { deleteScrap } from '../../_actions/post_action';
-import { Table } from 'antd';
+import { Button, message, Popconfirm, Table } from 'antd';
 
 import { Link } from 'react-router-dom';
 function UserScrap() {
@@ -20,24 +20,40 @@ function UserScrap() {
       })
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data.data); //
           setScraps(response.data.data); // [스크랩 id, 포스트 Post.id, 포스트 Post.title]
         }
       })
-      .catch((error) => { });
+      .catch((error) => {});
     // }
   }, []);
-  const onRemove = (e) => {
-    console.log(e);
-    console.log(e.target);
-    console.log(e.target.value);
-    dispatch(deleteScrap(e.target.value)).then((response) => {
-      if (response.status === 200) {
-        alert('스크랩 삭제');
-      } else {
-        alert(response.message);
-      }
-    });
+  const onRemove = (recordId) => {
+    dispatch(deleteScrap(recordId))
+      .then(async (response) => {
+        await axios
+          .get(`${PUBLIC_IP}/user/scrap`, {
+            params: { directoryId: 1 },
+          })
+          .then((response) => {
+            if (response.status === 200) {
+              setScraps(response.data.data); // [스크랩 id, 포스트 Post.id, 포스트 Post.title]
+            }
+          });
+        message.success('스크랩 삭제');
+      })
+      .catch((error) => {
+        switch (error?.response.message) {
+          case 'UNAUTHORIZED':
+            message.error('로그인하지 않은 사용자');
+          case 'FORBIDDEN_SUSPENSION':
+            message.error('정지된 사용자');
+          case 'FORBIDDEN_BEFORE':
+            message.error('이메일 인증이 되지 않은 사용자');
+          case 'QUERY':
+            message.error('쿼리 스트링 에러, 운영진에게 연락바랍니다.');
+          default:
+            break;
+        }
+      });
   };
 
   return (
@@ -48,9 +64,7 @@ function UserScrap() {
           dataIndex="id"
           key="id"
           style={{ textAlign: 'center' }}
-          render={(text, record) => (
-            record.Post.Board.title
-          )}
+          render={(text, record) => record.Post.Board.title}
         />
         <Column
           style={{ textAlign: 'center' }}
@@ -73,9 +87,17 @@ function UserScrap() {
           title="삭제하기"
           key="content"
           render={(text, record) => (
-            <button value={record.id} onClick={onRemove}>
-              삭제하기
-            </button>
+            <Popconfirm
+              title="스크랩을 삭제하시겠습니까?"
+              onConfirm={(e) => onRemove(record.id)}
+              okText="Yes"
+              cancelText="No"
+              value={record.id}
+            >
+              <Button type="link" value={record.id}>
+                삭제하기
+              </Button>
+            </Popconfirm>
           )}
         />
       </Table>

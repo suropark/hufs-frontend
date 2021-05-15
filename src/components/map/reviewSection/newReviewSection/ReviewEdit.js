@@ -39,7 +39,7 @@ function ReviewEdit(props) {
     let body = {
       title: value.title,
       content: value.content,
-      score: value.score
+      score: value.score,
     };
     dispatch(postSave(body, needDelete, rstrnId))
       .then((response) => {
@@ -50,10 +50,10 @@ function ReviewEdit(props) {
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
-            alert('로그인이 필요합니다.');
+            message.error('로그인이 필요합니다.');
             props.history.push('/');
           case 403:
-            alert('접근 권한 오류');
+            message.error('접근 권한 오류');
             props.history.push('/');
             break;
           default:
@@ -88,7 +88,6 @@ function ReviewEdit(props) {
         <div style={{ padding: '5px 5px' }}>
           <label style={{ fontWeight: 'bold' }}>평점 </label>
           <Rate allowHalf value={value.score} onChange={(e) => {
-           
             setvalue({ ...value, score: e });
           }} />
         </div>
@@ -98,7 +97,7 @@ function ReviewEdit(props) {
           placeholder="하이"
           theme="snow"
           style={{
-            height: '77%'
+            height: '77%',
           }}
           onChange={(content, delta, source, editor) => {
             setvalue({ ...value, content: editor.getHTML() });
@@ -113,12 +112,10 @@ function ReviewEdit(props) {
         <div
           id="button-bar"
           style={{
-            top: '-5%'
-          }}>
-          <Button
-            type="primary"
-            onClick={onSubmit}
-          >
+            top: '-5%',
+          }}
+        >
+          <Button type="primary" onClick={onSubmit}>
             등록
           </Button>
           <Button

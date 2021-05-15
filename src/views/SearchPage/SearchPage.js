@@ -24,8 +24,6 @@ function PostList(props) {
 
   const lastIndex = currentPage * listPerPage; // 10, 20, 30
   const firstIndex = currentPage * listPerPage - listPerPage; // 1, 11, 21..
-  console.log(props.location);
-  console.log(posts);
 
   return (
     <>

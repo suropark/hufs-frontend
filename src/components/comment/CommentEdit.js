@@ -31,11 +31,11 @@ function CommentEdit({ history, match, setPost }) {
       .catch((error) => {
         switch (error.response?.status) {
           case 401:
-            alert('로그인이 필요합니다.');
+            message.error('로그인이 필요합니다.');
             history.push('/');
             break;
           case 403:
-            alert('접근 권한이 없습니다');
+            message.error('접근 권한이 없습니다');
             break;
           default:
             break;

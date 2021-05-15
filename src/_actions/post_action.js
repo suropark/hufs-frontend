@@ -180,9 +180,9 @@ export const postScrap = async (postId) => {
 };
 
 // id가 스크랩 아이디라서 조금 다른데 해결필요
-export const deleteScrap = async (postId) => {
+export const deleteScrap = async (scrapId) => {
   const request = await axios.delete(`${PUBLIC_IP}/user/scrap`, {
-    params: { id: postId },
+    params: { id: scrapId },
   });
   if (request.status === 200) {
     return {

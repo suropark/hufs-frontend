@@ -22,7 +22,6 @@ function ReportModal({ type, id, history }) {
       dispatch(postReport(id, body))
         .then((response) => {
           message.success('신고가 완료되었습니다. 감사합니다.');
-          window.location.reload();
         })
         .catch((error) => {
           switch (error.response.status) {
@@ -44,7 +43,6 @@ function ReportModal({ type, id, history }) {
       dispatch(commentReport(id, body))
         .then((response) => {
           message.success('신고가 완료되었습니다. 감사합니다.');
-          window.location.reload();
         })
         .catch((error) => {
           switch (error.response.status) {
@@ -72,7 +70,12 @@ function ReportModal({ type, id, history }) {
         <span
           className="report"
           onClick={showModal}
-          style={{ cursor: 'pointer', float: 'right', marginLeft: '10px', marginRight: '10px' }}
+          style={{
+            cursor: 'pointer',
+            float: 'right',
+            marginLeft: '10px',
+            marginRight: '10px',
+          }}
         >
           신고
         </span>

@@ -6,6 +6,7 @@ import AuthAlready from '../../components/webmail/AuthAlready';
 import AuthUnauthorized from '../../components/webmail/AuthUnauthorized';
 import AuthExpired from '../../components/webmail/AuthExpired';
 import Page404 from '../Page404/Page404';
+import AuthUnavailable from '../../components/webmail/AuthUnavailable';
 function EmailAuthPage(props) {
   // console.log(props);
   const [loading, setloading] = useState(true);
@@ -14,7 +15,6 @@ function EmailAuthPage(props) {
   useEffect(() => {
     const query = new URLSearchParams(props.location.search);
     const token = query.get('token');
-    console.log('token = ', token);
     dispatch(authEmail(token))
       .then((response) => {
         setStatus(response.status);
@@ -35,6 +35,8 @@ function EmailAuthPage(props) {
         return <AuthAlready />;
       case 401:
         return <AuthUnauthorized />;
+      case 404:
+        return <AuthUnavailable />;
       default:
         return <Page404 />;
         break;

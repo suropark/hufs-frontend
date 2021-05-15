@@ -12,12 +12,9 @@ export default function (SpecificComponent, option, adminRoute = null) {
 
   function AuthenticationCheck(props) {
     const dispatch = useDispatch();
-    console.log(props);
     useEffect(() => {
       dispatch(auth())
         .then((response) => {
-          console.log(response);
-
           // 로그인 하지 않은 상태 isAuth : false?
           // if (!response.payload.isAuth) {
           //   alert('로그인이 필요한 게시판입니다.');
