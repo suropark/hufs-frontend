@@ -17,7 +17,6 @@ function MapPage({ match }) {
     <>
       <Header />
       <Quick />
-      <BrowserRouter>
         <Switch>
           <Route exact path={`${match.path}`} component={MapContainer} />
           <Route
@@ -29,7 +28,6 @@ function MapPage({ match }) {
           <Route exact path={`${match.path}/edit`} component={ReviewUpdate} />
 
         </Switch>
-      </BrowserRouter>
       <Footer />
     </>
     /* jshint ignore:end */

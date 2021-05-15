@@ -15,6 +15,8 @@ const MapContainer = ({ match }) => {
   const [lng, setLng] = useState(127.0588283395548);
   const [keyword, setKeyword] = useState('');
 
+  var check = true;
+
   
   const handleValueChange = (e) =>{
     setKeyword(e.target.value);
@@ -36,7 +38,23 @@ const MapContainer = ({ match }) => {
   }
 
   const fold = (e) => {
-    if (document.getElementById('itemContainer').style.display === 'block') {
+    if (check === true) {
+      check = false
+      document.getElementById('itemContainer').style.display = 'none';
+      document.getElementById('itemContainer').style.backgroundColor = 'none';
+      document.getElementById('Food-list').style.overflowY = 'hidden';
+      document.getElementById('itemState').textContent = '보기';
+    }
+    else {
+      check = true;      
+      document.getElementById('itemContainer').style.display = 'block';
+      document.getElementById('itemContainer').style.backgroundColor = 'white';
+      document.getElementById('Food-list').style.overflowY = 'scroll'
+      document.getElementById('itemState').textContent = '접기';
+
+    }
+    /* if (document.getElementById('itemContainer').style.display === 'block') {
+      console.log('접기')
       document.getElementById('itemContainer').style.display = 'none';
       document.getElementById('itemContainer').style.backgroundColor = 'none';
       document.getElementById('Food-list').style.overflowY = 'hidden';
@@ -46,7 +64,7 @@ const MapContainer = ({ match }) => {
       document.getElementById('itemContainer').style.backgroundColor = 'white';
       document.getElementById('Food-list').style.overflowY = 'scroll'
       document.getElementById('itemState').textContent = '접기';
-    }
+    } */
   }
 
 
