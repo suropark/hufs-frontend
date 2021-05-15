@@ -5,6 +5,11 @@
   /* border: 1px solid black; */
   display: flex;
 }
+.commentset button,
+.commentset div,
+.commentset img {
+  font-size: 12px;
+}
 .commentset > img {
   width: 15%;
   height: 15%;
