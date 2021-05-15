@@ -49,9 +49,9 @@ function UserInfo(props) {
           message.success('정보 변경이 완료되었습니다.');
         })
         .catch((error) => {
-          switch (error.response?.message) {
+          switch (error.response.data.message) {
             case 'INVALID_NICKNAME_TIME':
-              message.error('닉네임을 변경한지 30일이 지나지 않았을 경우');
+              message.error('닉네임을 변경한지 30일이 지나지 않았습니다.');
               break;
             case 'UNAUTHORIZED':
               message.error('로그인하지 않은 사용자');
