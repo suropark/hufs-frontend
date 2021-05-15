@@ -58,7 +58,18 @@ const Rstrn = ({
 
         }
       })
-      .catch((e) => console.log(e));
+      .catch(((error) => {
+           switch (error.response?.status) {
+             case 401:
+               alert('로그인을 하시면 서비스 이용이 가능합니다.')
+               break;
+             case 403:
+               alert('접근 권한 오류')
+               break;
+             default:
+               break;
+           }
+          }));
   };
   // useEffect(() => {
   //   displayMarker();
@@ -67,7 +78,6 @@ const Rstrn = ({
   //     dispatch(reviewDetail(id))
   // .then((response) => {
   //   if (response.status === 200) {
-  //     console.log(response.payload)
   //     setDetail({average : response.payload.average,
   //       count : response.payload.count
 
@@ -326,7 +336,6 @@ const Rstrn = ({
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function () {
       // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-      console.log(map.getLevel());
       if (map.getLevel() >= 3) {
         map.setLevel(3);
         map.panTo(new kakao.maps.LatLng(lat + 0.001, long));
@@ -390,7 +399,6 @@ const Rstrn = ({
         <div>
           <Button
             onClick={(e) => {
-              console.log(match);
               // map/info -> map/info/:name 24시해장국
               history.push({
                 // map/info/:name/24시해장국/reviewpage

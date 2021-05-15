@@ -88,7 +88,7 @@ function ReviewEdit(props) {
         <div style={{ padding: '5px 5px' }}>
           <label style={{ fontWeight: 'bold' }}>평점 </label>
           <Rate allowHalf value={value.score} onChange={(e) => {
-            console.log(e);
+           
             setvalue({ ...value, score: e });
           }} />
         </div>
@@ -187,7 +187,7 @@ function imageHandler() {
 
       const options = {
         maxSizeMB: 1,
-        maxWidthOrHeight: 400,
+        maxWidthOrHeight: 200,
         useWebWorker: true,
       };
       const compressedFile = await imageCompression(files[0], options);
@@ -196,7 +196,6 @@ function imageHandler() {
       const range = this.quill.getSelection(true);
 
       if (!files || !files.length) {
-        console.log('No files selected');
         return;
       }
 
@@ -218,7 +217,6 @@ function imageHandler() {
           fileInput.value = '';
         })
         .catch((error) => {
-          console.log(error);
           fileInput.value = '';
           this.quill.enable(true);
         });

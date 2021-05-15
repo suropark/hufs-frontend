@@ -10,7 +10,6 @@ import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
 const { Header, Content, Footer } = Layout;
 const { Column } = Table;
 function ReviewList({ match, history }) {
-  console.log(history.location.state.id);
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +23,6 @@ function ReviewList({ match, history }) {
   useEffect(() => {
     dispatch(postList(history.location.state.id))
       .then((response) => {
-        console.log(response.payload)
         if (response.status === 200) {
           setPosts(response.payload.reverse());
           setloading(true);
@@ -37,6 +35,7 @@ function ReviewList({ match, history }) {
             history.push('/');
             break;
           case 403:
+            
             message.error('접근 권한 오류');
             history.push('/');
             break;
@@ -48,7 +47,6 @@ function ReviewList({ match, history }) {
     dispatch(reviewDetail(history.location.state.id))
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.payload)
           if (response.payload.average === null) {
 
             setDetail({
@@ -75,6 +73,7 @@ function ReviewList({ match, history }) {
             //
             break;
           case 403:
+            
             message.error('접근 권한 오류');
             history.push('/');
             break;
@@ -201,9 +200,8 @@ function ReviewList({ match, history }) {
           size="small"
           pagination={{
             onChange: page => {
-              console.log(page);
             },
-            pageSize: 3
+            //pageSize: 3
           }}
           dataSource={posts}
 
@@ -313,55 +311,3 @@ function ReviewList({ match, history }) {
 }
 
 export default withRouter(ReviewList);
-
-/* export function TableBody({ currentList, match, loading }) {
-  return (
-    <>
-      {loading ? (
-        <Table pagination={false} dataSource={currentList}>
-          <Column title="-" dataIndex="id" key="id" />
-          <Column
-            title="제목"
-            key="title"
-            render={(text, record) => (
-              <Link to={{
-                pathname:`${match.path}/${record.id}`,
-                state:{
-                  id : record.id
-                }}
-                }>
-                {record.title.length > 20
-                  ? record.title.slice(0, 20)
-                  : record.title}
-              </Link>
-            )}
-          />{' '}
-          <Column
-            title="작성자"
-            render={(text, record) =>
-              record.User === null ? (
-                <>탈퇴한 사용자</>
-              ) : (
-                <>{record.User.nickname}</>
-              )
-            }
-            key="User"
-          />
-          <Column
-            title="작성일"
-            render={(text, record) =>
-              record.createdAt ? record.createdAt.slice(0, 10) : 'none'
-            }
-            key="createdAt"
-          />
-          <Column title="추천수" dataIndex="like" key="like" />
-        </Table>
-      ) : (
-        <>
-          <Skeleton />
-        </>
-      )}
-    </>
-  );
-}
- */

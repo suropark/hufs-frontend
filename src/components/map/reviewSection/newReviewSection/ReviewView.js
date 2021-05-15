@@ -16,7 +16,6 @@ import { Card, PageHeader, Skeleton } from 'antd';
 // 게시글 내용 불러오기 ->
 function ReviewView({ match, history}) {
   var location = useLocation();
-  console.log(match.params.id)
   const [post, setPost] = useState();
   const dispatch = useDispatch();
   useEffect(() => {

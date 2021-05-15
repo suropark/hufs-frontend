@@ -41,16 +41,13 @@ const MapContainer = ({ match }) => {
       document.getElementById('itemContainer').style.backgroundColor = 'none';
       document.getElementById('Food-list').style.overflowY = 'hidden';
       document.getElementById('itemState').textContent = '보기';
-      console.log('접기', e)
     } else {
       document.getElementById('itemContainer').style.display = 'block';
       document.getElementById('itemContainer').style.backgroundColor = 'white';
       document.getElementById('Food-list').style.overflowY = 'scroll'
       document.getElementById('itemState').textContent = '접기';
-      console.log('펴기', e)
     }
   }
-  console.log(document.getElementsByClassName('itemContainer'))
 
 
 
