@@ -23,7 +23,7 @@ function UserScrap() {
           setScraps(response.data.data); // [스크랩 id, 포스트 Post.id, 포스트 Post.title]
         }
       })
-      .catch((error) => {});
+      .catch((error) => { });
     // }
   }, []);
   const onRemove = (recordId) => {
@@ -89,14 +89,14 @@ function UserScrap() {
           render={(text, record) => (
 
             <Popconfirm
-              
+
               title="스크랩을 삭제하시겠습니까?"
               onConfirm={(e) => onRemove(record.id)}
               okText="Yes"
               cancelText="No"
               value={record.id}
             >
-              <Button style={{ marginRight: '35%;' }} type="link" value={record.id}>
+              <Button style={{ marginRight: '33%' }} type="link" value={record.id}>
                 삭제하기
               </Button>
             </Popconfirm>

@@ -161,7 +161,7 @@ function CommentList({ comments, history, setPost, match }) {
                 </>
               }
               datetime={item.createAt ? item.createAt.slice(0, 10) : null}
-              // 현재 안나타남
+            // 현재 안나타남
             >
               <span
                 style={{ cursor: 'pointer', fontWeight: 'bolder' }}
@@ -175,7 +175,7 @@ function CommentList({ comments, history, setPost, match }) {
                   }
                 }}
               >
-                대댓글 창 열기
+                대댓글
               </span>
 
               <div id={`reply-${item.id}`} style={{ display: 'none' }}>
@@ -222,23 +222,24 @@ function CommentList({ comments, history, setPost, match }) {
                           </>
                         }
                         datetime={e.createAt ? e.createAt.slice(0, 10) : null}
-                        // 현재 안나타남
+                      // 현재 안나타남
                       ></Comment>
                     )
                   );
                 })}
 
                 <form
+                  className={styles.form}
                   onSubmit={(e) => {
                     e.preventDefault();
                     onReply(e.target[0].value, item.id);
                   }}
                 >
                   <TextArea
-                    className="comment-textarea"
+                    className={styles.commenttextarea}
                     size={'small'}
                     rows={4}
-                    autoSize={{ minRows: 4, maxRows: 4 }}
+                    autoSize={{ minRows: 2, maxRows: 4 }}
                     // showCount
                     maxLength={200}
                     type="text"

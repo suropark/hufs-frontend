@@ -25,3 +25,10 @@
   cursor: pointer;
   border-style: none;
 }
+.commenttextarea {
+  width: 80%;
+}
+.form input {
+  width: 10%;
+  height: 30%;
+}
