@@ -27,17 +27,18 @@ const SignUpModal = (props) => {
     const request1 = await axios
       .get(`${PUBLIC_IP}/major/main-major`) //1전공
       .then((response) => response.data.data) // 배열 [id, name ]
-      .catch((e) => {});
+      .catch((e) => { });
     setMajor(request1);
     const request2 = await axios
       .get(`${PUBLIC_IP}/major/double-major`) //이중전공
       .then((response) => response.data.data)
 
-      .catch((e) => {}); // 배열 [id, name ]
+      .catch((e) => { }); // 배열 [id, name ]
     setDoubleMajor(request2);
   }, []);
 
   const argCheck = { a: false, b: false };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const request = await axios
@@ -94,18 +95,14 @@ const SignUpModal = (props) => {
           display: 'inline-block',
           position: 'relative',
           width: '1100px',
-          left: '0%',
+          left: '10%'
+
         }}
       >
         <Form
-          name="basic"
+          id="basic"
           initialValues={{ remember: true }}
-          style={{
-            border: '3px solid #8897cb',
-            borderRadius: '8px',
-            margin: '15%',
-            padding: '5%',
-          }}
+
         >
           <Form.Item
             label="닉네임"

@@ -160,7 +160,7 @@ function UserInfo(props) {
                     ></Input>
                     <Button
                       onClick={onAuth}
-                      // style={{ marginLeft: '8px' }}
+                    // style={{ marginLeft: '8px' }}
                     >
                       인증하기
                     </Button>

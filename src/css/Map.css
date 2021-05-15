@@ -95,8 +95,8 @@
 
 .Map-main {
   position: absolute;
-  width: 48%;
-  min-width: 48%;
+  width: 800px;
+  /* min-width: 48%; */
   height: 907px;
   left: 25%;
   top: 170px;
