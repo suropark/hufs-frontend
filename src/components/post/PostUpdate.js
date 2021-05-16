@@ -97,7 +97,7 @@ function PostUpdate({ match, history }) {
       });
   };
   const onExit = () => {
-    const answer = window.confirm('진짜?');
+    const answer = window.confirm('정말 취소하시겠습니까?');
     if (answer) {
       axios
         .post(`${PUBLIC_IP}/post/back`, { url: uploadedImg })
@@ -106,7 +106,7 @@ function PostUpdate({ match, history }) {
     }
   };
 
-  useEffect(() => {}, [updated]);
+  useEffect(() => { }, [updated]);
 
   return (
     <>
