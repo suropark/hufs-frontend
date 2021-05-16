@@ -3,6 +3,7 @@
   opacity: 0.5;
   position: relative;
   left: 40%;
+  width: 300px;
   cursor: pointer;
 }
 .rule > span {

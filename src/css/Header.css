@@ -1,0 +1,95 @@
+:root {
+  /* 색 */
+  --navy-color: #030a66;
+  --white-color: #ffffff;
+  --black-color: #0a0a0a;
+
+  /* 사이즈 */
+  --logo-size: 75px;
+}
+.Head {
+  position: relative;
+  left: 12%;
+  width: 1120px;
+  height: 140px;
+}
+.ant-menu-horizontal > .ant-menu-item a {
+  color: var(--navy-color);
+  font-weight: bold;
+}
+.Head > .Pagename {
+  /* 페이지 이름 */
+
+  display: flex;
+  flex-direction: row;
+  padding: 15px 0px 15px 0px;
+  border: '1px solid violet';
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 22%;
+  height: 50%;
+
+  top: 30%;
+}
+.Head > .Pagename img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 250px;
+  max-height: 68px;
+}
+.Head > .Image {
+  /* 이미지 */
+
+  position: absolute;
+  width: 8%;
+  height: 60%;
+  left: 45%;
+}
+
+.ant-space-item {
+  position: relative;
+}
+.ant-space.ant-space-vertical {
+  /* MenuBar */
+  left: 23%;
+  position: relative;
+  width: 770px;
+  height: 50%;
+  top: 50px;
+
+  /* Auto Layout */
+  align-items: center;
+  justify-content: space-between;
+}
+/* #Menubar {
+    position: relative; 
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+  } */
+/* 서브메뉴 사이즈 */
+.ant-dropdown-menu.ant-dropdown-menu-light.ant-dropdown-menu-root.ant-dropdown-menu-vertical {
+  width: 120%;
+}
+
+.Head > .loginbar {
+  /* 로그인 */
+
+  position: absolute;
+
+  width: 20%;
+  height: 25%;
+  right: 5%;
+}
+
+/* 로그인 메뉴 강제고정 */
+.Head > .loginbar > span:nth-child(1) {
+  position: absolute;
+  top: 3%;
+}
+.Head > .loginbar > span:nth-child(2) {
+  position: absolute;
+  right: 20%;
+}

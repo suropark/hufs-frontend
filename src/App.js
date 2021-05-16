@@ -4,6 +4,7 @@ import loadable from '@loadable/component';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './css/App.css';
 import './css/App2.css';
+import './css/Header.css'
 import './css/Map.css';
 import './css/Post.css';
 import './css/Quick.css';

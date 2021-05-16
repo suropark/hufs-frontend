@@ -67,18 +67,22 @@ function Header(props) {
           <img src={logo} />
         </Link>
       </div>
-      {/* <img src={mainboo} className="Image" alt="이미지 들어갈 곳" /> */}
+
       <span className="loginbar">
-        {login ? (
-          <Logout setLogin={setLogin} />
-        ) : (
-          <SignUp setLogin={setLogin} />
-        )}
-        <Button type="text">
-          <Link style={{ color: 'rgba(0, 0, 0, 0.85)' }} to="/mypage">
-            My page
+        <span>
+          {login ? (
+            <Logout setLogin={setLogin} />
+          ) : (
+            <SignUp setLogin={setLogin} />
+          )}
+        </span>
+        <span>
+          <Button type="text">
+            <Link style={{ color: 'rgba(0, 0, 0, 0.85)' }} to="/mypage">
+              My page
           </Link>{' '}
-        </Button>
+          </Button>
+        </span>
         {/* <Button type="text">언어 선택</Button> */}
       </span>
 
