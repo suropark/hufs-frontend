@@ -21,7 +21,7 @@ function MapPage({ match }) {
           <Route exact path={`${match.path}`} component={MapContainer} />
           <Route
             exact
-            path={`${match.path}/info/:name/:id/ReviewPage`}
+            path={`${match.path}/info/:id/ReviewPage`}
             component={ReviewPage}
           />
           <Route path={`${match.path}/register`} component={ReviewEdit} />
