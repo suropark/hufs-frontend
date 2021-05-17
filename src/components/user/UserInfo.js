@@ -107,13 +107,14 @@ function UserInfo(props) {
         );
       })
       .catch((error) => {
-        switch (error?.response?.message) {
+        switch (error?.response?.data.message) {
           case 'UNAUTHORIZED':
             message.error('로그인이 필요합니다.');
             props.history.push('/');
             break;
           case 'CONFLICT':
             message.error('이미 인증처리가 된 웹메일입니다.');
+            break;
           default:
             message.error('알 수 없는 오류 발생');
             break;
