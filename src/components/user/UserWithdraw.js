@@ -9,7 +9,6 @@ function UserWithdraw(props) {
 
   function confirm() {
     Modal.confirm({
-
       title: '정말로 회원을 탈퇴하시겠습니까? 😢',
       // icon: <ExclamationCircleOutlined />,
       content: 'HUFSpace_',
@@ -40,10 +39,8 @@ function UserWithdraw(props) {
   };
 
   return (
-    <div
-      className="withdraw"
-    >
-      <div>회원 탈퇴 이후 정보들을 복구 불가합니다  </div>
+    <div className="withdraw">
+      <div>회원 탈퇴 이후 정보들을 복구 불가합니다 </div>
       <div>😭😭😭😭😭😭😭😭😭😭😭😭😭</div>
       <Button onClick={confirm}>Confirm</Button>
     </div>
